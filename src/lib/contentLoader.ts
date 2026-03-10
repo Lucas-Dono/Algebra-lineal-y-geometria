@@ -1,4 +1,4 @@
-import metadata from '../../../content/metadata.json';
+import metadata from '../content/metadata.json';
 
 export interface Section {
   id: string;

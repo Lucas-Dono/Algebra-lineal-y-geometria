@@ -1,0 +1,458 @@
+{
+  "voice": "es-ES-AlvaroNeural",
+  "generatedAt": "2026-03-03T22:23:22.708387",
+  "chapters": {
+    "00-fundamentos": {
+      "title": "Fundamentos Matemáticos",
+      "sections": [
+        {
+          "id": "00-intro",
+          "title": "Introducción",
+          "file": "00-fundamentos/00-intro.mp3",
+          "duration": 134,
+          "wordCount": 336
+        },
+        {
+          "id": "01-conjuntos",
+          "title": "Teoría de Conjuntos",
+          "file": "00-fundamentos/01-conjuntos.mp3",
+          "duration": 418,
+          "wordCount": 1045
+        },
+        {
+          "id": "02-funciones",
+          "title": "Funciones",
+          "file": "00-fundamentos/02-funciones.mp3",
+          "duration": 457,
+          "wordCount": 1144
+        },
+        {
+          "id": "03-induccion",
+          "title": "Inducción Matemática",
+          "file": "00-fundamentos/03-induccion.mp3",
+          "duration": 437,
+          "wordCount": 1094
+        }
+      ]
+    },
+    "01-numeros-complejos": {
+      "title": "Números Complejos",
+      "sections": [
+        {
+          "id": "00-intro",
+          "title": "Introducción a los Números Complejos",
+          "file": "01-numeros-complejos/00-intro.mp3",
+          "duration": 181,
+          "wordCount": 453
+        },
+        {
+          "id": "01-definicion",
+          "title": "Definición y Operaciones Básicas",
+          "file": "01-numeros-complejos/01-definicion.mp3",
+          "duration": 274,
+          "wordCount": 685
+        },
+        {
+          "id": "02-forma-polar",
+          "title": "Forma Polar y Exponencial",
+          "file": "01-numeros-complejos/02-forma-polar.mp3",
+          "duration": 602,
+          "wordCount": 1506
+        },
+        {
+          "id": "03-raices",
+          "title": "Raíces de Números Complejos",
+          "file": "01-numeros-complejos/03-raices.mp3",
+          "duration": 628,
+          "wordCount": 1572
+        }
+      ]
+    },
+    "02-sistemas-lineales": {
+      "title": "Sistemas de Ecuaciones Lineales",
+      "sections": [
+        {
+          "id": "00-intro",
+          "title": "Introducción a los Sistemas Lineales",
+          "file": "02-sistemas-lineales/00-intro.mp3",
+          "duration": 382,
+          "wordCount": 955
+        },
+        {
+          "id": "01-eliminacion-gauss",
+          "title": "Eliminación Gaussiana",
+          "file": "02-sistemas-lineales/01-eliminacion-gauss.mp3",
+          "duration": 442,
+          "wordCount": 1105
+        },
+        {
+          "id": "02-gauss-jordan",
+          "title": "Método de Gauss-Jordan",
+          "file": "02-sistemas-lineales/02-gauss-jordan.mp3",
+          "duration": 522,
+          "wordCount": 1305
+        },
+        {
+          "id": "03-clasificacion",
+          "title": "Clasificación de Sistemas",
+          "file": "02-sistemas-lineales/03-clasificacion.mp3",
+          "duration": 398,
+          "wordCount": 996
+        }
+      ]
+    },
+    "03-geometria-analitica": {
+      "title": "Geometría Analítica",
+      "sections": [
+        {
+          "id": "00-intro",
+          "title": "Introducción a la Geometría Analítica",
+          "file": "03-geometria-analitica/00-intro.mp3",
+          "duration": 207,
+          "wordCount": 519
+        },
+        {
+          "id": "01-vectores-r2",
+          "title": "Vectores en R²",
+          "file": "03-geometria-analitica/01-vectores-r2.mp3",
+          "duration": 555,
+          "wordCount": 1389
+        },
+        {
+          "id": "02-vectores-r3",
+          "title": "Vectores en R³",
+          "file": "03-geometria-analitica/02-vectores-r3.mp3",
+          "duration": 550,
+          "wordCount": 1377
+        },
+        {
+          "id": "03-rectas-planos",
+          "title": "Rectas y Planos",
+          "file": "03-geometria-analitica/03-rectas-planos.mp3",
+          "duration": 521,
+          "wordCount": 1303
+        }
+      ]
+    },
+    "04-espacios-vectoriales": {
+      "title": "Espacios Vectoriales",
+      "sections": [
+        {
+          "id": "00-intro",
+          "title": "Introducción a los Espacios Vectoriales",
+          "file": "04-espacios-vectoriales/00-intro.mp3",
+          "duration": 205,
+          "wordCount": 514
+        },
+        {
+          "id": "01-definicion",
+          "title": "Definición y Axiomas",
+          "file": "04-espacios-vectoriales/01-definicion.mp3",
+          "duration": 427,
+          "wordCount": 1069
+        },
+        {
+          "id": "02-subespacios",
+          "title": "Subespacios Vectoriales",
+          "file": "04-espacios-vectoriales/02-subespacios.mp3",
+          "duration": 466,
+          "wordCount": 1165
+        },
+        {
+          "id": "03-base-dimension",
+          "title": "Base y Dimensión",
+          "file": "04-espacios-vectoriales/03-base-dimension.mp3",
+          "duration": 401,
+          "wordCount": 1004
+        },
+        {
+          "id": "04-coordenadas",
+          "title": "Coordenadas y Cambio de Base",
+          "file": "04-espacios-vectoriales/04-coordenadas.mp3",
+          "duration": 368,
+          "wordCount": 921
+        }
+      ]
+    },
+    "05-matrices": {
+      "title": "Matrices",
+      "sections": [
+        {
+          "id": "00-intro",
+          "title": "Introducción a las Matrices",
+          "file": "05-matrices/00-intro.mp3",
+          "duration": 178,
+          "wordCount": 447
+        },
+        {
+          "id": "01-operaciones",
+          "title": "Operaciones con Matrices",
+          "file": "05-matrices/01-operaciones.mp3",
+          "duration": 350,
+          "wordCount": 877
+        },
+        {
+          "id": "02-tipos-especiales",
+          "title": "Tipos Especiales de Matrices",
+          "file": "05-matrices/02-tipos-especiales.mp3",
+          "duration": 395,
+          "wordCount": 989
+        },
+        {
+          "id": "03-inversa",
+          "title": "Matriz Inversa",
+          "file": "05-matrices/03-inversa.mp3",
+          "duration": 354,
+          "wordCount": 886
+        },
+        {
+          "id": "04-rango",
+          "title": "Rango de una Matriz",
+          "file": "05-matrices/04-rango.mp3",
+          "duration": 340,
+          "wordCount": 850
+        }
+      ]
+    },
+    "06-determinantes": {
+      "title": "Determinantes",
+      "sections": [
+        {
+          "id": "00-intro",
+          "title": "Introducción a los Determinantes",
+          "file": "06-determinantes/00-intro.mp3",
+          "duration": 142,
+          "wordCount": 356
+        },
+        {
+          "id": "01-calculo",
+          "title": "Cálculo de Determinantes",
+          "file": "06-determinantes/01-calculo.mp3",
+          "duration": 404,
+          "wordCount": 1011
+        },
+        {
+          "id": "02-propiedades",
+          "title": "Propiedades de los Determinantes",
+          "file": "06-determinantes/02-propiedades.mp3",
+          "duration": 416,
+          "wordCount": 1040
+        },
+        {
+          "id": "03-cramer",
+          "title": "Regla de Cramer",
+          "file": "06-determinantes/03-cramer.mp3",
+          "duration": 496,
+          "wordCount": 1242
+        },
+        {
+          "id": "04-aplicaciones",
+          "title": "Aplicaciones Geométricas",
+          "file": "06-determinantes/04-aplicaciones.mp3",
+          "duration": 530,
+          "wordCount": 1325
+        }
+      ]
+    },
+    "07-transformaciones-lineales": {
+      "title": "Transformaciones Lineales",
+      "sections": [
+        {
+          "id": "00-intro",
+          "title": "Introducción a las Transformaciones Lineales",
+          "file": "07-transformaciones-lineales/00-intro.mp3",
+          "duration": 326,
+          "wordCount": 815
+        },
+        {
+          "id": "01-definicion",
+          "title": "Definición y Ejemplos",
+          "file": "07-transformaciones-lineales/01-definicion.mp3",
+          "duration": 399,
+          "wordCount": 998
+        },
+        {
+          "id": "02-nucleo-imagen",
+          "title": "Núcleo e Imagen",
+          "file": "07-transformaciones-lineales/02-nucleo-imagen.mp3",
+          "duration": 417,
+          "wordCount": 1043
+        },
+        {
+          "id": "03-matriz-asociada",
+          "title": "Matriz Asociada",
+          "file": "07-transformaciones-lineales/03-matriz-asociada.mp3",
+          "duration": 416,
+          "wordCount": 1040
+        },
+        {
+          "id": "04-cambio-base",
+          "title": "Cambio de Base",
+          "file": "07-transformaciones-lineales/04-cambio-base.mp3",
+          "duration": 394,
+          "wordCount": 985
+        }
+      ]
+    },
+    "08-autovalores-autovectores": {
+      "title": "Autovalores y Autovectores",
+      "sections": [
+        {
+          "id": "00-intro",
+          "title": "Introducción",
+          "file": "08-autovalores-autovectores/00-intro.mp3",
+          "duration": 258,
+          "wordCount": 646
+        },
+        {
+          "id": "01-definicion",
+          "title": "Definición y Cálculo",
+          "file": "08-autovalores-autovectores/01-definicion.mp3",
+          "duration": 383,
+          "wordCount": 958
+        },
+        {
+          "id": "02-diagonalizacion",
+          "title": "Diagonalización",
+          "file": "08-autovalores-autovectores/02-diagonalizacion.mp3",
+          "duration": 350,
+          "wordCount": 875
+        },
+        {
+          "id": "03-potencias",
+          "title": "Potencias de Matrices",
+          "file": "08-autovalores-autovectores/03-potencias.mp3",
+          "duration": 450,
+          "wordCount": 1126
+        },
+        {
+          "id": "04-aplicaciones",
+          "title": "Aplicaciones",
+          "file": "08-autovalores-autovectores/04-aplicaciones.mp3",
+          "duration": 382,
+          "wordCount": 957
+        }
+      ]
+    },
+    "09-producto-interno": {
+      "title": "Espacios con Producto Interno",
+      "sections": [
+        {
+          "id": "00-intro",
+          "title": "Introducción",
+          "file": "09-producto-interno/00-intro.mp3",
+          "duration": 235,
+          "wordCount": 589
+        },
+        {
+          "id": "01-definicion",
+          "title": "Producto Interno",
+          "file": "09-producto-interno/01-definicion.mp3",
+          "duration": 423,
+          "wordCount": 1058
+        },
+        {
+          "id": "02-ortogonalidad",
+          "title": "Ortogonalidad",
+          "file": "09-producto-interno/02-ortogonalidad.mp3",
+          "duration": 348,
+          "wordCount": 871
+        },
+        {
+          "id": "03-gram-schmidt",
+          "title": "Proceso de Gram-Schmidt",
+          "file": "09-producto-interno/03-gram-schmidt.mp3",
+          "duration": 548,
+          "wordCount": 1372
+        },
+        {
+          "id": "04-proyecciones",
+          "title": "Proyecciones Ortogonales",
+          "file": "09-producto-interno/04-proyecciones.mp3",
+          "duration": 430,
+          "wordCount": 1077
+        }
+      ]
+    },
+    "10-formas-cuadraticas": {
+      "title": "Formas Cuadráticas",
+      "sections": [
+        {
+          "id": "00-intro",
+          "title": "Introducción",
+          "file": "10-formas-cuadraticas/00-intro.mp3",
+          "duration": 201,
+          "wordCount": 504
+        },
+        {
+          "id": "01-definicion",
+          "title": "Definición y Matriz Asociada",
+          "file": "10-formas-cuadraticas/01-definicion.mp3",
+          "duration": 401,
+          "wordCount": 1004
+        },
+        {
+          "id": "02-clasificacion",
+          "title": "Clasificación",
+          "file": "10-formas-cuadraticas/02-clasificacion.mp3",
+          "duration": 387,
+          "wordCount": 968
+        },
+        {
+          "id": "03-conicas",
+          "title": "Cónicas",
+          "file": "10-formas-cuadraticas/03-conicas.mp3",
+          "duration": 392,
+          "wordCount": 981
+        },
+        {
+          "id": "04-cuadricas",
+          "title": "Cuádricas",
+          "file": "10-formas-cuadraticas/04-cuadricas.mp3",
+          "duration": 339,
+          "wordCount": 849
+        }
+      ]
+    },
+    "11-aplicaciones": {
+      "title": "Aplicaciones",
+      "sections": [
+        {
+          "id": "00-intro",
+          "title": "Introducción",
+          "file": "11-aplicaciones/00-intro.mp3",
+          "duration": 86,
+          "wordCount": 215
+        },
+        {
+          "id": "01-machine-learning",
+          "title": "Machine Learning",
+          "file": "11-aplicaciones/01-machine-learning.mp3",
+          "duration": 284,
+          "wordCount": 711
+        },
+        {
+          "id": "02-grafos",
+          "title": "Teoría de Grafos",
+          "file": "11-aplicaciones/02-grafos.mp3",
+          "duration": 298,
+          "wordCount": 747
+        },
+        {
+          "id": "03-criptografia",
+          "title": "Criptografía",
+          "file": "11-aplicaciones/03-criptografia.mp3",
+          "duration": 279,
+          "wordCount": 698
+        },
+        {
+          "id": "04-imagenes",
+          "title": "Procesamiento de Imágenes",
+          "file": "11-aplicaciones/04-imagenes.mp3",
+          "duration": 348,
+          "wordCount": 870
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,56 @@
+---
+interface Props {
+  type: 'theorem' | 'definition' | 'example' | 'warning' | 'note' | 'proof';
+  title?: string;
+  number?: string;
+}
+
+const { type, title, number } = Astro.props;
+
+const typeConfig = {
+  theorem: {
+    label: 'Teorema',
+    class: 'theorem-box',
+    icon: '📜',
+  },
+  definition: {
+    label: 'Definición',
+    class: 'definition-box',
+    icon: '📖',
+  },
+  example: {
+    label: 'Ejemplo',
+    class: 'example-box',
+    icon: '💡',
+  },
+  warning: {
+    label: 'Importante',
+    class: 'warning-box',
+    icon: '⚠️',
+  },
+  note: {
+    label: 'Nota',
+    class: 'border-l-4 border-info bg-info/5 p-4 my-4 rounded-r-lg',
+    icon: '📝',
+  },
+  proof: {
+    label: 'Demostración',
+    class: 'border-l-4 border-neutral bg-neutral/5 p-4 my-4 rounded-r-lg',
+    icon: '✏️',
+  },
+};
+
+const config = typeConfig[type];
+const displayTitle = title || config.label;
+const fullTitle = number ? `${config.label} ${number}${title ? `: ${title}` : ''}` : displayTitle;
+---
+
+<div class={config.class}>
+  <div class="flex items-start gap-2 mb-2">
+    <span class="text-lg">{config.icon}</span>
+    <h4 class="font-semibold text-base-content">{fullTitle}</h4>
+  </div>
+  <div class="ml-7">
+    <slot />
+  </div>
+</div>

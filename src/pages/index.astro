@@ -1,0 +1,194 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const chapters = [
+  {
+    id: '00-fundamentos',
+    title: 'Fundamentos Matemáticos',
+    description: 'Repaso de conceptos básicos: conjuntos, funciones, inducción matemática y lógica.',
+    icon: '📚',
+    progress: 0,
+  },
+  {
+    id: '01-numeros-complejos',
+    title: 'Números Complejos',
+    description: 'Definición, operaciones, forma polar y aplicaciones de los números complejos.',
+    icon: '🔢',
+    progress: 0,
+  },
+  {
+    id: '02-sistemas-lineales',
+    title: 'Sistemas de Ecuaciones Lineales',
+    description: 'Métodos de resolución: Gauss, Gauss-Jordan, matrices aumentadas.',
+    icon: '⚖️',
+    progress: 0,
+  },
+  {
+    id: '03-geometria-analitica',
+    title: 'Geometría Analítica',
+    description: 'Vectores en R², R³, rectas, planos y sus ecuaciones.',
+    icon: '📐',
+    progress: 0,
+  },
+  {
+    id: '04-espacios-vectoriales',
+    title: 'Espacios Vectoriales',
+    description: 'Definición axiomática, subespacios, base, dimensión y coordenadas.',
+    icon: '🎯',
+    progress: 0,
+  },
+  {
+    id: '05-matrices',
+    title: 'Matrices',
+    description: 'Operaciones, tipos especiales, inversa, rango y aplicaciones.',
+    icon: '🔲',
+    progress: 0,
+  },
+  {
+    id: '06-determinantes',
+    title: 'Determinantes',
+    description: 'Cálculo, propiedades, regla de Cramer y aplicaciones geométricas.',
+    icon: '🧮',
+    progress: 0,
+  },
+  {
+    id: '07-transformaciones-lineales',
+    title: 'Transformaciones Lineales',
+    description: 'Definición, núcleo, imagen, matriz asociada y cambio de base.',
+    icon: '🔄',
+    progress: 0,
+  },
+  {
+    id: '08-autovalores-autovectores',
+    title: 'Autovalores y Autovectores',
+    description: 'Cálculo, diagonalización, potencias de matrices y aplicaciones.',
+    icon: '🌀',
+    progress: 0,
+  },
+  {
+    id: '09-producto-interno',
+    title: 'Producto Interno',
+    description: 'Espacios con producto interno, ortogonalidad, Gram-Schmidt.',
+    icon: '📏',
+    progress: 0,
+  },
+  {
+    id: '10-formas-cuadraticas',
+    title: 'Formas Cuadráticas',
+    description: 'Clasificación, diagonalización ortogonal, cónicas y cuádricas.',
+    icon: '📈',
+    progress: 0,
+  },
+  {
+    id: '11-aplicaciones',
+    title: 'Aplicaciones',
+    description: 'Machine Learning, grafos, criptografía, procesamiento de imágenes.',
+    icon: '🚀',
+    progress: 0,
+  },
+];
+---
+
+<BaseLayout title="Inicio">
+  <!-- Hero Section -->
+  <section class="text-center mb-12">
+    <h1 class="text-4xl sm:text-5xl font-bold mb-4">
+      Álgebra Lineal
+      <span class="text-primary">Interactivo</span>
+    </h1>
+    <p class="text-lg text-base-content/70 max-w-2xl mx-auto">
+      Aprende álgebra lineal de forma visual e interactiva. Desde los fundamentos
+      hasta aplicaciones avanzadas, con ejercicios prácticos y visualizaciones dinámicas.
+    </p>
+  </section>
+
+  <!-- Quick Stats -->
+  <section class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-12">
+    <div class="bg-base-200 rounded-xl p-4 text-center">
+      <div class="text-3xl font-bold text-primary">12</div>
+      <div class="text-sm text-base-content/60">Capítulos</div>
+    </div>
+    <div class="bg-base-200 rounded-xl p-4 text-center">
+      <div class="text-3xl font-bold text-secondary">300+</div>
+      <div class="text-sm text-base-content/60">Ejercicios</div>
+    </div>
+    <div class="bg-base-200 rounded-xl p-4 text-center">
+      <div class="text-3xl font-bold text-accent">50+</div>
+      <div class="text-sm text-base-content/60">Videos</div>
+    </div>
+    <div class="bg-base-200 rounded-xl p-4 text-center">
+      <div class="text-3xl font-bold text-success">30+</div>
+      <div class="text-sm text-base-content/60">Visualizaciones</div>
+    </div>
+  </section>
+
+  <!-- Chapters Grid -->
+  <section>
+    <h2 class="text-2xl font-bold mb-6">Contenido del Curso</h2>
+    <div class="grid gap-4 sm:grid-cols-2">
+      {chapters.map((chapter) => (
+        <a
+          href={`/chapters/${chapter.id}`}
+          class="content-card hover:shadow-md hover:border-primary/30 transition-all group"
+        >
+          <div class="flex items-start gap-4">
+            <span class="text-3xl">{chapter.icon}</span>
+            <div class="flex-1 min-w-0">
+              <h3 class="font-semibold text-lg group-hover:text-primary transition-colors">
+                {chapter.title}
+              </h3>
+              <p class="text-sm text-base-content/60 mt-1 line-clamp-2">
+                {chapter.description}
+              </p>
+              {chapter.progress > 0 && (
+                <div class="mt-3">
+                  <div class="flex items-center justify-between text-xs mb-1">
+                    <span class="text-base-content/60">Progreso</span>
+                    <span class="font-medium">{chapter.progress}%</span>
+                  </div>
+                  <div class="w-full bg-base-300 rounded-full h-1.5">
+                    <div
+                      class="bg-primary h-1.5 rounded-full"
+                      style={`width: ${chapter.progress}%`}
+                    />
+                  </div>
+                </div>
+              )}
+            </div>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5 text-base-content/30 group-hover:text-primary transition-colors"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M9 5l7 7-7 7"
+              />
+            </svg>
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <!-- Getting Started -->
+  <section class="mt-12 bg-gradient-to-r from-primary/10 to-secondary/10 rounded-2xl p-6 sm:p-8">
+    <h2 class="text-xl font-bold mb-2">¿Nuevo aquí?</h2>
+    <p class="text-base-content/70 mb-4">
+      Comienza con los Fundamentos Matemáticos si necesitas un repaso, o salta
+      directamente a Números Complejos si ya tienes la base.
+    </p>
+    <div class="flex flex-wrap gap-3">
+      <a href="/chapters/00-fundamentos" class="btn btn-primary">
+        Empezar desde el inicio
+      </a>
+      <a href="/chapters/01-numeros-complejos" class="btn btn-outline">
+        Ir a Números Complejos
+      </a>
+    </div>
+  </section>
+</BaseLayout>

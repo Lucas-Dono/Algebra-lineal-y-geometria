@@ -1,0 +1,37 @@
+---
+interface Props {
+  id: string;
+  width?: number;
+  height?: number;
+  title?: string;
+}
+
+const { id, width = 800, height = 500, title } = Astro.props;
+const embedUrl = `https://www.geogebra.org/material/iframe/id/${id}/width/${width}/height/${height}/border/888888/sfsb/true/smb/false/stb/false/stbh/false/ai/false/asb/false/sri/false/rc/false/ld/false/sdz/true/ctl/false`;
+---
+
+<div class="my-8">
+  {title && (
+    <h4 class="font-medium text-base-content/80 mb-3 flex items-center gap-2">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+      </svg>
+      {title}
+    </h4>
+  )}
+  <div class="relative w-full rounded-xl overflow-hidden bg-base-300 border border-base-content/10">
+    <div class="aspect-[16/10]">
+      <iframe
+        src={embedUrl}
+        title={title || 'GeoGebra Applet'}
+        frameborder="0"
+        allowfullscreen
+        loading="lazy"
+        class="absolute inset-0 w-full h-full"
+      ></iframe>
+    </div>
+  </div>
+  <p class="text-sm text-base-content/60 mt-2 text-center">
+    Interactivo: arrastra los puntos para explorar
+  </p>
+</div>

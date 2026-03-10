@@ -1,0 +1,195 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import SectionNavigation from '../../../components/content/SectionNavigation.astro';
+import AudioPlayer from '../../../components/tts/AudioPlayer.tsx';
+import {
+  getChapters,
+  getChapter,
+  getSection,
+  getNextSection,
+  getPreviousSection,
+} from '../../../lib/contentLoader';
+
+export function getStaticPaths() {
+  const chapters = getChapters();
+  const paths = [];
+
+  for (const chapter of chapters) {
+    for (const section of chapter.sections) {
+      paths.push({
+        params: {
+          chapter: chapter.id,
+          section: section.id,
+        },
+      });
+    }
+  }
+
+  return paths;
+}
+
+const { chapter: chapterId, section: sectionId } = Astro.params;
+const chapter = getChapter(chapterId!);
+const section = getSection(chapterId!, sectionId!);
+
+if (!chapter || !section) {
+  return Astro.redirect('/404');
+}
+
+const nextSection = getNextSection(chapterId!, sectionId!);
+const prevSection = getPreviousSection(chapterId!, sectionId!);
+
+// Try to load the MDX content
+let Content = null;
+let contentError = false;
+
+try {
+  const contentModules = import.meta.glob('../../../content/**/*.{mdx,md}', { eager: true });
+
+  // Find the module by matching the end of the path
+  const targetPath = `${chapter.id}/${section.file}`;
+  const moduleKey = Object.keys(contentModules).find(key => key.endsWith(targetPath));
+
+  if (moduleKey && contentModules[moduleKey]) {
+    Content = (contentModules[moduleKey] as any).default;
+  } else {
+    contentError = true;
+  }
+} catch (e) {
+  contentError = true;
+}
+---
+
+<BaseLayout title={`${section.title} - ${chapter.title}`}>
+  <!-- Breadcrumb -->
+  <div class="flex items-center gap-2 text-sm text-base-content/60 mb-6">
+    <a href="/" class="hover:text-primary">Inicio</a>
+    <span>/</span>
+    <a href={`/chapters/${chapter.id}`} class="hover:text-primary">{chapter.title}</a>
+    <span>/</span>
+    <span class="text-base-content">{section.title}</span>
+  </div>
+
+  <!-- Section Header -->
+  <header class="mb-8">
+    <div class="flex items-center gap-2 text-primary text-sm font-medium mb-2">
+      <span>{chapter.icon}</span>
+      <span>Capítulo {chapter.number}</span>
+    </div>
+    <h1 class="text-3xl sm:text-4xl font-bold">{section.title}</h1>
+  </header>
+
+  <!-- Audio Player -->
+  <div class="mb-8">
+    <AudioPlayer
+      client:load
+      chapterId={chapter.id}
+      sectionId={section.id}
+      title={`Escuchar: ${section.title}`}
+    />
+  </div>
+
+  <!-- Content -->
+  <article class="prose prose-lg max-w-none">
+    {contentError ? (
+      <div class="bg-warning/10 border border-warning/30 rounded-xl p-6 my-8">
+        <h3 class="text-warning font-semibold mb-2">Contenido en desarrollo</h3>
+        <p class="text-base-content/70">
+          Esta sección aún está siendo escrita. Vuelve pronto para ver el contenido completo.
+        </p>
+        <p class="text-sm text-base-content/50 mt-4">
+          Archivo esperado: <code>{chapter.id}/{section.file}</code>
+        </p>
+      </div>
+    ) : Content ? (
+      <Content />
+    ) : (
+      <div class="bg-base-200 rounded-xl p-6 my-8 text-center">
+        <p class="text-base-content/60">Cargando contenido...</p>
+      </div>
+    )}
+  </article>
+
+  <!-- Section Actions -->
+  <div class="flex items-center justify-between mt-12 pt-6 border-t border-base-300">
+    <button
+      id="bookmark-btn"
+      class="btn btn-ghost btn-sm gap-2"
+      data-section-id={`${chapter.id}/${section.id}`}
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z" />
+      </svg>
+      <span>Marcar</span>
+    </button>
+
+    <button
+      id="complete-btn"
+      class="btn btn-primary btn-sm gap-2"
+      data-section-id={`${chapter.id}/${section.id}`}
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+      </svg>
+      <span>Marcar como completado</span>
+    </button>
+  </div>
+
+  <!-- Navigation -->
+  <SectionNavigation
+    prevSection={prevSection}
+    nextSection={nextSection}
+    currentChapter={chapter}
+  />
+</BaseLayout>
+
+<script>
+  // This would connect to the Zustand store in a React component
+  // For now, we use localStorage directly for the Astro page
+  const completeBtn = document.getElementById('complete-btn');
+  const bookmarkBtn = document.getElementById('bookmark-btn');
+
+  if (completeBtn) {
+    const sectionId = completeBtn.dataset.sectionId;
+
+    completeBtn.addEventListener('click', () => {
+      const stored = localStorage.getItem('algebra-lineal-progress');
+      const progress = stored ? JSON.parse(stored) : { state: { completedSections: [] } };
+
+      if (!progress.state.completedSections.includes(sectionId)) {
+        progress.state.completedSections.push(sectionId);
+        localStorage.setItem('algebra-lineal-progress', JSON.stringify(progress));
+      }
+
+      completeBtn.innerHTML = `
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+        </svg>
+        <span>Completado</span>
+      `;
+      completeBtn.classList.add('btn-success');
+      completeBtn.classList.remove('btn-primary');
+    });
+  }
+
+  if (bookmarkBtn) {
+    const sectionId = bookmarkBtn.dataset.sectionId;
+
+    bookmarkBtn.addEventListener('click', () => {
+      const stored = localStorage.getItem('algebra-lineal-progress');
+      const progress = stored ? JSON.parse(stored) : { state: { bookmarks: [] } };
+
+      const idx = progress.state.bookmarks?.indexOf(sectionId) ?? -1;
+      if (idx === -1) {
+        progress.state.bookmarks = progress.state.bookmarks || [];
+        progress.state.bookmarks.push(sectionId);
+        bookmarkBtn.querySelector('svg')?.setAttribute('fill', 'currentColor');
+      } else {
+        progress.state.bookmarks.splice(idx, 1);
+        bookmarkBtn.querySelector('svg')?.setAttribute('fill', 'none');
+      }
+
+      localStorage.setItem('algebra-lineal-progress', JSON.stringify(progress));
+    });
+  }
+</script>

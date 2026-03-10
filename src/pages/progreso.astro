@@ -1,0 +1,148 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getChapters, getTotalSections } from '../lib/contentLoader';
+
+const chapters = getChapters();
+const totalSections = getTotalSections();
+---
+
+<BaseLayout title="Mi Progreso">
+  <h1 class="text-3xl font-bold mb-8">Mi Progreso</h1>
+
+  <!-- Overall Stats -->
+  <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8">
+    <div class="bg-base-200 rounded-xl p-4 text-center">
+      <div id="completed-count" class="text-3xl font-bold text-primary">0</div>
+      <div class="text-sm text-base-content/60">Secciones completadas</div>
+    </div>
+    <div class="bg-base-200 rounded-xl p-4 text-center">
+      <div class="text-3xl font-bold text-base-content/30">{totalSections}</div>
+      <div class="text-sm text-base-content/60">Total de secciones</div>
+    </div>
+    <div class="bg-base-200 rounded-xl p-4 text-center">
+      <div id="exercises-count" class="text-3xl font-bold text-secondary">0</div>
+      <div class="text-sm text-base-content/60">Ejercicios resueltos</div>
+    </div>
+    <div class="bg-base-200 rounded-xl p-4 text-center">
+      <div id="correct-count" class="text-3xl font-bold text-success">0</div>
+      <div class="text-sm text-base-content/60">Respuestas correctas</div>
+    </div>
+  </div>
+
+  <!-- Progress Bar -->
+  <div class="mb-8">
+    <div class="flex justify-between text-sm mb-2">
+      <span class="text-base-content/60">Progreso general</span>
+      <span id="progress-percent" class="font-medium">0%</span>
+    </div>
+    <div class="w-full bg-base-300 rounded-full h-3">
+      <div
+        id="progress-bar"
+        class="bg-primary h-3 rounded-full transition-all duration-500"
+        style="width: 0%"
+      ></div>
+    </div>
+  </div>
+
+  <!-- Chapter Progress -->
+  <h2 class="text-xl font-semibold mb-4">Progreso por Capítulo</h2>
+  <div class="space-y-4">
+    {chapters.map((chapter) => (
+      <div class="content-card">
+        <div class="flex items-center gap-4">
+          <span class="text-2xl">{chapter.icon}</span>
+          <div class="flex-1">
+            <h3 class="font-medium">{chapter.title}</h3>
+            <div class="flex items-center gap-2 mt-2">
+              <div class="flex-1 bg-base-300 rounded-full h-2">
+                <div
+                  class="chapter-progress bg-primary h-2 rounded-full transition-all"
+                  data-chapter={chapter.id}
+                  data-total={chapter.sections.length}
+                  style="width: 0%"
+                ></div>
+              </div>
+              <span
+                class="chapter-count text-sm text-base-content/60"
+                data-chapter={chapter.id}
+              >
+                0/{chapter.sections.length}
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <!-- Reset Button -->
+  <div class="mt-8 pt-8 border-t border-base-300">
+    <button
+      id="reset-progress"
+      class="btn btn-outline btn-error btn-sm"
+    >
+      Reiniciar todo el progreso
+    </button>
+  </div>
+</BaseLayout>
+
+<script>
+  // Load progress from localStorage
+  function loadProgress() {
+    const stored = localStorage.getItem('algebra-lineal-progress');
+    if (!stored) return { state: { completedSections: [], exerciseResults: {} } };
+    return JSON.parse(stored);
+  }
+
+  function updateDisplay() {
+    const progress = loadProgress();
+    const completed = progress.state.completedSections || [];
+    const results = progress.state.exerciseResults || {};
+
+    // Update overall stats
+    const totalSections = parseInt(document.querySelector('[data-total]')?.closest('.space-y-4')?.children.length || '0');
+    document.getElementById('completed-count')!.textContent = completed.length.toString();
+
+    const exercisesAttempted = Object.keys(results).length;
+    const exercisesCorrect = Object.values(results).filter((r: any) => r.correct).length;
+
+    document.getElementById('exercises-count')!.textContent = exercisesAttempted.toString();
+    document.getElementById('correct-count')!.textContent = exercisesCorrect.toString();
+
+    // Calculate total sections
+    let total = 0;
+    document.querySelectorAll('.chapter-progress').forEach(el => {
+      total += parseInt((el as HTMLElement).dataset.total || '0');
+    });
+
+    const percent = total > 0 ? Math.round((completed.length / total) * 100) : 0;
+    document.getElementById('progress-percent')!.textContent = `${percent}%`;
+    (document.getElementById('progress-bar') as HTMLElement).style.width = `${percent}%`;
+
+    // Update chapter progress
+    document.querySelectorAll('.chapter-progress').forEach(el => {
+      const chapterId = (el as HTMLElement).dataset.chapter;
+      const chapterTotal = parseInt((el as HTMLElement).dataset.total || '0');
+      const chapterCompleted = completed.filter((s: string) => s.startsWith(chapterId + '/')).length;
+      const chapterPercent = chapterTotal > 0 ? (chapterCompleted / chapterTotal) * 100 : 0;
+      (el as HTMLElement).style.width = `${chapterPercent}%`;
+
+      // Update count
+      const countEl = document.querySelector(`.chapter-count[data-chapter="${chapterId}"]`);
+      if (countEl) {
+        countEl.textContent = `${chapterCompleted}/${chapterTotal}`;
+      }
+    });
+  }
+
+  // Reset progress
+  document.getElementById('reset-progress')?.addEventListener('click', () => {
+    if (confirm('¿Estás seguro de que quieres reiniciar todo tu progreso? Esta acción no se puede deshacer.')) {
+      localStorage.removeItem('algebra-lineal-progress');
+      updateDisplay();
+    }
+  });
+
+  // Initialize
+  updateDisplay();
+</script>

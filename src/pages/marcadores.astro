@@ -1,0 +1,113 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getChapters, getChapter, getSection } from '../lib/contentLoader';
+
+const chapters = getChapters();
+---
+
+<BaseLayout title="Marcadores">
+  <h1 class="text-3xl font-bold mb-2">Mis Marcadores</h1>
+  <p class="text-base-content/60 mb-8">
+    Las secciones que has guardado para revisar después.
+  </p>
+
+  <!-- Bookmarks List -->
+  <div id="bookmarks-container">
+    <div id="bookmarks-empty" class="hidden text-center py-12">
+      <div class="text-6xl mb-4">📑</div>
+      <h3 class="text-xl font-semibold mb-2">No tienes marcadores</h3>
+      <p class="text-base-content/60 mb-4">
+        Marca las secciones que quieras revisar más tarde usando el botón de marcador.
+      </p>
+      <a href="/" class="btn btn-primary">
+        Explorar contenido
+      </a>
+    </div>
+
+    <div id="bookmarks-list" class="space-y-3">
+      <!-- Bookmarks will be populated by JavaScript -->
+    </div>
+  </div>
+</BaseLayout>
+
+<script>
+  const chapters = [
+    { id: '00-fundamentos', title: 'Fundamentos Matemáticos', icon: '📚' },
+    { id: '01-numeros-complejos', title: 'Números Complejos', icon: '🔢' },
+    { id: '02-sistemas-lineales', title: 'Sistemas Lineales', icon: '⚖️' },
+    { id: '03-geometria-analitica', title: 'Geometría Analítica', icon: '📐' },
+    { id: '04-espacios-vectoriales', title: 'Espacios Vectoriales', icon: '🎯' },
+    { id: '05-matrices', title: 'Matrices', icon: '🔲' },
+    { id: '06-determinantes', title: 'Determinantes', icon: '🧮' },
+    { id: '07-transformaciones-lineales', title: 'Transformaciones Lineales', icon: '🔄' },
+    { id: '08-autovalores-autovectores', title: 'Autovalores y Autovectores', icon: '🌀' },
+    { id: '09-producto-interno', title: 'Producto Interno', icon: '📏' },
+    { id: '10-formas-cuadraticas', title: 'Formas Cuadráticas', icon: '📈' },
+    { id: '11-aplicaciones', title: 'Aplicaciones', icon: '🚀' },
+  ];
+
+  function loadBookmarks() {
+    const stored = localStorage.getItem('algebra-lineal-progress');
+    if (!stored) return [];
+    const progress = JSON.parse(stored);
+    return progress.state.bookmarks || [];
+  }
+
+  function removeBookmark(sectionId: string) {
+    const stored = localStorage.getItem('algebra-lineal-progress');
+    if (!stored) return;
+    const progress = JSON.parse(stored);
+    progress.state.bookmarks = (progress.state.bookmarks || []).filter((b: string) => b !== sectionId);
+    localStorage.setItem('algebra-lineal-progress', JSON.stringify(progress));
+    renderBookmarks();
+  }
+
+  function renderBookmarks() {
+    const bookmarks = loadBookmarks();
+    const container = document.getElementById('bookmarks-list')!;
+    const emptyState = document.getElementById('bookmarks-empty')!;
+
+    if (bookmarks.length === 0) {
+      container.classList.add('hidden');
+      emptyState.classList.remove('hidden');
+      return;
+    }
+
+    container.classList.remove('hidden');
+    emptyState.classList.add('hidden');
+
+    container.innerHTML = bookmarks.map((sectionId: string) => {
+      const [chapterId, secId] = sectionId.split('/');
+      const chapter = chapters.find(c => c.id === chapterId);
+
+      return `
+        <div class="content-card flex items-center gap-4">
+          <span class="text-2xl">${chapter?.icon || '📄'}</span>
+          <div class="flex-1">
+            <a href="/chapters/${chapterId}/${secId}" class="font-medium hover:text-primary transition-colors">
+              ${secId.replace(/-/g, ' ').replace(/^\d+-/, '')}
+            </a>
+            <p class="text-sm text-base-content/60">
+              ${chapter?.title || chapterId}
+            </p>
+          </div>
+          <button
+            class="btn btn-ghost btn-sm"
+            onclick="window.removeBookmark('${sectionId}')"
+            title="Eliminar marcador"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z" />
+            </svg>
+          </button>
+        </div>
+      `;
+    }).join('');
+  }
+
+  // Make removeBookmark available globally
+  (window as any).removeBookmark = removeBookmark;
+
+  // Initialize
+  renderBookmarks();
+</script>

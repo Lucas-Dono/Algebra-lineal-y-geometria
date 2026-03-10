@@ -1,0 +1,51 @@
+---
+import '../styles/global.css';
+import Header from '../components/layout/Header.astro';
+import Sidebar from '../components/layout/Sidebar.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+  showSidebar?: boolean;
+}
+
+const {
+  title,
+  description = 'Libro interactivo de Álgebra Lineal',
+  showSidebar = true
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="es" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#3b82f6" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <title>{title} | Álgebra Lineal Interactivo</title>
+  </head>
+  <body class="min-h-screen flex flex-col">
+    <Header />
+
+    <div class="flex flex-1">
+      {showSidebar && <Sidebar />}
+
+      <main class="flex-1 overflow-y-auto">
+        <div class="max-w-4xl mx-auto px-4 py-8 sm:px-6 lg:px-8">
+          <slot />
+        </div>
+      </main>
+    </div>
+
+    <script>
+      // Theme toggle functionality
+      const theme = localStorage.getItem('theme') || 'light';
+      document.documentElement.setAttribute('data-theme', theme);
+    </script>
+  </body>
+</html>

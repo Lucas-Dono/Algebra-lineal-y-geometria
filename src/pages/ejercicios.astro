@@ -1,0 +1,104 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getChapters } from '../lib/contentLoader';
+
+const chapters = getChapters();
+---
+
+<BaseLayout title="Ejercicios">
+  <h1 class="text-3xl font-bold mb-2">Todos los Ejercicios</h1>
+  <p class="text-base-content/60 mb-8">
+    Practica con ejercicios de todos los capítulos del curso.
+  </p>
+
+  <!-- Filter tabs -->
+  <div class="tabs tabs-boxed mb-8">
+    <button class="tab tab-active" data-filter="all">Todos</button>
+    <button class="tab" data-filter="view">Resueltos</button>
+    <button class="tab" data-filter="practice">Práctica</button>
+    <button class="tab" data-filter="test">Interactivos</button>
+  </div>
+
+  <!-- Exercise Types Explanation -->
+  <div class="grid sm:grid-cols-3 gap-4 mb-8">
+    <div class="content-card">
+      <div class="flex items-center gap-3 mb-2">
+        <span class="text-2xl">📝</span>
+        <h3 class="font-semibold">Ejercicios Resueltos</h3>
+      </div>
+      <p class="text-sm text-base-content/60">
+        Ejemplos completamente desarrollados paso a paso para que entiendas el proceso de solución.
+      </p>
+    </div>
+
+    <div class="content-card">
+      <div class="flex items-center gap-3 mb-2">
+        <span class="text-2xl">✏️</span>
+        <h3 class="font-semibold">Ejercicios de Práctica</h3>
+      </div>
+      <p class="text-sm text-base-content/60">
+        Intenta resolver primero y luego verifica tu respuesta con la solución proporcionada.
+      </p>
+    </div>
+
+    <div class="content-card">
+      <div class="flex items-center gap-3 mb-2">
+        <span class="text-2xl">🎯</span>
+        <h3 class="font-semibold">Ejercicios Interactivos</h3>
+      </div>
+      <p class="text-sm text-base-content/60">
+        Pon a prueba tus conocimientos con retroalimentación inmediata y pistas.
+      </p>
+    </div>
+  </div>
+
+  <!-- Exercises by Chapter -->
+  <h2 class="text-xl font-semibold mb-4">Por Capítulo</h2>
+  <div class="space-y-4">
+    {chapters.map((chapter) => (
+      <a
+        href={`/ejercicios/${chapter.id}`}
+        class="content-card flex items-center gap-4 hover:border-primary/30 transition-all group"
+      >
+        <span class="text-3xl">{chapter.icon}</span>
+        <div class="flex-1">
+          <h3 class="font-medium group-hover:text-primary transition-colors">
+            {chapter.title}
+          </h3>
+          <p class="text-sm text-base-content/60">
+            {chapter.sections.length} secciones
+          </p>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="badge badge-primary badge-outline">Ver ejercicios</span>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-5 w-5 text-base-content/30 group-hover:text-primary transition-colors"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M9 5l7 7-7 7"
+            />
+          </svg>
+        </div>
+      </a>
+    ))}
+  </div>
+</BaseLayout>
+
+<script>
+  const tabs = document.querySelectorAll('.tab');
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('tab-active'));
+      tab.classList.add('tab-active');
+      // Filter logic would go here when exercises are loaded dynamically
+    });
+  });
+</script>

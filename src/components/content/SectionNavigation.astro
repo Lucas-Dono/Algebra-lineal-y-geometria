@@ -1,0 +1,99 @@
+---
+import type { Chapter, Section } from '../../lib/contentLoader';
+import { getSectionPath } from '../../lib/contentLoader';
+
+interface Props {
+  prevSection: { chapter: Chapter; section: Section } | null;
+  nextSection: { chapter: Chapter; section: Section } | null;
+  currentChapter: Chapter;
+}
+
+const { prevSection, nextSection, currentChapter } = Astro.props;
+---
+
+<nav class="mt-8 flex flex-col sm:flex-row gap-4">
+  {prevSection ? (
+    <a
+      href={getSectionPath(prevSection.chapter.id, prevSection.section.id)}
+      class="flex-1 content-card hover:border-primary/30 transition-all group"
+    >
+      <div class="flex items-center gap-3">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-5 w-5 text-base-content/40 group-hover:text-primary transition-colors"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg>
+        <div>
+          <div class="text-xs text-base-content/50 mb-1">Anterior</div>
+          <div class="font-medium group-hover:text-primary transition-colors">
+            {prevSection.section.title}
+          </div>
+          {prevSection.chapter.id !== currentChapter.id && (
+            <div class="text-xs text-base-content/50 mt-1">
+              {prevSection.chapter.icon} {prevSection.chapter.title}
+            </div>
+          )}
+        </div>
+      </div>
+    </a>
+  ) : (
+    <div class="flex-1"></div>
+  )}
+
+  {nextSection ? (
+    <a
+      href={getSectionPath(nextSection.chapter.id, nextSection.section.id)}
+      class="flex-1 content-card hover:border-primary/30 transition-all group text-right"
+    >
+      <div class="flex items-center justify-end gap-3">
+        <div>
+          <div class="text-xs text-base-content/50 mb-1">Siguiente</div>
+          <div class="font-medium group-hover:text-primary transition-colors">
+            {nextSection.section.title}
+          </div>
+          {nextSection.chapter.id !== currentChapter.id && (
+            <div class="text-xs text-base-content/50 mt-1">
+              {nextSection.chapter.icon} {nextSection.chapter.title}
+            </div>
+          )}
+        </div>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-5 w-5 text-base-content/40 group-hover:text-primary transition-colors"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg>
+      </div>
+    </a>
+  ) : (
+    <a
+      href="/"
+      class="flex-1 content-card hover:border-primary/30 transition-all group text-right bg-gradient-to-r from-primary/5 to-secondary/5"
+    >
+      <div class="flex items-center justify-end gap-3">
+        <div>
+          <div class="text-xs text-base-content/50 mb-1">Has completado el curso</div>
+          <div class="font-medium group-hover:text-primary transition-colors">
+            Volver al inicio
+          </div>
+        </div>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-5 w-5 text-base-content/40 group-hover:text-primary transition-colors"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+        </svg>
+      </div>
+    </a>
+  )}
+</nav>

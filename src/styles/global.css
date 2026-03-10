@@ -1,0 +1,136 @@
+/* KaTeX styles - must be first */
+@import 'katex/dist/katex.min.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom base styles */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    font-size: 18px;
+    line-height: 1.75;
+  }
+
+  /* Math display blocks */
+  .katex-display {
+    @apply overflow-x-auto py-4;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .katex {
+    font-size: 1.1em;
+  }
+
+  /* Prose adjustments for math */
+  .prose .katex-display {
+    @apply my-6;
+  }
+}
+
+@layer components {
+  /* Card styles */
+  .content-card {
+    @apply rounded-xl shadow-sm p-6;
+    background-color: oklch(var(--b1));
+    border: 1px solid oklch(var(--b3));
+  }
+
+  /* Theorem boxes */
+  .theorem-box {
+    @apply p-4 my-4 rounded-r-lg;
+    border-left: 4px solid oklch(var(--p));
+    background-color: oklch(var(--p) / 0.05);
+  }
+
+  .definition-box {
+    @apply p-4 my-4 rounded-r-lg;
+    border-left: 4px solid oklch(var(--s));
+    background-color: oklch(var(--s) / 0.05);
+  }
+
+  .example-box {
+    @apply p-4 my-4 rounded-r-lg;
+    border-left: 4px solid oklch(var(--a));
+    background-color: oklch(var(--a) / 0.05);
+  }
+
+  .warning-box {
+    @apply p-4 my-4 rounded-r-lg;
+    border-left: 4px solid oklch(var(--wa));
+    background-color: oklch(var(--wa) / 0.05);
+  }
+
+  /* Navigation link */
+  .nav-link {
+    @apply flex items-center gap-3 px-4 py-3 rounded-lg transition-colors;
+  }
+
+  .nav-link:hover {
+    background-color: oklch(var(--b2));
+  }
+
+  .nav-link:active {
+    background-color: oklch(var(--b3));
+  }
+
+  .nav-link.active {
+    @apply font-medium;
+    background-color: oklch(var(--p) / 0.1);
+    color: oklch(var(--p));
+  }
+
+  /* Exercise styles */
+  .exercise-card {
+    @apply rounded-xl p-6 my-6;
+    background-color: oklch(var(--b2));
+  }
+
+  .exercise-option {
+    @apply flex items-center gap-3 p-4 rounded-lg cursor-pointer transition-all;
+    border: 2px solid transparent;
+  }
+
+  .exercise-option:hover {
+    border-color: oklch(var(--p) / 0.3);
+  }
+
+  .exercise-option.selected {
+    border-color: oklch(var(--p));
+    background-color: oklch(var(--p) / 0.1);
+  }
+
+  .exercise-option.correct {
+    border-color: oklch(var(--su));
+    background-color: oklch(var(--su) / 0.1);
+  }
+
+  .exercise-option.incorrect {
+    border-color: oklch(var(--er));
+    background-color: oklch(var(--er) / 0.1);
+  }
+}
+
+@layer utilities {
+  /* Hide scrollbar but keep functionality */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Safe area padding for mobile */
+  .safe-area-inset {
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}

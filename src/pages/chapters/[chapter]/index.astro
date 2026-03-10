@@ -1,0 +1,113 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { getChapters, getChapter, getSectionPath } from '../../../lib/contentLoader';
+
+export function getStaticPaths() {
+  const chapters = getChapters();
+  return chapters.map((chapter) => ({
+    params: { chapter: chapter.id },
+  }));
+}
+
+const { chapter: chapterId } = Astro.params;
+const chapter = getChapter(chapterId!);
+
+if (!chapter) {
+  return Astro.redirect('/404');
+}
+
+const nextChapter = getChapters().find(c => c.number === chapter.number + 1);
+const prevChapter = getChapters().find(c => c.number === chapter.number - 1);
+---
+
+<BaseLayout title={chapter.title}>
+  <!-- Chapter Header -->
+  <div class="mb-8">
+    <div class="flex items-center gap-2 text-sm text-base-content/60 mb-4">
+      <a href="/" class="hover:text-primary">Inicio</a>
+      <span>/</span>
+      <span>Capítulo {chapter.number}</span>
+    </div>
+
+    <div class="flex items-start gap-4">
+      <span class="text-5xl">{chapter.icon}</span>
+      <div>
+        <h1 class="text-3xl sm:text-4xl font-bold mb-2">
+          {chapter.title}
+        </h1>
+        <p class="text-lg text-base-content/70">
+          {chapter.description}
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sections List -->
+  <section class="mb-12">
+    <h2 class="text-xl font-semibold mb-4">Contenido del Capítulo</h2>
+    <div class="space-y-2">
+      {chapter.sections.map((section, index) => (
+        <a
+          href={getSectionPath(chapter.id, section.id)}
+          class="content-card flex items-center gap-4 hover:border-primary/30 transition-all group"
+        >
+          <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary font-semibold">
+            {index + 1}
+          </div>
+          <div class="flex-1">
+            <h3 class="font-medium group-hover:text-primary transition-colors">
+              {section.title}
+            </h3>
+          </div>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-5 w-5 text-base-content/30 group-hover:text-primary transition-colors"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M9 5l7 7-7 7"
+            />
+          </svg>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <!-- Chapter Navigation -->
+  <nav class="flex justify-between items-center pt-6 border-t border-base-300">
+    {prevChapter ? (
+      <a
+        href={`/chapters/${prevChapter.id}`}
+        class="flex items-center gap-2 text-base-content/60 hover:text-primary transition-colors"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg>
+        <span class="hidden sm:inline">{prevChapter.title}</span>
+        <span class="sm:hidden">Anterior</span>
+      </a>
+    ) : (
+      <div></div>
+    )}
+
+    {nextChapter ? (
+      <a
+        href={`/chapters/${nextChapter.id}`}
+        class="flex items-center gap-2 text-base-content/60 hover:text-primary transition-colors"
+      >
+        <span class="hidden sm:inline">{nextChapter.title}</span>
+        <span class="sm:hidden">Siguiente</span>
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg>
+      </a>
+    ) : (
+      <div></div>
+    )}
+  </nav>
+</BaseLayout>

@@ -1,0 +1,152 @@
+{
+  "chapter": "07-transformaciones-lineales",
+  "exercises": [
+    {
+      "id": "tl-07-view-01",
+      "type": "view",
+      "title": "Verificar si es transformacion lineal",
+      "question": {
+        "text": "Determinar si T: R^2 -> R^2 definida por T(x,y) = (2x + y, x - 3y) es lineal",
+        "latex": "T(x, y) = (2x + y, x - 3y)"
+      },
+      "solution": {
+        "steps": [
+          {
+            "title": "Condiciones de linealidad",
+            "explanation": "Debemos verificar: T(u+v) = T(u) + T(v) y T(cu) = cT(u)",
+            "latex": "\\text{T es lineal si } T(\\mathbf{u} + \\mathbf{v}) = T(\\mathbf{u}) + T(\\mathbf{v}) \\text{ y } T(c\\mathbf{u}) = cT(\\mathbf{u})"
+          },
+          {
+            "title": "Verificar aditividad",
+            "explanation": "Sean u = (x1, y1) y v = (x2, y2)",
+            "latex": "\\begin{aligned} T(\\mathbf{u} + \\mathbf{v}) &= T(x_1+x_2, y_1+y_2) \\\\ &= (2(x_1+x_2) + (y_1+y_2), (x_1+x_2) - 3(y_1+y_2)) \\\\ &= (2x_1 + 2x_2 + y_1 + y_2, x_1 + x_2 - 3y_1 - 3y_2) \\end{aligned}"
+          },
+          {
+            "title": "Comparar con T(u) + T(v)",
+            "explanation": "Calculamos T(u) + T(v) por separado",
+            "latex": "\\begin{aligned} T(\\mathbf{u}) + T(\\mathbf{v}) &= (2x_1 + y_1, x_1 - 3y_1) + (2x_2 + y_2, x_2 - 3y_2) \\\\ &= (2x_1 + y_1 + 2x_2 + y_2, x_1 - 3y_1 + x_2 - 3y_2) \\end{aligned}"
+          },
+          {
+            "title": "Confirmar aditividad",
+            "explanation": "Los resultados coinciden",
+            "latex": "T(\\mathbf{u} + \\mathbf{v}) = T(\\mathbf{u}) + T(\\mathbf{v}) \\checkmark"
+          },
+          {
+            "title": "Verificar homogeneidad",
+            "explanation": "Para cualquier escalar c",
+            "latex": "\\begin{aligned} T(c\\mathbf{u}) &= T(cx_1, cy_1) = (2cx_1 + cy_1, cx_1 - 3cy_1) \\\\ &= c(2x_1 + y_1, x_1 - 3y_1) = cT(\\mathbf{u}) \\checkmark \\end{aligned}"
+          }
+        ],
+        "final_answer": {
+          "text": "T es una transformacion lineal",
+          "latex": "T \\text{ es lineal}"
+        }
+      },
+      "key_concepts": ["transformacion lineal", "aditividad", "homogeneidad"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "tl-07-view-02",
+      "type": "view",
+      "title": "Encontrar la matriz asociada",
+      "question": {
+        "text": "Encontrar la matriz de T: R^3 -> R^2 donde T(x,y,z) = (x+2y, y-z)",
+        "latex": "T(x, y, z) = (x + 2y, y - z)"
+      },
+      "solution": {
+        "steps": [
+          {
+            "title": "Metodo: aplicar T a la base canonica",
+            "explanation": "La columna i de [T] es T(e_i)",
+            "latex": "[T] = \\begin{pmatrix} | & | & | \\\\ T(\\mathbf{e}_1) & T(\\mathbf{e}_2) & T(\\mathbf{e}_3) \\\\ | & | & | \\end{pmatrix}"
+          },
+          {
+            "title": "Calcular T(e_1)",
+            "explanation": "e_1 = (1, 0, 0)",
+            "latex": "T(1, 0, 0) = (1 + 2(0), 0 - 0) = (1, 0)"
+          },
+          {
+            "title": "Calcular T(e_2)",
+            "explanation": "e_2 = (0, 1, 0)",
+            "latex": "T(0, 1, 0) = (0 + 2(1), 1 - 0) = (2, 1)"
+          },
+          {
+            "title": "Calcular T(e_3)",
+            "explanation": "e_3 = (0, 0, 1)",
+            "latex": "T(0, 0, 1) = (0 + 2(0), 0 - 1) = (0, -1)"
+          },
+          {
+            "title": "Formar la matriz",
+            "explanation": "Las imagenes son las columnas de [T]",
+            "latex": "[T] = \\begin{pmatrix} 1 & 2 & 0 \\\\ 0 & 1 & -1 \\end{pmatrix}"
+          },
+          {
+            "title": "Verificacion",
+            "explanation": "Comprobamos con un vector arbitrario (1, 2, 3)",
+            "latex": "\\begin{pmatrix} 1 & 2 & 0 \\\\ 0 & 1 & -1 \\end{pmatrix} \\begin{pmatrix} 1 \\\\ 2 \\\\ 3 \\end{pmatrix} = \\begin{pmatrix} 5 \\\\ -1 \\end{pmatrix} = T(1,2,3) \\checkmark"
+          }
+        ],
+        "final_answer": {
+          "text": "La matriz de la transformacion es:",
+          "latex": "[T] = \\begin{pmatrix} 1 & 2 & 0 \\\\ 0 & 1 & -1 \\end{pmatrix}"
+        }
+      },
+      "key_concepts": ["matriz de transformacion", "base canonica"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "tl-07-view-03",
+      "type": "view",
+      "title": "Nucleo e imagen de una transformacion",
+      "question": {
+        "text": "Encontrar Ker(T) e Im(T) para T(x,y,z) = (x+y, x+y, 2x+2y)",
+        "latex": "T(x, y, z) = (x+y, x+y, 2x+2y)"
+      },
+      "solution": {
+        "steps": [
+          {
+            "title": "Escribir la matriz de T",
+            "explanation": "Aplicando T a la base canonica",
+            "latex": "[T] = \\begin{pmatrix} 1 & 1 & 0 \\\\ 1 & 1 & 0 \\\\ 2 & 2 & 0 \\end{pmatrix}"
+          },
+          {
+            "title": "Encontrar el nucleo",
+            "explanation": "Resolver [T]v = 0",
+            "latex": "\\begin{pmatrix} 1 & 1 & 0 \\\\ 1 & 1 & 0 \\\\ 2 & 2 & 0 \\end{pmatrix} \\begin{pmatrix} x \\\\ y \\\\ z \\end{pmatrix} = \\begin{pmatrix} 0 \\\\ 0 \\\\ 0 \\end{pmatrix}"
+          },
+          {
+            "title": "Reducir la matriz",
+            "explanation": "El sistema se reduce a una sola ecuacion",
+            "latex": "x + y = 0 \\Rightarrow y = -x, \\quad z \\text{ es libre}"
+          },
+          {
+            "title": "Parametrizar el nucleo",
+            "explanation": "Con parametros s = x, t = z",
+            "latex": "\\text{Ker}(T) = \\left\\{ s\\begin{pmatrix} 1 \\\\ -1 \\\\ 0 \\end{pmatrix} + t\\begin{pmatrix} 0 \\\\ 0 \\\\ 1 \\end{pmatrix} : s, t \\in \\mathbb{R} \\right\\}"
+          },
+          {
+            "title": "Dimension del nucleo",
+            "explanation": "Dos parametros libres",
+            "latex": "\\dim(\\text{Ker}(T)) = 2"
+          },
+          {
+            "title": "Encontrar la imagen",
+            "explanation": "La imagen es el espacio columna de [T]",
+            "latex": "\\text{Im}(T) = \\text{gen}\\left\\{ \\begin{pmatrix} 1 \\\\ 1 \\\\ 2 \\end{pmatrix} \\right\\}"
+          },
+          {
+            "title": "Verificar teorema dimension",
+            "explanation": "dim(Dom) = dim(Ker) + dim(Im)",
+            "latex": "3 = 2 + 1 \\checkmark"
+          }
+        ],
+        "final_answer": {
+          "text": "El nucleo tiene dimension 2, la imagen dimension 1",
+          "latex": "\\text{Ker}(T) = \\text{gen}\\{(1,-1,0), (0,0,1)\\}, \\quad \\text{Im}(T) = \\text{gen}\\{(1,1,2)\\}"
+        }
+      },
+      "key_concepts": ["nucleo", "imagen", "teorema de la dimension"],
+      "difficulty": "medium"
+    }
+  ]
+}

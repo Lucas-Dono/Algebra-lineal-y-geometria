@@ -1,0 +1,156 @@
+---
+title: "Procesamiento de Imagenes"
+chapter: 11
+section: 4
+---
+
+# Algebra Lineal en Procesamiento de Imagenes
+
+Las imagenes digitales son matrices, y su procesamiento involucra operaciones del algebra lineal.
+
+## Imagenes como Matrices
+
+Una imagen en escala de grises de $m \times n$ pixeles es una matriz:
+
+$$I = \begin{pmatrix} p_{11} & p_{12} & \cdots & p_{1n} \\ p_{21} & p_{22} & \cdots & p_{2n} \\ \vdots & \vdots & \ddots & \vdots \\ p_{m1} & p_{m2} & \cdots & p_{mn} \end{pmatrix}$$
+
+donde $p_{ij} \in [0, 255]$ (0 = negro, 255 = blanco).
+
+Una imagen a color tiene 3 matrices (canales R, G, B).
+
+## Compresion con SVD
+
+### Idea
+
+Aproximar la imagen con una matriz de bajo rango.
+
+$$I = U\Sigma V^T \approx U_k\Sigma_k V_k^T = \sum_{i=1}^{k} \sigma_i \mathbf{u}_i \mathbf{v}_i^T$$
+
+### Compresion
+
+Imagen original: $m \times n$ valores.
+
+Aproximacion de rango $k$: $k(m + n + 1)$ valores.
+
+**Ratio de compresion:** $\frac{mn}{k(m + n + 1)}$
+
+### Ejemplo
+
+Imagen de $1000 \times 1000$ pixeles.
+
+- Original: 1,000,000 valores
+- Rango 50: $50 \times 2001 = 100,050$ valores
+- Compresion: 10x
+
+### Calidad vs Compresion
+
+| Rango $k$ | Calidad | Compresion |
+|-----------|---------|------------|
+| $k$ pequeno | Baja (borrosa) | Alta |
+| $k$ grande | Alta | Baja |
+
+La energia capturada: $\frac{\sum_{i=1}^k \sigma_i^2}{\sum_{i=1}^n \sigma_i^2}$
+
+## Transformaciones Geometricas
+
+### Rotacion
+
+$$\begin{pmatrix} x' \\ y' \end{pmatrix} = \begin{pmatrix} \cos\theta & -\sin\theta \\ \sin\theta & \cos\theta \end{pmatrix} \begin{pmatrix} x \\ y \end{pmatrix}$$
+
+### Escalamiento
+
+$$\begin{pmatrix} x' \\ y' \end{pmatrix} = \begin{pmatrix} s_x & 0 \\ 0 & s_y \end{pmatrix} \begin{pmatrix} x \\ y \end{pmatrix}$$
+
+### Cizallamiento
+
+$$\begin{pmatrix} x' \\ y' \end{pmatrix} = \begin{pmatrix} 1 & k \\ 0 & 1 \end{pmatrix} \begin{pmatrix} x \\ y \end{pmatrix}$$
+
+### Coordenadas Homogeneas
+
+Para incluir traslaciones, usamos coordenadas homogeneas:
+
+$$\begin{pmatrix} x' \\ y' \\ 1 \end{pmatrix} = \begin{pmatrix} a & b & t_x \\ c & d & t_y \\ 0 & 0 & 1 \end{pmatrix} \begin{pmatrix} x \\ y \\ 1 \end{pmatrix}$$
+
+Esto permite combinar todas las transformaciones afines en una sola multiplicacion matricial.
+
+## Filtros como Convolucion
+
+### Kernel de Convolucion
+
+Un filtro se define por un **kernel** (matriz pequena):
+
+$$K = \begin{pmatrix} k_{11} & k_{12} & k_{13} \\ k_{21} & k_{22} & k_{23} \\ k_{31} & k_{32} & k_{33} \end{pmatrix}$$
+
+### Operacion
+
+Para cada pixel $(i, j)$:
+
+$$I'_{ij} = \sum_{a=-1}^{1} \sum_{b=-1}^{1} k_{a+2, b+2} \cdot I_{i+a, j+b}$$
+
+### Ejemplos de Kernels
+
+**Suavizado (blur):**
+$$K = \frac{1}{9}\begin{pmatrix} 1 & 1 & 1 \\ 1 & 1 & 1 \\ 1 & 1 & 1 \end{pmatrix}$$
+
+**Deteccion de bordes (Sobel horizontal):**
+$$K = \begin{pmatrix} -1 & 0 & 1 \\ -2 & 0 & 2 \\ -1 & 0 & 1 \end{pmatrix}$$
+
+**Nitidez (sharpen):**
+$$K = \begin{pmatrix} 0 & -1 & 0 \\ -1 & 5 & -1 \\ 0 & -1 & 0 \end{pmatrix}$$
+
+### Convolucion como Multiplicacion Matricial
+
+La convolucion se puede expresar como multiplicacion por una matriz de Toeplitz (o circulante).
+
+Esto permite usar la FFT para convolucion rapida.
+
+## Eigenfaces
+
+### Reconocimiento Facial con PCA
+
+1. Recopilar muchas imagenes de rostros
+2. Cada imagen es un vector (pixeles concatenados)
+3. Aplicar PCA al conjunto de imagenes
+4. Los componentes principales son los "eigenfaces"
+
+### Representacion
+
+Cada rostro se puede aproximar como combinacion de eigenfaces:
+
+$$\text{rostro} \approx \mu + \sum_{i=1}^{k} c_i \mathbf{e}_i$$
+
+donde $\mu$ es el rostro promedio y $\mathbf{e}_i$ son los eigenfaces.
+
+### Reconocimiento
+
+Para identificar un rostro nuevo:
+1. Proyectar al espacio de eigenfaces
+2. Comparar con rostros conocidos usando distancia euclidiana
+
+## Procesamiento de Video
+
+### Separacion de Fondo
+
+Un video es una secuencia de imagenes (matrices).
+
+Apilando los frames como columnas de una matriz grande $M$:
+
+$$M = L + S$$
+
+donde $L$ es de bajo rango (fondo estatico) y $S$ es dispersa (objetos en movimiento).
+
+Esto se resuelve con **descomposicion de matriz de bajo rango y dispersa** (RPCA).
+
+## Resumen de Tecnicas
+
+| Tarea | Tecnica |
+|-------|---------|
+| Compresion | SVD / Aproximacion de bajo rango |
+| Transformaciones | Matrices de transformacion |
+| Filtros | Convolucion / Multiplicacion matricial |
+| Reconocimiento | PCA / Eigenfaces |
+| Separacion fondo/frente | RPCA |
+
+---
+
+Con esto concluye el capitulo de Aplicaciones y el libro de Algebra Lineal. Las herramientas aprendidas tienen aplicaciones en practicamente todos los campos de la ciencia y la tecnologia.

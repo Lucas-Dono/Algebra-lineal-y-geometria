@@ -1,0 +1,161 @@
+---
+title: "Clasificacion de Formas Cuadraticas"
+chapter: 10
+section: 2
+---
+
+# Clasificacion de Formas Cuadraticas
+
+Las formas cuadraticas se clasifican segun el signo de sus valores.
+
+## Definiciones
+
+Una forma cuadratica $Q(\mathbf{x}) = \mathbf{x}^TA\mathbf{x}$ es:
+
+- **Definida positiva:** $Q(\mathbf{x}) > 0$ para todo $\mathbf{x} \neq \mathbf{0}$
+- **Definida negativa:** $Q(\mathbf{x}) < 0$ para todo $\mathbf{x} \neq \mathbf{0}$
+- **Semidefinida positiva:** $Q(\mathbf{x}) \geq 0$ para todo $\mathbf{x}$
+- **Semidefinida negativa:** $Q(\mathbf{x}) \leq 0$ para todo $\mathbf{x}$
+- **Indefinida:** $Q$ toma valores positivos y negativos
+
+## Caracterizacion por Autovalores
+
+| Tipo | Condicion sobre autovalores |
+|------|----------------------------|
+| Definida positiva | Todos $\lambda_i > 0$ |
+| Definida negativa | Todos $\lambda_i < 0$ |
+| Semidefinida positiva | Todos $\lambda_i \geq 0$ |
+| Semidefinida negativa | Todos $\lambda_i \leq 0$ |
+| Indefinida | Algunos $\lambda_i > 0$ y algunos $\lambda_i < 0$ |
+
+## Criterio de Sylvester
+
+Para determinar si $A$ es definida positiva sin calcular autovalores.
+
+Los **menores principales** de $A$ son:
+
+$$\Delta_1 = a_{11}, \quad \Delta_2 = \det\begin{pmatrix} a_{11} & a_{12} \\ a_{21} & a_{22} \end{pmatrix}, \quad \ldots, \quad \Delta_n = \det(A)$$
+
+**Teorema de Sylvester:**
+
+- $A$ definida positiva $\iff$ todos $\Delta_k > 0$
+- $A$ definida negativa $\iff$ $\Delta_k$ alternan: $\Delta_1 < 0$, $\Delta_2 > 0$, $\Delta_3 < 0$, ...
+
+### Ejemplo
+
+$$A = \begin{pmatrix} 2 & -1 \\ -1 & 3 \end{pmatrix}$$
+
+$\Delta_1 = 2 > 0$
+
+$\Delta_2 = 2(3) - (-1)(-1) = 6 - 1 = 5 > 0$
+
+Ambos positivos $\Rightarrow$ $A$ es definida positiva.
+
+## Ejemplos de Clasificacion
+
+### Ejemplo 1
+
+$$Q(x, y) = x^2 + 4y^2$$
+
+$$A = \begin{pmatrix} 1 & 0 \\ 0 & 4 \end{pmatrix}$$
+
+Autovalores: 1 y 4, ambos positivos.
+
+**Clasificacion:** Definida positiva.
+
+### Ejemplo 2
+
+$$Q(x, y) = x^2 - y^2$$
+
+$$A = \begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix}$$
+
+Autovalores: 1 y -1.
+
+**Clasificacion:** Indefinida.
+
+### Ejemplo 3
+
+$$Q(x, y, z) = x^2 + 2y^2 + 3z^2 + 2xy$$
+
+$$A = \begin{pmatrix} 1 & 1 & 0 \\ 1 & 2 & 0 \\ 0 & 0 & 3 \end{pmatrix}$$
+
+Menores principales:
+- $\Delta_1 = 1 > 0$
+- $\Delta_2 = 2 - 1 = 1 > 0$
+- $\Delta_3 = 3(2 - 1) = 3 > 0$
+
+**Clasificacion:** Definida positiva.
+
+### Ejemplo 4
+
+$$Q(x, y) = x^2 + 2xy + y^2 = (x + y)^2$$
+
+$$A = \begin{pmatrix} 1 & 1 \\ 1 & 1 \end{pmatrix}$$
+
+$\det(A) = 0$, entonces hay autovalor cero.
+
+Autovalores: 0 y 2.
+
+**Clasificacion:** Semidefinida positiva (pero no definida positiva).
+
+## Matriz Definida Positiva
+
+Una matriz $A$ se llama **definida positiva** si la forma cuadratica asociada es definida positiva.
+
+### Caracterizaciones Equivalentes
+
+$A$ (simetrica) es definida positiva si y solo si:
+
+1. Todos los autovalores son positivos
+2. Todos los menores principales son positivos
+3. Existe matriz $B$ tal que $A = B^TB$ con $B$ invertible
+4. Existe matriz triangular inferior $L$ con diagonal positiva tal que $A = LL^T$ (Cholesky)
+
+## Propiedades de Matrices Definidas Positivas
+
+1. $\det(A) > 0$
+2. $\text{tr}(A) > 0$
+3. Los elementos diagonales son positivos: $a_{ii} > 0$
+4. $A^{-1}$ es definida positiva
+5. $A + B$ es definida positiva si $A$ y $B$ lo son
+6. $cA$ es definida positiva para $c > 0$
+
+## Descomposicion de Cholesky
+
+Toda matriz definida positiva $A$ se puede factorizar como:
+
+$$A = LL^T$$
+
+donde $L$ es triangular inferior con diagonal positiva.
+
+**Algoritmo:**
+
+$$l_{ii} = \sqrt{a_{ii} - \sum_{k=1}^{i-1} l_{ik}^2}$$
+
+$$l_{ij} = \frac{1}{l_{jj}}\left(a_{ij} - \sum_{k=1}^{j-1} l_{ik}l_{jk}\right) \quad \text{para } i > j$$
+
+### Ejemplo
+
+$$A = \begin{pmatrix} 4 & 2 \\ 2 & 5 \end{pmatrix}$$
+
+$l_{11} = \sqrt{4} = 2$
+
+$l_{21} = \frac{2}{2} = 1$
+
+$l_{22} = \sqrt{5 - 1} = 2$
+
+$$L = \begin{pmatrix} 2 & 0 \\ 1 & 2 \end{pmatrix}, \quad LL^T = \begin{pmatrix} 2 & 0 \\ 1 & 2 \end{pmatrix}\begin{pmatrix} 2 & 1 \\ 0 & 2 \end{pmatrix} = \begin{pmatrix} 4 & 2 \\ 2 & 5 \end{pmatrix}$$
+
+## Aplicacion: Optimizacion
+
+Para $f: \mathbb{R}^n \to \mathbb{R}$ dos veces diferenciable:
+
+En un punto critico $\mathbf{x}_0$ (donde $\nabla f = \mathbf{0}$):
+
+- Si el Hessiano $H_f$ es **definido positivo**: minimo local
+- Si el Hessiano es **definido negativo**: maximo local
+- Si el Hessiano es **indefinido**: punto silla
+
+---
+
+En la siguiente seccion aplicaremos estos conceptos a las conicas.

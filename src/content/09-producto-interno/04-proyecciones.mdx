@@ -1,0 +1,151 @@
+---
+title: "Proyecciones Ortogonales"
+chapter: 9
+section: 4
+---
+
+# Proyecciones Ortogonales
+
+La proyeccion ortogonal encuentra el punto mas cercano en un subespacio.
+
+## Proyeccion sobre un Vector
+
+La **proyeccion de $\mathbf{v}$ sobre $\mathbf{u}$** (con $\mathbf{u} \neq \mathbf{0}$):
+
+$$\text{proy}_\mathbf{u}(\mathbf{v}) = \frac{\langle\mathbf{v}, \mathbf{u}\rangle}{\langle\mathbf{u}, \mathbf{u}\rangle}\mathbf{u} = \frac{\langle\mathbf{v}, \mathbf{u}\rangle}{\|\mathbf{u}\|^2}\mathbf{u}$$
+
+Si $\mathbf{u}$ es unitario:
+$$\text{proy}_\mathbf{u}(\mathbf{v}) = \langle\mathbf{v}, \mathbf{u}\rangle\mathbf{u}$$
+
+### Componentes
+
+$$\mathbf{v} = \text{proy}_\mathbf{u}(\mathbf{v}) + \mathbf{v}^\perp$$
+
+donde $\mathbf{v}^\perp = \mathbf{v} - \text{proy}_\mathbf{u}(\mathbf{v})$ es ortogonal a $\mathbf{u}$.
+
+### Ejemplo
+
+$\mathbf{v} = (3, 4)$, $\mathbf{u} = (1, 1)$.
+
+$$\text{proy}_\mathbf{u}(\mathbf{v}) = \frac{3 + 4}{1 + 1}(1, 1) = \frac{7}{2}(1, 1) = (3.5, 3.5)$$
+
+$$\mathbf{v}^\perp = (3, 4) - (3.5, 3.5) = (-0.5, 0.5)$$
+
+## Proyeccion sobre un Subespacio
+
+Sea $W$ un subespacio de $V$ con base ortonormal $\{\mathbf{u}_1, \ldots, \mathbf{u}_k\}$.
+
+La **proyeccion de $\mathbf{v}$ sobre $W$**:
+
+$$\text{proy}_W(\mathbf{v}) = \sum_{i=1}^{k} \langle\mathbf{v}, \mathbf{u}_i\rangle\mathbf{u}_i$$
+
+### Teorema de Mejor Aproximacion
+
+$\text{proy}_W(\mathbf{v})$ es el punto de $W$ mas cercano a $\mathbf{v}$:
+
+$$\|\mathbf{v} - \text{proy}_W(\mathbf{v})\| \leq \|\mathbf{v} - \mathbf{w}\|$$
+
+para todo $\mathbf{w} \in W$, con igualdad solo si $\mathbf{w} = \text{proy}_W(\mathbf{v})$.
+
+### Error de Aproximacion
+
+$$\mathbf{v} - \text{proy}_W(\mathbf{v}) \in W^\perp$$
+
+El error es perpendicular al subespacio.
+
+## Matriz de Proyeccion
+
+Si las columnas de $Q$ forman una base ortonormal de $W$:
+
+$$P_W = QQ^T$$
+
+es la **matriz de proyeccion** sobre $W$.
+
+$$\text{proy}_W(\mathbf{v}) = P_W\mathbf{v} = QQ^T\mathbf{v}$$
+
+### Propiedades de la Matriz de Proyeccion
+
+1. $P_W^2 = P_W$ (idempotente)
+2. $P_W^T = P_W$ (simetrica)
+3. Los autovalores son 0 y 1
+4. $\text{rango}(P_W) = \dim(W)$
+
+## Proyeccion con Base No Ortonormal
+
+Si $W = \text{Col}(A)$ donde $A$ tiene columnas LI (pero no ortonormales):
+
+$$P_W = A(A^TA)^{-1}A^T$$
+
+$$\text{proy}_W(\mathbf{v}) = A(A^TA)^{-1}A^T\mathbf{v}$$
+
+## Minimos Cuadrados
+
+### El Problema
+
+El sistema $A\mathbf{x} = \mathbf{b}$ puede no tener solucion exacta.
+
+Queremos $\hat{\mathbf{x}}$ que minimice $\|A\mathbf{x} - \mathbf{b}\|$.
+
+### Solucion
+
+La **solucion de minimos cuadrados** es:
+
+$$\hat{\mathbf{x}} = (A^TA)^{-1}A^T\mathbf{b}$$
+
+(asumiendo que $A$ tiene columnas LI)
+
+### Ecuaciones Normales
+
+$$A^TA\hat{\mathbf{x}} = A^T\mathbf{b}$$
+
+### Interpretacion
+
+$A\hat{\mathbf{x}} = \text{proy}_{\text{Col}(A)}(\mathbf{b})$
+
+La solucion $\hat{\mathbf{x}}$ da la proyeccion de $\mathbf{b}$ sobre el espacio columna de $A$.
+
+## Ejemplo: Regresion Lineal
+
+Ajustar una recta $y = a + bx$ a los puntos $(1, 2)$, $(2, 3)$, $(3, 6)$.
+
+El sistema (probablemente inconsistente):
+$$\begin{cases} a + b = 2 \\ a + 2b = 3 \\ a + 3b = 6 \end{cases}$$
+
+En forma matricial:
+$$A = \begin{pmatrix} 1 & 1 \\ 1 & 2 \\ 1 & 3 \end{pmatrix}, \quad \mathbf{b} = \begin{pmatrix} 2 \\ 3 \\ 6 \end{pmatrix}$$
+
+$$A^TA = \begin{pmatrix} 3 & 6 \\ 6 & 14 \end{pmatrix}, \quad A^T\mathbf{b} = \begin{pmatrix} 11 \\ 25 \end{pmatrix}$$
+
+$$(A^TA)^{-1} = \frac{1}{6}\begin{pmatrix} 14 & -6 \\ -6 & 3 \end{pmatrix}$$
+
+$$\hat{\mathbf{x}} = \frac{1}{6}\begin{pmatrix} 14 & -6 \\ -6 & 3 \end{pmatrix}\begin{pmatrix} 11 \\ 25 \end{pmatrix} = \frac{1}{6}\begin{pmatrix} 4 \\ 9 \end{pmatrix} = \begin{pmatrix} 2/3 \\ 3/2 \end{pmatrix}$$
+
+La recta de mejor ajuste: $y = \frac{2}{3} + \frac{3}{2}x$.
+
+## Aproximacion de Fourier
+
+Para funciones en $[0, 2\pi]$ con producto interno $\langle f, g \rangle = \int_0^{2\pi} f(x)g(x)\,dx$:
+
+Las funciones $\{1, \cos x, \sin x, \cos 2x, \sin 2x, \ldots\}$ son ortogonales.
+
+La mejor aproximacion de $f$ por las primeras $n$ funciones es la serie de Fourier truncada:
+
+$$f(x) \approx \frac{a_0}{2} + \sum_{k=1}^{n}(a_k\cos kx + b_k\sin kx)$$
+
+donde los coeficientes son proyecciones:
+$$a_k = \frac{1}{\pi}\int_0^{2\pi} f(x)\cos kx\,dx$$
+$$b_k = \frac{1}{\pi}\int_0^{2\pi} f(x)\sin kx\,dx$$
+
+## Resumen
+
+| Caso | Formula de Proyeccion |
+|------|----------------------|
+| Sobre vector $\mathbf{u}$ | $\frac{\langle\mathbf{v}, \mathbf{u}\rangle}{\|\mathbf{u}\|^2}\mathbf{u}$ |
+| Sobre $W$ (base ortonormal) | $\sum_i \langle\mathbf{v}, \mathbf{u}_i\rangle\mathbf{u}_i$ |
+| Matriz (base ortonormal) | $QQ^T$ |
+| Matriz (base general) | $A(A^TA)^{-1}A^T$ |
+| Minimos cuadrados | $(A^TA)^{-1}A^T\mathbf{b}$ |
+
+---
+
+Con esto concluye el capitulo de Espacios con Producto Interno. En el siguiente capitulo estudiaremos las Formas Cuadraticas.

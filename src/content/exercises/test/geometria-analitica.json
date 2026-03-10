@@ -1,0 +1,203 @@
+{
+  "chapter": "03-geometria-analitica",
+  "exercises": [
+    {
+      "id": "geo-03-test-01",
+      "type": "test",
+      "category": "multiple-choice",
+      "question": {
+        "text": "El producto punto de dos vectores perpendiculares es:",
+        "latex": "\\mathbf{u} \\perp \\mathbf{v}"
+      },
+      "options": [
+        { "id": "a", "text": "Cero", "correct": true },
+        { "id": "b", "text": "Uno", "correct": false },
+        { "id": "c", "text": "El producto de sus normas", "correct": false },
+        { "id": "d", "text": "Indefinido", "correct": false }
+      ],
+      "hints": [
+        "Recuerda que u . v = ||u|| ||v|| cos(theta)",
+        "Cual es el coseno de 90 grados?"
+      ],
+      "feedback": {
+        "correct": "Correcto. Cuando theta = 90 grados, cos(theta) = 0, entonces u . v = 0.",
+        "incorrect": "El producto punto es ||u|| ||v|| cos(theta). Si son perpendiculares, theta = 90 grados."
+      },
+      "tags": ["vectores", "producto-punto", "ortogonalidad"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo-03-test-02",
+      "type": "test",
+      "category": "multiple-choice",
+      "question": {
+        "text": "Si u = (3, 4), entonces ||u|| es:",
+        "latex": "\\mathbf{u} = (3, 4)"
+      },
+      "options": [
+        { "id": "a", "text": "5", "correct": true },
+        { "id": "b", "text": "7", "correct": false },
+        { "id": "c", "text": "25", "correct": false },
+        { "id": "d", "text": "12", "correct": false }
+      ],
+      "hints": [
+        "La norma es la raiz cuadrada de la suma de cuadrados",
+        "Es un triangulo rectangulo famoso: 3-4-?"
+      ],
+      "feedback": {
+        "correct": "Correcto. ||u|| = sqrt(9 + 16) = sqrt(25) = 5.",
+        "incorrect": "Usa la formula ||u|| = sqrt(u1^2 + u2^2)."
+      },
+      "tags": ["vectores", "norma"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo-03-test-03",
+      "type": "test",
+      "category": "multiple-choice",
+      "question": {
+        "text": "El producto cruz u x v en R3 produce:",
+        "latex": "\\mathbf{u} \\times \\mathbf{v}"
+      },
+      "options": [
+        { "id": "a", "text": "Un vector perpendicular a u y v", "correct": true },
+        { "id": "b", "text": "Un escalar", "correct": false },
+        { "id": "c", "text": "Un vector paralelo a u", "correct": false },
+        { "id": "d", "text": "Un vector en el plano de u y v", "correct": false }
+      ],
+      "hints": [
+        "El producto cruz es diferente del producto punto",
+        "Piensa en la regla de la mano derecha"
+      ],
+      "feedback": {
+        "correct": "Correcto. El producto cruz da un vector ortogonal a ambos vectores originales.",
+        "incorrect": "El producto cruz produce un vector (no escalar) perpendicular al plano formado por u y v."
+      },
+      "tags": ["vectores", "producto-cruz", "R3"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo-03-test-04",
+      "type": "test",
+      "category": "multiple-choice",
+      "question": {
+        "text": "La ecuacion vectorial de una recta que pasa por P con direccion d es:",
+        "latex": null
+      },
+      "options": [
+        { "id": "a", "text": "r = P + td, con t en R", "correct": true },
+        { "id": "b", "text": "r = P . d", "correct": false },
+        { "id": "c", "text": "r = P x d", "correct": false },
+        { "id": "d", "text": "r = t(P + d)", "correct": false }
+      ],
+      "hints": [
+        "La recta pasa por P cuando t = 0",
+        "Al variar t, nos movemos en la direccion d"
+      ],
+      "feedback": {
+        "correct": "Correcto. Esta es la forma parametrica de una recta en el espacio.",
+        "incorrect": "La recta parte de P y se extiende en la direccion d al variar el parametro t."
+      },
+      "tags": ["rectas", "ecuacion-vectorial"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo-03-test-05",
+      "type": "test",
+      "category": "multiple-choice",
+      "question": {
+        "text": "Dos rectas en R3 que no se intersectan y no son paralelas se llaman:",
+        "latex": null
+      },
+      "options": [
+        { "id": "a", "text": "Alabeadas", "correct": true },
+        { "id": "b", "text": "Perpendiculares", "correct": false },
+        { "id": "c", "text": "Coincidentes", "correct": false },
+        { "id": "d", "text": "Secantes", "correct": false }
+      ],
+      "hints": [
+        "En R2 esto no puede ocurrir",
+        "Es una situacion exclusiva del espacio 3D"
+      ],
+      "feedback": {
+        "correct": "Correcto. Las rectas alabeadas existen solo en dimension 3 o mayor.",
+        "incorrect": "En R3, rectas que no son paralelas ni se cortan se llaman alabeadas."
+      },
+      "tags": ["rectas", "posicion-relativa", "R3"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "geo-03-test-06",
+      "type": "test",
+      "category": "multiple-choice",
+      "question": {
+        "text": "La distancia de un punto P0 a un plano ax + by + cz = d es:",
+        "latex": "ax + by + cz = d"
+      },
+      "options": [
+        { "id": "a", "text": "|aP0x + bP0y + cP0z - d| / sqrt(a^2 + b^2 + c^2)", "correct": true },
+        { "id": "b", "text": "aP0x + bP0y + cP0z - d", "correct": false },
+        { "id": "c", "text": "sqrt(a^2 + b^2 + c^2)", "correct": false },
+        { "id": "d", "text": "|d| / sqrt(a^2 + b^2 + c^2)", "correct": false }
+      ],
+      "hints": [
+        "La formula involucra el vector normal (a, b, c)",
+        "Debes evaluar P0 en la ecuacion del plano"
+      ],
+      "feedback": {
+        "correct": "Correcto. Se proyecta el vector desde cualquier punto del plano hasta P0 sobre la normal.",
+        "incorrect": "La distancia es el valor absoluto de la evaluacion, dividido por la norma del vector normal."
+      },
+      "tags": ["planos", "distancia"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "geo-03-test-07",
+      "type": "test",
+      "category": "true-false",
+      "question": {
+        "text": "El producto cruz es conmutativo: u x v = v x u",
+        "latex": "\\mathbf{u} \\times \\mathbf{v} = \\mathbf{v} \\times \\mathbf{u}"
+      },
+      "options": [
+        { "id": "true", "text": "Verdadero", "correct": false },
+        { "id": "false", "text": "Falso", "correct": true }
+      ],
+      "hints": [
+        "Piensa en la regla de la mano derecha",
+        "Que pasa con la direccion si cambias el orden?"
+      ],
+      "feedback": {
+        "correct": "Correcto. u x v = -(v x u). El producto cruz es anticonmutativo.",
+        "incorrect": "El producto cruz cambia de signo al intercambiar los factores."
+      },
+      "tags": ["vectores", "producto-cruz"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo-03-test-08",
+      "type": "test",
+      "category": "multiple-choice",
+      "question": {
+        "text": "Si n es el vector normal a un plano, cualquier vector en el plano satisface:",
+        "latex": null
+      },
+      "options": [
+        { "id": "a", "text": "n . v = 0 (es perpendicular a n)", "correct": true },
+        { "id": "b", "text": "n . v = 1", "correct": false },
+        { "id": "c", "text": "n x v = 0", "correct": false },
+        { "id": "d", "text": "n = v", "correct": false }
+      ],
+      "hints": [
+        "Normal significa perpendicular al plano",
+        "Que condicion satisfacen vectores perpendiculares?"
+      ],
+      "feedback": {
+        "correct": "Correcto. El vector normal es perpendicular a todo vector contenido en el plano.",
+        "incorrect": "Los vectores en el plano son perpendiculares a la normal, es decir, su producto punto es 0."
+      },
+      "tags": ["planos", "normal", "ortogonalidad"],
+      "difficulty": "easy"
+    }
+  ]
+}

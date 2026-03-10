@@ -1,0 +1,129 @@
+---
+title: "Definición y Operaciones Básicas"
+chapter: 1
+section: 1
+---
+
+import TestExercise from '../../components/exercises/TestExercise';
+
+# Definición y Operaciones Básicas
+
+## Definición formal de número complejo
+
+Un **número complejo** es un par ordenado $(a, b)$ de números reales, que escribimos como:
+
+$$z = a + bi$$
+
+donde $i$ es la **unidad imaginaria** con la propiedad $i^2 = -1$.
+
+### Terminología
+
+Para $z = a + bi$:
+
+| Término | Notación | Valor |
+|---------|----------|-------|
+| Parte real | $\text{Re}(z)$ | $a$ |
+| Parte imaginaria | $\text{Im}(z)$ | $b$ |
+| Conjugado | $\bar{z}$ | $a - bi$ |
+| Módulo | $|z|$ | $\sqrt{a^2 + b^2}$ |
+
+## Igualdad de números complejos
+
+Dos números complejos son iguales si y solo si tienen la misma parte real y la misma parte imaginaria:
+
+$$a + bi = c + di \iff a = c \text{ y } b = d$$
+
+## Operaciones básicas
+
+### Suma y resta
+
+La suma y resta se realizan componente a componente:
+
+$$(a + bi) + (c + di) = (a + c) + (b + d)i$$
+
+$$(a + bi) - (c + di) = (a - c) + (b - d)i$$
+
+**Ejemplo:** Calcular $(3 + 2i) + (1 - 5i)$
+
+$$(3 + 2i) + (1 - 5i) = (3 + 1) + (2 - 5)i = 4 - 3i$$
+
+### Multiplicación
+
+Para multiplicar, usamos la propiedad distributiva y que $i^2 = -1$:
+
+$$(a + bi)(c + di) = ac + adi + bci + bdi^2 = (ac - bd) + (ad + bc)i$$
+
+**Ejemplo:** Calcular $(2 + 3i)(4 - i)$
+
+$$(2 + 3i)(4 - i) = 8 - 2i + 12i - 3i^2 = 8 + 10i + 3 = 11 + 10i$$
+
+### División
+
+Para dividir, multiplicamos numerador y denominador por el conjugado del denominador:
+
+$$\frac{a + bi}{c + di} = \frac{(a + bi)(c - di)}{(c + di)(c - di)} = \frac{(ac + bd) + (bc - ad)i}{c^2 + d^2}$$
+
+**Ejemplo:** Calcular $\frac{3 + 2i}{1 - i}$
+
+$$\frac{3 + 2i}{1 - i} = \frac{(3 + 2i)(1 + i)}{(1 - i)(1 + i)} = \frac{3 + 5i - 2}{2} = \frac{1 + 5i}{2} = \frac{1}{2} + \frac{5}{2}i$$
+
+## El conjugado
+
+El **conjugado** de $z = a + bi$ es $\bar{z} = a - bi$.
+
+### Propiedades del conjugado
+
+1. $\overline{\bar{z}} = z$
+2. $\overline{z_1 + z_2} = \bar{z_1} + \bar{z_2}$
+3. $\overline{z_1 \cdot z_2} = \bar{z_1} \cdot \bar{z_2}$
+4. $z \cdot \bar{z} = |z|^2$ (siempre real y no negativo)
+5. $z + \bar{z} = 2\text{Re}(z)$
+6. $z - \bar{z} = 2i\text{Im}(z)$
+
+## El módulo
+
+El **módulo** o **valor absoluto** de $z = a + bi$ es:
+
+$$|z| = \sqrt{a^2 + b^2}$$
+
+Geométricamente, es la distancia desde el origen hasta el punto $z$ en el plano complejo.
+
+### Propiedades del módulo
+
+1. $|z| \geq 0$ y $|z| = 0 \iff z = 0$
+2. $|\bar{z}| = |z|$
+3. $|z_1 \cdot z_2| = |z_1| \cdot |z_2|$
+4. $\left|\frac{z_1}{z_2}\right| = \frac{|z_1|}{|z_2|}$ (si $z_2 \neq 0$)
+5. $|z_1 + z_2| \leq |z_1| + |z_2|$ (desigualdad triangular)
+
+## Ejercicio interactivo
+
+<TestExercise
+  client:load
+  exercise={{
+    id: "complex-01-test-01",
+    type: "multiple-choice",
+    question: {
+      text: "¿Cuál es el resultado de (2 + 3i)(1 - i)?",
+      latex: "(2 + 3i)(1 - i)"
+    },
+    options: [
+      { id: "a", text: "5 + i", correct: true },
+      { id: "b", text: "-1 + 5i", correct: false },
+      { id: "c", text: "5 - i", correct: false },
+      { id: "d", text: "-1 - 5i", correct: false }
+    ],
+    hints: [
+      "Usa la propiedad distributiva: (a + b)(c + d) = ac + ad + bc + bd",
+      "Recuerda que i² = -1"
+    ],
+    feedback: {
+      correct: "¡Excelente! (2 + 3i)(1 - i) = 2 - 2i + 3i - 3i² = 2 + i + 3 = 5 + i",
+      incorrect: "Revisa tu cálculo. Aplica la distributiva y usa i² = -1"
+    }
+  }}
+/>
+
+---
+
+En la siguiente sección exploraremos la forma polar de los números complejos, que simplifica enormemente la multiplicación y división.

@@ -1,0 +1,171 @@
+---
+title: "Aplicaciones de Autovalores y Autovectores"
+chapter: 8
+section: 4
+---
+
+# Aplicaciones de Autovalores y Autovectores
+
+Los autovalores y autovectores tienen aplicaciones en casi todas las areas de la ciencia y la ingenieria.
+
+## Sistemas de Ecuaciones Diferenciales
+
+Considere el sistema:
+$$\mathbf{x}'(t) = A\mathbf{x}(t)$$
+
+donde $\mathbf{x}(t) = (x_1(t), x_2(t), \ldots, x_n(t))^T$.
+
+### Solucion General
+
+Si $A$ es diagonalizable con autovalores $\lambda_i$ y autovectores $\mathbf{v}_i$:
+
+$$\mathbf{x}(t) = c_1 e^{\lambda_1 t}\mathbf{v}_1 + c_2 e^{\lambda_2 t}\mathbf{v}_2 + \cdots + c_n e^{\lambda_n t}\mathbf{v}_n$$
+
+### Ejemplo
+
+$$\begin{cases} x'_1 = x_1 + x_2 \\ x'_2 = 4x_1 - 2x_2 \end{cases}$$
+
+Matriz: $A = \begin{pmatrix} 1 & 1 \\ 4 & -2 \end{pmatrix}$
+
+Autovalores: $\lambda_1 = 2$, $\lambda_2 = -3$.
+
+Autovectores: $\mathbf{v}_1 = (1, 1)^T$, $\mathbf{v}_2 = (1, -4)^T$.
+
+Solucion general:
+$$\mathbf{x}(t) = c_1 e^{2t}\begin{pmatrix} 1 \\ 1 \end{pmatrix} + c_2 e^{-3t}\begin{pmatrix} 1 \\ -4 \end{pmatrix}$$
+
+## Estabilidad
+
+Un punto de equilibrio es **estable** si todas las soluciones cercanas permanecen cercanas.
+
+### Criterio
+
+Para $\mathbf{x}' = A\mathbf{x}$:
+- **Estable asintoticamente:** todos $\text{Re}(\lambda_i) < 0$
+- **Inestable:** algun $\text{Re}(\lambda_i) > 0$
+- **Marginalmente estable:** todos $\text{Re}(\lambda_i) \leq 0$ y los de parte real cero son simples
+
+## Vibraciones y Oscilaciones
+
+Sistema masa-resorte con multiples masas:
+
+$$M\ddot{\mathbf{x}} + K\mathbf{x} = \mathbf{0}$$
+
+Los **modos normales** son los autovectores de $M^{-1}K$.
+
+Las **frecuencias naturales** son $\omega_i = \sqrt{\lambda_i}$ donde $\lambda_i$ son autovalores.
+
+### Ejemplo: Dos Masas
+
+$$M = \begin{pmatrix} m & 0 \\ 0 & m \end{pmatrix}, \quad K = \begin{pmatrix} 2k & -k \\ -k & 2k \end{pmatrix}$$
+
+Autovalores de $M^{-1}K$: $\lambda_1 = k/m$, $\lambda_2 = 3k/m$.
+
+Frecuencias: $\omega_1 = \sqrt{k/m}$, $\omega_2 = \sqrt{3k/m}$.
+
+## Analisis de Componentes Principales (PCA)
+
+En estadistica y machine learning, PCA reduce la dimensionalidad de datos.
+
+### Procedimiento
+
+1. Centrar los datos (restar la media)
+2. Calcular la matriz de covarianza $C$
+3. Encontrar autovalores y autovectores de $C$
+4. Los autovectores son las "direcciones principales"
+5. Los autovalores indican la varianza en cada direccion
+
+### Interpretacion
+
+- El primer componente principal (autovector con mayor autovalor) captura la mayor variacion
+- Proyectar a los primeros $k$ componentes reduce dimensionalidad preservando informacion
+
+## PageRank de Google
+
+El algoritmo PageRank modela la web como una cadena de Markov.
+
+$$\mathbf{r} = \alpha P\mathbf{r} + (1-\alpha)\mathbf{e}/n$$
+
+El vector de rankings $\mathbf{r}$ es esencialmente el autovector dominante de una matriz modificada.
+
+## Grafos y Redes
+
+### Matriz de Adyacencia
+
+Para un grafo, $A_{ij} = 1$ si hay arista de $i$ a $j$.
+
+- Autovalor maximo: relacionado con conectividad
+- Numero de caminos de longitud $k$: $(A^k)_{ij}$
+
+### Matriz Laplaciana
+
+$L = D - A$ donde $D$ es diagonal de grados.
+
+- El segundo autovalor mas pequeno mide "conectividad algebraica"
+- Los autovectores se usan para clustering espectral
+
+## Mecanica Cuantica
+
+Los **observables** son operadores hermitanos.
+
+Los **estados propios** son los autovectores.
+
+Los **valores medidos** son los autovalores.
+
+La ecuacion de Schrodinger:
+$$H|\psi\rangle = E|\psi\rangle$$
+
+donde $H$ es el Hamiltoniano, $|\psi\rangle$ el estado, y $E$ la energia.
+
+## Compresion de Imagenes
+
+Una imagen es una matriz. La descomposicion en valores singulares (SVD):
+
+$$A = U\Sigma V^T$$
+
+Conservar solo los $k$ valores singulares mas grandes da una aproximacion de rango bajo.
+
+Esto se relaciona con autovalores de $A^TA$ y $AA^T$.
+
+## Dinamica de Poblaciones
+
+Modelo de Leslie para poblaciones con estructura de edad:
+
+$$\mathbf{n}_{t+1} = L\mathbf{n}_t$$
+
+donde $L$ es la matriz de Leslie.
+
+- El autovalor dominante $\lambda_1$ determina crecimiento/decrecimiento
+- $\lambda_1 > 1$: poblacion crece
+- $\lambda_1 < 1$: poblacion decrece
+- $\lambda_1 = 1$: poblacion estable
+
+El autovector dominante da la distribucion estable de edades.
+
+## Sistemas Economicos
+
+Modelo de Leontief de input-output:
+
+$$\mathbf{x} = A\mathbf{x} + \mathbf{d}$$
+
+donde $\mathbf{x}$ es produccion, $\mathbf{d}$ es demanda final.
+
+Solucion: $\mathbf{x} = (I - A)^{-1}\mathbf{d}$
+
+Existe si $I - A$ es invertible, relacionado con autovalores de $A$.
+
+## Resumen de Aplicaciones
+
+| Area | Uso de Autovalores |
+|------|---------------------|
+| Ec. diferenciales | Forma de las soluciones |
+| Estabilidad | Signo de partes reales |
+| Vibraciones | Frecuencias naturales |
+| Estadistica (PCA) | Direcciones de maxima varianza |
+| Grafos | Conectividad, clustering |
+| Fisica cuantica | Estados y energias |
+| Dinamica de poblaciones | Tasas de crecimiento |
+
+---
+
+Con esto concluye el capitulo de Autovalores y Autovectores. En el siguiente capitulo estudiaremos Espacios con Producto Interno.

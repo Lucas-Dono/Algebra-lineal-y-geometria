@@ -1,0 +1,86 @@
+---
+title: "Introduccion a los Determinantes"
+chapter: 6
+section: 0
+---
+
+# Introduccion a los Determinantes
+
+El determinante es un numero asociado a cada matriz cuadrada que codifica informacion fundamental sobre la matriz.
+
+## Motivacion Historica
+
+Los determinantes surgieron antes que las matrices, en el contexto de resolver sistemas de ecuaciones lineales. Cramer (1750) uso determinantes para expresar las soluciones de sistemas lineales.
+
+## Que es un Determinante
+
+El **determinante** de una matriz cuadrada $A$, denotado $\det(A)$ o $|A|$, es un escalar que:
+
+- Es cero si y solo si la matriz es singular (no invertible)
+- Mide como la transformacion lineal asociada escala volumenes
+- Determina si un sistema tiene solucion unica
+
+## El Caso 2x2
+
+Para una matriz $2 \times 2$:
+
+$$A = \begin{pmatrix} a & b \\ c & d \end{pmatrix}$$
+
+El determinante es:
+
+$$\det(A) = ad - bc$$
+
+**Ejemplo:**
+$$\det\begin{pmatrix} 3 & 2 \\ 1 & 4 \end{pmatrix} = 3(4) - 2(1) = 12 - 2 = 10$$
+
+## Interpretacion Geometrica
+
+El valor absoluto del determinante representa:
+
+- En 2D: el area del paralelogramo formado por las columnas (o filas)
+- En 3D: el volumen del paralelepipedo formado por las columnas
+
+El signo indica la orientacion:
+- Positivo: preserva la orientacion
+- Negativo: invierte la orientacion
+
+## Propiedades Fundamentales (Vista Previa)
+
+1. $\det(I) = 1$
+2. $\det(AB) = \det(A) \det(B)$
+3. $\det(A^T) = \det(A)$
+4. $\det(A^{-1}) = 1/\det(A)$ si $A$ es invertible
+5. $A$ es invertible $\iff \det(A) \neq 0$
+
+## Lo Que Estudiaremos
+
+1. **Calculo:** Metodos para calcular determinantes
+2. **Propiedades:** Como las operaciones afectan al determinante
+3. **Regla de Cramer:** Resolver sistemas usando determinantes
+4. **Aplicaciones:** Areas, volumenes, y mas
+
+## Conexion con Temas Anteriores
+
+- **Matrices:** El determinante es una funcion de matrices cuadradas
+- **Inversa:** Existe si y solo si $\det \neq 0$
+- **Rango:** $\text{rango}(A) = n \iff \det(A) \neq 0$ para $A$ de $n \times n$
+
+---
+
+## Videos Recomendados
+
+import VideoEmbed from '../../components/content/VideoEmbed.astro';
+
+<VideoEmbed
+  youtubeId="yt3eoYvGel0"
+  title="El determinante - 3Blue1Brown Español"
+/>
+
+<VideoEmbed
+  youtubeId="ckeT2SIszgo"
+  title="Propiedades de los determinantes - Matemáticas profe Alex"
+/>
+
+---
+
+En la siguiente seccion aprenderemos a calcular determinantes de cualquier tamano.

@@ -1,0 +1,166 @@
+---
+title: "Teoria de Grafos"
+chapter: 11
+section: 2
+---
+
+# Algebra Lineal en Teoria de Grafos
+
+Los grafos se pueden representar y analizar usando matrices.
+
+## Representacion Matricial
+
+### Matriz de Adyacencia
+
+Para un grafo $G$ con $n$ vertices, la **matriz de adyacencia** $A$ es $n \times n$:
+
+$$A_{ij} = \begin{cases} 1 & \text{si hay arista de } i \text{ a } j \\ 0 & \text{si no} \end{cases}$$
+
+Para grafos no dirigidos, $A$ es simetrica.
+
+### Ejemplo
+
+Grafo con 4 vertices: 1-2, 2-3, 3-4, 4-1, 2-4.
+
+$$A = \begin{pmatrix} 0 & 1 & 0 & 1 \\ 1 & 0 & 1 & 1 \\ 0 & 1 & 0 & 1 \\ 1 & 1 & 1 & 0 \end{pmatrix}$$
+
+### Matriz de Grados
+
+$$D = \text{diag}(d_1, d_2, \ldots, d_n)$$
+
+donde $d_i$ es el grado del vertice $i$ (numero de aristas incidentes).
+
+### Matriz Laplaciana
+
+$$L = D - A$$
+
+Propiedades:
+- Simetrica para grafos no dirigidos
+- Filas suman cero
+- Semidefinida positiva
+- Autovalor $\lambda_1 = 0$ siempre (con autovector $\mathbf{1}$)
+
+## Caminos y Potencias
+
+### Numero de Caminos
+
+$(A^k)_{ij}$ = numero de caminos de longitud exacta $k$ desde $i$ hasta $j$.
+
+**Ejemplo:** $A^2_{ij}$ cuenta cuantos caminos de longitud 2 hay de $i$ a $j$.
+
+### Alcanzabilidad
+
+$(I + A)^{n-1}$ tiene entrada no nula $(i,j)$ si hay algun camino de $i$ a $j$.
+
+## Conectividad
+
+### Componentes Conexas
+
+El numero de autovalores cero de $L$ es igual al numero de componentes conexas.
+
+### Conectividad Algebraica
+
+El segundo autovalor mas pequeno de $L$, $\lambda_2(L)$, mide que tan conectado esta el grafo.
+
+- $\lambda_2 = 0$: grafo desconectado
+- $\lambda_2$ grande: grafo bien conectado
+
+## Centralidad
+
+### Centralidad de Grado
+
+$$c_i^{deg} = d_i = \sum_j A_{ij}$$
+
+Simplemente el grado del vertice.
+
+### Centralidad de Autovector
+
+El autovector correspondiente al mayor autovalor de $A$.
+
+$$c_i^{eig} \propto \sum_j A_{ij} c_j^{eig}$$
+
+La centralidad de un nodo depende de la centralidad de sus vecinos.
+
+### PageRank
+
+Variante de centralidad de autovector usada por Google:
+
+$$\mathbf{r} = (1 - \alpha)\mathbf{1}/n + \alpha P\mathbf{r}$$
+
+donde $P$ es la matriz de transicion y $\alpha \approx 0.85$.
+
+El vector $\mathbf{r}$ es esencialmente el autovector dominante de una matriz modificada.
+
+## Clustering Espectral
+
+### Algoritmo
+
+1. Calcular los primeros $k$ autovectores de $L$
+2. Formar matriz $U$ con estos autovectores como columnas
+3. Las filas de $U$ son coordenadas de los vertices
+4. Aplicar k-means a estas coordenadas
+
+### Intuicion
+
+El autovector $\mathbf{v}_2$ (de $\lambda_2$) separa el grafo en dos partes:
+- Vertices con $v_{2,i} > 0$ en un grupo
+- Vertices con $v_{2,i} < 0$ en otro
+
+Esta particion minimiza (aproximadamente) el numero de aristas cortadas.
+
+## Grafos Aleatorios
+
+### Modelo Erdos-Renyi
+
+Cada arista existe con probabilidad $p$.
+
+La matriz de adyacencia esperada es:
+
+$$\mathbb{E}[A] = p(\mathbf{1}\mathbf{1}^T - I)$$
+
+### Distribucion de Autovalores
+
+Para grafos grandes, la distribucion de autovalores sigue la **ley del semicirculo** de Wigner.
+
+## Redes en la Practica
+
+### Redes Sociales
+
+- Vertices: usuarios
+- Aristas: amistades/conexiones
+- Centralidad: influencia
+
+### Redes de Citas
+
+- Vertices: articulos
+- Aristas dirigidas: citas
+- PageRank: importancia academica
+
+### Redes Biologicas
+
+- Vertices: proteinas/genes
+- Aristas: interacciones
+- Clustering: identificar modulos funcionales
+
+## Ejemplo: Centralidad de Autovector
+
+$$A = \begin{pmatrix} 0 & 1 & 1 & 0 \\ 1 & 0 & 1 & 1 \\ 1 & 1 & 0 & 0 \\ 0 & 1 & 0 & 0 \end{pmatrix}$$
+
+Autovalor maximo: $\lambda_1 \approx 2.17$.
+
+Autovector correspondiente: $\mathbf{v}_1 \approx (0.44, 0.58, 0.50, 0.27)^T$.
+
+El vertice 2 tiene la mayor centralidad (0.58).
+
+## Resumen de Matrices de Grafos
+
+| Matriz | Definicion | Uso |
+|--------|------------|-----|
+| Adyacencia $A$ | $A_{ij} = 1$ si arista | Caminos, conectividad |
+| Grados $D$ | Diagonal de grados | Normalizacion |
+| Laplaciana $L = D - A$ | Diferencias | Clustering, conectividad |
+| Transicion $P = D^{-1}A$ | Probabilidades | Caminatas aleatorias |
+
+---
+
+En la siguiente seccion veremos aplicaciones en criptografia.

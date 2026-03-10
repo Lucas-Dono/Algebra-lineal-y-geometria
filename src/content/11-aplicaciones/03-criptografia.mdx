@@ -1,0 +1,153 @@
+---
+title: "Criptografia"
+chapter: 11
+section: 3
+---
+
+# Algebra Lineal en Criptografia
+
+Las matrices y el algebra lineal juegan roles importantes en varios esquemas criptograficos.
+
+## Cifrado de Hill
+
+### Idea
+
+Usar multiplicacion matricial para cifrar bloques de texto.
+
+### Configuracion
+
+1. Elegir un tamano de bloque $n$
+2. Crear matriz clave $K$ de $n \times n$ invertible (mod 26)
+3. Convertir letras a numeros: A=0, B=1, ..., Z=25
+
+### Cifrado
+
+Para cifrar un bloque $\mathbf{m}$ (vector de $n$ numeros):
+
+$$\mathbf{c} = K\mathbf{m} \pmod{26}$$
+
+### Descifrado
+
+$$\mathbf{m} = K^{-1}\mathbf{c} \pmod{26}$$
+
+### Ejemplo (n=2)
+
+Clave:
+$$K = \begin{pmatrix} 3 & 2 \\ 5 & 7 \end{pmatrix}$$
+
+Verificar invertibilidad: $\det(K) = 21 - 10 = 11$.
+
+Como $\gcd(11, 26) = 1$, $K$ es invertible mod 26.
+
+Mensaje "OK": O=14, K=10.
+
+$$\begin{pmatrix} 3 & 2 \\ 5 & 7 \end{pmatrix} \begin{pmatrix} 14 \\ 10 \end{pmatrix} = \begin{pmatrix} 62 \\ 140 \end{pmatrix} \equiv \begin{pmatrix} 10 \\ 10 \end{pmatrix} \pmod{26}$$
+
+Cifrado: "KK".
+
+### Calcular la Inversa mod 26
+
+$$K^{-1} = \det(K)^{-1} \begin{pmatrix} d & -b \\ -c & a \end{pmatrix} \pmod{26}$$
+
+$11^{-1} \equiv 19 \pmod{26}$ (porque $11 \times 19 = 209 \equiv 1 \pmod{26}$).
+
+$$K^{-1} = 19 \begin{pmatrix} 7 & -2 \\ -5 & 3 \end{pmatrix} = \begin{pmatrix} 133 & -38 \\ -95 & 57 \end{pmatrix} \equiv \begin{pmatrix} 3 & 14 \\ 9 & 5 \end{pmatrix} \pmod{26}$$
+
+### Seguridad
+
+El cifrado de Hill es vulnerable a **ataque de texto plano conocido**:
+
+Si conocemos $n$ pares (mensaje, cifrado), podemos recuperar $K$ resolviendo un sistema lineal.
+
+## Generadores de Numeros Pseudoaleatorios
+
+### Generador Lineal Congruencial
+
+$$x_{n+1} = (ax_n + c) \mod m$$
+
+Es una transformacion lineal (afin) iterada.
+
+### Generador Matricial
+
+$$\mathbf{x}_{n+1} = A\mathbf{x}_n \mod m$$
+
+Produce secuencias de vectores.
+
+## Criptografia de Clave Publica Basada en Reticulados
+
+### Reticulados
+
+Un **reticulado** en $\mathbb{R}^n$ es el conjunto de combinaciones enteras de vectores base:
+
+$$\mathcal{L} = \{a_1\mathbf{b}_1 + \cdots + a_n\mathbf{b}_n : a_i \in \mathbb{Z}\}$$
+
+### Problema del Vector Corto (SVP)
+
+Dado un reticulado, encontrar el vector no nulo mas corto.
+
+Este problema es computacionalmente dificil para reticulados de alta dimension.
+
+### Learning With Errors (LWE)
+
+Base de muchos esquemas post-cuanticos.
+
+Dado $A$ (publica), $\mathbf{s}$ (secreta), y $\mathbf{b} = A\mathbf{s} + \mathbf{e} \pmod{q}$ donde $\mathbf{e}$ es ruido pequeno:
+
+Recuperar $\mathbf{s}$ es computacionalmente dificil.
+
+### Esquemas Basados en LWE
+
+- NTRU
+- Kyber (estandarizado por NIST)
+- Dilithium (firmas)
+
+## Comparticion de Secretos de Shamir
+
+### Problema
+
+Dividir un secreto $S$ entre $n$ personas tal que cualquier $k$ de ellas puedan reconstruirlo, pero menos de $k$ no.
+
+### Solucion con Polinomios
+
+1. Crear polinomio $p(x)$ de grado $k-1$ con $p(0) = S$
+2. Dar a cada persona el punto $(i, p(i))$
+
+### Reconstruccion
+
+Con $k$ puntos, usar **interpolacion de Lagrange** para reconstruir $p(x)$.
+
+La interpolacion de Lagrange se puede expresar como resolver un sistema lineal con una matriz de Vandermonde.
+
+## Codigos de Correccion de Errores
+
+### Codigos Lineales
+
+Un codigo lineal es un subespacio de $\mathbb{F}_q^n$.
+
+- **Matriz generadora** $G$: las palabras codigo son $\mathbf{c} = G\mathbf{m}$
+- **Matriz de paridad** $H$: $H\mathbf{c} = \mathbf{0}$ para toda palabra codigo
+
+### Decodificacion
+
+Al recibir $\mathbf{r} = \mathbf{c} + \mathbf{e}$ (con error $\mathbf{e}$):
+
+1. Calcular sindrome $\mathbf{s} = H\mathbf{r}$
+2. El sindrome revela informacion sobre el error
+
+### Codigos McEliece
+
+Sistema de clave publica basado en la dificultad de decodificar codigos lineales generales.
+
+## Resumen
+
+| Aplicacion | Herramienta de Algebra Lineal |
+|------------|-------------------------------|
+| Cifrado Hill | Multiplicacion matricial mod n |
+| PRNG | Transformaciones lineales |
+| LWE | Sistemas lineales con ruido |
+| Shamir | Interpolacion (Vandermonde) |
+| Codigos | Espacios nulos, sindromes |
+
+---
+
+En la siguiente seccion veremos aplicaciones en procesamiento de imagenes.

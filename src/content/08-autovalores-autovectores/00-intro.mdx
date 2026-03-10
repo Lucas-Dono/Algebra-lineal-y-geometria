@@ -1,0 +1,152 @@
+---
+title: "Introduccion a Autovalores y Autovectores"
+chapter: 8
+section: 0
+---
+
+# Introduccion a Autovalores y Autovectores
+
+Los autovalores y autovectores revelan la estructura intrinseca de las transformaciones lineales.
+
+## Motivacion
+
+Consideremos la transformacion $T: \mathbb{R}^2 \to \mathbb{R}^2$ dada por:
+
+$$T(x, y) = (2x + y, x + 2y)$$
+
+Para la mayoria de vectores, $T(\mathbf{v})$ apunta en una direccion diferente a $\mathbf{v}$.
+
+Pero para $\mathbf{v} = (1, 1)$:
+$$T(1, 1) = (3, 3) = 3(1, 1)$$
+
+El vector $(1, 1)$ solo se escala por 3, no cambia de direccion.
+
+Y para $\mathbf{v} = (1, -1)$:
+$$T(1, -1) = (1, -1)$$
+
+Este vector queda igual (se escala por 1).
+
+Estos son los **autovectores**, y 3 y 1 son los **autovalores**.
+
+## Definicion
+
+Sea $A$ una matriz $n \times n$ (o $T: V \to V$ un operador lineal).
+
+Un **autovector** de $A$ es un vector no nulo $\mathbf{v}$ tal que:
+
+$$A\mathbf{v} = \lambda\mathbf{v}$$
+
+para algun escalar $\lambda$.
+
+El escalar $\lambda$ se llama **autovalor** asociado a $\mathbf{v}$.
+
+**Terminologia alternativa:**
+- Valor propio / vector propio
+- Eigenvalue / eigenvector (del aleman "eigen" = propio)
+
+## Interpretacion Geometrica
+
+Un autovector es una direccion "natural" o "privilegiada" de la transformacion:
+
+- $T$ actua como un escalamiento en esa direccion
+- El autovalor es el factor de escala
+- $\lambda > 1$: estiramiento
+- $0 < \lambda < 1$: contraccion
+- $\lambda < 0$: inversion de sentido
+- $\lambda = 0$: colapso a cero
+
+## Ejemplos Intuitivos
+
+### Reflexion respecto al eje x
+
+$$S_x = \begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix}$$
+
+- Autovalor $\lambda = 1$: vectores sobre el eje $x$ (quedan iguales)
+- Autovalor $\lambda = -1$: vectores sobre el eje $y$ (se invierten)
+
+### Rotacion por 90 grados
+
+$$R_{90} = \begin{pmatrix} 0 & -1 \\ 1 & 0 \end{pmatrix}$$
+
+No tiene autovalores reales: ningun vector queda en su direccion original.
+
+### Proyeccion sobre el eje x
+
+$$P_x = \begin{pmatrix} 1 & 0 \\ 0 & 0 \end{pmatrix}$$
+
+- Autovalor $\lambda = 1$: vectores sobre el eje $x$
+- Autovalor $\lambda = 0$: vectores sobre el eje $y$ (van a cero)
+
+### Cizallamiento
+
+$$H = \begin{pmatrix} 1 & 1 \\ 0 & 1 \end{pmatrix}$$
+
+- Unico autovalor $\lambda = 1$: vectores sobre el eje $x$
+
+## Propiedades Basicas
+
+1. Si $\mathbf{v}$ es autovector con autovalor $\lambda$, entonces $c\mathbf{v}$ (con $c \neq 0$) tambien lo es.
+
+2. El vector cero **nunca** es autovector (por definicion).
+
+3. El autovalor **puede** ser cero.
+
+4. Una matriz $n \times n$ tiene a lo sumo $n$ autovalores distintos.
+
+5. Los autovalores de $A^T$ son los mismos que los de $A$.
+
+## Por Que Son Importantes
+
+### Diagonalizacion
+
+Si encontramos $n$ autovectores LI, podemos diagonalizar la matriz:
+$$A = PDP^{-1}$$
+
+donde $D$ es diagonal con los autovalores.
+
+### Potencias de Matrices
+
+$$A^k = PD^kP^{-1}$$
+
+Y calcular $D^k$ es trivial.
+
+### Ecuaciones Diferenciales
+
+Las soluciones de $\mathbf{x}'(t) = A\mathbf{x}(t)$ involucran $e^{\lambda t}$ donde $\lambda$ son autovalores.
+
+### Estabilidad de Sistemas
+
+Un sistema es estable si todos los autovalores tienen parte real negativa.
+
+## Lo Que Estudiaremos
+
+1. **Calculo:** Como encontrar autovalores y autovectores
+2. **Diagonalizacion:** Cuando y como diagonalizar
+3. **Potencias:** Calcular $A^n$ eficientemente
+4. **Aplicaciones:** Cadenas de Markov, vibraciones, etc.
+
+## Conexion con Temas Anteriores
+
+- **Determinantes:** $\det(A - \lambda I) = 0$ caracteriza autovalores
+- **Sistemas lineales:** $(A - \lambda I)\mathbf{v} = \mathbf{0}$ para autovectores
+- **Rango:** $\text{rango}(A - \lambda I) < n$ para autovalores
+
+---
+
+## Videos Recomendados
+
+import VideoEmbed from '../../components/content/VideoEmbed.astro';
+
+<VideoEmbed
+  youtubeId="Gx0PaWI9eYo"
+  title="Vectores propios y valores propios - 3Blue1Brown Español"
+/>
+
+<VideoEmbed
+  youtubeId="GHPOEhUkHPU"
+  title="Autovalores y Autovectores - FísicayMates"
+/>
+
+---
+
+En la siguiente seccion aprenderemos a calcular autovalores y autovectores.

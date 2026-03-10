@@ -1,0 +1,135 @@
+---
+title: "Introduccion a las Transformaciones Lineales"
+chapter: 7
+section: 0
+---
+
+# Introduccion a las Transformaciones Lineales
+
+Las transformaciones lineales son funciones entre espacios vectoriales que preservan la estructura algebraica fundamental.
+
+## Motivacion
+
+Muchas operaciones en matematicas y ciencias son transformaciones lineales:
+
+- Rotaciones y reflexiones en geometria
+- Escalamientos y proyecciones
+- Derivacion e integracion de polinomios
+- Operaciones en procesamiento de senales
+
+## Definicion
+
+Una **transformacion lineal** (o aplicacion lineal) es una funcion $T: V \to W$ entre espacios vectoriales que satisface:
+
+1. **Aditividad:** $T(\mathbf{u} + \mathbf{v}) = T(\mathbf{u}) + T(\mathbf{v})$
+2. **Homogeneidad:** $T(c\mathbf{u}) = cT(\mathbf{u})$
+
+Estas dos propiedades se pueden combinar:
+$$T(c_1\mathbf{u}_1 + c_2\mathbf{u}_2) = c_1T(\mathbf{u}_1) + c_2T(\mathbf{u}_2)$$
+
+Mas generalmente:
+$$T\left(\sum_{i=1}^{n} c_i\mathbf{v}_i\right) = \sum_{i=1}^{n} c_i T(\mathbf{v}_i)$$
+
+## Terminologia
+
+- **Dominio:** El espacio $V$ de partida
+- **Codominio:** El espacio $W$ de llegada
+- **Imagen:** $\text{Im}(T) = \{T(\mathbf{v}) : \mathbf{v} \in V\}$
+- **Nucleo (Kernel):** $\text{Ker}(T) = \{\mathbf{v} \in V : T(\mathbf{v}) = \mathbf{0}\}$
+
+Cuando $V = W$, se llama **operador lineal** o **endomorfismo**.
+
+## Ejemplos Fundamentales
+
+### Transformacion Cero
+
+$T(\mathbf{v}) = \mathbf{0}$ para todo $\mathbf{v}$.
+
+### Transformacion Identidad
+
+$I(\mathbf{v}) = \mathbf{v}$ para todo $\mathbf{v}$.
+
+### Multiplicacion por Matriz
+
+$T(\mathbf{x}) = A\mathbf{x}$ donde $A$ es una matriz $m \times n$.
+
+Esta es la forma mas comun de transformacion lineal de $\mathbb{R}^n$ a $\mathbb{R}^m$.
+
+### Derivacion
+
+$D: \mathcal{P}_n \to \mathcal{P}_{n-1}$ definida por $D(p) = p'$.
+
+Es lineal: $(f + g)' = f' + g'$ y $(cf)' = cf'$.
+
+### Integracion
+
+$\int: \mathcal{P}_n \to \mathcal{P}_{n+1}$ definida por $\int p(x)\,dx$ (con constante 0).
+
+## Propiedades Inmediatas
+
+Para toda transformacion lineal $T$:
+
+1. $T(\mathbf{0}) = \mathbf{0}$
+2. $T(-\mathbf{v}) = -T(\mathbf{v})$
+3. $T(\mathbf{u} - \mathbf{v}) = T(\mathbf{u}) - T(\mathbf{v})$
+
+**Demostracion de 1:** $T(\mathbf{0}) = T(0 \cdot \mathbf{v}) = 0 \cdot T(\mathbf{v}) = \mathbf{0}$
+
+## Verificar Linealidad
+
+Para verificar que $T$ es lineal, hay que demostrar las dos propiedades.
+
+**Ejemplo:** $T: \mathbb{R}^2 \to \mathbb{R}^2$ definida por $T(x, y) = (2x + y, x - 3y)$.
+
+Aditividad:
+$$T((x_1, y_1) + (x_2, y_2)) = T(x_1 + x_2, y_1 + y_2)$$
+$$= (2(x_1+x_2) + (y_1+y_2), (x_1+x_2) - 3(y_1+y_2))$$
+$$= (2x_1 + y_1 + 2x_2 + y_2, x_1 - 3y_1 + x_2 - 3y_2)$$
+$$= (2x_1 + y_1, x_1 - 3y_1) + (2x_2 + y_2, x_2 - 3y_2)$$
+$$= T(x_1, y_1) + T(x_2, y_2)$$
+
+Homogeneidad:
+$$T(c(x, y)) = T(cx, cy) = (2cx + cy, cx - 3cy) = c(2x + y, x - 3y) = cT(x, y)$$
+
+## Contraejemplos
+
+**No lineal:** $T(x) = x + 1$ (la traslacion no es lineal: $T(0) = 1 \neq 0$)
+
+**No lineal:** $T(x, y) = xy$ (no es aditiva)
+
+**No lineal:** $T(x) = x^2$ (no es homogenea: $T(2x) = 4x^2 \neq 2x^2$)
+
+## Lo Que Estudiaremos
+
+1. **Definicion:** Verificar linealidad, ejemplos
+2. **Nucleo e Imagen:** Subespacios fundamentales
+3. **Matriz Asociada:** Representacion matricial
+4. **Cambio de Base:** Como cambia la matriz
+
+## Conexion con Matrices
+
+Toda transformacion lineal $T: \mathbb{R}^n \to \mathbb{R}^m$ puede representarse como multiplicacion por una matriz $m \times n$.
+
+Reciprocamente, toda matriz $m \times n$ define una transformacion lineal.
+
+Esta correspondencia es el tema central del capitulo.
+
+---
+
+## Videos Recomendados
+
+import VideoEmbed from '../../components/content/VideoEmbed.astro';
+
+<VideoEmbed
+  youtubeId="YJfS4_m_0Z8"
+  title="Transformaciones lineales y matrices - 3Blue1Brown Español"
+/>
+
+<VideoEmbed
+  youtubeId="57JZB-k25GY"
+  title="Transformaciones lineales - Mathete Cursos"
+/>
+
+---
+
+En la siguiente seccion formalizaremos la definicion y veremos mas ejemplos.

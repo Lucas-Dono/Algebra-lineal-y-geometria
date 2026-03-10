@@ -1,0 +1,178 @@
+---
+title: "Calculo de Autovalores y Autovectores"
+chapter: 8
+section: 1
+---
+
+# Calculo de Autovalores y Autovectores
+
+El calculo de autovalores se reduce a encontrar raices de un polinomio, y los autovectores se obtienen resolviendo sistemas lineales.
+
+## Visualizacion Interactiva
+
+import EigenVisualization from '../../components/visualizations/EigenVisualization';
+
+<EigenVisualization
+  client:load
+  title="Explora Autovalores y Autovectores"
+  matrix={[[2, 1], [1, 2]]}
+/>
+
+## Ecuacion Caracteristica
+
+La ecuacion $A\mathbf{v} = \lambda\mathbf{v}$ se reescribe:
+
+$$(A - \lambda I)\mathbf{v} = \mathbf{0}$$
+
+Para que exista $\mathbf{v} \neq \mathbf{0}$, el sistema debe tener soluciones no triviales:
+
+$$\det(A - \lambda I) = 0$$
+
+Esta es la **ecuacion caracteristica** de $A$.
+
+## Polinomio Caracteristico
+
+El **polinomio caracteristico** de $A$ es:
+
+$$p(\lambda) = \det(A - \lambda I)$$
+
+Es un polinomio de grado $n$ en $\lambda$.
+
+Los autovalores son las raices de $p(\lambda)$.
+
+## Procedimiento
+
+### Paso 1: Formar $A - \lambda I$
+
+Restar $\lambda$ de cada entrada diagonal.
+
+### Paso 2: Calcular $\det(A - \lambda I)$
+
+Obtener el polinomio caracteristico.
+
+### Paso 3: Resolver $p(\lambda) = 0$
+
+Las raices son los autovalores.
+
+### Paso 4: Para cada autovalor, resolver $(A - \lambda I)\mathbf{v} = \mathbf{0}$
+
+Las soluciones no nulas son los autovectores.
+
+## Ejemplo 2x2
+
+Encontrar autovalores y autovectores de:
+$$A = \begin{pmatrix} 4 & 2 \\ 1 & 3 \end{pmatrix}$$
+
+**Paso 1:**
+$$A - \lambda I = \begin{pmatrix} 4-\lambda & 2 \\ 1 & 3-\lambda \end{pmatrix}$$
+
+**Paso 2:**
+$$p(\lambda) = (4-\lambda)(3-\lambda) - 2 = \lambda^2 - 7\lambda + 10$$
+
+**Paso 3:**
+$$\lambda^2 - 7\lambda + 10 = (\lambda - 5)(\lambda - 2) = 0$$
+
+Autovalores: $\lambda_1 = 5$, $\lambda_2 = 2$.
+
+**Paso 4a:** Para $\lambda_1 = 5$:
+$$A - 5I = \begin{pmatrix} -1 & 2 \\ 1 & -2 \end{pmatrix}$$
+
+$(A - 5I)\mathbf{v} = \mathbf{0}$ da $-x + 2y = 0$, o sea $x = 2y$.
+
+Autovector: $\mathbf{v}_1 = \begin{pmatrix} 2 \\ 1 \end{pmatrix}$ (o cualquier multiplo no nulo).
+
+**Paso 4b:** Para $\lambda_2 = 2$:
+$$A - 2I = \begin{pmatrix} 2 & 2 \\ 1 & 1 \end{pmatrix}$$
+
+$x + y = 0$, o sea $x = -y$.
+
+Autovector: $\mathbf{v}_2 = \begin{pmatrix} 1 \\ -1 \end{pmatrix}$.
+
+**Verificacion:**
+$$A\mathbf{v}_1 = \begin{pmatrix} 4 & 2 \\ 1 & 3 \end{pmatrix}\begin{pmatrix} 2 \\ 1 \end{pmatrix} = \begin{pmatrix} 10 \\ 5 \end{pmatrix} = 5\begin{pmatrix} 2 \\ 1 \end{pmatrix}$$
+
+## Ejemplo 3x3
+
+$$A = \begin{pmatrix} 2 & 1 & 0 \\ 0 & 2 & 0 \\ 0 & 0 & 3 \end{pmatrix}$$
+
+Por ser triangular, los autovalores son los elementos diagonales:
+- $\lambda_1 = 2$ (con multiplicidad 2)
+- $\lambda_2 = 3$
+
+**Para $\lambda = 2$:**
+$$A - 2I = \begin{pmatrix} 0 & 1 & 0 \\ 0 & 0 & 0 \\ 0 & 0 & 1 \end{pmatrix}$$
+
+De $y = 0$ y $z = 0$: autovector $\mathbf{v}_1 = (1, 0, 0)^T$.
+
+**Para $\lambda = 3$:**
+$$A - 3I = \begin{pmatrix} -1 & 1 & 0 \\ 0 & -1 & 0 \\ 0 & 0 & 0 \end{pmatrix}$$
+
+De $-x + y = 0$ y $y = 0$: $x = y = 0$, $z$ libre.
+
+Autovector: $\mathbf{v}_2 = (0, 0, 1)^T$.
+
+## Autoespacio
+
+El **autoespacio** asociado a un autovalor $\lambda$ es:
+
+$$E_\lambda = \text{Nul}(A - \lambda I) = \{\mathbf{v} : A\mathbf{v} = \lambda\mathbf{v}\}$$
+
+Es un subespacio de $\mathbb{R}^n$ (el nucleo de $A - \lambda I$).
+
+### Dimension del Autoespacio
+
+La **multiplicidad geometrica** de $\lambda$ es $\dim(E_\lambda)$.
+
+La **multiplicidad algebraica** de $\lambda$ es su multiplicidad como raiz de $p(\lambda)$.
+
+**Relacion:** multiplicidad geometrica $\leq$ multiplicidad algebraica.
+
+## Casos Especiales
+
+### Matriz Triangular
+
+Los autovalores son los elementos de la diagonal.
+
+### Matriz Diagonal
+
+Los autovalores son los elementos diagonales, y los autovectores son los vectores estandar $\mathbf{e}_i$.
+
+### Matriz Simetrica
+
+- Todos los autovalores son reales
+- Autovectores de autovalores distintos son ortogonales
+
+## Propiedades del Polinomio Caracteristico
+
+Para $A$ de $n \times n$:
+
+$$p(\lambda) = (-1)^n(\lambda^n - (\text{tr } A)\lambda^{n-1} + \cdots + (-1)^n \det A)$$
+
+En particular:
+- Suma de autovalores = $\text{tr}(A)$
+- Producto de autovalores = $\det(A)$
+
+## Teorema de Cayley-Hamilton
+
+Toda matriz satisface su propio polinomio caracteristico:
+
+$$p(A) = 0$$
+
+Si $p(\lambda) = \lambda^2 - 5\lambda + 6$, entonces $A^2 - 5A + 6I = O$.
+
+## Autovalores y Operaciones
+
+| Matriz | Autovalores |
+|--------|-------------|
+| $A$ | $\lambda$ |
+| $A^k$ | $\lambda^k$ |
+| $A^{-1}$ | $1/\lambda$ |
+| $A + cI$ | $\lambda + c$ |
+| $cA$ | $c\lambda$ |
+| $A^T$ | $\lambda$ (mismos) |
+
+Los autovectores son los mismos para $A$, $A^k$, y $A^{-1}$.
+
+---
+
+En la siguiente seccion estudiaremos la diagonalizacion de matrices.

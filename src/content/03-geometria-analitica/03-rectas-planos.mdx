@@ -1,0 +1,197 @@
+---
+title: "Rectas y Planos"
+chapter: 3
+section: 3
+---
+
+# Rectas y Planos en el Espacio
+
+Las ecuaciones de rectas y planos son fundamentales en geometria analitica y tienen conexion directa con sistemas de ecuaciones lineales.
+
+## Rectas en $\mathbb{R}^2$
+
+### Ecuacion General
+
+$$ax + by = c$$
+
+donde $(a, b) \neq (0, 0)$.
+
+### Ecuacion Explicita
+
+$$y = mx + n$$
+
+donde $m$ es la pendiente y $n$ la ordenada al origen.
+
+### Ecuacion Parametrica
+
+Dado un punto $P_0 = (x_0, y_0)$ y un vector direccion $\mathbf{d} = (d_1, d_2)$:
+
+$$\begin{cases} x = x_0 + td_1 \\ y = y_0 + td_2 \end{cases}, \quad t \in \mathbb{R}$$
+
+En forma vectorial:
+$$(x, y) = (x_0, y_0) + t(d_1, d_2)$$
+
+## Rectas en $\mathbb{R}^3$
+
+En el espacio, las rectas no se pueden expresar con una sola ecuacion cartesiana.
+
+### Ecuacion Parametrica
+
+Dado un punto $P_0 = (x_0, y_0, z_0)$ y vector direccion $\mathbf{d} = (a, b, c)$:
+
+$$\begin{cases} x = x_0 + ta \\ y = y_0 + tb \\ z = z_0 + tc \end{cases}, \quad t \in \mathbb{R}$$
+
+O en forma vectorial:
+$$\mathbf{r}(t) = \mathbf{P}_0 + t\mathbf{d}$$
+
+### Ecuacion Simetrica
+
+Si $a, b, c \neq 0$:
+
+$$\frac{x - x_0}{a} = \frac{y - y_0}{b} = \frac{z - z_0}{c}$$
+
+### Ejemplo
+
+Recta que pasa por $P = (1, 2, 3)$ con direccion $\mathbf{d} = (2, -1, 4)$:
+
+**Parametrica:**
+$$\begin{cases} x = 1 + 2t \\ y = 2 - t \\ z = 3 + 4t \end{cases}$$
+
+**Simetrica:**
+$$\frac{x - 1}{2} = \frac{y - 2}{-1} = \frac{z - 3}{4}$$
+
+## Planos en $\mathbb{R}^3$
+
+### Ecuacion General (Cartesiana)
+
+$$ax + by + cz = d$$
+
+donde $(a, b, c) \neq (0, 0, 0)$.
+
+El vector $\mathbf{n} = (a, b, c)$ es **normal** al plano (perpendicular a el).
+
+### Ecuacion con Vector Normal
+
+Un plano que pasa por $P_0 = (x_0, y_0, z_0)$ con vector normal $\mathbf{n} = (a, b, c)$:
+
+$$a(x - x_0) + b(y - y_0) + c(z - z_0) = 0$$
+
+Expandiendo:
+$$ax + by + cz = ax_0 + by_0 + cz_0$$
+
+### Ecuacion Parametrica
+
+Dado un punto $P_0$ y dos vectores direccion no paralelos $\mathbf{u}$ y $\mathbf{v}$:
+
+$$\mathbf{r}(s, t) = \mathbf{P}_0 + s\mathbf{u} + t\mathbf{v}, \quad s, t \in \mathbb{R}$$
+
+### Ejemplo
+
+Plano que pasa por $(1, 0, -1)$ con normal $\mathbf{n} = (2, 3, -1)$:
+
+$$2(x - 1) + 3(y - 0) + (-1)(z - (-1)) = 0$$
+$$2x - 2 + 3y - z - 1 = 0$$
+$$2x + 3y - z = 3$$
+
+## Posiciones Relativas
+
+### Dos Rectas en $\mathbb{R}^3$
+
+| Posicion | Condicion |
+|----------|-----------|
+| Paralelas | $\mathbf{d}_1 \parallel \mathbf{d}_2$, sin puntos comunes |
+| Coincidentes | $\mathbf{d}_1 \parallel \mathbf{d}_2$, todos los puntos comunes |
+| Secantes | Se cortan en un punto |
+| Alabeadas | No paralelas ni secantes (no coplanares) |
+
+Para determinar si dos rectas se cortan, resolver el sistema de ecuaciones parametricas.
+
+### Dos Planos
+
+| Posicion | Condicion |
+|----------|-----------|
+| Paralelos | $\mathbf{n}_1 \parallel \mathbf{n}_2$, sin puntos comunes |
+| Coincidentes | Misma ecuacion (proporcional) |
+| Secantes | Se cortan en una recta |
+
+### Recta y Plano
+
+| Posicion | Condicion |
+|----------|-----------|
+| Paralelos | $\mathbf{d} \perp \mathbf{n}$ ($\mathbf{d} \cdot \mathbf{n} = 0$), sin interseccion |
+| Contenida | $\mathbf{d} \perp \mathbf{n}$, recta esta en el plano |
+| Secante | Se cortan en un punto |
+
+## Distancias
+
+### Distancia Punto a Plano
+
+Distancia del punto $P_1 = (x_1, y_1, z_1)$ al plano $ax + by + cz = d$:
+
+$$\text{dist} = \frac{|ax_1 + by_1 + cz_1 - d|}{\sqrt{a^2 + b^2 + c^2}}$$
+
+**Ejemplo:** Distancia de $(1, 2, 3)$ al plano $2x - y + 2z = 1$:
+
+$$\text{dist} = \frac{|2(1) - 1(2) + 2(3) - 1|}{\sqrt{4 + 1 + 4}} = \frac{|2 - 2 + 6 - 1|}{3} = \frac{5}{3}$$
+
+### Distancia Punto a Recta
+
+Dado el punto $P$ y la recta que pasa por $Q$ con direccion $\mathbf{d}$:
+
+$$\text{dist} = \frac{\|\overrightarrow{QP} \times \mathbf{d}\|}{\|\mathbf{d}\|}$$
+
+### Distancia Entre Rectas Alabeadas
+
+Dadas dos rectas con puntos $P_1$, $P_2$ y direcciones $\mathbf{d}_1$, $\mathbf{d}_2$:
+
+$$\text{dist} = \frac{|\overrightarrow{P_1P_2} \cdot (\mathbf{d}_1 \times \mathbf{d}_2)|}{\|\mathbf{d}_1 \times \mathbf{d}_2\|}$$
+
+### Distancia Entre Planos Paralelos
+
+Planos $ax + by + cz = d_1$ y $ax + by + cz = d_2$:
+
+$$\text{dist} = \frac{|d_1 - d_2|}{\sqrt{a^2 + b^2 + c^2}}$$
+
+## Angulos
+
+### Angulo Entre Dos Planos
+
+$$\cos\theta = \frac{|\mathbf{n}_1 \cdot \mathbf{n}_2|}{\|\mathbf{n}_1\| \|\mathbf{n}_2\|}$$
+
+### Angulo Entre Recta y Plano
+
+$$\sin\theta = \frac{|\mathbf{d} \cdot \mathbf{n}|}{\|\mathbf{d}\| \|\mathbf{n}\|}$$
+
+donde $\mathbf{d}$ es la direccion de la recta y $\mathbf{n}$ la normal del plano.
+
+### Angulo Entre Dos Rectas
+
+$$\cos\theta = \frac{|\mathbf{d}_1 \cdot \mathbf{d}_2|}{\|\mathbf{d}_1\| \|\mathbf{d}_2\|}$$
+
+## Planos Especiales
+
+### Planos Coordenados
+
+- Plano $xy$: $z = 0$
+- Plano $xz$: $y = 0$
+- Plano $yz$: $x = 0$
+
+### Plano por Tres Puntos
+
+Dados tres puntos no colineales $A$, $B$, $C$:
+
+1. Calcular $\overrightarrow{AB}$ y $\overrightarrow{AC}$
+2. Calcular el vector normal: $\mathbf{n} = \overrightarrow{AB} \times \overrightarrow{AC}$
+3. Usar la ecuacion del plano con punto $A$ y normal $\mathbf{n}$
+
+## Conexion con Sistemas Lineales
+
+- Una ecuacion lineal en 3 variables representa un **plano**
+- Un sistema de 2 ecuaciones representa la **interseccion de dos planos** (generalmente una recta)
+- Un sistema de 3 ecuaciones representa la **interseccion de tres planos** (generalmente un punto)
+
+La clasificacion de sistemas (compatible/incompatible, determinado/indeterminado) corresponde a las posiciones relativas de los planos.
+
+---
+
+Con esto concluye el capitulo de Geometria Analitica. En el siguiente capitulo estudiaremos los Espacios Vectoriales de forma abstracta.

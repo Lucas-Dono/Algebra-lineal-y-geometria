@@ -1,0 +1,134 @@
+---
+title: "Operaciones con Matrices"
+chapter: 5
+section: 1
+---
+
+# Operaciones con Matrices
+
+Las operaciones matriciales tienen reglas especificas que difieren de las operaciones con numeros.
+
+## Suma y Resta
+
+Dos matrices se pueden sumar solo si tienen el **mismo tamano**.
+
+$$A + B = (a_{ij} + b_{ij})$$
+
+**Ejemplo:**
+$$\begin{pmatrix} 1 & 2 \\ 3 & 4 \end{pmatrix} + \begin{pmatrix} 5 & 6 \\ 7 & 8 \end{pmatrix} = \begin{pmatrix} 6 & 8 \\ 10 & 12 \end{pmatrix}$$
+
+### Propiedades
+
+- $A + B = B + A$ (conmutativa)
+- $(A + B) + C = A + (B + C)$ (asociativa)
+- $A + O = A$ (elemento neutro)
+- $A + (-A) = O$ (inverso aditivo)
+
+## Producto por Escalar
+
+$$cA = (c \cdot a_{ij})$$
+
+**Ejemplo:**
+$$3\begin{pmatrix} 1 & 2 \\ 3 & 4 \end{pmatrix} = \begin{pmatrix} 3 & 6 \\ 9 & 12 \end{pmatrix}$$
+
+### Propiedades
+
+- $c(A + B) = cA + cB$
+- $(c + d)A = cA + dA$
+- $c(dA) = (cd)A$
+- $1A = A$
+- $0A = O$
+
+## Producto de Matrices
+
+El producto $AB$ esta definido solo si el numero de columnas de $A$ es igual al numero de filas de $B$.
+
+Si $A$ es $m \times n$ y $B$ es $n \times p$, entonces $AB$ es $m \times p$.
+
+$$(AB)_{ij} = \sum_{k=1}^{n} a_{ik}b_{kj} = a_{i1}b_{1j} + a_{i2}b_{2j} + \cdots + a_{in}b_{nj}$$
+
+El elemento $(i, j)$ de $AB$ es el producto punto de la fila $i$ de $A$ con la columna $j$ de $B$.
+
+### Ejemplo
+
+$$\begin{pmatrix} 1 & 2 & 3 \\ 4 & 5 & 6 \end{pmatrix} \begin{pmatrix} 7 & 8 \\ 9 & 10 \\ 11 & 12 \end{pmatrix}$$
+
+Matriz $2 \times 3$ por matriz $3 \times 2$ da matriz $2 \times 2$.
+
+$$(AB)_{11} = 1(7) + 2(9) + 3(11) = 7 + 18 + 33 = 58$$
+$$(AB)_{12} = 1(8) + 2(10) + 3(12) = 8 + 20 + 36 = 64$$
+$$(AB)_{21} = 4(7) + 5(9) + 6(11) = 28 + 45 + 66 = 139$$
+$$(AB)_{22} = 4(8) + 5(10) + 6(12) = 32 + 50 + 72 = 154$$
+
+$$AB = \begin{pmatrix} 58 & 64 \\ 139 & 154 \end{pmatrix}$$
+
+### Propiedades del Producto
+
+**SI se cumple:**
+- $(AB)C = A(BC)$ (asociativa)
+- $A(B + C) = AB + AC$ (distributiva izquierda)
+- $(A + B)C = AC + BC$ (distributiva derecha)
+- $c(AB) = (cA)B = A(cB)$
+- $AI = IA = A$ (identidad)
+
+**NO se cumple en general:**
+- $AB \neq BA$ (no conmutativa)
+- $AB = O$ no implica $A = O$ o $B = O$
+- $AB = AC$ no implica $B = C$
+
+### Ejemplo de No Conmutatividad
+
+$$A = \begin{pmatrix} 1 & 2 \\ 0 & 0 \end{pmatrix}, \quad B = \begin{pmatrix} 0 & 0 \\ 3 & 4 \end{pmatrix}$$
+
+$$AB = \begin{pmatrix} 6 & 8 \\ 0 & 0 \end{pmatrix}, \quad BA = \begin{pmatrix} 0 & 0 \\ 3 & 6 \end{pmatrix}$$
+
+$AB \neq BA$
+
+## Transpuesta
+
+La **transpuesta** de $A$, denotada $A^T$, se obtiene intercambiando filas por columnas:
+
+$$(A^T)_{ij} = a_{ji}$$
+
+Si $A$ es $m \times n$, entonces $A^T$ es $n \times m$.
+
+**Ejemplo:**
+$$\begin{pmatrix} 1 & 2 & 3 \\ 4 & 5 & 6 \end{pmatrix}^T = \begin{pmatrix} 1 & 4 \\ 2 & 5 \\ 3 & 6 \end{pmatrix}$$
+
+### Propiedades de la Transpuesta
+
+- $(A^T)^T = A$
+- $(A + B)^T = A^T + B^T$
+- $(cA)^T = cA^T$
+- $(AB)^T = B^T A^T$ (orden invertido)
+- $(A^{-1})^T = (A^T)^{-1}$ (si $A$ es invertible)
+
+## Potencias de Matrices
+
+Para matrices cuadradas:
+- $A^0 = I$
+- $A^1 = A$
+- $A^n = A \cdot A \cdots A$ ($n$ veces)
+
+### Propiedades
+
+- $A^m A^n = A^{m+n}$
+- $(A^m)^n = A^{mn}$
+- $(AB)^n \neq A^n B^n$ en general (a menos que $AB = BA$)
+
+## Traza
+
+La **traza** de una matriz cuadrada es la suma de los elementos de la diagonal:
+
+$$\text{tr}(A) = \sum_{i=1}^{n} a_{ii} = a_{11} + a_{22} + \cdots + a_{nn}$$
+
+### Propiedades de la Traza
+
+- $\text{tr}(A + B) = \text{tr}(A) + \text{tr}(B)$
+- $\text{tr}(cA) = c \cdot \text{tr}(A)$
+- $\text{tr}(AB) = \text{tr}(BA)$ (propiedad ciclica)
+- $\text{tr}(A^T) = \text{tr}(A)$
+
+---
+
+En la siguiente seccion estudiaremos los tipos especiales de matrices.

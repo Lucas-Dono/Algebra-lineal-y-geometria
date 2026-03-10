@@ -1,0 +1,153 @@
+---
+title: "Tipos Especiales de Matrices"
+chapter: 5
+section: 2
+---
+
+# Tipos Especiales de Matrices
+
+Ciertas matrices con estructuras particulares tienen propiedades que simplifican los calculos.
+
+## Matriz Identidad
+
+La **matriz identidad** $I_n$ (o simplemente $I$) tiene unos en la diagonal y ceros en las demas posiciones:
+
+$$I_3 = \begin{pmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{pmatrix}$$
+
+### Propiedades
+
+- $AI = IA = A$ para toda matriz $A$ compatible
+- $I^n = I$ para todo $n \geq 0$
+- $\det(I) = 1$
+- $I^{-1} = I$
+
+## Matriz Diagonal
+
+Una matriz es **diagonal** si $a_{ij} = 0$ cuando $i \neq j$:
+
+$$D = \begin{pmatrix} d_1 & 0 & 0 \\ 0 & d_2 & 0 \\ 0 & 0 & d_3 \end{pmatrix} = \text{diag}(d_1, d_2, d_3)$$
+
+### Propiedades
+
+- Producto de diagonales es diagonal: $\text{diag}(a_1, \ldots) \cdot \text{diag}(b_1, \ldots) = \text{diag}(a_1 b_1, \ldots)$
+- $D^n = \text{diag}(d_1^n, d_2^n, \ldots)$
+- $D^{-1} = \text{diag}(1/d_1, 1/d_2, \ldots)$ si todos $d_i \neq 0$
+- $\det(D) = d_1 d_2 \cdots d_n$
+
+## Matrices Triangulares
+
+### Triangular Superior
+
+Ceros debajo de la diagonal principal:
+
+$$U = \begin{pmatrix} u_{11} & u_{12} & u_{13} \\ 0 & u_{22} & u_{23} \\ 0 & 0 & u_{33} \end{pmatrix}$$
+
+### Triangular Inferior
+
+Ceros arriba de la diagonal principal:
+
+$$L = \begin{pmatrix} l_{11} & 0 & 0 \\ l_{21} & l_{22} & 0 \\ l_{31} & l_{32} & l_{33} \end{pmatrix}$$
+
+### Propiedades
+
+- Producto de triangulares superiores es triangular superior
+- Producto de triangulares inferiores es triangular inferior
+- $\det(T) = t_{11} t_{22} \cdots t_{nn}$ (producto de la diagonal)
+- La inversa de una triangular (si existe) es del mismo tipo
+
+## Matriz Simetrica
+
+Una matriz es **simetrica** si $A = A^T$:
+
+$$A = \begin{pmatrix} 1 & 2 & 3 \\ 2 & 4 & 5 \\ 3 & 5 & 6 \end{pmatrix}$$
+
+### Propiedades
+
+- $a_{ij} = a_{ji}$ para todo $i, j$
+- $A + B$ es simetrica si $A$ y $B$ lo son
+- $cA$ es simetrica si $A$ lo es
+- $A^n$ es simetrica si $A$ lo es
+- Los autovalores de una matriz simetrica real son reales
+- Una matriz simetrica real es diagonalizable con base ortonormal
+
+### Ejemplos
+
+- Matrices de covarianza en estadistica
+- Matrices de distancia
+- Hessianas de funciones
+
+## Matriz Antisimetrica
+
+Una matriz es **antisimetrica** (o antihermitiana) si $A = -A^T$:
+
+$$A = \begin{pmatrix} 0 & 2 & -3 \\ -2 & 0 & 1 \\ 3 & -1 & 0 \end{pmatrix}$$
+
+### Propiedades
+
+- $a_{ij} = -a_{ji}$
+- La diagonal es toda ceros ($a_{ii} = -a_{ii} \Rightarrow a_{ii} = 0$)
+- Los autovalores son imaginarios puros o cero
+
+## Matriz Ortogonal
+
+Una matriz cuadrada es **ortogonal** si $Q^T Q = QQ^T = I$, es decir, $Q^{-1} = Q^T$.
+
+### Propiedades
+
+- Las columnas forman una base ortonormal de $\mathbb{R}^n$
+- Las filas forman una base ortonormal de $\mathbb{R}^n$
+- $\det(Q) = \pm 1$
+- $\|Q\mathbf{x}\| = \|\mathbf{x}\|$ (preserva normas)
+- $Q\mathbf{x} \cdot Q\mathbf{y} = \mathbf{x} \cdot \mathbf{y}$ (preserva productos punto)
+
+### Ejemplos
+
+**Rotacion en $\mathbb{R}^2$:**
+$$R_\theta = \begin{pmatrix} \cos\theta & -\sin\theta \\ \sin\theta & \cos\theta \end{pmatrix}$$
+
+**Reflexion respecto al eje $x$:**
+$$\begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix}$$
+
+## Matriz de Permutacion
+
+Una **matriz de permutacion** tiene exactamente un 1 en cada fila y columna, ceros en lo demas.
+
+$$P = \begin{pmatrix} 0 & 1 & 0 \\ 0 & 0 & 1 \\ 1 & 0 & 0 \end{pmatrix}$$
+
+Multiplicar $PA$ permuta las filas de $A$.
+
+### Propiedades
+
+- $P$ es ortogonal: $P^{-1} = P^T$
+- $\det(P) = \pm 1$
+- El producto de permutaciones es permutacion
+
+## Matriz Idempotente
+
+$A$ es **idempotente** si $A^2 = A$.
+
+**Ejemplo:** Matriz de proyeccion sobre un subespacio.
+
+$$P = \begin{pmatrix} 1 & 0 \\ 0 & 0 \end{pmatrix}$$
+
+## Matriz Nilpotente
+
+$A$ es **nilpotente** si $A^k = O$ para algun $k$.
+
+**Ejemplo:**
+$$N = \begin{pmatrix} 0 & 1 \\ 0 & 0 \end{pmatrix}, \quad N^2 = O$$
+
+## Resumen
+
+| Tipo | Condicion | Propiedad clave |
+|------|-----------|-----------------|
+| Diagonal | $a_{ij} = 0$ si $i \neq j$ | Facil de invertir y potenciar |
+| Triangular | Ceros arriba o abajo de diagonal | $\det = $ producto diagonal |
+| Simetrica | $A = A^T$ | Autovalores reales |
+| Ortogonal | $Q^T = Q^{-1}$ | Preserva normas |
+| Idempotente | $A^2 = A$ | Proyecciones |
+| Nilpotente | $A^k = O$ | Todos autovalores = 0 |
+
+---
+
+En la siguiente seccion estudiaremos la matriz inversa.

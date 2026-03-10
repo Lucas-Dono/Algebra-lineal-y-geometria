@@ -1,0 +1,203 @@
+{
+  "chapter": "07-transformaciones-lineales",
+  "exercises": [
+    {
+      "id": "tl-07-test-01",
+      "type": "test",
+      "category": "multiple-choice",
+      "question": {
+        "text": "Una transformacion T es lineal si cumple:",
+        "latex": null
+      },
+      "options": [
+        { "id": "a", "text": "T(u + v) = T(u) + T(v) y T(cv) = cT(v)", "correct": true },
+        { "id": "b", "text": "T(0) = 0 solamente", "correct": false },
+        { "id": "c", "text": "T es continua", "correct": false },
+        { "id": "d", "text": "T es invertible", "correct": false }
+      ],
+      "hints": [
+        "Hay dos condiciones: aditividad y homogeneidad",
+        "Deben cumplirse ambas"
+      ],
+      "feedback": {
+        "correct": "Correcto. Aditividad y homogeneidad son las dos condiciones de linealidad.",
+        "incorrect": "La linealidad requiere T(u+v) = T(u) + T(v) y T(cv) = cT(v)."
+      },
+      "tags": ["transformaciones", "linealidad"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "tl-07-test-02",
+      "type": "test",
+      "category": "true-false",
+      "question": {
+        "text": "La transformacion T(x) = x + 1 es lineal",
+        "latex": "T(x) = x + 1"
+      },
+      "options": [
+        { "id": "true", "text": "Verdadero", "correct": false },
+        { "id": "false", "text": "Falso", "correct": true }
+      ],
+      "hints": [
+        "Verifica T(0)",
+        "Una transformacion lineal debe enviar 0 al 0"
+      ],
+      "feedback": {
+        "correct": "Correcto. T(0) = 1 distinto de 0, asi que no es lineal.",
+        "incorrect": "T(0) = 0 + 1 = 1 distinto de 0. Por lo tanto T no es lineal."
+      },
+      "tags": ["transformaciones", "linealidad", "contraejemplo"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "tl-07-test-03",
+      "type": "test",
+      "category": "multiple-choice",
+      "question": {
+        "text": "El nucleo de T (Ker T) es:",
+        "latex": "\\text{Ker}(T)"
+      },
+      "options": [
+        { "id": "a", "text": "El conjunto de vectores que T envia al cero", "correct": true },
+        { "id": "b", "text": "La imagen de T", "correct": false },
+        { "id": "c", "text": "El dominio de T", "correct": false },
+        { "id": "d", "text": "El codominio de T", "correct": false }
+      ],
+      "hints": [
+        "Ker viene de kernel (nucleo)",
+        "Son los vectores v tales que T(v) = 0"
+      ],
+      "feedback": {
+        "correct": "Correcto. Ker(T) = {v : T(v) = 0}.",
+        "incorrect": "El nucleo es el conjunto de vectores que la transformacion envia al vector cero."
+      },
+      "tags": ["transformaciones", "nucleo"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "tl-07-test-04",
+      "type": "test",
+      "category": "multiple-choice",
+      "question": {
+        "text": "T es inyectiva si y solo si:",
+        "latex": null
+      },
+      "options": [
+        { "id": "a", "text": "Ker(T) = {0}", "correct": true },
+        { "id": "b", "text": "Im(T) = codominio", "correct": false },
+        { "id": "c", "text": "T(0) = 0", "correct": false },
+        { "id": "d", "text": "T es lineal", "correct": false }
+      ],
+      "hints": [
+        "Inyectiva significa que vectores distintos van a imagenes distintas",
+        "Que pasa si dos vectores van al mismo lugar?"
+      ],
+      "feedback": {
+        "correct": "Correcto. Si T(u) = T(v), entonces T(u-v) = 0, asi que u - v esta en Ker(T).",
+        "incorrect": "T es inyectiva si y solo si el unico vector que va al cero es el cero mismo."
+      },
+      "tags": ["transformaciones", "inyectividad", "nucleo"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "tl-07-test-05",
+      "type": "test",
+      "category": "multiple-choice",
+      "question": {
+        "text": "El teorema del rango-nulidad para T: V -> W dice:",
+        "latex": null
+      },
+      "options": [
+        { "id": "a", "text": "dim(V) = dim(Ker T) + dim(Im T)", "correct": true },
+        { "id": "b", "text": "dim(W) = dim(Ker T) + dim(Im T)", "correct": false },
+        { "id": "c", "text": "dim(Ker T) = dim(Im T)", "correct": false },
+        { "id": "d", "text": "dim(V) = dim(W)", "correct": false }
+      ],
+      "hints": [
+        "La dimension del dominio se reparte entre nucleo e imagen",
+        "Lo que 'pierde' T mas lo que 'produce' igual a lo que 'recibe'"
+      ],
+      "feedback": {
+        "correct": "Correcto. La dimension del dominio es nulidad + rango.",
+        "incorrect": "El teorema relaciona la dimension del dominio con nucleo e imagen."
+      },
+      "tags": ["transformaciones", "rango-nulidad"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "tl-07-test-06",
+      "type": "test",
+      "category": "multiple-choice",
+      "question": {
+        "text": "La matriz de T: R2 -> R2 que rota 90 grados es:",
+        "latex": null
+      },
+      "options": [
+        { "id": "a", "text": "[[0, -1], [1, 0]]", "correct": true },
+        { "id": "b", "text": "[[1, 0], [0, 1]]", "correct": false },
+        { "id": "c", "text": "[[0, 1], [1, 0]]", "correct": false },
+        { "id": "d", "text": "[[-1, 0], [0, -1]]", "correct": false }
+      ],
+      "hints": [
+        "Donde va (1, 0) al rotar 90 grados?",
+        "Y donde va (0, 1)?"
+      ],
+      "feedback": {
+        "correct": "Correcto. (1,0) -> (0,1) y (0,1) -> (-1,0).",
+        "incorrect": "La primera columna es la imagen de e1, la segunda es la imagen de e2."
+      },
+      "tags": ["transformaciones", "matriz", "rotacion"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "tl-07-test-07",
+      "type": "test",
+      "category": "multiple-choice",
+      "question": {
+        "text": "La matriz de S seguida de T (S o T) es:",
+        "latex": "[S \\circ T]"
+      },
+      "options": [
+        { "id": "a", "text": "[S][T] (producto de matrices)", "correct": true },
+        { "id": "b", "text": "[T][S]", "correct": false },
+        { "id": "c", "text": "[S] + [T]", "correct": false },
+        { "id": "d", "text": "[S] - [T]", "correct": false }
+      ],
+      "hints": [
+        "La composicion corresponde al producto de matrices",
+        "Cuidado con el orden"
+      ],
+      "feedback": {
+        "correct": "Correcto. La matriz de la composicion es el producto de las matrices en el mismo orden.",
+        "incorrect": "Si primero aplicamos T y luego S, la matriz es [S][T]."
+      },
+      "tags": ["transformaciones", "composicion", "matriz"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "tl-07-test-08",
+      "type": "test",
+      "category": "multiple-choice",
+      "question": {
+        "text": "Si [T]_B es la matriz de T en base B, y cambiamos a base B', la nueva matriz es:",
+        "latex": "[T]_{B'}"
+      },
+      "options": [
+        { "id": "a", "text": "P^(-1) [T]_B P, donde P es la matriz de cambio de base", "correct": true },
+        { "id": "b", "text": "P [T]_B P^(-1)", "correct": false },
+        { "id": "c", "text": "[T]_B + P", "correct": false },
+        { "id": "d", "text": "[T]_B * P", "correct": false }
+      ],
+      "hints": [
+        "Las matrices de un mismo operador en diferentes bases son semejantes",
+        "La formula involucra P y P^(-1)"
+      ],
+      "feedback": {
+        "correct": "Correcto. [T]_B' = P^(-1) [T]_B P es la formula de cambio de base.",
+        "incorrect": "La matriz en la nueva base es P^(-1) [T]_B P, donde P es la matriz de cambio."
+      },
+      "tags": ["transformaciones", "cambio-base", "semejanza"],
+      "difficulty": "hard"
+    }
+  ]
+}

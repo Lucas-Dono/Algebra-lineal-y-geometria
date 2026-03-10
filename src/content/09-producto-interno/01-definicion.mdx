@@ -1,0 +1,142 @@
+---
+title: "Producto Interno: Definicion y Propiedades"
+chapter: 9
+section: 1
+---
+
+# Producto Interno: Definicion y Propiedades
+
+El producto interno es la estructura que permite hablar de geometria en espacios vectoriales.
+
+## Definicion
+
+Un **producto interno** en un espacio vectorial real $V$ es una funcion $\langle \cdot, \cdot \rangle: V \times V \to \mathbb{R}$ que satisface:
+
+1. **Simetria:** $\langle\mathbf{u}, \mathbf{v}\rangle = \langle\mathbf{v}, \mathbf{u}\rangle$
+
+2. **Linealidad en el primer argumento:**
+   - $\langle\mathbf{u} + \mathbf{v}, \mathbf{w}\rangle = \langle\mathbf{u}, \mathbf{w}\rangle + \langle\mathbf{v}, \mathbf{w}\rangle$
+   - $\langle c\mathbf{u}, \mathbf{v}\rangle = c\langle\mathbf{u}, \mathbf{v}\rangle$
+
+3. **Positividad definida:** $\langle\mathbf{v}, \mathbf{v}\rangle \geq 0$, con igualdad si y solo si $\mathbf{v} = \mathbf{0}$
+
+Un espacio vectorial con un producto interno se llama **espacio con producto interno** o **espacio prehilbertiano**.
+
+## Propiedades Derivadas
+
+De la simetria y linealidad en el primer argumento, se sigue linealidad en el segundo:
+
+$$\langle\mathbf{u}, \mathbf{v} + \mathbf{w}\rangle = \langle\mathbf{u}, \mathbf{v}\rangle + \langle\mathbf{u}, \mathbf{w}\rangle$$
+$$\langle\mathbf{u}, c\mathbf{v}\rangle = c\langle\mathbf{u}, \mathbf{v}\rangle$$
+
+Tambien: $\langle\mathbf{0}, \mathbf{v}\rangle = 0$ para todo $\mathbf{v}$.
+
+## Ejemplos
+
+### Producto Estandar en Rn
+
+$$\langle\mathbf{u}, \mathbf{v}\rangle = \mathbf{u} \cdot \mathbf{v} = \sum_{i=1}^{n} u_iv_i$$
+
+### Producto con Pesos
+
+$$\langle\mathbf{u}, \mathbf{v}\rangle = \sum_{i=1}^{n} w_i u_i v_i$$
+
+donde $w_i > 0$ son pesos positivos.
+
+### Producto Interno en Polinomios
+
+Para $\mathcal{P}_n$ con el intervalo $[-1, 1]$:
+
+$$\langle p, q \rangle = \int_{-1}^{1} p(x)q(x)\,dx$$
+
+**Verificacion de los axiomas:**
+
+1. Simetria: $\int p(x)q(x)\,dx = \int q(x)p(x)\,dx$
+
+2. Linealidad: $\int (p + r)q\,dx = \int pq\,dx + \int rq\,dx$
+
+3. Positividad: $\int p(x)^2\,dx \geq 0$, y $= 0$ solo si $p = 0$
+
+### Producto de Frobenius en Matrices
+
+Para $M_{m \times n}(\mathbb{R})$:
+
+$$\langle A, B \rangle = \text{tr}(A^TB) = \sum_{i,j} a_{ij}b_{ij}$$
+
+## Norma Inducida
+
+Todo producto interno induce una **norma**:
+
+$$\|\mathbf{v}\| = \sqrt{\langle\mathbf{v}, \mathbf{v}\rangle}$$
+
+### Propiedades de la Norma
+
+1. $\|\mathbf{v}\| \geq 0$, con $\|\mathbf{v}\| = 0$ iff $\mathbf{v} = \mathbf{0}$
+2. $\|c\mathbf{v}\| = |c|\|\mathbf{v}\|$
+3. $\|\mathbf{u} + \mathbf{v}\| \leq \|\mathbf{u}\| + \|\mathbf{v}\|$ (desigualdad triangular)
+
+### Vector Unitario
+
+Un vector $\mathbf{u}$ es **unitario** si $\|\mathbf{u}\| = 1$.
+
+Para cualquier $\mathbf{v} \neq \mathbf{0}$, el vector unitario en su direccion es:
+
+$$\hat{\mathbf{v}} = \frac{\mathbf{v}}{\|\mathbf{v}\|}$$
+
+## Desigualdad de Cauchy-Schwarz
+
+Para todo $\mathbf{u}, \mathbf{v}$:
+
+$$|\langle\mathbf{u}, \mathbf{v}\rangle| \leq \|\mathbf{u}\| \|\mathbf{v}\|$$
+
+La igualdad ocurre si y solo si $\mathbf{u}$ y $\mathbf{v}$ son proporcionales.
+
+### Demostracion
+
+Para $t \in \mathbb{R}$:
+
+$$0 \leq \|\mathbf{u} + t\mathbf{v}\|^2 = \|\mathbf{u}\|^2 + 2t\langle\mathbf{u}, \mathbf{v}\rangle + t^2\|\mathbf{v}\|^2$$
+
+Este es un polinomio cuadratico en $t$ que es siempre $\geq 0$.
+
+Para que no tenga raices reales (o tenga una raiz doble), el discriminante debe ser $\leq 0$:
+
+$$4\langle\mathbf{u}, \mathbf{v}\rangle^2 - 4\|\mathbf{u}\|^2\|\mathbf{v}\|^2 \leq 0$$
+
+$$\langle\mathbf{u}, \mathbf{v}\rangle^2 \leq \|\mathbf{u}\|^2\|\mathbf{v}\|^2$$
+
+## Angulo entre Vectores
+
+De Cauchy-Schwarz, $-1 \leq \frac{\langle\mathbf{u}, \mathbf{v}\rangle}{\|\mathbf{u}\|\|\mathbf{v}\|} \leq 1$.
+
+Definimos el **angulo** $\theta$ entre $\mathbf{u}$ y $\mathbf{v}$:
+
+$$\cos\theta = \frac{\langle\mathbf{u}, \mathbf{v}\rangle}{\|\mathbf{u}\|\|\mathbf{v}\|}$$
+
+## Distancia
+
+La **distancia** entre $\mathbf{u}$ y $\mathbf{v}$:
+
+$$d(\mathbf{u}, \mathbf{v}) = \|\mathbf{u} - \mathbf{v}\|$$
+
+### Propiedades de la Distancia
+
+1. $d(\mathbf{u}, \mathbf{v}) \geq 0$, con $= 0$ iff $\mathbf{u} = \mathbf{v}$
+2. $d(\mathbf{u}, \mathbf{v}) = d(\mathbf{v}, \mathbf{u})$
+3. $d(\mathbf{u}, \mathbf{w}) \leq d(\mathbf{u}, \mathbf{v}) + d(\mathbf{v}, \mathbf{w})$
+
+## Identidad del Paralelogramo
+
+$$\|\mathbf{u} + \mathbf{v}\|^2 + \|\mathbf{u} - \mathbf{v}\|^2 = 2\|\mathbf{u}\|^2 + 2\|\mathbf{v}\|^2$$
+
+La suma de los cuadrados de las diagonales de un paralelogramo es igual a la suma de los cuadrados de sus lados.
+
+## Formula de Polarizacion
+
+El producto interno se puede recuperar de la norma:
+
+$$\langle\mathbf{u}, \mathbf{v}\rangle = \frac{1}{4}(\|\mathbf{u} + \mathbf{v}\|^2 - \|\mathbf{u} - \mathbf{v}\|^2)$$
+
+---
+
+En la siguiente seccion estudiaremos la ortogonalidad.

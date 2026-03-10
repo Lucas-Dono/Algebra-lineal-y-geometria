@@ -1,0 +1,153 @@
+---
+title: "Coordenadas y Cambio de Base"
+chapter: 4
+section: 4
+---
+
+# Coordenadas y Cambio de Base
+
+Las coordenadas permiten representar cualquier vector como una lista de numeros, una vez elegida una base.
+
+## Coordenadas Respecto a una Base
+
+Sea $\mathcal{B} = \{\mathbf{b}_1, \mathbf{b}_2, \ldots, \mathbf{b}_n\}$ una base ordenada de $V$.
+
+Para cualquier vector $\mathbf{v} \in V$, existen escalares unicos $c_1, c_2, \ldots, c_n$ tales que:
+
+$$\mathbf{v} = c_1\mathbf{b}_1 + c_2\mathbf{b}_2 + \cdots + c_n\mathbf{b}_n$$
+
+Las **coordenadas** de $\mathbf{v}$ respecto a $\mathcal{B}$ son:
+
+$$[\mathbf{v}]_\mathcal{B} = \begin{pmatrix} c_1 \\ c_2 \\ \vdots \\ c_n \end{pmatrix}$$
+
+## Ejemplo en $\mathbb{R}^2$
+
+Considere la base $\mathcal{B} = \{(1, 1), (1, -1)\}$ de $\mathbb{R}^2$.
+
+Para encontrar las coordenadas de $\mathbf{v} = (3, 1)$:
+
+$$c_1(1, 1) + c_2(1, -1) = (3, 1)$$
+
+Sistema:
+$$\begin{cases} c_1 + c_2 = 3 \\ c_1 - c_2 = 1 \end{cases}$$
+
+Solucion: $c_1 = 2$, $c_2 = 1$
+
+Por lo tanto: $[\mathbf{v}]_\mathcal{B} = \begin{pmatrix} 2 \\ 1 \end{pmatrix}$
+
+Verificacion: $2(1, 1) + 1(1, -1) = (2, 2) + (1, -1) = (3, 1)$
+
+## Calculo de Coordenadas
+
+### Metodo General
+
+Para encontrar $[\mathbf{v}]_\mathcal{B}$ donde $\mathcal{B} = \{\mathbf{b}_1, \ldots, \mathbf{b}_n\}$:
+
+1. Formar la matriz $B = [\mathbf{b}_1 | \mathbf{b}_2 | \cdots | \mathbf{b}_n]$
+2. Resolver el sistema $B\mathbf{x} = \mathbf{v}$
+3. La solucion $\mathbf{x}$ es $[\mathbf{v}]_\mathcal{B}$
+
+### Caso de la Base Canonica
+
+Si $\mathcal{E}$ es la base canonica de $\mathbb{R}^n$:
+
+$$[\mathbf{v}]_\mathcal{E} = \mathbf{v}$$
+
+Las coordenadas canonicas son simplemente las componentes del vector.
+
+## Propiedades de las Coordenadas
+
+La funcion $\mathbf{v} \mapsto [\mathbf{v}]_\mathcal{B}$ es:
+
+1. **Biyectiva:** Cada vector tiene coordenadas unicas
+2. **Lineal:**
+   - $[\mathbf{u} + \mathbf{v}]_\mathcal{B} = [\mathbf{u}]_\mathcal{B} + [\mathbf{v}]_\mathcal{B}$
+   - $[c\mathbf{v}]_\mathcal{B} = c[\mathbf{v}]_\mathcal{B}$
+
+Esta funcion es un **isomorfismo** de $V$ con $\mathbb{R}^n$.
+
+## Matriz de Cambio de Base
+
+Sean $\mathcal{B}$ y $\mathcal{C}$ dos bases de $V$.
+
+La **matriz de cambio de base** de $\mathcal{B}$ a $\mathcal{C}$, denotada $P_{\mathcal{C} \leftarrow \mathcal{B}}$, satisface:
+
+$$[\mathbf{v}]_\mathcal{C} = P_{\mathcal{C} \leftarrow \mathcal{B}} [\mathbf{v}]_\mathcal{B}$$
+
+para todo $\mathbf{v} \in V$.
+
+### Construccion
+
+Las columnas de $P_{\mathcal{C} \leftarrow \mathcal{B}}$ son las coordenadas de los vectores de $\mathcal{B}$ expresadas en $\mathcal{C}$:
+
+$$P_{\mathcal{C} \leftarrow \mathcal{B}} = \left[ [\mathbf{b}_1]_\mathcal{C} | [\mathbf{b}_2]_\mathcal{C} | \cdots | [\mathbf{b}_n]_\mathcal{C} \right]$$
+
+### Calculo Practico
+
+Si $\mathcal{B}$ y $\mathcal{C}$ son bases de $\mathbb{R}^n$:
+
+$$P_{\mathcal{C} \leftarrow \mathcal{B}} = C^{-1} B$$
+
+donde $B$ y $C$ son las matrices cuyas columnas son los vectores de $\mathcal{B}$ y $\mathcal{C}$ respectivamente.
+
+### Metodo de Gauss-Jordan
+
+Para calcular $P_{\mathcal{C} \leftarrow \mathcal{B}}$:
+
+1. Formar la matriz aumentada $[C | B]$
+2. Reducir a RREF
+3. El resultado es $[I | P_{\mathcal{C} \leftarrow \mathcal{B}}]$
+
+## Propiedades del Cambio de Base
+
+1. $P_{\mathcal{B} \leftarrow \mathcal{B}} = I$ (identidad)
+
+2. $P_{\mathcal{B} \leftarrow \mathcal{C}} = (P_{\mathcal{C} \leftarrow \mathcal{B}})^{-1}$
+
+3. $P_{\mathcal{D} \leftarrow \mathcal{B}} = P_{\mathcal{D} \leftarrow \mathcal{C}} \cdot P_{\mathcal{C} \leftarrow \mathcal{B}}$ (transitividad)
+
+## Ejemplo Completo
+
+En $\mathbb{R}^2$, sean:
+- $\mathcal{B} = \{(1, 2), (3, 1)\}$
+- $\mathcal{C} = \{(1, 0), (1, 1)\}$ (base $\mathcal{C}$)
+
+**Paso 1:** Matrices de las bases
+
+$$B = \begin{pmatrix} 1 & 3 \\ 2 & 1 \end{pmatrix}, \quad C = \begin{pmatrix} 1 & 1 \\ 0 & 1 \end{pmatrix}$$
+
+**Paso 2:** Calcular $P_{\mathcal{C} \leftarrow \mathcal{B}} = C^{-1}B$
+
+$$C^{-1} = \begin{pmatrix} 1 & -1 \\ 0 & 1 \end{pmatrix}$$
+
+$$P_{\mathcal{C} \leftarrow \mathcal{B}} = \begin{pmatrix} 1 & -1 \\ 0 & 1 \end{pmatrix} \begin{pmatrix} 1 & 3 \\ 2 & 1 \end{pmatrix} = \begin{pmatrix} -1 & 2 \\ 2 & 1 \end{pmatrix}$$
+
+**Verificacion:** Tomemos $\mathbf{v}$ con $[\mathbf{v}]_\mathcal{B} = (1, 1)^T$
+
+En coordenadas de $\mathcal{B}$: $\mathbf{v} = 1(1, 2) + 1(3, 1) = (4, 3)$
+
+Aplicando la matriz:
+$$[\mathbf{v}]_\mathcal{C} = \begin{pmatrix} -1 & 2 \\ 2 & 1 \end{pmatrix} \begin{pmatrix} 1 \\ 1 \end{pmatrix} = \begin{pmatrix} 1 \\ 3 \end{pmatrix}$$
+
+Verificacion directa: $1(1, 0) + 3(1, 1) = (1, 0) + (3, 3) = (4, 3)$
+
+## Aplicaciones
+
+### Diagonalizacion
+
+El cambio de base permite simplificar matrices. Si $A$ es diagonalizable:
+
+$$D = P^{-1}AP$$
+
+donde $D$ es diagonal y $P$ es la matriz de cambio de base a la base de autovectores.
+
+### Simplificacion de Problemas
+
+Elegir la base adecuada puede simplificar calculos:
+- Base ortogonal para productos internos
+- Base de autovectores para potencias de matrices
+- Base adaptada al problema
+
+---
+
+Con esto concluye el capitulo de Espacios Vectoriales. En el siguiente capitulo estudiaremos las operaciones con Matrices.

@@ -1,0 +1,158 @@
+---
+title: "Base y Dimension"
+chapter: 4
+section: 3
+---
+
+# Base y Dimension
+
+La dimension es la nocion mas importante para clasificar espacios vectoriales. Captura la idea de "grados de libertad" del espacio.
+
+## Combinacion Lineal
+
+Una **combinacion lineal** de vectores $\mathbf{v}_1, \mathbf{v}_2, \ldots, \mathbf{v}_k$ es una expresion de la forma:
+
+$$c_1\mathbf{v}_1 + c_2\mathbf{v}_2 + \cdots + c_k\mathbf{v}_k$$
+
+donde $c_1, c_2, \ldots, c_k \in \mathbb{R}$ son **coeficientes** (escalares).
+
+**Ejemplo:** $(7, 4, 3) = 2(1, 2, 1) + 3(1, 0, 0) + 1(2, 0, 1)$
+
+## Espacio Generado (Span)
+
+El **espacio generado** por $\mathbf{v}_1, \ldots, \mathbf{v}_k$ es el conjunto de todas sus combinaciones lineales:
+
+$$\text{span}\{\mathbf{v}_1, \ldots, \mathbf{v}_k\} = \{c_1\mathbf{v}_1 + \cdots + c_k\mathbf{v}_k : c_i \in \mathbb{R}\}$$
+
+**Teorema:** $\text{span}\{\mathbf{v}_1, \ldots, \mathbf{v}_k\}$ es un subespacio.
+
+### Ejemplos
+
+- $\text{span}\{(1, 0)\} = $ eje $x$ en $\mathbb{R}^2$
+- $\text{span}\{(1, 0), (0, 1)\} = \mathbb{R}^2$
+- $\text{span}\{(1, 2), (2, 4)\} = $ recta $y = 2x$ (los vectores son paralelos)
+
+## Dependencia Lineal
+
+Los vectores $\mathbf{v}_1, \ldots, \mathbf{v}_k$ son **linealmente dependientes** si existen escalares $c_1, \ldots, c_k$, no todos cero, tales que:
+
+$$c_1\mathbf{v}_1 + c_2\mathbf{v}_2 + \cdots + c_k\mathbf{v}_k = \mathbf{0}$$
+
+Equivalentemente: al menos uno de los vectores es combinacion lineal de los otros.
+
+### Independencia Lineal
+
+Los vectores son **linealmente independientes** si la unica solucion de
+
+$$c_1\mathbf{v}_1 + c_2\mathbf{v}_2 + \cdots + c_k\mathbf{v}_k = \mathbf{0}$$
+
+es $c_1 = c_2 = \cdots = c_k = 0$ (la solucion trivial).
+
+### Como Verificar
+
+Para vectores en $\mathbb{R}^n$: formar la matriz con los vectores como columnas y reducir a forma escalonada.
+
+- Si hay columnas sin pivote: linealmente dependientes
+- Si cada columna tiene pivote: linealmente independientes
+
+**Ejemplo:** Son $(1, 2, 3)$, $(4, 5, 6)$, $(7, 8, 9)$ linealmente independientes?
+
+$$\begin{pmatrix} 1 & 4 & 7 \\ 2 & 5 & 8 \\ 3 & 6 & 9 \end{pmatrix} \to \begin{pmatrix} 1 & 4 & 7 \\ 0 & -3 & -6 \\ 0 & -6 & -12 \end{pmatrix} \to \begin{pmatrix} 1 & 4 & 7 \\ 0 & -3 & -6 \\ 0 & 0 & 0 \end{pmatrix}$$
+
+Hay una columna sin pivote: son linealmente dependientes.
+
+De hecho: $(7, 8, 9) = 2(4, 5, 6) - (1, 2, 3)$
+
+## Base
+
+Una **base** de un espacio vectorial $V$ es un conjunto de vectores $\mathcal{B} = \{\mathbf{v}_1, \ldots, \mathbf{v}_n\}$ que:
+
+1. Es **linealmente independiente**
+2. **Genera** $V$ (es decir, $\text{span}\{\mathbf{v}_1, \ldots, \mathbf{v}_n\} = V$)
+
+### Ejemplos de Bases
+
+**Base canonica de $\mathbb{R}^n$:**
+$$\mathcal{E} = \{\mathbf{e}_1, \mathbf{e}_2, \ldots, \mathbf{e}_n\}$$
+donde $\mathbf{e}_i$ tiene 1 en la posicion $i$ y 0 en las demas.
+
+**Otra base de $\mathbb{R}^2$:**
+$$\{(1, 1), (1, -1)\}$$
+
+**Base de $P_2$ (polinomios de grado $\leq 2$):**
+$$\{1, x, x^2\}$$
+
+**Otra base de $P_2$:**
+$$\{1, 1 + x, 1 + x + x^2\}$$
+
+## Dimension
+
+**Teorema Fundamental:** Todas las bases de un espacio vectorial finito-dimensional tienen el mismo numero de elementos.
+
+La **dimension** de $V$, denotada $\dim(V)$, es el numero de vectores en cualquier base.
+
+### Ejemplos de Dimensiones
+
+| Espacio | Dimension |
+|---------|-----------|
+| $\mathbb{R}^n$ | $n$ |
+| $M_{m \times n}(\mathbb{R})$ | $mn$ |
+| $P_n$ (polinomios de grado $\leq n$) | $n + 1$ |
+| $\{\mathbf{0}\}$ | $0$ |
+
+### Propiedades
+
+1. Si $\dim(V) = n$:
+   - Cualquier conjunto de mas de $n$ vectores es LD
+   - Cualquier conjunto LI de $n$ vectores es base
+   - Cualquier conjunto generador de $n$ vectores es base
+
+2. Si $W$ es subespacio de $V$: $\dim(W) \leq \dim(V)$
+
+3. $\dim(W) = \dim(V)$ implica $W = V$
+
+## Teorema del Rango-Nulidad
+
+Para una matriz $A$ de $m \times n$:
+
+$$\text{rango}(A) + \text{nulidad}(A) = n$$
+
+donde:
+- $\text{rango}(A) = \dim(\text{Col}(A)) = \dim(\text{Fila}(A))$
+- $\text{nulidad}(A) = \dim(\text{Nul}(A))$
+
+## Encontrar una Base
+
+### Del Espacio Nulo
+
+1. Reducir $A$ a RREF
+2. Expresar variables pivote en terminos de las libres
+3. Escribir la solucion general como combinacion lineal
+4. Los vectores que multiplican a los parametros forman la base
+
+### Del Espacio Columna
+
+1. Reducir $A$ a forma escalonada
+2. Identificar columnas pivote
+3. Las columnas **originales** correspondientes forman la base
+
+### Del Espacio Fila
+
+1. Reducir $A$ a forma escalonada
+2. Las filas no nulas forman la base
+
+## Extension a Base
+
+**Teorema:** Cualquier conjunto LI puede extenderse a una base.
+
+**Algoritmo:** Agregar vectores de la base canonica uno a uno, verificando independencia en cada paso.
+
+## Reduccion a Base
+
+**Teorema:** De cualquier conjunto generador se puede extraer una base.
+
+**Algoritmo:** Eliminar vectores que sean combinacion de los anteriores.
+
+---
+
+En la siguiente seccion estudiaremos las coordenadas respecto a una base.

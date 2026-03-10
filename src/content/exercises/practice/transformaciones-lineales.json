@@ -1,0 +1,103 @@
+{
+  "chapter": "07-transformaciones-lineales",
+  "exercises": [
+    {
+      "id": "tl-07-prac-01",
+      "type": "practice",
+      "question": {
+        "text": "Verificar si T es transformacion lineal",
+        "latex": "T: \\mathbb{R}^2 \\to \\mathbb{R}, \\quad T(x, y) = x^2 + y"
+      },
+      "solution": {
+        "text": "No es lineal",
+        "latex": "T \\text{ no es transformacion lineal}",
+        "steps": [
+          "Contraejemplo con aditividad:",
+          "T(1,0) + T(1,0) = 1 + 1 = 2",
+          "T((1,0)+(1,0)) = T(2,0) = 4 + 0 = 4",
+          "2 != 4, no cumple aditividad",
+          "El termino x^2 causa la no linealidad"
+        ]
+      },
+      "hints": [
+        "Busca un contraejemplo",
+        "Prueba con vectores simples como (1,0)"
+      ],
+      "tags": ["linealidad", "verificacion"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "tl-07-prac-02",
+      "type": "practice",
+      "question": {
+        "text": "Encontrar la matriz de la transformacion",
+        "latex": "T: \\mathbb{R}^2 \\to \\mathbb{R}^3, \\quad T(x, y) = (x + y, 2x, y - x)"
+      },
+      "solution": {
+        "text": "Matriz 3x2",
+        "latex": "[T] = \\begin{pmatrix} 1 & 1 \\\\ 2 & 0 \\\\ -1 & 1 \\end{pmatrix}",
+        "steps": [
+          "T(e1) = T(1,0) = (1, 2, -1)",
+          "T(e2) = T(0,1) = (1, 0, 1)",
+          "Columnas de [T] son las imagenes de la base canonica"
+        ]
+      },
+      "hints": [
+        "Aplica T a cada vector de la base canonica",
+        "Las imagenes son las columnas de la matriz"
+      ],
+      "tags": ["matriz", "base canonica"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "tl-07-prac-03",
+      "type": "practice",
+      "question": {
+        "text": "Determinar si T es inyectiva, sobreyectiva, o biyectiva",
+        "latex": "T: \\mathbb{R}^3 \\to \\mathbb{R}^2, \\quad T(x, y, z) = (x + y, y + z)"
+      },
+      "solution": {
+        "text": "Sobreyectiva pero no inyectiva",
+        "latex": "T \\text{ es sobreyectiva, no inyectiva}",
+        "steps": [
+          "Matriz: [[1,1,0],[0,1,1]]",
+          "rango = 2 (filas independientes)",
+          "dim(Ker) = 3 - 2 = 1 > 0: no inyectiva",
+          "rango = 2 = dim(R^2): sobreyectiva",
+          "Ker(T): x+y=0, y+z=0 -> y=-x, z=-y=x",
+          "Ker(T) = gen{(1,-1,1)}"
+        ]
+      },
+      "hints": [
+        "Calcula el nucleo para inyectividad",
+        "Compara rango con dimension del codominio para sobreyectividad"
+      ],
+      "tags": ["inyectividad", "sobreyectividad", "nucleo"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "tl-07-prac-04",
+      "type": "practice",
+      "question": {
+        "text": "Encontrar T(v) dado que T es lineal y conocemos T en una base",
+        "latex": "T(1,0) = (2,1), \\quad T(0,1) = (3,-1), \\quad \\mathbf{v} = (3, 2)"
+      },
+      "solution": {
+        "text": "T(3,2) = (12,1)",
+        "latex": "T(3,2) = (12, 1)",
+        "steps": [
+          "v = 3*e1 + 2*e2 = 3(1,0) + 2(0,1)",
+          "Por linealidad: T(v) = 3*T(e1) + 2*T(e2)",
+          "T(v) = 3*(2,1) + 2*(3,-1)",
+          "T(v) = (6,3) + (6,-2) = (12, 1)"
+        ]
+      },
+      "hints": [
+        "Escribe v como combinacion lineal de la base",
+        "Usa la linealidad: T(av + bw) = aT(v) + bT(w)"
+      ],
+      "tags": ["linealidad", "combinacion lineal"],
+      "difficulty": "easy"
+    }
+  ]
+}

@@ -1,0 +1,176 @@
+{
+  "chapter": "05-matrices",
+  "exercises": [
+    {
+      "id": "mat-05-view-01",
+      "type": "view",
+      "title": "Multiplicacion de matrices 2x2",
+      "question": {
+        "text": "Calcular el producto AB",
+        "latex": "A = \\begin{pmatrix} 2 & 3 \\\\ 1 & 4 \\end{pmatrix}, \\quad B = \\begin{pmatrix} 1 & 0 \\\\ 2 & 5 \\end{pmatrix}"
+      },
+      "solution": {
+        "steps": [
+          {
+            "title": "Verificar dimensiones",
+            "explanation": "A es 2x2 y B es 2x2, el producto AB sera 2x2",
+            "latex": "A_{2 \\times 2} \\cdot B_{2 \\times 2} = (AB)_{2 \\times 2}"
+          },
+          {
+            "title": "Calcular elemento (1,1)",
+            "explanation": "Fila 1 de A por columna 1 de B",
+            "latex": "(AB)_{11} = 2(1) + 3(2) = 2 + 6 = 8"
+          },
+          {
+            "title": "Calcular elemento (1,2)",
+            "explanation": "Fila 1 de A por columna 2 de B",
+            "latex": "(AB)_{12} = 2(0) + 3(5) = 0 + 15 = 15"
+          },
+          {
+            "title": "Calcular elemento (2,1)",
+            "explanation": "Fila 2 de A por columna 1 de B",
+            "latex": "(AB)_{21} = 1(1) + 4(2) = 1 + 8 = 9"
+          },
+          {
+            "title": "Calcular elemento (2,2)",
+            "explanation": "Fila 2 de A por columna 2 de B",
+            "latex": "(AB)_{22} = 1(0) + 4(5) = 0 + 20 = 20"
+          }
+        ],
+        "final_answer": {
+          "text": "El producto es:",
+          "latex": "AB = \\begin{pmatrix} 8 & 15 \\\\ 9 & 20 \\end{pmatrix}"
+        }
+      },
+      "key_concepts": ["producto matricial", "fila por columna"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "mat-05-view-02",
+      "type": "view",
+      "title": "Inversa de matriz 2x2 por formula",
+      "question": {
+        "text": "Encontrar la inversa de A",
+        "latex": "A = \\begin{pmatrix} 4 & 7 \\\\ 2 & 6 \\end{pmatrix}"
+      },
+      "solution": {
+        "steps": [
+          {
+            "title": "Calcular el determinante",
+            "explanation": "Para una matriz 2x2, det(A) = ad - bc",
+            "latex": "\\det(A) = 4(6) - 7(2) = 24 - 14 = 10"
+          },
+          {
+            "title": "Verificar invertibilidad",
+            "explanation": "Como det(A) = 10 != 0, la matriz es invertible",
+            "latex": "\\det(A) = 10 \\neq 0 \\Rightarrow A^{-1} \\text{ existe}"
+          },
+          {
+            "title": "Aplicar la formula",
+            "explanation": "Para 2x2: intercambiar diagonal, cambiar signo anti-diagonal, dividir por det",
+            "latex": "A^{-1} = \\frac{1}{\\det(A)} \\begin{pmatrix} d & -b \\\\ -c & a \\end{pmatrix}"
+          },
+          {
+            "title": "Sustituir valores",
+            "explanation": "Aplicamos con a=4, b=7, c=2, d=6",
+            "latex": "A^{-1} = \\frac{1}{10} \\begin{pmatrix} 6 & -7 \\\\ -2 & 4 \\end{pmatrix}"
+          },
+          {
+            "title": "Verificacion: AA^(-1) = I",
+            "explanation": "Multiplicamos para comprobar",
+            "latex": "\\begin{pmatrix} 4 & 7 \\\\ 2 & 6 \\end{pmatrix} \\begin{pmatrix} 0.6 & -0.7 \\\\ -0.2 & 0.4 \\end{pmatrix} = \\begin{pmatrix} 1 & 0 \\\\ 0 & 1 \\end{pmatrix} \\checkmark"
+          }
+        ],
+        "final_answer": {
+          "text": "La inversa es:",
+          "latex": "A^{-1} = \\frac{1}{10} \\begin{pmatrix} 6 & -7 \\\\ -2 & 4 \\end{pmatrix} = \\begin{pmatrix} 0.6 & -0.7 \\\\ -0.2 & 0.4 \\end{pmatrix}"
+        }
+      },
+      "key_concepts": ["matriz inversa", "determinante", "formula 2x2"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "mat-05-view-03",
+      "type": "view",
+      "title": "Inversa por Gauss-Jordan",
+      "question": {
+        "text": "Encontrar A^(-1) usando el metodo de Gauss-Jordan",
+        "latex": "A = \\begin{pmatrix} 1 & 2 & 1 \\\\ 2 & 3 & 1 \\\\ 1 & 1 & 1 \\end{pmatrix}"
+      },
+      "solution": {
+        "steps": [
+          {
+            "title": "Formar matriz aumentada [A|I]",
+            "explanation": "Colocamos la matriz identidad a la derecha",
+            "latex": "\\left( \\begin{array}{ccc|ccc} 1 & 2 & 1 & 1 & 0 & 0 \\\\ 2 & 3 & 1 & 0 & 1 & 0 \\\\ 1 & 1 & 1 & 0 & 0 & 1 \\end{array} \\right)"
+          },
+          {
+            "title": "Eliminar debajo del pivote (1,1)",
+            "explanation": "F2 - 2F1 y F3 - F1",
+            "latex": "\\left( \\begin{array}{ccc|ccc} 1 & 2 & 1 & 1 & 0 & 0 \\\\ 0 & -1 & -1 & -2 & 1 & 0 \\\\ 0 & -1 & 0 & -1 & 0 & 1 \\end{array} \\right)"
+          },
+          {
+            "title": "Normalizar F2 y eliminar",
+            "explanation": "F2 * (-1), luego F3 - F2",
+            "latex": "\\left( \\begin{array}{ccc|ccc} 1 & 2 & 1 & 1 & 0 & 0 \\\\ 0 & 1 & 1 & 2 & -1 & 0 \\\\ 0 & 0 & 1 & 1 & -1 & 1 \\end{array} \\right)"
+          },
+          {
+            "title": "Eliminacion hacia arriba",
+            "explanation": "F2 - F3, luego F1 - F3, luego F1 - 2F2",
+            "latex": "\\left( \\begin{array}{ccc|ccc} 1 & 0 & 0 & -2 & 1 & 1 \\\\ 0 & 1 & 0 & 1 & 0 & -1 \\\\ 0 & 0 & 1 & 1 & -1 & 1 \\end{array} \\right)"
+          }
+        ],
+        "final_answer": {
+          "text": "La inversa es la parte derecha de la matriz reducida:",
+          "latex": "A^{-1} = \\begin{pmatrix} -2 & 1 & 1 \\\\ 1 & 0 & -1 \\\\ 1 & -1 & 1 \\end{pmatrix}"
+        }
+      },
+      "key_concepts": ["Gauss-Jordan", "matriz aumentada", "transformaciones elementales"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "mat-05-view-04",
+      "type": "view",
+      "title": "Propiedades del producto matricial",
+      "question": {
+        "text": "Demostrar que (AB)^T = B^T A^T",
+        "latex": "A = \\begin{pmatrix} 1 & 2 \\\\ 3 & 4 \\end{pmatrix}, \\quad B = \\begin{pmatrix} 5 & 6 \\\\ 7 & 8 \\end{pmatrix}"
+      },
+      "solution": {
+        "steps": [
+          {
+            "title": "Calcular AB",
+            "explanation": "Multiplicamos las matrices",
+            "latex": "AB = \\begin{pmatrix} 1(5)+2(7) & 1(6)+2(8) \\\\ 3(5)+4(7) & 3(6)+4(8) \\end{pmatrix} = \\begin{pmatrix} 19 & 22 \\\\ 43 & 50 \\end{pmatrix}"
+          },
+          {
+            "title": "Calcular (AB)^T",
+            "explanation": "Transponemos el resultado",
+            "latex": "(AB)^T = \\begin{pmatrix} 19 & 43 \\\\ 22 & 50 \\end{pmatrix}"
+          },
+          {
+            "title": "Calcular A^T y B^T",
+            "explanation": "Transponemos cada matriz",
+            "latex": "A^T = \\begin{pmatrix} 1 & 3 \\\\ 2 & 4 \\end{pmatrix}, \\quad B^T = \\begin{pmatrix} 5 & 7 \\\\ 6 & 8 \\end{pmatrix}"
+          },
+          {
+            "title": "Calcular B^T A^T",
+            "explanation": "Nota el orden invertido",
+            "latex": "B^T A^T = \\begin{pmatrix} 5(1)+7(2) & 5(3)+7(4) \\\\ 6(1)+8(2) & 6(3)+8(4) \\end{pmatrix} = \\begin{pmatrix} 19 & 43 \\\\ 22 & 50 \\end{pmatrix}"
+          },
+          {
+            "title": "Comparar resultados",
+            "explanation": "Ambos resultados son iguales",
+            "latex": "(AB)^T = B^T A^T = \\begin{pmatrix} 19 & 43 \\\\ 22 & 50 \\end{pmatrix} \\checkmark"
+          }
+        ],
+        "final_answer": {
+          "text": "Hemos verificado la propiedad (AB)^T = B^T A^T",
+          "latex": "(AB)^T = B^T A^T"
+        }
+      },
+      "key_concepts": ["transpuesta", "producto matricial", "propiedades"],
+      "difficulty": "medium"
+    }
+  ]
+}

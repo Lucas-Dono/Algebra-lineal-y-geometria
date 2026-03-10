@@ -1,0 +1,154 @@
+---
+title: "Subespacios Vectoriales"
+chapter: 4
+section: 2
+---
+
+# Subespacios Vectoriales
+
+Un subespacio es un subconjunto de un espacio vectorial que hereda la estructura de espacio vectorial.
+
+## Definicion
+
+Sea $V$ un espacio vectorial. Un subconjunto no vacio $W \subseteq V$ es un **subespacio vectorial** de $V$ si $W$ es un espacio vectorial con las mismas operaciones de $V$.
+
+## Criterio de Subespacio
+
+**Teorema:** Un subconjunto no vacio $W$ de $V$ es subespacio si y solo si:
+
+1. **Clausura bajo suma:** Si $\mathbf{u}, \mathbf{v} \in W$, entonces $\mathbf{u} + \mathbf{v} \in W$
+2. **Clausura bajo producto por escalar:** Si $\mathbf{v} \in W$ y $c \in \mathbb{R}$, entonces $c\mathbf{v} \in W$
+
+### Criterio Equivalente (mas compacto)
+
+$W$ es subespacio si y solo si para todos $\mathbf{u}, \mathbf{v} \in W$ y $a, b \in \mathbb{R}$:
+
+$$a\mathbf{u} + b\mathbf{v} \in W$$
+
+(Clausura bajo combinaciones lineales)
+
+### Por que funciona el criterio?
+
+Los demas axiomas se heredan de $V$:
+- Conmutatividad, asociatividad: valen en $V$, luego valen en $W$
+- Vector cero: $0\mathbf{v} = \mathbf{0} \in W$ (por clausura)
+- Inverso: $(-1)\mathbf{v} = -\mathbf{v} \in W$ (por clausura)
+
+## Ejemplos en $\mathbb{R}^3$
+
+### Subespacio 1: El origen
+
+$W = \{\mathbf{0}\} = \{(0, 0, 0)\}$
+
+Es el subespacio mas pequeno posible.
+
+### Subespacio 2: Una recta por el origen
+
+$W = \{t\mathbf{v} : t \in \mathbb{R}\}$ para algun $\mathbf{v} \neq \mathbf{0}$
+
+Por ejemplo: $W = \{(t, 2t, 3t) : t \in \mathbb{R}\}$ (la recta en direccion $(1, 2, 3)$)
+
+### Subespacio 3: Un plano por el origen
+
+$W = \{(x, y, z) : ax + by + cz = 0\}$
+
+Por ejemplo: $W = \{(x, y, z) : x + y + z = 0\}$
+
+**Verificacion:** Si $\mathbf{u} = (u_1, u_2, u_3)$ y $\mathbf{v} = (v_1, v_2, v_3)$ estan en $W$:
+- $u_1 + u_2 + u_3 = 0$
+- $v_1 + v_2 + v_3 = 0$
+
+Entonces $\mathbf{u} + \mathbf{v} = (u_1 + v_1, u_2 + v_2, u_3 + v_3)$ satisface:
+$(u_1 + v_1) + (u_2 + v_2) + (u_3 + v_3) = (u_1 + u_2 + u_3) + (v_1 + v_2 + v_3) = 0 + 0 = 0$
+
+### Subespacio 4: Todo $\mathbb{R}^3$
+
+$W = \mathbb{R}^3$ es subespacio de si mismo.
+
+## No-Ejemplos en $\mathbb{R}^2$
+
+### No-Subespacio 1: Recta que no pasa por el origen
+
+$W = \{(x, y) : x + y = 1\}$
+
+No es subespacio porque $\mathbf{0} = (0, 0) \notin W$.
+
+### No-Subespacio 2: Union de ejes
+
+$W = \{(x, 0) : x \in \mathbb{R}\} \cup \{(0, y) : y \in \mathbb{R}\}$
+
+No es subespacio: $(1, 0) \in W$ y $(0, 1) \in W$, pero $(1, 0) + (0, 1) = (1, 1) \notin W$.
+
+### No-Subespacio 3: Primer cuadrante
+
+$W = \{(x, y) : x \geq 0, y \geq 0\}$
+
+No es subespacio: $(1, 1) \in W$, pero $(-1)(1, 1) = (-1, -1) \notin W$.
+
+## Subespacios Importantes
+
+### Espacio Nulo (Nucleo)
+
+Dada una matriz $A$ de $m \times n$, el **espacio nulo** de $A$ es:
+
+$$\text{Nul}(A) = \{\mathbf{x} \in \mathbb{R}^n : A\mathbf{x} = \mathbf{0}\}$$
+
+Es un subespacio de $\mathbb{R}^n$.
+
+**Verificacion:** Si $A\mathbf{u} = \mathbf{0}$ y $A\mathbf{v} = \mathbf{0}$:
+$$A(a\mathbf{u} + b\mathbf{v}) = aA\mathbf{u} + bA\mathbf{v} = a\mathbf{0} + b\mathbf{0} = \mathbf{0}$$
+
+### Espacio Columna
+
+El **espacio columna** de $A$ es:
+
+$$\text{Col}(A) = \{A\mathbf{x} : \mathbf{x} \in \mathbb{R}^n\}$$
+
+Es el conjunto de todas las combinaciones lineales de las columnas de $A$.
+
+Es un subespacio de $\mathbb{R}^m$.
+
+### Espacio Fila
+
+El **espacio fila** de $A$ es el espacio generado por las filas de $A$.
+
+Es un subespacio de $\mathbb{R}^n$.
+
+## Interseccion de Subespacios
+
+**Teorema:** Si $W_1$ y $W_2$ son subespacios de $V$, entonces $W_1 \cap W_2$ es subespacio de $V$.
+
+**Demostracion:**
+- $\mathbf{0} \in W_1$ y $\mathbf{0} \in W_2$, entonces $\mathbf{0} \in W_1 \cap W_2$
+- Si $\mathbf{u}, \mathbf{v} \in W_1 \cap W_2$, entonces $a\mathbf{u} + b\mathbf{v} \in W_1$ (pues $W_1$ es subespacio) y $a\mathbf{u} + b\mathbf{v} \in W_2$ (pues $W_2$ es subespacio)
+- Entonces $a\mathbf{u} + b\mathbf{v} \in W_1 \cap W_2$
+
+**Nota:** La union $W_1 \cup W_2$ generalmente NO es subespacio.
+
+## Suma de Subespacios
+
+La **suma** de subespacios $W_1$ y $W_2$ es:
+
+$$W_1 + W_2 = \{\mathbf{w}_1 + \mathbf{w}_2 : \mathbf{w}_1 \in W_1, \mathbf{w}_2 \in W_2\}$$
+
+**Teorema:** $W_1 + W_2$ es subespacio de $V$.
+
+### Suma Directa
+
+La suma es **directa** (escrita $W_1 \oplus W_2$) si $W_1 \cap W_2 = \{\mathbf{0}\}$.
+
+En este caso, cada vector en $W_1 + W_2$ se escribe de forma unica como $\mathbf{w}_1 + \mathbf{w}_2$.
+
+## Test de Subespacio (Resumen)
+
+Para verificar si $W$ es subespacio de $V$:
+
+1. Verificar que $W \neq \emptyset$ (usualmente verificando $\mathbf{0} \in W$)
+2. Verificar clausura bajo suma
+3. Verificar clausura bajo producto por escalar
+
+Si falla alguno, **mostrar un contraejemplo especifico**.
+
+---
+
+En la siguiente seccion estudiaremos bases y dimension de espacios vectoriales.

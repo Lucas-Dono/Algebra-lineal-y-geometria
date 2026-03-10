@@ -1,0 +1,91 @@
+---
+title: "Introduccion a las Matrices"
+chapter: 5
+section: 0
+---
+
+# Introduccion a las Matrices
+
+Las matrices son arreglos rectangulares de numeros que permiten representar y manipular sistemas de ecuaciones lineales, transformaciones y datos de manera compacta.
+
+## Definicion
+
+Una **matriz** de $m$ filas y $n$ columnas (matriz $m \times n$) es un arreglo rectangular:
+
+$$A = \begin{pmatrix} a_{11} & a_{12} & \cdots & a_{1n} \\ a_{21} & a_{22} & \cdots & a_{2n} \\ \vdots & \vdots & \ddots & \vdots \\ a_{m1} & a_{m2} & \cdots & a_{mn} \end{pmatrix}$$
+
+El elemento en la fila $i$ y columna $j$ se denota $a_{ij}$ o $(A)_{ij}$.
+
+## Notacion
+
+- $M_{m \times n}(\mathbb{R})$: conjunto de matrices $m \times n$ con entradas reales
+- $M_n(\mathbb{R})$: matrices cuadradas $n \times n$
+- $A^T$: transpuesta de $A$
+- $A^{-1}$: inversa de $A$ (si existe)
+
+## Tipos de Matrices
+
+### Por forma
+
+| Tipo | Condicion | Ejemplo |
+|------|-----------|---------|
+| Fila | $m = 1$ | $(1 \; 2 \; 3)$ |
+| Columna | $n = 1$ | $\begin{pmatrix} 1 \\ 2 \\ 3 \end{pmatrix}$ |
+| Cuadrada | $m = n$ | $\begin{pmatrix} 1 & 2 \\ 3 & 4 \end{pmatrix}$ |
+
+### Matrices cuadradas especiales
+
+| Tipo | Descripcion |
+|------|-------------|
+| Diagonal | Solo la diagonal puede ser no nula |
+| Triangular superior | Ceros debajo de la diagonal |
+| Triangular inferior | Ceros arriba de la diagonal |
+| Simetrica | $A = A^T$ |
+| Antisimetrica | $A = -A^T$ |
+| Identidad | Diagonal con todos 1 |
+| Nula | Todos los elementos son 0 |
+
+## Matrices e Informacion
+
+Las matrices organizan informacion en forma tabular:
+
+**Ejemplo:** Ventas trimestrales de 3 productos
+
+$$\begin{pmatrix} & \text{Q1} & \text{Q2} & \text{Q3} & \text{Q4} \\ \text{Prod A} & 100 & 120 & 90 & 150 \\ \text{Prod B} & 80 & 95 & 110 & 100 \\ \text{Prod C} & 200 & 180 & 220 & 190 \end{pmatrix}$$
+
+## Lo Que Estudiaremos
+
+1. **Operaciones:** suma, producto, transpuesta
+2. **Tipos especiales:** y sus propiedades
+3. **Matriz inversa:** cuando existe y como calcularla
+4. **Rango:** dimension del espacio columna/fila
+
+## Conexiones
+
+Las matrices conectan todos los temas del curso:
+
+- **Sistemas lineales:** $Ax = b$
+- **Transformaciones:** $T(\mathbf{x}) = A\mathbf{x}$
+- **Determinantes:** $\det(A)$
+- **Autovalores:** $A\mathbf{v} = \lambda\mathbf{v}$
+- **Cambio de base:** $[\mathbf{v}]_\mathcal{C} = P[\mathbf{v}]_\mathcal{B}$
+
+---
+
+## Videos Recomendados
+
+import VideoEmbed from '../../components/content/VideoEmbed.astro';
+
+<VideoEmbed
+  youtubeId="BbRfKVZNIiw"
+  title="¿Qué son las matrices? - Daniel Carreón"
+/>
+
+<VideoEmbed
+  youtubeId="uQhTuRlWMxw"
+  title="Matrices inversas, espacio columna y espacio nulo - 3Blue1Brown"
+/>
+
+---
+
+En la siguiente seccion estudiaremos las operaciones con matrices.

@@ -1,0 +1,173 @@
+---
+title: "Machine Learning"
+chapter: 11
+section: 1
+---
+
+# Algebra Lineal en Machine Learning
+
+El algebra lineal es el lenguaje fundamental del machine learning moderno.
+
+## Representacion de Datos
+
+Los datos se representan como matrices:
+
+$$X = \begin{pmatrix} - & \mathbf{x}_1^T & - \\ - & \mathbf{x}_2^T & - \\ & \vdots & \\ - & \mathbf{x}_m^T & - \end{pmatrix}$$
+
+- Cada fila es una **muestra** (ejemplo, observacion)
+- Cada columna es una **caracteristica** (feature)
+- $X$ es de dimension $m \times n$ ($m$ muestras, $n$ caracteristicas)
+
+## Regresion Lineal
+
+### Modelo
+
+$$\hat{y} = X\mathbf{w} + b$$
+
+donde $\mathbf{w}$ es el vector de pesos y $b$ el sesgo.
+
+### Solucion de Minimos Cuadrados
+
+Minimizar $\|X\mathbf{w} - \mathbf{y}\|^2$:
+
+$$\hat{\mathbf{w}} = (X^TX)^{-1}X^T\mathbf{y}$$
+
+Esta es la **ecuacion normal**.
+
+### Interpretacion Geometrica
+
+$X\hat{\mathbf{w}}$ es la proyeccion de $\mathbf{y}$ sobre el espacio columna de $X$.
+
+## Analisis de Componentes Principales (PCA)
+
+### Objetivo
+
+Reducir la dimensionalidad preservando la maxima varianza.
+
+### Algoritmo
+
+1. Centrar los datos: $\tilde{X} = X - \bar{X}$
+2. Calcular la matriz de covarianza: $C = \frac{1}{m-1}\tilde{X}^T\tilde{X}$
+3. Calcular autovalores y autovectores de $C$
+4. Ordenar por autovalor decreciente
+5. Proyectar a los primeros $k$ componentes
+
+### Implementacion Matricial
+
+Los componentes principales son los autovectores de $C$.
+
+Si $P$ tiene los primeros $k$ autovectores como columnas:
+
+$$X_{\text{reducido}} = XP$$
+
+### Ejemplo
+
+Datos en 100 dimensiones, pero la mayor parte de la varianza esta en 3 direcciones.
+
+PCA identifica esas 3 direcciones y reduce de 100 a 3 dimensiones.
+
+## Descomposicion en Valores Singulares (SVD)
+
+### Definicion
+
+Toda matriz $A$ de $m \times n$ se puede descomponer:
+
+$$A = U\Sigma V^T$$
+
+donde:
+- $U$ es $m \times m$ ortogonal (vectores singulares izquierdos)
+- $\Sigma$ es $m \times n$ diagonal (valores singulares)
+- $V$ es $n \times n$ ortogonal (vectores singulares derechos)
+
+### Relacion con PCA
+
+Los componentes principales son las columnas de $V$ (vectores singulares derechos de $\tilde{X}$).
+
+Los valores singulares de $\tilde{X}$ son $\sqrt{(m-1)\lambda_i}$ donde $\lambda_i$ son autovalores de $C$.
+
+### Aproximacion de Bajo Rango
+
+$$A_k = \sum_{i=1}^{k} \sigma_i \mathbf{u}_i \mathbf{v}_i^T$$
+
+es la mejor aproximacion de rango $k$ a $A$ (en norma de Frobenius).
+
+## Redes Neuronales
+
+### Capa Densa
+
+Una capa densa es una transformacion lineal seguida de una no linealidad:
+
+$$\mathbf{h} = \sigma(W\mathbf{x} + \mathbf{b})$$
+
+donde:
+- $W$ es la matriz de pesos
+- $\mathbf{b}$ es el vector de sesgo
+- $\sigma$ es la funcion de activacion (ReLU, sigmoid, etc.)
+
+### Forward Pass
+
+Una red con $L$ capas:
+
+$$\mathbf{h}_0 = \mathbf{x}$$
+$$\mathbf{h}_l = \sigma_l(W_l\mathbf{h}_{l-1} + \mathbf{b}_l)$$
+$$\hat{\mathbf{y}} = \mathbf{h}_L$$
+
+Todo el calculo es multiplicaciones matriciales mas no linealidades.
+
+### Procesamiento en Lotes
+
+Para $m$ muestras:
+
+$$H = \sigma(XW^T + \mathbf{1}\mathbf{b}^T)$$
+
+Las GPUs estan optimizadas para estas operaciones matriciales.
+
+## Embeddings
+
+### Idea
+
+Representar objetos discretos (palabras, usuarios, productos) como vectores.
+
+### Word2Vec
+
+Cada palabra tiene un vector de embedding.
+
+Similaridad entre palabras = producto punto de embeddings.
+
+### Operaciones Semanticas
+
+$$\text{vec}("rey") - \text{vec}("hombre") + \text{vec}("mujer") \approx \text{vec}("reina")$$
+
+Las analogias se capturan como operaciones vectoriales.
+
+## Sistemas de Recomendacion
+
+### Factorizacion de Matrices
+
+Matriz de calificaciones $R$ (usuarios x productos) se aproxima:
+
+$$R \approx UV^T$$
+
+donde:
+- $U$ es la matriz de embeddings de usuarios
+- $V$ es la matriz de embeddings de productos
+
+### Prediccion
+
+Calificacion predicha del usuario $i$ al producto $j$:
+
+$$\hat{r}_{ij} = \mathbf{u}_i \cdot \mathbf{v}_j$$
+
+## Resumen
+
+| Tecnica | Operaciones Clave |
+|---------|-------------------|
+| Regresion | Minimos cuadrados, ecuacion normal |
+| PCA | Autovalores, proyeccion |
+| SVD | Descomposicion, aproximacion |
+| Redes neuronales | Multiplicacion matricial |
+| Embeddings | Producto punto, factorizacion |
+
+---
+
+En la siguiente seccion veremos aplicaciones en teoria de grafos.

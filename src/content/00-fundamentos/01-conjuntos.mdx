@@ -1,0 +1,166 @@
+---
+title: "Teoría de Conjuntos"
+chapter: 0
+section: 1
+---
+
+# Teoría de Conjuntos
+
+La teoría de conjuntos es el lenguaje fundamental de las matemáticas modernas. Todos los conceptos del álgebra lineal se expresan usando conjuntos.
+
+## Definición de Conjunto
+
+Un **conjunto** es una colección bien definida de objetos distintos llamados **elementos** o **miembros** del conjunto.
+
+### Notación
+
+- Los conjuntos se denotan con letras mayúsculas: $A$, $B$, $C$, ...
+- Los elementos se denotan con letras minúsculas: $a$, $b$, $c$, ...
+- Si $x$ es elemento de $A$, escribimos $x \in A$ (se lee "x pertenece a A")
+- Si $x$ no es elemento de $A$, escribimos $x \notin A$
+
+### Formas de definir un conjunto
+
+**Por extensión (listando elementos):**
+$$A = \{1, 2, 3, 4, 5\}$$
+
+**Por comprensión (describiendo propiedades):**
+$$B = \{x \in \mathbb{Z} : x > 0 \text{ y } x < 6\}$$
+
+Ambas definiciones describen el mismo conjunto.
+
+## Conjuntos Numéricos Importantes
+
+| Símbolo | Nombre | Elementos |
+|---------|--------|-----------|
+| $\mathbb{N}$ | Naturales | $\{1, 2, 3, 4, ...\}$ |
+| $\mathbb{Z}$ | Enteros | $\{..., -2, -1, 0, 1, 2, ...\}$ |
+| $\mathbb{Q}$ | Racionales | Fracciones $\frac{p}{q}$ con $p, q \in \mathbb{Z}$, $q \neq 0$ |
+| $\mathbb{R}$ | Reales | Todos los números de la recta numérica |
+| $\mathbb{C}$ | Complejos | Números de la forma $a + bi$ |
+
+Estos conjuntos están anidados:
+$$\mathbb{N} \subset \mathbb{Z} \subset \mathbb{Q} \subset \mathbb{R} \subset \mathbb{C}$$
+
+## Subconjuntos
+
+Un conjunto $A$ es **subconjunto** de $B$ si todo elemento de $A$ también está en $B$:
+
+$$A \subseteq B \iff (\forall x)(x \in A \Rightarrow x \in B)$$
+
+Si además $A \neq B$, decimos que $A$ es **subconjunto propio** de $B$:
+$$A \subset B$$
+
+### Propiedades
+
+1. $A \subseteq A$ (todo conjunto es subconjunto de sí mismo)
+2. $\emptyset \subseteq A$ (el conjunto vacío es subconjunto de todo conjunto)
+3. Si $A \subseteq B$ y $B \subseteq A$, entonces $A = B$
+
+## Operaciones con Conjuntos
+
+### Unión
+
+La **unión** de $A$ y $B$ contiene los elementos que están en $A$ **o** en $B$ (o en ambos):
+
+$$A \cup B = \{x : x \in A \text{ o } x \in B\}$$
+
+**Ejemplo:** Si $A = \{1, 2, 3\}$ y $B = \{3, 4, 5\}$, entonces:
+$$A \cup B = \{1, 2, 3, 4, 5\}$$
+
+### Intersección
+
+La **intersección** de $A$ y $B$ contiene los elementos que están en $A$ **y** en $B$:
+
+$$A \cap B = \{x : x \in A \text{ y } x \in B\}$$
+
+**Ejemplo:** Con los mismos conjuntos:
+$$A \cap B = \{3\}$$
+
+### Diferencia
+
+La **diferencia** $A - B$ (o $A \setminus B$) contiene los elementos de $A$ que no están en $B$:
+
+$$A - B = \{x : x \in A \text{ y } x \notin B\}$$
+
+**Ejemplo:**
+$$A - B = \{1, 2\}$$
+$$B - A = \{4, 5\}$$
+
+### Complemento
+
+Si $A$ es subconjunto de un conjunto universal $U$, el **complemento** de $A$ es:
+
+$$A^c = U - A = \{x \in U : x \notin A\}$$
+
+## Propiedades de las Operaciones
+
+### Conmutatividad
+- $A \cup B = B \cup A$
+- $A \cap B = B \cap A$
+
+### Asociatividad
+- $(A \cup B) \cup C = A \cup (B \cup C)$
+- $(A \cap B) \cap C = A \cap (B \cap C)$
+
+### Distributividad
+- $A \cap (B \cup C) = (A \cap B) \cup (A \cap C)$
+- $A \cup (B \cap C) = (A \cup B) \cap (A \cup C)$
+
+### Leyes de De Morgan
+- $(A \cup B)^c = A^c \cap B^c$
+- $(A \cap B)^c = A^c \cup B^c$
+
+## Producto Cartesiano
+
+El **producto cartesiano** de $A$ y $B$ es el conjunto de todos los pares ordenados:
+
+$$A \times B = \{(a, b) : a \in A \text{ y } b \in B\}$$
+
+**Ejemplo:** Si $A = \{1, 2\}$ y $B = \{x, y\}$:
+$$A \times B = \{(1, x), (1, y), (2, x), (2, y)\}$$
+
+### Notación para productos repetidos
+
+- $A^2 = A \times A$
+- $A^n = A \times A \times \cdots \times A$ ($n$ veces)
+
+El plano cartesiano es $\mathbb{R}^2 = \mathbb{R} \times \mathbb{R}$.
+
+El espacio tridimensional es $\mathbb{R}^3 = \mathbb{R} \times \mathbb{R} \times \mathbb{R}$.
+
+## Cardinalidad
+
+La **cardinalidad** de un conjunto finito $A$ es el número de elementos que contiene, denotada $|A|$ o $\#A$.
+
+**Ejemplo:** Si $A = \{1, 2, 3, 4, 5\}$, entonces $|A| = 5$.
+
+### Propiedades
+
+- $|A \cup B| = |A| + |B| - |A \cap B|$
+- $|A \times B| = |A| \cdot |B|$
+- $|\mathcal{P}(A)| = 2^{|A|}$ donde $\mathcal{P}(A)$ es el conjunto potencia
+
+## Conjunto Potencia
+
+El **conjunto potencia** de $A$, denotado $\mathcal{P}(A)$ o $2^A$, es el conjunto de todos los subconjuntos de $A$.
+
+**Ejemplo:** Si $A = \{1, 2\}$:
+$$\mathcal{P}(A) = \{\emptyset, \{1\}, \{2\}, \{1, 2\}\}$$
+
+Note que $|\mathcal{P}(A)| = 2^2 = 4$.
+
+## Aplicación en Álgebra Lineal
+
+En álgebra lineal trabajaremos constantemente con:
+
+- $\mathbb{R}^n$: vectores de $n$ componentes reales
+- $\mathbb{C}^n$: vectores de $n$ componentes complejos
+- $M_{m \times n}(\mathbb{R})$: matrices de $m$ filas y $n$ columnas con entradas reales
+- Subespacios vectoriales (subconjuntos con estructura especial)
+
+La notación de conjuntos nos permite expresar estas ideas de manera precisa y compacta.
+
+---
+
+En la siguiente sección estudiaremos las funciones, que son relaciones especiales entre conjuntos.

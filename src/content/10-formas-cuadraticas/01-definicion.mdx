@@ -1,0 +1,132 @@
+---
+title: "Definicion y Matriz Asociada"
+chapter: 10
+section: 1
+---
+
+# Formas Cuadraticas: Definicion y Matriz Asociada
+
+Formalizamos la relacion entre formas cuadraticas y matrices simetricas.
+
+## Definicion
+
+Una **forma cuadratica** sobre $\mathbb{R}^n$ es una funcion $Q: \mathbb{R}^n \to \mathbb{R}$ de la forma:
+
+$$Q(\mathbf{x}) = \mathbf{x}^T A \mathbf{x}$$
+
+donde $A$ es una matriz $n \times n$ simetrica.
+
+## Expansion
+
+$$Q(\mathbf{x}) = \sum_{i=1}^{n} \sum_{j=1}^{n} a_{ij} x_i x_j = \sum_{i=1}^{n} a_{ii} x_i^2 + 2\sum_{i < j} a_{ij} x_i x_j$$
+
+## Matriz Asociada
+
+Dada una forma cuadratica $Q$, la **matriz asociada** $A$ tiene:
+
+- Diagonal: $a_{ii} = $ coeficiente de $x_i^2$
+- Fuera de diagonal: $a_{ij} = \frac{1}{2}$ (coeficiente de $x_i x_j$)
+
+### Ejemplo 1
+
+$$Q(x, y) = 5x^2 - 6xy + 2y^2$$
+
+$$A = \begin{pmatrix} 5 & -3 \\ -3 & 2 \end{pmatrix}$$
+
+**Verificacion:**
+$$\begin{pmatrix} x & y \end{pmatrix} \begin{pmatrix} 5 & -3 \\ -3 & 2 \end{pmatrix} \begin{pmatrix} x \\ y \end{pmatrix} = \begin{pmatrix} x & y \end{pmatrix} \begin{pmatrix} 5x - 3y \\ -3x + 2y \end{pmatrix}$$
+$$= 5x^2 - 3xy - 3xy + 2y^2 = 5x^2 - 6xy + 2y^2$$
+
+### Ejemplo 2
+
+$$Q(x, y, z) = x^2 + 4y^2 + 9z^2 + 2xy - 6xz + 4yz$$
+
+$$A = \begin{pmatrix} 1 & 1 & -3 \\ 1 & 4 & 2 \\ -3 & 2 & 9 \end{pmatrix}$$
+
+## Diagonalizacion de Formas Cuadraticas
+
+Como $A$ es simetrica, existe una matriz ortogonal $P$ tal que:
+
+$$P^TAP = D = \text{diag}(\lambda_1, \ldots, \lambda_n)$$
+
+donde $\lambda_i$ son los autovalores de $A$.
+
+### Cambio de Variables
+
+Con el cambio $\mathbf{x} = P\mathbf{y}$ (equivalente a $\mathbf{y} = P^T\mathbf{x}$):
+
+$$Q(\mathbf{x}) = \mathbf{x}^TA\mathbf{x} = (P\mathbf{y})^TA(P\mathbf{y}) = \mathbf{y}^T(P^TAP)\mathbf{y} = \mathbf{y}^TD\mathbf{y}$$
+
+$$= \lambda_1 y_1^2 + \lambda_2 y_2^2 + \cdots + \lambda_n y_n^2$$
+
+La forma cuadratica se **diagonaliza**: no hay terminos cruzados.
+
+## Ejemplo Completo
+
+Diagonalizar $Q(x, y) = 2x^2 + 4xy + 2y^2$.
+
+**Matriz:**
+$$A = \begin{pmatrix} 2 & 2 \\ 2 & 2 \end{pmatrix}$$
+
+**Autovalores:**
+$$\det(A - \lambda I) = (2-\lambda)^2 - 4 = \lambda^2 - 4\lambda = \lambda(\lambda - 4)$$
+
+$\lambda_1 = 0$, $\lambda_2 = 4$.
+
+**Autovectores:**
+
+Para $\lambda = 0$: $(A - 0I)\mathbf{v} = \mathbf{0}$ da $2x + 2y = 0$, o sea $\mathbf{v}_1 = (1, -1)^T$.
+
+Para $\lambda = 4$: $(A - 4I)\mathbf{v} = \mathbf{0}$ da $-2x + 2y = 0$, o sea $\mathbf{v}_2 = (1, 1)^T$.
+
+**Normalizando:**
+$$P = \frac{1}{\sqrt{2}}\begin{pmatrix} 1 & 1 \\ -1 & 1 \end{pmatrix}$$
+
+**Forma diagonal:**
+$$Q(\mathbf{y}) = 0 \cdot y_1^2 + 4 \cdot y_2^2 = 4y_2^2$$
+
+**Interpretacion:** La forma original es $(x + y)^2$ multiplicado por algo... verificamos:
+$$2x^2 + 4xy + 2y^2 = 2(x^2 + 2xy + y^2) = 2(x + y)^2$$
+
+Con $y_2 = \frac{x + y}{\sqrt{2}}$, obtenemos $Q = 2 \cdot 2y_2^2 = 4y_2^2$.
+
+## Signatura
+
+La **signatura** de una forma cuadratica es el par $(p, q)$ donde:
+- $p$ = numero de autovalores positivos
+- $q$ = numero de autovalores negativos
+
+La signatura es un invariante: no depende de la base.
+
+**Ley de Inercia de Sylvester:** La signatura caracteriza la forma cuadratica.
+
+## Rango de una Forma Cuadratica
+
+El **rango** de $Q$ es el rango de su matriz asociada $A$.
+
+$$\text{rango}(Q) = n - (\text{numero de autovalores cero})$$
+
+## Nucleo de una Forma Cuadratica
+
+El **nucleo** es:
+
+$$\text{Ker}(Q) = \{\mathbf{x} : Q(\mathbf{x}) = 0 \text{ y } A\mathbf{x} = \mathbf{0}\}$$
+
+Notar: $Q(\mathbf{x}) = 0$ no implica $A\mathbf{x} = \mathbf{0}$ en general.
+
+## Formas Cuadraticas y Formas Bilineales
+
+Una **forma bilineal** es una funcion $B: V \times V \to \mathbb{R}$ lineal en cada argumento:
+
+$$B(\mathbf{u}, \mathbf{v}) = \mathbf{u}^T A \mathbf{v}$$
+
+Una forma cuadratica es la "diagonal" de una forma bilineal simetrica:
+
+$$Q(\mathbf{x}) = B(\mathbf{x}, \mathbf{x})$$
+
+**Formula de polarizacion:**
+$$B(\mathbf{u}, \mathbf{v}) = \frac{1}{2}(Q(\mathbf{u} + \mathbf{v}) - Q(\mathbf{u}) - Q(\mathbf{v}))$$
+
+---
+
+En la siguiente seccion clasificaremos las formas cuadraticas.

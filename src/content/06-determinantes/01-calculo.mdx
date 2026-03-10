@@ -1,0 +1,143 @@
+---
+title: "Calculo de Determinantes"
+chapter: 6
+section: 1
+---
+
+# Calculo de Determinantes
+
+Existen varios metodos para calcular determinantes, cada uno con sus ventajas segun el contexto.
+
+## Visualizacion: Determinante como Area
+
+import GeoGebraEmbed from '../../components/content/GeoGebraEmbed.astro';
+
+<GeoGebraEmbed
+  id="shmcfpnd"
+  title="El determinante mide el area del paralelogramo"
+/>
+
+## Determinante 2x2
+
+$$\det\begin{pmatrix} a & b \\ c & d \end{pmatrix} = ad - bc$$
+
+**Regla:** Producto de la diagonal principal menos producto de la diagonal secundaria.
+
+**Ejemplo:**
+$$\det\begin{pmatrix} 5 & 3 \\ 2 & 7 \end{pmatrix} = 5(7) - 3(2) = 35 - 6 = 29$$
+
+## Determinante 3x3: Regla de Sarrus
+
+Para matrices $3 \times 3$, existe un metodo grafico:
+
+$$A = \begin{pmatrix} a_{11} & a_{12} & a_{13} \\ a_{21} & a_{22} & a_{23} \\ a_{31} & a_{32} & a_{33} \end{pmatrix}$$
+
+Se copian las dos primeras columnas a la derecha y se suman productos de diagonales:
+
+$$\det(A) = a_{11}a_{22}a_{33} + a_{12}a_{23}a_{31} + a_{13}a_{21}a_{32}$$
+$$\quad\quad\quad - a_{13}a_{22}a_{31} - a_{11}a_{23}a_{32} - a_{12}a_{21}a_{33}$$
+
+**Ejemplo:**
+$$\det\begin{pmatrix} 1 & 2 & 3 \\ 4 & 5 & 6 \\ 7 & 8 & 9 \end{pmatrix}$$
+
+$$= 1(5)(9) + 2(6)(7) + 3(4)(8) - 3(5)(7) - 1(6)(8) - 2(4)(9)$$
+$$= 45 + 84 + 96 - 105 - 48 - 72 = 0$$
+
+**Advertencia:** La regla de Sarrus solo funciona para $3 \times 3$. No generaliza a dimensiones mayores.
+
+## Expansion por Cofactores
+
+Este metodo funciona para cualquier dimension.
+
+### Menor y Cofactor
+
+El **menor** $M_{ij}$ es el determinante de la submatriz que resulta de eliminar la fila $i$ y columna $j$.
+
+El **cofactor** $C_{ij}$ es:
+$$C_{ij} = (-1)^{i+j} M_{ij}$$
+
+El signo alterna segun el patron:
+$$\begin{pmatrix} + & - & + & \cdots \\ - & + & - & \cdots \\ + & - & + & \cdots \\ \vdots & \vdots & \vdots & \ddots \end{pmatrix}$$
+
+### Expansion por Fila
+
+$$\det(A) = \sum_{j=1}^{n} a_{ij} C_{ij} = a_{i1}C_{i1} + a_{i2}C_{i2} + \cdots + a_{in}C_{in}$$
+
+para cualquier fila $i$.
+
+### Expansion por Columna
+
+$$\det(A) = \sum_{i=1}^{n} a_{ij} C_{ij} = a_{1j}C_{1j} + a_{2j}C_{2j} + \cdots + a_{nj}C_{nj}$$
+
+para cualquier columna $j$.
+
+### Ejemplo Detallado
+
+Calcular $\det(A)$ donde:
+$$A = \begin{pmatrix} 2 & 1 & 3 \\ 0 & 4 & 5 \\ 1 & 0 & 2 \end{pmatrix}$$
+
+Expandiendo por la primera columna (tiene un cero):
+
+$$\det(A) = 2 \cdot C_{11} + 0 \cdot C_{21} + 1 \cdot C_{31}$$
+
+$$C_{11} = (+1) \det\begin{pmatrix} 4 & 5 \\ 0 & 2 \end{pmatrix} = 4(2) - 5(0) = 8$$
+
+$$C_{31} = (+1) \det\begin{pmatrix} 1 & 3 \\ 4 & 5 \end{pmatrix} = 1(5) - 3(4) = -7$$
+
+$$\det(A) = 2(8) + 0 + 1(-7) = 16 - 7 = 9$$
+
+## Metodo de Reduccion por Filas
+
+Se usa eliminacion gaussiana para obtener una matriz triangular, cuyo determinante es el producto de la diagonal.
+
+### Efecto de Operaciones Elementales
+
+| Operacion | Efecto en el determinante |
+|-----------|---------------------------|
+| $F_i \leftrightarrow F_j$ | Multiplica por $-1$ |
+| $F_i \to cF_i$ | Multiplica por $c$ |
+| $F_i \to F_i + cF_j$ | No cambia |
+
+### Ejemplo
+
+$$A = \begin{pmatrix} 2 & 4 & 6 \\ 1 & 2 & 5 \\ 3 & 1 & 2 \end{pmatrix}$$
+
+$F_1 \leftrightarrow F_2$ (cambio de signo):
+$$\begin{pmatrix} 1 & 2 & 5 \\ 2 & 4 & 6 \\ 3 & 1 & 2 \end{pmatrix}, \quad \det = -\det(A)$$
+
+$F_2 \to F_2 - 2F_1$, $F_3 \to F_3 - 3F_1$:
+$$\begin{pmatrix} 1 & 2 & 5 \\ 0 & 0 & -4 \\ 0 & -5 & -13 \end{pmatrix}$$
+
+$F_2 \leftrightarrow F_3$ (otro cambio de signo):
+$$\begin{pmatrix} 1 & 2 & 5 \\ 0 & -5 & -13 \\ 0 & 0 & -4 \end{pmatrix}$$
+
+Determinante de la triangular: $1 \cdot (-5) \cdot (-4) = 20$
+
+Total de cambios de signo: 2, entonces $(-1)^2 = 1$.
+
+$$\det(A) = 20$$
+
+## Determinante de Matrices Triangulares
+
+Para cualquier matriz triangular (superior o inferior):
+
+$$\det(T) = t_{11} \cdot t_{22} \cdots t_{nn}$$
+
+El determinante es simplemente el producto de los elementos diagonales.
+
+## Determinante de Matriz Diagonal
+
+$$\det(\text{diag}(d_1, d_2, \ldots, d_n)) = d_1 \cdot d_2 \cdots d_n$$
+
+## Resumen de Metodos
+
+| Metodo | Mejor para | Complejidad |
+|--------|-----------|-------------|
+| Formula directa | $2 \times 2$ | $O(1)$ |
+| Sarrus | $3 \times 3$ | $O(1)$ |
+| Cofactores | Matrices pequenas, muchos ceros | $O(n!)$ |
+| Reduccion | Matrices grandes | $O(n^3)$ |
+
+---
+
+En la siguiente seccion estudiaremos las propiedades de los determinantes.

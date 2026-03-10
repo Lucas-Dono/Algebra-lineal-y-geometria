@@ -1,0 +1,108 @@
+{
+  "chapter": "04-espacios-vectoriales",
+  "exercises": [
+    {
+      "id": "ev-04-prac-01",
+      "type": "practice",
+      "question": {
+        "text": "Verificar si el conjunto es subespacio de R^3",
+        "latex": "W = \\{(x, y, z) \\in \\mathbb{R}^3 : x + y - z = 0\\}"
+      },
+      "solution": {
+        "text": "Si es subespacio",
+        "latex": "W \\text{ es subespacio de } \\mathbb{R}^3",
+        "steps": [
+          "1. Vector cero: (0,0,0) cumple 0+0-0=0, esta en W",
+          "2. Cerrado suma: si (a,b,c), (d,e,f) en W, a+b-c=0, d+e-f=0",
+          "   (a+d)+(b+e)-(c+f) = (a+b-c)+(d+e-f) = 0, esta en W",
+          "3. Cerrado producto: si (a,b,c) en W y k escalar,",
+          "   ka+kb-kc = k(a+b-c) = k(0) = 0, esta en W"
+        ]
+      },
+      "hints": [
+        "Verifica las 3 propiedades de subespacio",
+        "El cero debe pertenecer al conjunto"
+      ],
+      "tags": ["subespacio", "verificacion"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "ev-04-prac-02",
+      "type": "practice",
+      "question": {
+        "text": "Determinar si los vectores son linealmente independientes",
+        "latex": "\\mathbf{v}_1 = (1, 2, 3), \\quad \\mathbf{v}_2 = (2, 1, 0), \\quad \\mathbf{v}_3 = (1, -1, -3)"
+      },
+      "solution": {
+        "text": "Son linealmente dependientes",
+        "latex": "\\text{Linealmente dependientes: } \\mathbf{v}_3 = \\mathbf{v}_1 - \\mathbf{v}_2",
+        "steps": [
+          "Formar matriz con vectores como filas y reducir:",
+          "[[1,2,3],[2,1,0],[1,-1,-3]]",
+          "F2-2F1, F3-F1: [[1,2,3],[0,-3,-6],[0,-3,-6]]",
+          "F3-F2: [[1,2,3],[0,-3,-6],[0,0,0]]",
+          "La tercera fila es cero: dependientes",
+          "De hecho: v3 = v1 - v2 = (1,2,3)-(2,1,0)=(-1,1,3)... error",
+          "Verificar: v1-v2 = (-1,1,3), v3 = (1,-1,-3) = -1*(v1-v2)"
+        ]
+      },
+      "hints": [
+        "Forma una matriz y reduce",
+        "Si hay fila de ceros, son dependientes"
+      ],
+      "tags": ["independencia lineal", "reduccion"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ev-04-prac-03",
+      "type": "practice",
+      "question": {
+        "text": "Encontrar una base para el subespacio generado por los vectores",
+        "latex": "\\text{gen}\\{(1,2,1), (2,4,2), (1,0,1)\\}"
+      },
+      "solution": {
+        "text": "Base: {(1,2,1), (1,0,1)}",
+        "latex": "\\mathcal{B} = \\{(1,2,1), (1,0,1)\\}",
+        "steps": [
+          "Notar que v2 = 2*v1, es dependiente",
+          "Verificar v1 y v3 independientes:",
+          "k*(1,2,1) + m*(1,0,1) = (0,0,0)",
+          "k+m=0, 2k=0, k+m=0",
+          "De 2k=0: k=0, entonces m=0",
+          "Son independientes, forman base del subespacio"
+        ]
+      },
+      "hints": [
+        "Elimina vectores redundantes",
+        "Verifica independencia de los restantes"
+      ],
+      "tags": ["base", "espacio generado"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "ev-04-prac-04",
+      "type": "practice",
+      "question": {
+        "text": "Encontrar la dimension del espacio solucion del sistema homogeneo",
+        "latex": "\\begin{cases} x + y + z + w = 0 \\\\ x - y + z - w = 0 \\end{cases}"
+      },
+      "solution": {
+        "text": "Dimension 2",
+        "latex": "\\dim(W) = 2",
+        "steps": [
+          "Matriz: [[1,1,1,1],[1,-1,1,-1]]",
+          "F2-F1: [[1,1,1,1],[0,-2,0,-2]]",
+          "Pivotes en columnas 1 y 2",
+          "Variables libres: z, w (2 variables)",
+          "Por teorema: dim = n - rango = 4 - 2 = 2"
+        ]
+      },
+      "hints": [
+        "El espacio solucion es el nucleo de la matriz",
+        "dim(Ker) = n - rango(A)"
+      ],
+      "tags": ["dimension", "nucleo"],
+      "difficulty": "medium"
+    }
+  ]
+}

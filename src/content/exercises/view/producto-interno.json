@@ -1,0 +1,167 @@
+{
+  "chapter": "09-producto-interno",
+  "exercises": [
+    {
+      "id": "pi-09-view-01",
+      "type": "view",
+      "title": "Ortogonalizacion de Gram-Schmidt",
+      "question": {
+        "text": "Ortonormalizar la base {v1, v2} usando Gram-Schmidt",
+        "latex": "\\mathbf{v}_1 = (1, 1), \\quad \\mathbf{v}_2 = (0, 1)"
+      },
+      "solution": {
+        "steps": [
+          {
+            "title": "Primer vector ortogonal",
+            "explanation": "u1 = v1 (sin cambios)",
+            "latex": "\\mathbf{u}_1 = \\mathbf{v}_1 = (1, 1)"
+          },
+          {
+            "title": "Segundo vector ortogonal",
+            "explanation": "u2 = v2 - proy_{u1}(v2)",
+            "latex": "\\mathbf{u}_2 = \\mathbf{v}_2 - \\frac{\\langle \\mathbf{v}_2, \\mathbf{u}_1 \\rangle}{\\langle \\mathbf{u}_1, \\mathbf{u}_1 \\rangle} \\mathbf{u}_1"
+          },
+          {
+            "title": "Calcular productos internos",
+            "explanation": "Necesitamos los productos escalares",
+            "latex": "\\langle \\mathbf{v}_2, \\mathbf{u}_1 \\rangle = 0(1) + 1(1) = 1, \\quad \\langle \\mathbf{u}_1, \\mathbf{u}_1 \\rangle = 1 + 1 = 2"
+          },
+          {
+            "title": "Calcular proyeccion",
+            "explanation": "Proyeccion de v2 sobre u1",
+            "latex": "\\text{proy}_{\\mathbf{u}_1}(\\mathbf{v}_2) = \\frac{1}{2}(1, 1) = \\left(\\frac{1}{2}, \\frac{1}{2}\\right)"
+          },
+          {
+            "title": "Obtener u2",
+            "explanation": "Restamos la proyeccion",
+            "latex": "\\mathbf{u}_2 = (0, 1) - \\left(\\frac{1}{2}, \\frac{1}{2}\\right) = \\left(-\\frac{1}{2}, \\frac{1}{2}\\right)"
+          },
+          {
+            "title": "Verificar ortogonalidad",
+            "explanation": "El producto interno debe ser cero",
+            "latex": "\\langle \\mathbf{u}_1, \\mathbf{u}_2 \\rangle = 1\\left(-\\frac{1}{2}\\right) + 1\\left(\\frac{1}{2}\\right) = 0 \\checkmark"
+          },
+          {
+            "title": "Normalizar u1",
+            "explanation": "Dividir por su norma",
+            "latex": "\\mathbf{e}_1 = \\frac{\\mathbf{u}_1}{\\|\\mathbf{u}_1\\|} = \\frac{(1,1)}{\\sqrt{2}} = \\left(\\frac{1}{\\sqrt{2}}, \\frac{1}{\\sqrt{2}}\\right)"
+          },
+          {
+            "title": "Normalizar u2",
+            "explanation": "Dividir por su norma",
+            "latex": "\\|\\mathbf{u}_2\\| = \\sqrt{\\frac{1}{4} + \\frac{1}{4}} = \\frac{1}{\\sqrt{2}}, \\quad \\mathbf{e}_2 = \\left(-\\frac{1}{\\sqrt{2}}, \\frac{1}{\\sqrt{2}}\\right)"
+          }
+        ],
+        "final_answer": {
+          "text": "Base ortonormal obtenida",
+          "latex": "\\mathbf{e}_1 = \\left(\\frac{\\sqrt{2}}{2}, \\frac{\\sqrt{2}}{2}\\right), \\quad \\mathbf{e}_2 = \\left(-\\frac{\\sqrt{2}}{2}, \\frac{\\sqrt{2}}{2}\\right)"
+        }
+      },
+      "key_concepts": ["Gram-Schmidt", "ortonormalizacion", "proyeccion"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "pi-09-view-02",
+      "type": "view",
+      "title": "Proyeccion ortogonal sobre subespacio",
+      "question": {
+        "text": "Encontrar la proyeccion de v sobre el subespacio generado por {u1, u2}",
+        "latex": "\\mathbf{v} = (1, 2, 3), \\quad \\mathbf{u}_1 = (1, 0, 0), \\quad \\mathbf{u}_2 = (0, 1, 0)"
+      },
+      "solution": {
+        "steps": [
+          {
+            "title": "Verificar que u1, u2 son ortonormales",
+            "explanation": "Los vectores de la base son ortogonales y unitarios",
+            "latex": "\\langle \\mathbf{u}_1, \\mathbf{u}_2 \\rangle = 0, \\quad \\|\\mathbf{u}_1\\| = \\|\\mathbf{u}_2\\| = 1"
+          },
+          {
+            "title": "Formula de proyeccion",
+            "explanation": "Para base ortonormal, la proyeccion es suma de proyecciones",
+            "latex": "\\text{proy}_W(\\mathbf{v}) = \\langle \\mathbf{v}, \\mathbf{u}_1 \\rangle \\mathbf{u}_1 + \\langle \\mathbf{v}, \\mathbf{u}_2 \\rangle \\mathbf{u}_2"
+          },
+          {
+            "title": "Calcular productos internos",
+            "explanation": "Proyectamos sobre cada vector base",
+            "latex": "\\langle \\mathbf{v}, \\mathbf{u}_1 \\rangle = 1, \\quad \\langle \\mathbf{v}, \\mathbf{u}_2 \\rangle = 2"
+          },
+          {
+            "title": "Calcular proyeccion",
+            "explanation": "Combinacion lineal",
+            "latex": "\\text{proy}_W(\\mathbf{v}) = 1(1, 0, 0) + 2(0, 1, 0) = (1, 2, 0)"
+          },
+          {
+            "title": "Componente ortogonal",
+            "explanation": "Lo que sobra de v despues de proyectar",
+            "latex": "\\mathbf{v}^\\perp = \\mathbf{v} - \\text{proy}_W(\\mathbf{v}) = (1, 2, 3) - (1, 2, 0) = (0, 0, 3)"
+          },
+          {
+            "title": "Verificacion",
+            "explanation": "v^perp debe ser ortogonal a W",
+            "latex": "\\langle \\mathbf{v}^\\perp, \\mathbf{u}_1 \\rangle = 0, \\quad \\langle \\mathbf{v}^\\perp, \\mathbf{u}_2 \\rangle = 0 \\checkmark"
+          }
+        ],
+        "final_answer": {
+          "text": "La proyeccion es el componente de v en el plano xy",
+          "latex": "\\text{proy}_W(\\mathbf{v}) = (1, 2, 0)"
+        }
+      },
+      "key_concepts": ["proyeccion ortogonal", "subespacio", "complemento ortogonal"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "pi-09-view-03",
+      "type": "view",
+      "title": "Minimos cuadrados",
+      "question": {
+        "text": "Encontrar la mejor aproximacion lineal y = ax para los puntos (1,2), (2,3), (3,5)",
+        "latex": "\\text{Minimizar } \\sum (y_i - ax_i)^2"
+      },
+      "solution": {
+        "steps": [
+          {
+            "title": "Plantear el sistema",
+            "explanation": "Queremos resolver Xa = y donde X es la columna de x's",
+            "latex": "X = \\begin{pmatrix} 1 \\\\ 2 \\\\ 3 \\end{pmatrix}, \\quad \\mathbf{y} = \\begin{pmatrix} 2 \\\\ 3 \\\\ 5 \\end{pmatrix}"
+          },
+          {
+            "title": "Sistema inconsistente",
+            "explanation": "No existe a tal que Xa = y exactamente",
+            "latex": "\\text{El sistema no tiene solucion exacta}"
+          },
+          {
+            "title": "Ecuacion normal",
+            "explanation": "La solucion de minimos cuadrados satisface X^T X a = X^T y",
+            "latex": "X^T X \\cdot a = X^T \\mathbf{y}"
+          },
+          {
+            "title": "Calcular X^T X",
+            "explanation": "Producto matricial",
+            "latex": "X^T X = \\begin{pmatrix} 1 & 2 & 3 \\end{pmatrix} \\begin{pmatrix} 1 \\\\ 2 \\\\ 3 \\end{pmatrix} = 1 + 4 + 9 = 14"
+          },
+          {
+            "title": "Calcular X^T y",
+            "explanation": "Producto matricial",
+            "latex": "X^T \\mathbf{y} = \\begin{pmatrix} 1 & 2 & 3 \\end{pmatrix} \\begin{pmatrix} 2 \\\\ 3 \\\\ 5 \\end{pmatrix} = 2 + 6 + 15 = 23"
+          },
+          {
+            "title": "Resolver para a",
+            "explanation": "Despejamos el coeficiente",
+            "latex": "14a = 23 \\Rightarrow a = \\frac{23}{14} \\approx 1.643"
+          },
+          {
+            "title": "Verificacion geometrica",
+            "explanation": "El error es ortogonal al subespacio",
+            "latex": "\\text{Error} = \\mathbf{y} - X\\hat{a} = \\begin{pmatrix} 2 - 1.643 \\\\ 3 - 3.286 \\\\ 5 - 4.929 \\end{pmatrix} = \\begin{pmatrix} 0.357 \\\\ -0.286 \\\\ 0.071 \\end{pmatrix}"
+          }
+        ],
+        "final_answer": {
+          "text": "La mejor recta que pasa por el origen es y = (23/14)x",
+          "latex": "y = \\frac{23}{14}x \\approx 1.643x"
+        }
+      },
+      "key_concepts": ["minimos cuadrados", "ecuaciones normales", "regresion"],
+      "difficulty": "hard"
+    }
+  ]
+}

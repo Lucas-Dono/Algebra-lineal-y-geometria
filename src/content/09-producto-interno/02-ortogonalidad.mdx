@@ -1,0 +1,143 @@
+---
+title: "Ortogonalidad"
+chapter: 9
+section: 2
+---
+
+# Ortogonalidad
+
+La ortogonalidad generaliza la nocion de perpendicularidad a cualquier espacio con producto interno.
+
+## Definicion
+
+Dos vectores $\mathbf{u}$ y $\mathbf{v}$ son **ortogonales** si:
+
+$$\langle\mathbf{u}, \mathbf{v}\rangle = 0$$
+
+Se denota $\mathbf{u} \perp \mathbf{v}$.
+
+## Propiedades Basicas
+
+1. $\mathbf{0} \perp \mathbf{v}$ para todo $\mathbf{v}$
+2. Si $\mathbf{u} \perp \mathbf{v}$, entonces $\mathbf{v} \perp \mathbf{u}$
+3. Si $\mathbf{u} \perp \mathbf{v}$, entonces $(c\mathbf{u}) \perp \mathbf{v}$ para todo escalar $c$
+
+## Teorema de Pitagoras
+
+Si $\mathbf{u} \perp \mathbf{v}$:
+
+$$\|\mathbf{u} + \mathbf{v}\|^2 = \|\mathbf{u}\|^2 + \|\mathbf{v}\|^2$$
+
+**Demostracion:**
+$$\|\mathbf{u} + \mathbf{v}\|^2 = \langle\mathbf{u} + \mathbf{v}, \mathbf{u} + \mathbf{v}\rangle$$
+$$= \|\mathbf{u}\|^2 + 2\langle\mathbf{u}, \mathbf{v}\rangle + \|\mathbf{v}\|^2 = \|\mathbf{u}\|^2 + \|\mathbf{v}\|^2$$
+
+## Conjunto Ortogonal
+
+Un conjunto $\{\mathbf{v}_1, \ldots, \mathbf{v}_k\}$ es **ortogonal** si:
+
+$$\langle\mathbf{v}_i, \mathbf{v}_j\rangle = 0 \quad \text{para } i \neq j$$
+
+### Independencia Lineal
+
+**Teorema:** Un conjunto ortogonal de vectores no nulos es linealmente independiente.
+
+**Demostracion:** Supongamos $c_1\mathbf{v}_1 + \cdots + c_k\mathbf{v}_k = \mathbf{0}$.
+
+Tomando producto interno con $\mathbf{v}_i$:
+$$\langle c_1\mathbf{v}_1 + \cdots + c_k\mathbf{v}_k, \mathbf{v}_i \rangle = c_i\|\mathbf{v}_i\|^2 = 0$$
+
+Como $\mathbf{v}_i \neq \mathbf{0}$, entonces $c_i = 0$.
+
+## Conjunto Ortonormal
+
+Un conjunto es **ortonormal** si es ortogonal y todos los vectores son unitarios:
+
+$$\langle\mathbf{v}_i, \mathbf{v}_j\rangle = \delta_{ij} = \begin{cases} 1 & \text{si } i = j \\ 0 & \text{si } i \neq j \end{cases}$$
+
+### Base Ortonormal
+
+Una base ortonormal de un espacio $V$ es una base que es un conjunto ortonormal.
+
+## Coordenadas en Base Ortonormal
+
+Si $\mathcal{B} = \{\mathbf{u}_1, \ldots, \mathbf{u}_n\}$ es base ortonormal de $V$:
+
+$$\mathbf{v} = \sum_{i=1}^{n} \langle\mathbf{v}, \mathbf{u}_i\rangle \mathbf{u}_i$$
+
+Las coordenadas se obtienen por producto interno:
+
+$$[\mathbf{v}]_\mathcal{B} = \begin{pmatrix} \langle\mathbf{v}, \mathbf{u}_1\rangle \\ \vdots \\ \langle\mathbf{v}, \mathbf{u}_n\rangle \end{pmatrix}$$
+
+**Ventaja:** No hay que resolver sistemas de ecuaciones.
+
+## Complemento Ortogonal
+
+El **complemento ortogonal** de un subespacio $W$ es:
+
+$$W^\perp = \{\mathbf{v} \in V : \langle\mathbf{v}, \mathbf{w}\rangle = 0 \text{ para todo } \mathbf{w} \in W\}$$
+
+### Propiedades
+
+1. $W^\perp$ es un subespacio de $V$
+2. $W \cap W^\perp = \{\mathbf{0}\}$
+3. $V = W \oplus W^\perp$ (suma directa)
+4. $(W^\perp)^\perp = W$
+5. $\dim(W) + \dim(W^\perp) = \dim(V)$
+
+### Ejemplo
+
+En $\mathbb{R}^3$, si $W$ es un plano por el origen:
+- $W^\perp$ es la recta normal al plano (por el origen)
+- $\dim(W) = 2$, $\dim(W^\perp) = 1$
+
+## Complemento Ortogonal y Subespacios Fundamentales
+
+Para una matriz $A$ de $m \times n$:
+
+- $(\text{Fila}(A))^\perp = \text{Nul}(A)$ en $\mathbb{R}^n$
+- $(\text{Col}(A))^\perp = \text{Nul}(A^T)$ en $\mathbb{R}^m$
+
+## Matrices Ortogonales
+
+Una matriz cuadrada $Q$ es **ortogonal** si:
+
+$$Q^TQ = QQ^T = I$$
+
+Equivalentemente: $Q^{-1} = Q^T$.
+
+### Caracterizacion
+
+$Q$ es ortogonal si y solo si sus columnas forman una base ortonormal de $\mathbb{R}^n$.
+
+### Propiedades
+
+1. $|\det(Q)| = 1$
+2. $\|Q\mathbf{x}\| = \|\mathbf{x}\|$ (preserva normas)
+3. $\langle Q\mathbf{x}, Q\mathbf{y} \rangle = \langle\mathbf{x}, \mathbf{y}\rangle$ (preserva productos internos)
+4. Las matrices ortogonales de $n \times n$ forman un grupo
+
+### Ejemplos
+
+**Rotacion:**
+$$R_\theta = \begin{pmatrix} \cos\theta & -\sin\theta \\ \sin\theta & \cos\theta \end{pmatrix}$$
+
+**Reflexion:**
+$$S = \begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix}$$
+
+**Matriz de permutacion:**
+$$P = \begin{pmatrix} 0 & 1 & 0 \\ 0 & 0 & 1 \\ 1 & 0 & 0 \end{pmatrix}$$
+
+## Descomposicion Ortogonal
+
+Todo vector $\mathbf{v}$ se descompone como:
+
+$$\mathbf{v} = \mathbf{w} + \mathbf{w}^\perp$$
+
+donde $\mathbf{w} \in W$ y $\mathbf{w}^\perp \in W^\perp$.
+
+Esta descomposicion es unica.
+
+---
+
+En la siguiente seccion aprenderemos el proceso de Gram-Schmidt para construir bases ortonormales.

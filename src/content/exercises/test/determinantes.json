@@ -1,0 +1,203 @@
+{
+  "chapter": "06-determinantes",
+  "exercises": [
+    {
+      "id": "det-06-test-01",
+      "type": "test",
+      "category": "multiple-choice",
+      "question": {
+        "text": "El determinante de una matriz triangular es:",
+        "latex": null
+      },
+      "options": [
+        { "id": "a", "text": "El producto de los elementos de la diagonal", "correct": true },
+        { "id": "b", "text": "La suma de los elementos de la diagonal", "correct": false },
+        { "id": "c", "text": "Siempre 1", "correct": false },
+        { "id": "d", "text": "Siempre 0", "correct": false }
+      ],
+      "hints": [
+        "Piensa en la expansion por cofactores",
+        "Los elementos fuera de la diagonal contribuyen con cero"
+      ],
+      "feedback": {
+        "correct": "Correcto. Para matrices triangulares, det = a11 * a22 * ... * ann.",
+        "incorrect": "El determinante de una triangular es simplemente el producto de la diagonal."
+      },
+      "tags": ["determinantes", "triangular"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "det-06-test-02",
+      "type": "test",
+      "category": "multiple-choice",
+      "question": {
+        "text": "Si intercambiamos dos filas de A, el determinante:",
+        "latex": null
+      },
+      "options": [
+        { "id": "a", "text": "Cambia de signo", "correct": true },
+        { "id": "b", "text": "Se duplica", "correct": false },
+        { "id": "c", "text": "No cambia", "correct": false },
+        { "id": "d", "text": "Se hace cero", "correct": false }
+      ],
+      "hints": [
+        "El determinante es alternante en las filas",
+        "Intercambiar filas es una permutacion impar"
+      ],
+      "feedback": {
+        "correct": "Correcto. Cada intercambio de filas multiplica el determinante por -1.",
+        "incorrect": "Intercambiar filas cambia el signo del determinante."
+      },
+      "tags": ["determinantes", "operaciones-filas"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "det-06-test-03",
+      "type": "test",
+      "category": "multiple-choice",
+      "question": {
+        "text": "det(AB) es igual a:",
+        "latex": "\\det(AB)"
+      },
+      "options": [
+        { "id": "a", "text": "det(A) * det(B)", "correct": true },
+        { "id": "b", "text": "det(A) + det(B)", "correct": false },
+        { "id": "c", "text": "det(A + B)", "correct": false },
+        { "id": "d", "text": "det(A) / det(B)", "correct": false }
+      ],
+      "hints": [
+        "El determinante es multiplicativo",
+        "Es una de las propiedades fundamentales"
+      ],
+      "feedback": {
+        "correct": "Correcto. El determinante del producto es el producto de los determinantes.",
+        "incorrect": "det(AB) = det(A) * det(B). Es una propiedad fundamental."
+      },
+      "tags": ["determinantes", "producto"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "det-06-test-04",
+      "type": "test",
+      "category": "multiple-choice",
+      "question": {
+        "text": "Si det(A) = 5, entonces det(3A) para A de 2x2 es:",
+        "latex": "\\det(3A)"
+      },
+      "options": [
+        { "id": "a", "text": "45", "correct": true },
+        { "id": "b", "text": "15", "correct": false },
+        { "id": "c", "text": "9", "correct": false },
+        { "id": "d", "text": "125", "correct": false }
+      ],
+      "hints": [
+        "det(cA) = c^n * det(A) donde n es el orden",
+        "Aqui n = 2"
+      ],
+      "feedback": {
+        "correct": "Correcto. det(3A) = 3^2 * det(A) = 9 * 5 = 45.",
+        "incorrect": "det(cA) = c^n * det(A). Para una matriz 2x2, det(3A) = 9 * det(A)."
+      },
+      "tags": ["determinantes", "escalar"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "det-06-test-05",
+      "type": "test",
+      "category": "true-false",
+      "question": {
+        "text": "Si det(A) = 0, entonces A tiene una fila que es combinacion lineal de las otras",
+        "latex": "\\det(A) = 0"
+      },
+      "options": [
+        { "id": "true", "text": "Verdadero", "correct": true },
+        { "id": "false", "text": "Falso", "correct": false }
+      ],
+      "hints": [
+        "det = 0 significa filas LD",
+        "LD significa que una es combinacion de las otras"
+      ],
+      "feedback": {
+        "correct": "Correcto. det = 0 implica que las filas son linealmente dependientes.",
+        "incorrect": "Determinante cero significa dependencia lineal entre filas (o columnas)."
+      },
+      "tags": ["determinantes", "singularidad"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "det-06-test-06",
+      "type": "test",
+      "category": "multiple-choice",
+      "question": {
+        "text": "El area del paralelogramo formado por (2,0) y (0,3) es:",
+        "latex": null
+      },
+      "options": [
+        { "id": "a", "text": "6", "correct": true },
+        { "id": "b", "text": "5", "correct": false },
+        { "id": "c", "text": "3", "correct": false },
+        { "id": "d", "text": "2", "correct": false }
+      ],
+      "hints": [
+        "El area es el valor absoluto del determinante",
+        "Forma la matriz con los vectores como columnas"
+      ],
+      "feedback": {
+        "correct": "Correcto. |det([2 0; 0 3])| = |6 - 0| = 6.",
+        "incorrect": "El area del paralelogramo es |det| de la matriz formada por los vectores."
+      },
+      "tags": ["determinantes", "geometria", "area"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "det-06-test-07",
+      "type": "test",
+      "category": "multiple-choice",
+      "question": {
+        "text": "Por la regla de Cramer, x1 en Ax = b se calcula como:",
+        "latex": null
+      },
+      "options": [
+        { "id": "a", "text": "det(A1) / det(A), donde A1 tiene la columna 1 reemplazada por b", "correct": true },
+        { "id": "b", "text": "det(A) / det(A1)", "correct": false },
+        { "id": "c", "text": "det(A) * det(b)", "correct": false },
+        { "id": "d", "text": "det(A + b)", "correct": false }
+      ],
+      "hints": [
+        "Cramer usa determinantes de matrices modificadas",
+        "Se reemplaza una columna por el vector b"
+      ],
+      "feedback": {
+        "correct": "Correcto. xi = det(Ai) / det(A), donde Ai tiene la columna i reemplazada por b.",
+        "incorrect": "En Cramer, xi es el cociente de det(Ai) sobre det(A), donde Ai tiene columna i = b."
+      },
+      "tags": ["determinantes", "cramer"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "det-06-test-08",
+      "type": "test",
+      "category": "multiple-choice",
+      "question": {
+        "text": "det(A^T) es igual a:",
+        "latex": "\\det(A^T)"
+      },
+      "options": [
+        { "id": "a", "text": "det(A)", "correct": true },
+        { "id": "b", "text": "-det(A)", "correct": false },
+        { "id": "c", "text": "1/det(A)", "correct": false },
+        { "id": "d", "text": "det(A)^2", "correct": false }
+      ],
+      "hints": [
+        "La transpuesta no cambia el determinante",
+        "Las propiedades de filas valen tambien para columnas"
+      ],
+      "feedback": {
+        "correct": "Correcto. El determinante de A y A^T son siempre iguales.",
+        "incorrect": "Transponer una matriz no cambia su determinante."
+      },
+      "tags": ["determinantes", "transpuesta"],
+      "difficulty": "easy"
+    }
+  ]
+}

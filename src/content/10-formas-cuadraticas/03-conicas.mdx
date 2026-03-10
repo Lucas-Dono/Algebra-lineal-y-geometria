@@ -1,0 +1,156 @@
+---
+title: "Conicas"
+chapter: 10
+section: 3
+---
+
+# Conicas
+
+Las conicas son curvas del plano definidas por ecuaciones cuadraticas de segundo grado.
+
+## Ecuacion General
+
+La ecuacion general de una conica es:
+
+$$Ax^2 + Bxy + Cy^2 + Dx + Ey + F = 0$$
+
+La parte cuadratica es $Q(x, y) = Ax^2 + Bxy + Cy^2$.
+
+## Matriz de la Parte Cuadratica
+
+$$A_Q = \begin{pmatrix} A & B/2 \\ B/2 & C \end{pmatrix}$$
+
+Los autovalores de $A_Q$ determinan el tipo de conica.
+
+## Clasificacion por Autovalores
+
+| Autovalores | Tipo |
+|-------------|------|
+| Mismo signo ($\lambda_1\lambda_2 > 0$) | Elipse (o circunferencia, o vacia, o punto) |
+| Signos opuestos ($\lambda_1\lambda_2 < 0$) | Hiperbola (o dos rectas) |
+| Uno es cero ($\lambda_1\lambda_2 = 0$) | Parabola (o rectas paralelas, o recta, o vacia) |
+
+## Discriminante
+
+El **discriminante** es:
+
+$$\Delta = B^2 - 4AC = -4\det(A_Q)$$
+
+- $\Delta < 0$: Elipse
+- $\Delta > 0$: Hiperbola
+- $\Delta = 0$: Parabola
+
+## Reduccion a Forma Canonica
+
+### Paso 1: Eliminar el termino $xy$
+
+Encontrar los autovalores y autovectores de $A_Q$.
+
+Si $\theta$ es el angulo de rotacion:
+
+$$\tan(2\theta) = \frac{B}{A - C}$$
+
+Rotar: $x = x'\cos\theta - y'\sin\theta$, $y = x'\sin\theta + y'\cos\theta$.
+
+### Paso 2: Completar cuadrados
+
+Eliminar los terminos lineales en $x'$ y $y'$.
+
+### Paso 3: Identificar la forma canonica
+
+## Formas Canonicas
+
+### Elipse
+
+$$\frac{x^2}{a^2} + \frac{y^2}{b^2} = 1$$
+
+- Centro en el origen
+- Semiejes $a$ y $b$
+- Si $a = b$: circunferencia
+
+### Hiperbola
+
+$$\frac{x^2}{a^2} - \frac{y^2}{b^2} = 1$$
+
+- Centro en el origen
+- Asintotas: $y = \pm\frac{b}{a}x$
+
+### Parabola
+
+$$y^2 = 4px$$ o $$x^2 = 4py$$
+
+- Vertice en el origen
+- Foco en $(p, 0)$ o $(0, p)$
+
+## Ejemplo Completo
+
+Clasificar y reducir: $5x^2 + 4xy + 2y^2 - 6 = 0$.
+
+**Paso 1:** Matriz de la parte cuadratica:
+
+$$A_Q = \begin{pmatrix} 5 & 2 \\ 2 & 2 \end{pmatrix}$$
+
+**Autovalores:**
+$$\det(A_Q - \lambda I) = (5-\lambda)(2-\lambda) - 4 = \lambda^2 - 7\lambda + 6 = (\lambda - 1)(\lambda - 6)$$
+
+$\lambda_1 = 1$, $\lambda_2 = 6$.
+
+Ambos positivos $\Rightarrow$ **Elipse**.
+
+**Autovectores:**
+
+Para $\lambda_1 = 1$: $4x + 2y = 0 \Rightarrow y = -2x$. Normalizado: $\mathbf{v}_1 = \frac{1}{\sqrt{5}}(1, -2)^T$.
+
+Para $\lambda_2 = 6$: $-x + 2y = 0 \Rightarrow x = 2y$. Normalizado: $\mathbf{v}_2 = \frac{1}{\sqrt{5}}(2, 1)^T$.
+
+**Matriz de rotacion:**
+$$P = \frac{1}{\sqrt{5}}\begin{pmatrix} 1 & 2 \\ -2 & 1 \end{pmatrix}$$
+
+**Angulo de rotacion:**
+$$\cos\theta = \frac{1}{\sqrt{5}}, \quad \sin\theta = \frac{-2}{\sqrt{5}}$$
+
+$$\theta = -\arctan(2) \approx -63.43°$$
+
+**En nuevas coordenadas:**
+$$1 \cdot (x')^2 + 6 \cdot (y')^2 = 6$$
+
+**Forma canonica:**
+$$\frac{(x')^2}{6} + \frac{(y')^2}{1} = 1$$
+
+Elipse con semieje mayor $\sqrt{6}$ (direccion $x'$) y semieje menor $1$ (direccion $y'$).
+
+## Ejemplo con Terminos Lineales
+
+Clasificar: $x^2 + y^2 - 4x + 6y + 9 = 0$.
+
+No hay termino $xy$, asi que no hay rotacion.
+
+**Completar cuadrados:**
+$$(x^2 - 4x + 4) + (y^2 + 6y + 9) + 9 - 4 - 9 = 0$$
+$$(x - 2)^2 + (y + 3)^2 = 4$$
+
+**Forma canonica:**
+$$\frac{(x - 2)^2}{4} + \frac{(y + 3)^2}{4} = 1$$
+
+**Circunferencia** con centro $(2, -3)$ y radio 2.
+
+## Casos Degenerados
+
+- **Elipse vacia:** $x^2 + y^2 = -1$
+- **Punto:** $x^2 + y^2 = 0$
+- **Dos rectas que se cortan:** $x^2 - y^2 = 0$ (es decir, $y = \pm x$)
+- **Dos rectas paralelas:** $x^2 = 1$ (es decir, $x = \pm 1$)
+- **Una recta doble:** $x^2 = 0$
+
+## Resumen de Clasificacion
+
+| Condicion | Conica |
+|-----------|--------|
+| $\det(A_Q) > 0$ y $\text{tr}(A_Q) > 0$ | Elipse |
+| $\det(A_Q) > 0$ y $\text{tr}(A_Q) < 0$ | Elipse (imaginaria) |
+| $\det(A_Q) < 0$ | Hiperbola |
+| $\det(A_Q) = 0$ | Parabola |
+
+---
+
+En la siguiente seccion generalizaremos a superficies cuadricas.

@@ -1,0 +1,203 @@
+{
+  "chapter": "08-autovalores-autovectores",
+  "exercises": [
+    {
+      "id": "av-08-test-01",
+      "type": "test",
+      "category": "multiple-choice",
+      "question": {
+        "text": "Un autovector v de A satisface:",
+        "latex": null
+      },
+      "options": [
+        { "id": "a", "text": "Av = lambda v para algun escalar lambda", "correct": true },
+        { "id": "b", "text": "Av = 0", "correct": false },
+        { "id": "c", "text": "Av = v", "correct": false },
+        { "id": "d", "text": "v^T A = 0", "correct": false }
+      ],
+      "hints": [
+        "El autovector solo se escala, no cambia de direccion",
+        "lambda es el autovalor asociado"
+      ],
+      "feedback": {
+        "correct": "Correcto. Av = lambda v define la relacion autovector-autovalor.",
+        "incorrect": "Un autovector v satisface Av = lambda v, donde lambda es el autovalor."
+      },
+      "tags": ["autovalores", "definicion"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "av-08-test-02",
+      "type": "test",
+      "category": "multiple-choice",
+      "question": {
+        "text": "Los autovalores de A se encuentran resolviendo:",
+        "latex": null
+      },
+      "options": [
+        { "id": "a", "text": "det(A - lambda I) = 0", "correct": true },
+        { "id": "b", "text": "det(A) = lambda", "correct": false },
+        { "id": "c", "text": "A - I = 0", "correct": false },
+        { "id": "d", "text": "tr(A) = lambda", "correct": false }
+      ],
+      "hints": [
+        "Se busca cuando (A - lambda I) es singular",
+        "Una matriz es singular cuando su determinante es cero"
+      ],
+      "feedback": {
+        "correct": "Correcto. La ecuacion caracteristica det(A - lambda I) = 0 da los autovalores.",
+        "incorrect": "Los autovalores son raices del polinomio caracteristico det(A - lambda I) = 0."
+      },
+      "tags": ["autovalores", "ecuacion-caracteristica"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "av-08-test-03",
+      "type": "test",
+      "category": "multiple-choice",
+      "question": {
+        "text": "Si A es 3x3 con autovalores 1, 2, 3, entonces det(A) es:",
+        "latex": null
+      },
+      "options": [
+        { "id": "a", "text": "6", "correct": true },
+        { "id": "b", "text": "5", "correct": false },
+        { "id": "c", "text": "1", "correct": false },
+        { "id": "d", "text": "9", "correct": false }
+      ],
+      "hints": [
+        "El determinante es el producto de los autovalores",
+        "Es una propiedad del polinomio caracteristico"
+      ],
+      "feedback": {
+        "correct": "Correcto. det(A) = lambda1 * lambda2 * lambda3 = 1 * 2 * 3 = 6.",
+        "incorrect": "El determinante es el producto de todos los autovalores."
+      },
+      "tags": ["autovalores", "determinante"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "av-08-test-04",
+      "type": "test",
+      "category": "multiple-choice",
+      "question": {
+        "text": "Una matriz es diagonalizable si:",
+        "latex": null
+      },
+      "options": [
+        { "id": "a", "text": "Tiene n autovectores linealmente independientes", "correct": true },
+        { "id": "b", "text": "Es simetrica", "correct": false },
+        { "id": "c", "text": "Tiene n autovalores distintos", "correct": false },
+        { "id": "d", "text": "det(A) distinto de 0", "correct": false }
+      ],
+      "hints": [
+        "Los autovectores forman las columnas de P",
+        "Necesitamos suficientes autovectores LI"
+      ],
+      "feedback": {
+        "correct": "Correcto. Se necesitan n autovectores LI para formar la matriz P.",
+        "incorrect": "La condicion es tener n autovectores LI. Simetrica es suficiente pero no necesario."
+      },
+      "tags": ["autovalores", "diagonalizacion"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "av-08-test-05",
+      "type": "test",
+      "category": "multiple-choice",
+      "question": {
+        "text": "Si A = PDP^(-1) con D diagonal, entonces A^10 es:",
+        "latex": "A^{10}"
+      },
+      "options": [
+        { "id": "a", "text": "P D^10 P^(-1)", "correct": true },
+        { "id": "b", "text": "(PDP^(-1))^10", "correct": false },
+        { "id": "c", "text": "P^10 D^10 P^(-10)", "correct": false },
+        { "id": "d", "text": "D^10", "correct": false }
+      ],
+      "hints": [
+        "Expande A^2 = PDP^(-1) PDP^(-1) = PD^2P^(-1)",
+        "El patron continua para cualquier potencia"
+      ],
+      "feedback": {
+        "correct": "Correcto. Las P interiores se cancelan, dejando P D^n P^(-1).",
+        "incorrect": "A^n = P D^n P^(-1). Solo D se eleva a la potencia."
+      },
+      "tags": ["autovalores", "potencias", "diagonalizacion"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "av-08-test-06",
+      "type": "test",
+      "category": "true-false",
+      "question": {
+        "text": "Toda matriz simetrica real es diagonalizable",
+        "latex": null
+      },
+      "options": [
+        { "id": "true", "text": "Verdadero", "correct": true },
+        { "id": "false", "text": "Falso", "correct": false }
+      ],
+      "hints": [
+        "Es el teorema espectral para matrices reales",
+        "Ademas, se puede diagonalizar ortogonalmente"
+      ],
+      "feedback": {
+        "correct": "Correcto. Las matrices simetricas reales siempre tienen autovalores reales y base ortonormal de autovectores.",
+        "incorrect": "Toda matriz simetrica real es diagonalizable (teorema espectral)."
+      },
+      "tags": ["autovalores", "simetrica", "diagonalizacion"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "av-08-test-07",
+      "type": "test",
+      "category": "multiple-choice",
+      "question": {
+        "text": "Si v es autovector de A con autovalor lambda, entonces v es autovector de A^2 con autovalor:",
+        "latex": null
+      },
+      "options": [
+        { "id": "a", "text": "lambda^2", "correct": true },
+        { "id": "b", "text": "2 lambda", "correct": false },
+        { "id": "c", "text": "lambda", "correct": false },
+        { "id": "d", "text": "sqrt(lambda)", "correct": false }
+      ],
+      "hints": [
+        "Calcula A^2 v = A(Av)",
+        "Usa que Av = lambda v"
+      ],
+      "feedback": {
+        "correct": "Correcto. A^2 v = A(Av) = A(lambda v) = lambda Av = lambda^2 v.",
+        "incorrect": "A^2 v = A(lambda v) = lambda (Av) = lambda * lambda v = lambda^2 v."
+      },
+      "tags": ["autovalores", "potencias"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "av-08-test-08",
+      "type": "test",
+      "category": "multiple-choice",
+      "question": {
+        "text": "La suma de los autovalores de una matriz A es igual a:",
+        "latex": null
+      },
+      "options": [
+        { "id": "a", "text": "tr(A)", "correct": true },
+        { "id": "b", "text": "det(A)", "correct": false },
+        { "id": "c", "text": "rango(A)", "correct": false },
+        { "id": "d", "text": "n (la dimension)", "correct": false }
+      ],
+      "hints": [
+        "La traza es invariante bajo semejanza",
+        "En forma diagonal, la traza es clara"
+      ],
+      "feedback": {
+        "correct": "Correcto. La suma de autovalores es la traza. El producto es el determinante.",
+        "incorrect": "Suma de autovalores = tr(A). Producto de autovalores = det(A)."
+      },
+      "tags": ["autovalores", "traza"],
+      "difficulty": "medium"
+    }
+  ]
+}

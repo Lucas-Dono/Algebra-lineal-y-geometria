@@ -1,0 +1,105 @@
+{
+  "chapter": "09-producto-interno",
+  "exercises": [
+    {
+      "id": "pi-09-prac-01",
+      "type": "practice",
+      "question": {
+        "text": "Calcular el angulo entre los vectores",
+        "latex": "\\mathbf{u} = (1, 2, 2), \\quad \\mathbf{v} = (2, -1, 2)"
+      },
+      "solution": {
+        "text": "theta = arccos(2/9)",
+        "latex": "\\theta = \\arccos\\left(\\frac{2}{9}\\right) \\approx 77.16°",
+        "steps": [
+          "Producto interno: <u,v> = 1(2) + 2(-1) + 2(2) = 2 - 2 + 4 = 4",
+          "||u|| = sqrt(1+4+4) = 3",
+          "||v|| = sqrt(4+1+4) = 3",
+          "cos(theta) = <u,v>/(||u|| ||v||) = 4/(3*3) = 4/9",
+          "theta = arccos(4/9) approx 63.6°"
+        ]
+      },
+      "hints": [
+        "Usa la formula cos(theta) = <u,v>/(||u|| ||v||)",
+        "Primero calcula el producto interno y las normas"
+      ],
+      "tags": ["angulo", "producto interno"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "pi-09-prac-02",
+      "type": "practice",
+      "question": {
+        "text": "Encontrar la proyeccion de u sobre v",
+        "latex": "\\mathbf{u} = (4, 3), \\quad \\mathbf{v} = (1, 1)"
+      },
+      "solution": {
+        "text": "proy_v(u) = (7/2, 7/2)",
+        "latex": "\\text{proy}_{\\mathbf{v}}(\\mathbf{u}) = \\left(\\frac{7}{2}, \\frac{7}{2}\\right)",
+        "steps": [
+          "<u,v> = 4(1) + 3(1) = 7",
+          "<v,v> = 1 + 1 = 2",
+          "proy_v(u) = (<u,v>/<v,v>) * v",
+          "= (7/2) * (1,1) = (7/2, 7/2)"
+        ]
+      },
+      "hints": [
+        "Formula: proy_v(u) = (<u,v>/<v,v>) * v",
+        "La proyeccion es paralela a v"
+      ],
+      "tags": ["proyeccion", "producto interno"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "pi-09-prac-03",
+      "type": "practice",
+      "question": {
+        "text": "Aplicar Gram-Schmidt a los vectores",
+        "latex": "\\mathbf{v}_1 = (1, 1, 0), \\quad \\mathbf{v}_2 = (1, 0, 1)"
+      },
+      "solution": {
+        "text": "Base ortogonal: {(1,1,0), (1/2,-1/2,1)}",
+        "latex": "\\{(1,1,0), (\\frac{1}{2},-\\frac{1}{2},1)\\}",
+        "steps": [
+          "u1 = v1 = (1,1,0)",
+          "<v2,u1> = 1(1) + 0(1) + 1(0) = 1",
+          "<u1,u1> = 1 + 1 + 0 = 2",
+          "u2 = v2 - (1/2)u1 = (1,0,1) - (1/2)(1,1,0)",
+          "u2 = (1,0,1) - (1/2,1/2,0) = (1/2, -1/2, 1)",
+          "Verificar: <u1,u2> = 1/2 - 1/2 + 0 = 0 check"
+        ]
+      },
+      "hints": [
+        "u1 = v1 (primer vector sin cambios)",
+        "u2 = v2 - proyeccion de v2 sobre u1"
+      ],
+      "tags": ["Gram-Schmidt", "ortogonalizacion"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "pi-09-prac-04",
+      "type": "practice",
+      "question": {
+        "text": "Encontrar la distancia del punto al plano",
+        "latex": "P = (2, 3, 1), \\quad \\pi: x + y + z = 1"
+      },
+      "solution": {
+        "text": "d = 5/sqrt(3)",
+        "latex": "d = \\frac{5}{\\sqrt{3}} = \\frac{5\\sqrt{3}}{3}",
+        "steps": [
+          "Normal al plano: n = (1,1,1)",
+          "Punto en el plano: Q = (1,0,0) (satisface la ecuacion)",
+          "Vector PQ: P - Q = (2,3,1) - (1,0,0) = (1,3,1)",
+          "Distancia = |<PQ, n>| / ||n||",
+          "= |1+3+1| / sqrt(3) = 5/sqrt(3)"
+        ]
+      },
+      "hints": [
+        "La distancia es la proyeccion sobre el vector normal",
+        "Usa cualquier punto del plano para formar el vector"
+      ],
+      "tags": ["distancia", "plano", "proyeccion"],
+      "difficulty": "medium"
+    }
+  ]
+}

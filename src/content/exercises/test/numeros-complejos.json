@@ -1,0 +1,203 @@
+{
+  "chapter": "01-numeros-complejos",
+  "exercises": [
+    {
+      "id": "complex-01-test-01",
+      "type": "test",
+      "category": "multiple-choice",
+      "question": {
+        "text": "¿Cuál es la parte real de z = 5 + 3i?",
+        "latex": "z = 5 + 3i"
+      },
+      "options": [
+        { "id": "a", "text": "5", "correct": true },
+        { "id": "b", "text": "3", "correct": false },
+        { "id": "c", "text": "3i", "correct": false },
+        { "id": "d", "text": "8", "correct": false }
+      ],
+      "hints": [
+        "En z = a + bi, la parte real es a",
+        "La parte imaginaria es b (sin la i)"
+      ],
+      "feedback": {
+        "correct": "¡Correcto! En z = a + bi, la parte real es a = 5",
+        "incorrect": "Incorrecto. En z = a + bi, la parte real es a y la parte imaginaria es b"
+      },
+      "tags": ["numeros-complejos", "definicion", "parte-real"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "complex-01-test-02",
+      "type": "test",
+      "category": "multiple-choice",
+      "question": {
+        "text": "¿Cuál es el resultado de (2 + 3i)(1 - i)?",
+        "latex": "(2 + 3i)(1 - i)"
+      },
+      "options": [
+        { "id": "a", "text": "5 + i", "correct": true },
+        { "id": "b", "text": "-1 + 5i", "correct": false },
+        { "id": "c", "text": "5 - i", "correct": false },
+        { "id": "d", "text": "-1 - 5i", "correct": false }
+      ],
+      "hints": [
+        "Usa la propiedad distributiva: (a + b)(c + d) = ac + ad + bc + bd",
+        "Recuerda que i² = -1"
+      ],
+      "feedback": {
+        "correct": "¡Excelente! (2 + 3i)(1 - i) = 2 - 2i + 3i - 3i² = 2 + i + 3 = 5 + i",
+        "incorrect": "Revisa tu cálculo. Aplica la distributiva y usa i² = -1"
+      },
+      "tags": ["numeros-complejos", "operaciones", "multiplicacion"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "complex-01-test-03",
+      "type": "test",
+      "category": "multiple-choice",
+      "question": {
+        "text": "¿Cuál es el módulo de z = 3 + 4i?",
+        "latex": "|z| = |3 + 4i|"
+      },
+      "options": [
+        { "id": "a", "text": "5", "correct": true },
+        { "id": "b", "text": "7", "correct": false },
+        { "id": "c", "text": "25", "correct": false },
+        { "id": "d", "text": "√7", "correct": false }
+      ],
+      "hints": [
+        "El módulo se calcula como |z| = √(a² + b²)",
+        "Para z = 3 + 4i, calcula √(3² + 4²)"
+      ],
+      "feedback": {
+        "correct": "¡Correcto! |3 + 4i| = √(9 + 16) = √25 = 5",
+        "incorrect": "Recuerda: |a + bi| = √(a² + b²). Calcula √(3² + 4²)"
+      },
+      "tags": ["numeros-complejos", "modulo"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "complex-01-test-04",
+      "type": "test",
+      "category": "multiple-choice",
+      "question": {
+        "text": "¿Cuál es el conjugado de z = 2 - 5i?",
+        "latex": "\\bar{z} = ?"
+      },
+      "options": [
+        { "id": "a", "text": "2 + 5i", "correct": true },
+        { "id": "b", "text": "-2 + 5i", "correct": false },
+        { "id": "c", "text": "-2 - 5i", "correct": false },
+        { "id": "d", "text": "5 - 2i", "correct": false }
+      ],
+      "hints": [
+        "El conjugado cambia el signo de la parte imaginaria",
+        "Si z = a + bi, entonces z̄ = a - bi"
+      ],
+      "feedback": {
+        "correct": "¡Correcto! El conjugado de 2 - 5i es 2 + 5i",
+        "incorrect": "El conjugado solo cambia el signo de la parte imaginaria, no de la real"
+      },
+      "tags": ["numeros-complejos", "conjugado"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "complex-01-test-05",
+      "type": "test",
+      "category": "true-false",
+      "question": {
+        "text": "El producto de un número complejo por su conjugado siempre es un número real positivo o cero",
+        "latex": "z \\cdot \\bar{z} \\geq 0"
+      },
+      "options": [
+        { "id": "true", "text": "Verdadero", "correct": true },
+        { "id": "false", "text": "Falso", "correct": false }
+      ],
+      "hints": [
+        "Calcula (a + bi)(a - bi)",
+        "Recuerda que i² = -1"
+      ],
+      "feedback": {
+        "correct": "¡Correcto! z·z̄ = (a + bi)(a - bi) = a² + b² = |z|² ≥ 0",
+        "incorrect": "Incorrecto. z·z̄ = a² + b² que siempre es ≥ 0"
+      },
+      "tags": ["numeros-complejos", "conjugado", "propiedades"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "complex-01-test-06",
+      "type": "test",
+      "category": "multiple-choice",
+      "question": {
+        "text": "Simplifica: i³",
+        "latex": "i^3 = ?"
+      },
+      "options": [
+        { "id": "a", "text": "-i", "correct": true },
+        { "id": "b", "text": "i", "correct": false },
+        { "id": "c", "text": "-1", "correct": false },
+        { "id": "d", "text": "1", "correct": false }
+      ],
+      "hints": [
+        "i³ = i² · i",
+        "Recuerda que i² = -1"
+      ],
+      "feedback": {
+        "correct": "¡Correcto! i³ = i² · i = (-1) · i = -i",
+        "incorrect": "Usa que i³ = i² · i = -1 · i = -i"
+      },
+      "tags": ["numeros-complejos", "potencias-de-i"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "complex-01-test-07",
+      "type": "test",
+      "category": "multiple-choice",
+      "question": {
+        "text": "Simplifica: i⁴",
+        "latex": "i^4 = ?"
+      },
+      "options": [
+        { "id": "a", "text": "1", "correct": true },
+        { "id": "b", "text": "-1", "correct": false },
+        { "id": "c", "text": "i", "correct": false },
+        { "id": "d", "text": "-i", "correct": false }
+      ],
+      "hints": [
+        "i⁴ = (i²)²",
+        "Sabemos que i² = -1"
+      ],
+      "feedback": {
+        "correct": "¡Correcto! i⁴ = (i²)² = (-1)² = 1",
+        "incorrect": "Usa que i⁴ = (i²)² = (-1)² = 1"
+      },
+      "tags": ["numeros-complejos", "potencias-de-i"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "complex-01-test-08",
+      "type": "test",
+      "category": "multiple-choice",
+      "question": {
+        "text": "¿Cuál es el resultado de (1 + i)² ?",
+        "latex": "(1 + i)^2 = ?"
+      },
+      "options": [
+        { "id": "a", "text": "2i", "correct": true },
+        { "id": "b", "text": "2", "correct": false },
+        { "id": "c", "text": "1 + 2i", "correct": false },
+        { "id": "d", "text": "2 + 2i", "correct": false }
+      ],
+      "hints": [
+        "Usa (a + b)² = a² + 2ab + b²",
+        "Recuerda que i² = -1"
+      ],
+      "feedback": {
+        "correct": "¡Correcto! (1 + i)² = 1 + 2i + i² = 1 + 2i - 1 = 2i",
+        "incorrect": "Expande: (1 + i)² = 1 + 2i + i² = 1 + 2i + (-1) = 2i"
+      },
+      "tags": ["numeros-complejos", "operaciones", "potencias"],
+      "difficulty": "medium"
+    }
+  ]
+}

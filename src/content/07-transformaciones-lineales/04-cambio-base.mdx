@@ -1,0 +1,149 @@
+---
+title: "Cambio de Base para Transformaciones Lineales"
+chapter: 7
+section: 4
+---
+
+# Cambio de Base para Transformaciones Lineales
+
+La matriz de una transformacion lineal depende de las bases elegidas. Entender como cambia esta matriz es fundamental.
+
+## Matriz de Cambio de Base
+
+Sean $\mathcal{B} = \{\mathbf{v}_1, \ldots, \mathbf{v}_n\}$ y $\mathcal{B}' = \{\mathbf{v}'_1, \ldots, \mathbf{v}'_n\}$ dos bases de $V$.
+
+La **matriz de cambio de base** de $\mathcal{B}$ a $\mathcal{B}'$, denotada $P_{\mathcal{B}' \leftarrow \mathcal{B}}$, satisface:
+
+$$[\mathbf{v}]_{\mathcal{B}'} = P_{\mathcal{B}' \leftarrow \mathcal{B}} [\mathbf{v}]_\mathcal{B}$$
+
+### Construccion
+
+La columna $j$ de $P_{\mathcal{B}' \leftarrow \mathcal{B}}$ son las coordenadas de $\mathbf{v}_j$ en la base $\mathcal{B}'$.
+
+### Propiedades
+
+1. $P_{\mathcal{B} \leftarrow \mathcal{B}'} = (P_{\mathcal{B}' \leftarrow \mathcal{B}})^{-1}$
+
+2. $P_{\mathcal{B}'' \leftarrow \mathcal{B}} = P_{\mathcal{B}'' \leftarrow \mathcal{B}'} P_{\mathcal{B}' \leftarrow \mathcal{B}}$
+
+3. $P_{\mathcal{B} \leftarrow \mathcal{B}} = I$
+
+## Formula de Cambio de Base para Operadores
+
+Sea $T: V \to V$ un operador lineal (dominio = codominio).
+
+Si $[T]_\mathcal{B}$ es la matriz en base $\mathcal{B}$ y $[T]_{\mathcal{B}'}$ es la matriz en base $\mathcal{B}'$:
+
+$$[T]_{\mathcal{B}'} = P^{-1} [T]_\mathcal{B} P$$
+
+donde $P = P_{\mathcal{B}' \leftarrow \mathcal{B}}$.
+
+### Matrices Semejantes
+
+Dos matrices $A$ y $B$ son **semejantes** si existe $P$ invertible tal que:
+
+$$B = P^{-1}AP$$
+
+Las matrices semejantes representan el mismo operador en diferentes bases.
+
+### Invariantes de Semejanza
+
+Si $A$ y $B$ son semejantes:
+
+- $\det(A) = \det(B)$
+- $\text{tr}(A) = \text{tr}(B)$
+- $\text{rango}(A) = \text{rango}(B)$
+- Mismo polinomio caracteristico
+- Mismos autovalores
+
+## Ejemplo Detallado
+
+Sea $T: \mathbb{R}^2 \to \mathbb{R}^2$ con $T(x, y) = (2x + y, x + 2y)$.
+
+En la base estandar $E = \{\mathbf{e}_1, \mathbf{e}_2\}$:
+
+$$[T]_E = \begin{pmatrix} 2 & 1 \\ 1 & 2 \end{pmatrix}$$
+
+Consideremos la base $\mathcal{B} = \{(1, 1), (1, -1)\}$.
+
+**Paso 1:** Calcular $T$ en los vectores de $\mathcal{B}$:
+$$T(1, 1) = (3, 3) = 3(1, 1) + 0(1, -1)$$
+$$T(1, -1) = (1, -1) = 0(1, 1) + 1(1, -1)$$
+
+$$[T]_\mathcal{B} = \begin{pmatrix} 3 & 0 \\ 0 & 1 \end{pmatrix}$$
+
+La matriz es diagonal en esta base.
+
+**Verificacion con cambio de base:**
+
+Matriz de cambio de $E$ a $\mathcal{B}$ (coordenadas de $\mathbf{e}_1$, $\mathbf{e}_2$ en $\mathcal{B}$):
+
+$(1, 0) = \frac{1}{2}(1, 1) + \frac{1}{2}(1, -1)$
+$(0, 1) = \frac{1}{2}(1, 1) - \frac{1}{2}(1, -1)$
+
+$$P_{E \leftarrow \mathcal{B}} = \begin{pmatrix} 1 & 1 \\ 1 & -1 \end{pmatrix}$$
+
+(columnas son los vectores de $\mathcal{B}$ en coordenadas de $E$)
+
+$$P_{\mathcal{B} \leftarrow E} = P_{E \leftarrow \mathcal{B}}^{-1} = \frac{1}{2}\begin{pmatrix} 1 & 1 \\ 1 & -1 \end{pmatrix}$$
+
+Verificamos:
+$$P_{\mathcal{B} \leftarrow E}^{-1} [T]_E P_{\mathcal{B} \leftarrow E}$$
+
+Pero usamos $P = P_{E \leftarrow \mathcal{B}}$:
+
+$$[T]_\mathcal{B} = P^{-1} [T]_E P$$
+
+$$= \frac{1}{2}\begin{pmatrix} 1 & 1 \\ 1 & -1 \end{pmatrix} \begin{pmatrix} 2 & 1 \\ 1 & 2 \end{pmatrix} \begin{pmatrix} 1 & 1 \\ 1 & -1 \end{pmatrix}$$
+
+$$= \frac{1}{2}\begin{pmatrix} 1 & 1 \\ 1 & -1 \end{pmatrix} \begin{pmatrix} 3 & 1 \\ 3 & -1 \end{pmatrix} = \frac{1}{2}\begin{pmatrix} 6 & 0 \\ 0 & 2 \end{pmatrix} = \begin{pmatrix} 3 & 0 \\ 0 & 1 \end{pmatrix}$$
+
+## Caso General: Transformaciones T: V -> W
+
+Si $T: V \to W$ con bases $\mathcal{B}, \mathcal{B}'$ de $V$ y $\mathcal{C}, \mathcal{C}'$ de $W$:
+
+$$[T]_{\mathcal{B}'}^{\mathcal{C}'} = Q^{-1} [T]_\mathcal{B}^\mathcal{C} P$$
+
+donde:
+- $P = P_{\mathcal{B} \leftarrow \mathcal{B}'}$ (cambio de base en el dominio)
+- $Q = P_{\mathcal{C} \leftarrow \mathcal{C}'}$ (cambio de base en el codominio)
+
+## Diagonalizacion como Cambio de Base
+
+Una matriz $A$ es **diagonalizable** si es semejante a una matriz diagonal:
+
+$$D = P^{-1}AP$$
+
+Las columnas de $P$ son los autovectores de $A$, y la diagonal de $D$ contiene los autovalores.
+
+Esto significa que el operador es "diagonal" (escalamiento puro) en la base de autovectores.
+
+## Aplicacion: Potencias de Matrices
+
+Si $A = PDP^{-1}$ con $D$ diagonal:
+
+$$A^n = PD^nP^{-1}$$
+
+Y $D^n$ es trivial de calcular (elevar cada entrada diagonal a la $n$).
+
+### Ejemplo
+
+Para $A = \begin{pmatrix} 2 & 1 \\ 1 & 2 \end{pmatrix}$:
+
+$$A = PDP^{-1} = \begin{pmatrix} 1 & 1 \\ 1 & -1 \end{pmatrix} \begin{pmatrix} 3 & 0 \\ 0 & 1 \end{pmatrix} \frac{1}{2}\begin{pmatrix} 1 & 1 \\ 1 & -1 \end{pmatrix}$$
+
+$$A^{10} = \begin{pmatrix} 1 & 1 \\ 1 & -1 \end{pmatrix} \begin{pmatrix} 3^{10} & 0 \\ 0 & 1 \end{pmatrix} \frac{1}{2}\begin{pmatrix} 1 & 1 \\ 1 & -1 \end{pmatrix}$$
+
+$$= \frac{1}{2}\begin{pmatrix} 3^{10} + 1 & 3^{10} - 1 \\ 3^{10} - 1 & 3^{10} + 1 \end{pmatrix}$$
+
+## Resumen de Formulas
+
+| Situacion | Formula |
+|-----------|---------|
+| Cambio de coordenadas | $[\mathbf{v}]_{\mathcal{B}'} = P^{-1}[\mathbf{v}]_\mathcal{B}$ |
+| Operador, mismo espacio | $[T]_{\mathcal{B}'} = P^{-1}[T]_\mathcal{B}P$ |
+| Transformacion general | $[T]_{\mathcal{B}'}^{\mathcal{C}'} = Q^{-1}[T]_\mathcal{B}^\mathcal{C}P$ |
+
+---
+
+Con esto concluye el capitulo de Transformaciones Lineales. En el siguiente capitulo estudiaremos Autovalores y Autovectores.

@@ -1,0 +1,118 @@
+---
+title: "Introduccion a Espacios con Producto Interno"
+chapter: 9
+section: 0
+---
+
+# Introduccion a Espacios con Producto Interno
+
+Los espacios con producto interno generalizan las nociones geometricas de longitud, angulo y perpendicularidad a espacios vectoriales abstractos.
+
+## Motivacion
+
+En $\mathbb{R}^2$ y $\mathbb{R}^3$ tenemos nociones geometricas naturales:
+
+- **Longitud:** $\|\mathbf{v}\| = \sqrt{v_1^2 + v_2^2 + v_3^2}$
+- **Angulo:** $\cos\theta = \frac{\mathbf{u} \cdot \mathbf{v}}{\|\mathbf{u}\|\|\mathbf{v}\|}$
+- **Perpendicularidad:** $\mathbf{u} \perp \mathbf{v}$ si $\mathbf{u} \cdot \mathbf{v} = 0$
+
+Queremos extender estas ideas a cualquier espacio vectorial.
+
+## El Producto Punto en Rn
+
+En $\mathbb{R}^n$, el **producto punto** (o producto escalar) es:
+
+$$\mathbf{u} \cdot \mathbf{v} = u_1v_1 + u_2v_2 + \cdots + u_nv_n = \sum_{i=1}^{n} u_iv_i$$
+
+En notacion matricial: $\mathbf{u} \cdot \mathbf{v} = \mathbf{u}^T\mathbf{v}$.
+
+## Propiedades del Producto Punto
+
+1. $\mathbf{u} \cdot \mathbf{v} = \mathbf{v} \cdot \mathbf{u}$ (simetria)
+2. $(\mathbf{u} + \mathbf{v}) \cdot \mathbf{w} = \mathbf{u} \cdot \mathbf{w} + \mathbf{v} \cdot \mathbf{w}$ (linealidad)
+3. $(c\mathbf{u}) \cdot \mathbf{v} = c(\mathbf{u} \cdot \mathbf{v})$ (homogeneidad)
+4. $\mathbf{v} \cdot \mathbf{v} \geq 0$, y $= 0$ solo si $\mathbf{v} = \mathbf{0}$ (positividad)
+
+Estas propiedades definen un **producto interno**.
+
+## Norma y Distancia
+
+La **norma** (longitud) inducida por el producto interno:
+
+$$\|\mathbf{v}\| = \sqrt{\mathbf{v} \cdot \mathbf{v}}$$
+
+La **distancia** entre dos vectores:
+
+$$d(\mathbf{u}, \mathbf{v}) = \|\mathbf{u} - \mathbf{v}\|$$
+
+## Por Que Generalizar
+
+No todos los problemas usan la geometria euclidiana estandar:
+
+- En estadistica, las variables pueden tener diferentes "pesos"
+- En analisis funcional, trabajamos con funciones como vectores
+- En fisica, la metrica del espacio-tiempo no es euclidiana
+
+## Ejemplos de Productos Internos
+
+### Producto con Pesos en Rn
+
+$$\langle\mathbf{u}, \mathbf{v}\rangle_W = \mathbf{u}^TW\mathbf{v}$$
+
+donde $W$ es una matriz simetrica definida positiva.
+
+### Producto Interno de Funciones
+
+Para funciones continuas en $[a, b]$:
+
+$$\langle f, g \rangle = \int_a^b f(x)g(x)\,dx$$
+
+La "longitud" es $\|f\| = \sqrt{\int_a^b f(x)^2\,dx}$.
+
+### Producto Interno de Matrices
+
+Para matrices $A, B$ de $m \times n$:
+
+$$\langle A, B \rangle = \text{tr}(A^TB) = \sum_{i,j} a_{ij}b_{ij}$$
+
+## Lo Que Estudiaremos
+
+1. **Definicion formal:** Axiomas del producto interno
+2. **Ortogonalidad:** Vectores perpendiculares
+3. **Gram-Schmidt:** Construir bases ortonormales
+4. **Proyecciones:** Encontrar la mejor aproximacion
+
+## Aplicaciones
+
+- **Minimos cuadrados:** Ajuste de curvas a datos
+- **Fourier:** Descomposicion de funciones en frecuencias
+- **Compresion:** Reduccion de dimensionalidad
+- **Procesamiento de senales:** Analisis de audio e imagenes
+
+## Conceptos Clave
+
+- **Ortogonal:** $\langle\mathbf{u}, \mathbf{v}\rangle = 0$
+- **Ortonormal:** Ortogonal y con norma 1
+- **Base ortonormal:** Base de vectores ortonormales
+- **Complemento ortogonal:** Vectores perpendiculares a un subespacio
+- **Proyeccion ortogonal:** Mejor aproximacion en un subespacio
+
+---
+
+## Videos Recomendados
+
+import VideoEmbed from '../../components/content/VideoEmbed.astro';
+
+<VideoEmbed
+  youtubeId="QMzMr6sPdqM"
+  title="Proceso de Gram-Schmidt - Universidad Nacional de Colombia"
+/>
+
+<VideoEmbed
+  youtubeId="VV1nRj7IQfY"
+  title="Cómo hallar una base ortogonal y ortonormal con Gram-Schmidt"
+/>
+
+---
+
+En la siguiente seccion formalizaremos la definicion de producto interno.

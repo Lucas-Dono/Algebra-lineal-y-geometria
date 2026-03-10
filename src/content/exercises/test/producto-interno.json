@@ -1,0 +1,203 @@
+{
+  "chapter": "09-producto-interno",
+  "exercises": [
+    {
+      "id": "pi-09-test-01",
+      "type": "test",
+      "category": "multiple-choice",
+      "question": {
+        "text": "Dos vectores son ortogonales si:",
+        "latex": null
+      },
+      "options": [
+        { "id": "a", "text": "Su producto interno es cero", "correct": true },
+        { "id": "b", "text": "Su producto interno es uno", "correct": false },
+        { "id": "c", "text": "Son paralelos", "correct": false },
+        { "id": "d", "text": "Tienen la misma norma", "correct": false }
+      ],
+      "hints": [
+        "Ortogonal significa perpendicular",
+        "El producto interno mide 'cuanto apuntan en la misma direccion'"
+      ],
+      "feedback": {
+        "correct": "Correcto. <u, v> = 0 significa que u y v son ortogonales.",
+        "incorrect": "La ortogonalidad se define por producto interno igual a cero."
+      },
+      "tags": ["producto-interno", "ortogonalidad"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "pi-09-test-02",
+      "type": "test",
+      "category": "multiple-choice",
+      "question": {
+        "text": "La desigualdad de Cauchy-Schwarz establece:",
+        "latex": null
+      },
+      "options": [
+        { "id": "a", "text": "|<u,v>| <= ||u|| ||v||", "correct": true },
+        { "id": "b", "text": "<u,v> = ||u|| ||v||", "correct": false },
+        { "id": "c", "text": "||u + v|| = ||u|| + ||v||", "correct": false },
+        { "id": "d", "text": "<u,v> >= 0", "correct": false }
+      ],
+      "hints": [
+        "El producto interno esta acotado por las normas",
+        "La igualdad ocurre cuando u y v son proporcionales"
+      ],
+      "feedback": {
+        "correct": "Correcto. |<u,v>| <= ||u|| ||v|| es Cauchy-Schwarz.",
+        "incorrect": "Cauchy-Schwarz acota el producto interno por el producto de las normas."
+      },
+      "tags": ["producto-interno", "cauchy-schwarz"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "pi-09-test-03",
+      "type": "test",
+      "category": "multiple-choice",
+      "question": {
+        "text": "Una base ortonormal es:",
+        "latex": null
+      },
+      "options": [
+        { "id": "a", "text": "Una base donde los vectores son ortogonales y de norma 1", "correct": true },
+        { "id": "b", "text": "Cualquier base ortogonal", "correct": false },
+        { "id": "c", "text": "Una base de vectores unitarios", "correct": false },
+        { "id": "d", "text": "Una base de vectores paralelos", "correct": false }
+      ],
+      "hints": [
+        "Orto = ortogonal, normal = normalizado (norma 1)",
+        "Deben cumplirse ambas condiciones"
+      ],
+      "feedback": {
+        "correct": "Correcto. Ortonormal = ortogonal + normalizado (norma 1).",
+        "incorrect": "Ortonormal requiere ortogonalidad mutua Y norma unitaria."
+      },
+      "tags": ["producto-interno", "base-ortonormal"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "pi-09-test-04",
+      "type": "test",
+      "category": "multiple-choice",
+      "question": {
+        "text": "Si {u1, u2, u3} es ortonormal, las coordenadas de v en esta base son:",
+        "latex": null
+      },
+      "options": [
+        { "id": "a", "text": "(<v,u1>, <v,u2>, <v,u3>)", "correct": true },
+        { "id": "b", "text": "(||v||, ||v||, ||v||)", "correct": false },
+        { "id": "c", "text": "Se obtienen resolviendo un sistema", "correct": false },
+        { "id": "d", "text": "(1, 1, 1)", "correct": false }
+      ],
+      "hints": [
+        "En base ortonormal, las coordenadas son productos internos",
+        "No hay que resolver sistemas de ecuaciones"
+      ],
+      "feedback": {
+        "correct": "Correcto. La i-esima coordenada es <v, ui>. Esta es la ventaja de bases ortonormales.",
+        "incorrect": "En base ortonormal, las coordenadas son simplemente los productos internos con los vectores de la base."
+      },
+      "tags": ["producto-interno", "coordenadas", "base-ortonormal"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "pi-09-test-05",
+      "type": "test",
+      "category": "multiple-choice",
+      "question": {
+        "text": "El proceso de Gram-Schmidt sirve para:",
+        "latex": null
+      },
+      "options": [
+        { "id": "a", "text": "Ortonormalizar una base dada", "correct": true },
+        { "id": "b", "text": "Encontrar autovalores", "correct": false },
+        { "id": "c", "text": "Diagonalizar matrices", "correct": false },
+        { "id": "d", "text": "Resolver sistemas lineales", "correct": false }
+      ],
+      "hints": [
+        "Toma una base cualquiera y produce una ortonormal",
+        "Cada paso ortogonaliza un vector contra los anteriores"
+      ],
+      "feedback": {
+        "correct": "Correcto. Gram-Schmidt transforma cualquier base en una base ortonormal.",
+        "incorrect": "Gram-Schmidt ortonormaliza: convierte una base arbitraria en ortonormal."
+      },
+      "tags": ["producto-interno", "gram-schmidt"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "pi-09-test-06",
+      "type": "test",
+      "category": "multiple-choice",
+      "question": {
+        "text": "La proyeccion de v sobre u (unitario) es:",
+        "latex": null
+      },
+      "options": [
+        { "id": "a", "text": "<v, u> u", "correct": true },
+        { "id": "b", "text": "v - u", "correct": false },
+        { "id": "c", "text": "<v, u>", "correct": false },
+        { "id": "d", "text": "||v|| u", "correct": false }
+      ],
+      "hints": [
+        "La proyeccion es un vector, no un escalar",
+        "El coeficiente es el producto interno"
+      ],
+      "feedback": {
+        "correct": "Correcto. Si u es unitario, proy_u(v) = <v,u> u.",
+        "incorrect": "Para u unitario, la proyeccion es el producto interno por el vector u."
+      },
+      "tags": ["producto-interno", "proyeccion"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "pi-09-test-07",
+      "type": "test",
+      "category": "true-false",
+      "question": {
+        "text": "La proyeccion de v sobre un subespacio W es el punto de W mas cercano a v",
+        "latex": null
+      },
+      "options": [
+        { "id": "true", "text": "Verdadero", "correct": true },
+        { "id": "false", "text": "Falso", "correct": false }
+      ],
+      "hints": [
+        "La proyeccion minimiza la distancia",
+        "El error (v - proy) es perpendicular a W"
+      ],
+      "feedback": {
+        "correct": "Correcto. La proyeccion ortogonal es la mejor aproximacion en el sentido de minima distancia.",
+        "incorrect": "La proyeccion sobre W es exactamente el punto de W que minimiza ||v - w||."
+      },
+      "tags": ["producto-interno", "proyeccion", "mejor-aproximacion"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "pi-09-test-08",
+      "type": "test",
+      "category": "multiple-choice",
+      "question": {
+        "text": "Una matriz Q es ortogonal si:",
+        "latex": null
+      },
+      "options": [
+        { "id": "a", "text": "Q^T Q = I", "correct": true },
+        { "id": "b", "text": "Q^2 = I", "correct": false },
+        { "id": "c", "text": "det(Q) = 1", "correct": false },
+        { "id": "d", "text": "Q = Q^T", "correct": false }
+      ],
+      "hints": [
+        "La inversa de Q es su transpuesta",
+        "Las columnas de Q forman base ortonormal"
+      ],
+      "feedback": {
+        "correct": "Correcto. Q ortogonal significa Q^T Q = Q Q^T = I, es decir, Q^(-1) = Q^T.",
+        "incorrect": "Una matriz ortogonal satisface Q^T Q = I (equivalente a Q^(-1) = Q^T)."
+      },
+      "tags": ["producto-interno", "matriz-ortogonal"],
+      "difficulty": "easy"
+    }
+  ]
+}

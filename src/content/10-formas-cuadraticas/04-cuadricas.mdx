@@ -1,0 +1,161 @@
+---
+title: "Cuadricas"
+chapter: 10
+section: 4
+---
+
+# Cuadricas
+
+Las cuadricas son la generalizacion de las conicas a tres dimensiones.
+
+## Ecuacion General
+
+$$Ax^2 + By^2 + Cz^2 + Dxy + Exz + Fyz + Gx + Hy + Iz + J = 0$$
+
+## Matriz de la Parte Cuadratica
+
+$$A_Q = \begin{pmatrix} A & D/2 & E/2 \\ D/2 & B & F/2 \\ E/2 & F/2 & C \end{pmatrix}$$
+
+## Tipos de Cuadricas
+
+### Elipsoide
+
+$$\frac{x^2}{a^2} + \frac{y^2}{b^2} + \frac{z^2}{c^2} = 1$$
+
+- Generalizacion de la elipse a 3D
+- Si $a = b = c$: esfera
+- Todos los autovalores del mismo signo (positivos)
+
+### Hiperboloide de Una Hoja
+
+$$\frac{x^2}{a^2} + \frac{y^2}{b^2} - \frac{z^2}{c^2} = 1$$
+
+- Superficie reglada (se puede generar con rectas)
+- Dos autovalores de un signo, uno del opuesto
+- Secciones horizontales: elipses
+- Secciones verticales: hiperbolas
+
+### Hiperboloide de Dos Hojas
+
+$$-\frac{x^2}{a^2} - \frac{y^2}{b^2} + \frac{z^2}{c^2} = 1$$
+
+- Dos componentes conexas separadas
+- Un autovalor de un signo, dos del opuesto
+
+### Cono
+
+$$\frac{x^2}{a^2} + \frac{y^2}{b^2} - \frac{z^2}{c^2} = 0$$
+
+- Vertice en el origen
+- Caso limite entre hiperboloides
+- Determinante de la matriz 3x3 es cero
+
+### Paraboloide Eliptico
+
+$$z = \frac{x^2}{a^2} + \frac{y^2}{b^2}$$
+
+- Forma de "tazon"
+- Secciones horizontales: elipses
+- Un autovalor es cero (para la matriz de la parte cuadratica)
+
+### Paraboloide Hiperbolico (Silla de Montar)
+
+$$z = \frac{x^2}{a^2} - \frac{y^2}{b^2}$$
+
+- Punto silla en el origen
+- Superficie reglada
+- Secciones en diferentes direcciones: parabolas hacia arriba y abajo
+
+### Cilindro Eliptico
+
+$$\frac{x^2}{a^2} + \frac{y^2}{b^2} = 1$$
+
+- Sin variable $z$: se extiende infinitamente en esa direccion
+- Secciones transversales: elipses
+
+### Cilindro Hiperbolico
+
+$$\frac{x^2}{a^2} - \frac{y^2}{b^2} = 1$$
+
+- Dos "tubos" hiperbolicos
+
+### Cilindro Parabolico
+
+$$y = x^2$$
+
+- "Canal" parabolico
+
+## Clasificacion por Signatura
+
+| Signatura $(p, q)$ | Tipo |
+|-------------------|------|
+| $(3, 0)$ o $(0, 3)$ | Elipsoide |
+| $(2, 1)$ o $(1, 2)$ con $\det \neq 0$ | Hiperboloide |
+| $(2, 1)$ o $(1, 2)$ con $\det = 0$ | Cono |
+| $(2, 0)$ o $(0, 2)$ | Paraboloide eliptico |
+| $(1, 1)$ | Paraboloide hiperbolico |
+
+## Ejemplo: Clasificar una Cuadrica
+
+$$x^2 + 2y^2 + 3z^2 + 2xy - 2xz = 5$$
+
+**Matriz de la parte cuadratica:**
+$$A_Q = \begin{pmatrix} 1 & 1 & -1 \\ 1 & 2 & 0 \\ -1 & 0 & 3 \end{pmatrix}$$
+
+**Calcular autovalores:**
+
+$\det(A_Q - \lambda I) = 0$
+
+Caracteristico: $\lambda^3 - 6\lambda^2 + 9\lambda - 2 = 0$
+
+Las raices son aproximadamente $\lambda_1 \approx 0.26$, $\lambda_2 \approx 2$, $\lambda_3 \approx 3.74$.
+
+Todos positivos $\Rightarrow$ **Elipsoide**.
+
+## Reduccion a Forma Canonica
+
+1. **Diagonalizar** la matriz $A_Q$ para eliminar terminos cruzados
+2. **Trasladar** para eliminar terminos lineales
+3. **Escalar** para obtener forma estandar
+
+## Secciones de Cuadricas
+
+Las secciones planas de cuadricas son conicas:
+
+| Cuadrica | Seccion horizontal | Seccion vertical |
+|----------|-------------------|------------------|
+| Elipsoide | Elipse | Elipse |
+| Hiperboloide 1 hoja | Elipse | Hiperbola |
+| Hiperboloide 2 hojas | Elipse (si corta) | Hiperbola |
+| Paraboloide eliptico | Elipse | Parabola |
+| Paraboloide hiperbolico | Hiperbola | Parabola |
+| Cono | Elipse, hiperbola, parabola | Hiperbola |
+
+## Aplicaciones
+
+### Optica
+
+- Espejos parabolicos: enfocan rayos paralelos
+- Antenas parabolicas
+
+### Arquitectura
+
+- Paraboloides hiperbolicos: techos de concreto
+- Hiperboloides: torres de enfriamiento
+
+### Fisica
+
+- Orbitas de cuerpos celestes (secciones conicas)
+- Potenciales electromagneticos
+
+## Cuadricas en Forma Matricial General
+
+La ecuacion general se puede escribir:
+
+$$\begin{pmatrix} x & y & z & 1 \end{pmatrix} \begin{pmatrix} A & D/2 & E/2 & G/2 \\ D/2 & B & F/2 & H/2 \\ E/2 & F/2 & C & I/2 \\ G/2 & H/2 & I/2 & J \end{pmatrix} \begin{pmatrix} x \\ y \\ z \\ 1 \end{pmatrix} = 0$$
+
+El rango de esta matriz $4 \times 4$ tambien ayuda a clasificar.
+
+---
+
+Con esto concluye el capitulo de Formas Cuadraticas. En el siguiente capitulo veremos aplicaciones del algebra lineal.

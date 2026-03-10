@@ -1,0 +1,99 @@
+{
+  "chapter": "01-numeros-complejos",
+  "exercises": [
+    {
+      "id": "complex-01-view-01",
+      "type": "view",
+      "title": "División de números complejos",
+      "problem": "Calcular el cociente (3 + 4i)/(1 + 2i) y expresar el resultado en forma a + bi",
+      "steps": [
+        {
+          "title": "Identificar el conjugado del denominador",
+          "content": "El denominador es 1 + 2i.\nSu conjugado es 1 - 2i.\n\nMultiplicaremos numerador y denominador por este conjugado para eliminar la parte imaginaria del denominador."
+        },
+        {
+          "title": "Multiplicar por el conjugado",
+          "content": "(3 + 4i)/(1 + 2i) = [(3 + 4i)(1 - 2i)] / [(1 + 2i)(1 - 2i)]"
+        },
+        {
+          "title": "Expandir el numerador",
+          "content": "(3 + 4i)(1 - 2i)\n= 3·1 + 3·(-2i) + 4i·1 + 4i·(-2i)\n= 3 - 6i + 4i - 8i²\n= 3 - 2i - 8(-1)\n= 3 - 2i + 8\n= 11 - 2i"
+        },
+        {
+          "title": "Calcular el denominador",
+          "content": "(1 + 2i)(1 - 2i)\n= 1² - (2i)²\n= 1 - 4i²\n= 1 - 4(-1)\n= 1 + 4\n= 5"
+        },
+        {
+          "title": "Dividir y expresar resultado",
+          "content": "(3 + 4i)/(1 + 2i) = (11 - 2i)/5\n\n= 11/5 - 2i/5\n\n= 11/5 - (2/5)i\n\nResultado: 11/5 - (2/5)i = 2.2 - 0.4i"
+        }
+      ],
+      "tags": ["numeros-complejos", "division", "conjugado"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "complex-01-view-02",
+      "type": "view",
+      "title": "Potencia de un número complejo usando forma polar",
+      "problem": "Calcular (1 + i)⁶ usando la forma polar y la fórmula de De Moivre",
+      "steps": [
+        {
+          "title": "Convertir a forma polar",
+          "content": "z = 1 + i\n\nMódulo: |z| = √(1² + 1²) = √2\n\nArgumento: θ = arctan(1/1) = arctan(1) = π/4\n\nForma polar: z = √2 · (cos(π/4) + i·sin(π/4))"
+        },
+        {
+          "title": "Aplicar fórmula de De Moivre",
+          "content": "La fórmula de De Moivre establece:\n[r(cos θ + i sin θ)]ⁿ = rⁿ(cos(nθ) + i sin(nθ))\n\nPara z⁶:\nz⁶ = (√2)⁶ · (cos(6·π/4) + i·sin(6·π/4))"
+        },
+        {
+          "title": "Calcular el módulo elevado a la 6",
+          "content": "(√2)⁶ = (2^(1/2))⁶ = 2³ = 8"
+        },
+        {
+          "title": "Calcular el nuevo argumento",
+          "content": "6 · (π/4) = 6π/4 = 3π/2\n\ncos(3π/2) = 0\nsin(3π/2) = -1"
+        },
+        {
+          "title": "Expresar resultado final",
+          "content": "z⁶ = 8(cos(3π/2) + i·sin(3π/2))\n= 8(0 + i·(-1))\n= 8 · (-i)\n= -8i\n\nResultado: (1 + i)⁶ = -8i"
+        }
+      ],
+      "tags": ["numeros-complejos", "forma-polar", "de-moivre", "potencias"],
+      "difficulty": "hard"
+    },
+    {
+      "id": "complex-01-view-03",
+      "type": "view",
+      "title": "Raíces cúbicas de un número complejo",
+      "problem": "Encontrar todas las raíces cúbicas de z = 8",
+      "steps": [
+        {
+          "title": "Expresar z en forma polar",
+          "content": "z = 8 = 8 + 0i\n\nMódulo: |z| = 8\nArgumento: θ = 0 (está en el eje real positivo)\n\nForma polar: z = 8(cos(0) + i·sin(0))"
+        },
+        {
+          "title": "Aplicar fórmula de raíces",
+          "content": "Las n raíces n-ésimas de z = r(cos θ + i sin θ) son:\n\nwₖ = ⁿ√r · (cos((θ + 2πk)/n) + i·sin((θ + 2πk)/n))\n\npara k = 0, 1, 2, ..., n-1\n\nEn este caso n = 3 y k = 0, 1, 2"
+        },
+        {
+          "title": "Calcular la primera raíz (k = 0)",
+          "content": "w₀ = ³√8 · (cos(0/3) + i·sin(0/3))\n= 2 · (cos(0) + i·sin(0))\n= 2 · (1 + 0i)\n= 2"
+        },
+        {
+          "title": "Calcular la segunda raíz (k = 1)",
+          "content": "w₁ = 2 · (cos(2π/3) + i·sin(2π/3))\n= 2 · (-1/2 + i·√3/2)\n= -1 + √3i"
+        },
+        {
+          "title": "Calcular la tercera raíz (k = 2)",
+          "content": "w₂ = 2 · (cos(4π/3) + i·sin(4π/3))\n= 2 · (-1/2 - i·√3/2)\n= -1 - √3i"
+        },
+        {
+          "title": "Verificación y resultado",
+          "content": "Las tres raíces cúbicas de 8 son:\n\nw₀ = 2\nw₁ = -1 + √3i ≈ -1 + 1.732i\nw₂ = -1 - √3i ≈ -1 - 1.732i\n\nNota: Estas raíces forman un triángulo equilátero en el plano complejo, todas a distancia 2 del origen."
+        }
+      ],
+      "tags": ["numeros-complejos", "raices", "forma-polar"],
+      "difficulty": "hard"
+    }
+  ]
+}

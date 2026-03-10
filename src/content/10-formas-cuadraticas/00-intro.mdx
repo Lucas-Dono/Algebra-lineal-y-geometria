@@ -1,0 +1,102 @@
+---
+title: "Introduccion a las Formas Cuadraticas"
+chapter: 10
+section: 0
+---
+
+# Introduccion a las Formas Cuadraticas
+
+Las formas cuadraticas son expresiones polinomicas de grado 2 que aparecen en la clasificacion de conicas, superficies y problemas de optimizacion.
+
+## Motivacion
+
+Consideremos la ecuacion:
+
+$$3x^2 + 4xy + 2y^2 = 10$$
+
+Esta es una **conica**. Pero, que tipo? Elipse, hiperbola, parabola?
+
+Las formas cuadraticas nos permiten responder esta pregunta usando algebra lineal.
+
+## Definicion Informal
+
+Una **forma cuadratica** en $n$ variables es una expresion de la forma:
+
+$$Q(x_1, \ldots, x_n) = \sum_{i \leq j} a_{ij}x_ix_j$$
+
+Es un polinomio homogeneo de grado 2 (todos los terminos tienen grado 2).
+
+## Ejemplos
+
+### En dos variables
+
+$$Q(x, y) = ax^2 + bxy + cy^2$$
+
+### En tres variables
+
+$$Q(x, y, z) = ax^2 + by^2 + cz^2 + dxy + exz + fyz$$
+
+## Representacion Matricial
+
+Toda forma cuadratica se puede escribir como:
+
+$$Q(\mathbf{x}) = \mathbf{x}^T A \mathbf{x}$$
+
+donde $A$ es una matriz simetrica.
+
+### Ejemplo
+
+$$Q(x, y) = 3x^2 + 4xy + 2y^2$$
+
+$$= \begin{pmatrix} x & y \end{pmatrix} \begin{pmatrix} 3 & 2 \\ 2 & 2 \end{pmatrix} \begin{pmatrix} x \\ y \end{pmatrix}$$
+
+El coeficiente de $xy$ se divide entre 2 en las entradas fuera de la diagonal para que $A$ sea simetrica.
+
+## Por Que Matrices Simetricas
+
+Cualquier forma cuadratica $\mathbf{x}^TB\mathbf{x}$ se puede escribir con una matriz simetrica:
+
+$$A = \frac{B + B^T}{2}$$
+
+Y $\mathbf{x}^TB\mathbf{x} = \mathbf{x}^TA\mathbf{x}$ (porque es un escalar, igual a su transpuesta).
+
+## El Teorema de los Ejes Principales
+
+**Teorema:** Toda forma cuadratica se puede simplificar por un cambio de coordenadas a:
+
+$$Q(\mathbf{y}) = \lambda_1 y_1^2 + \lambda_2 y_2^2 + \cdots + \lambda_n y_n^2$$
+
+donde $\lambda_i$ son los autovalores de la matriz asociada.
+
+Este cambio de coordenadas corresponde a una rotacion (y posiblemente reflexion).
+
+## Aplicaciones
+
+### Conicas
+
+Las conicas $ax^2 + bxy + cy^2 + dx + ey + f = 0$ se clasifican por los autovalores:
+- Elipse: autovalores del mismo signo
+- Hiperbola: autovalores de signos opuestos
+- Parabola: un autovalor es cero
+
+### Superficies Cuadricas
+
+Generalizacion a 3D: esferas, elipsoides, hiperboloides, paraboloides.
+
+### Optimizacion
+
+El test de la segunda derivada usa la forma cuadratica del Hessiano:
+- Minimo: forma definida positiva
+- Maximo: forma definida negativa
+- Punto silla: forma indefinida
+
+## Lo Que Estudiaremos
+
+1. **Definicion formal:** Formas cuadraticas y matrices asociadas
+2. **Clasificacion:** Definida positiva, negativa, semidefinida, indefinida
+3. **Conicas:** Clasificacion y reduccion
+4. **Cuadricas:** Extension a tres dimensiones
+
+---
+
+En la siguiente seccion formalizaremos la definicion y la matriz asociada.

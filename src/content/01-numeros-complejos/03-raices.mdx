@@ -1,0 +1,196 @@
+---
+title: "Raíces de Números Complejos"
+chapter: 1
+section: 3
+---
+
+# Raíces de Números Complejos
+
+Una de las propiedades más elegantes de los números complejos es que todo número tiene exactamente $n$ raíces $n$-ésimas distintas, distribuidas simétricamente en el plano complejo.
+
+## El Problema
+
+Dado un número complejo $w \neq 0$, queremos encontrar todos los números $z$ tales que:
+
+$$z^n = w$$
+
+En los reales, $\sqrt[n]{x}$ puede tener 0, 1 o 2 soluciones. En los complejos, siempre hay exactamente $n$ soluciones.
+
+## Fórmula para las Raíces n-ésimas
+
+Si $w = re^{i\theta}$ (forma polar), las $n$ raíces $n$-ésimas de $w$ son:
+
+$$z_k = \sqrt[n]{r} \cdot e^{i(\theta + 2\pi k)/n}, \quad k = 0, 1, 2, \ldots, n-1$$
+
+O en forma trigonométrica:
+
+$$z_k = \sqrt[n]{r} \left( \cos\frac{\theta + 2\pi k}{n} + i\sin\frac{\theta + 2\pi k}{n} \right)$$
+
+### Por qué hay exactamente n raíces
+
+- Para $k = 0, 1, \ldots, n-1$ obtenemos $n$ valores distintos
+- Para $k = n$, el ángulo es $\frac{\theta + 2\pi n}{n} = \frac{\theta}{n} + 2\pi$, que da el mismo punto que $k = 0$
+- Los valores se repiten con período $n$
+
+## Raíces n-ésimas de la Unidad
+
+Las raíces $n$-ésimas de $1$ son especialmente importantes:
+
+$$\omega_k = e^{2\pi i k/n} = \cos\frac{2\pi k}{n} + i\sin\frac{2\pi k}{n}$$
+
+para $k = 0, 1, \ldots, n-1$.
+
+### Raíces Cuadradas de 1
+
+$$z^2 = 1$$
+
+Raíces: $1$ y $-1$
+
+### Raíces Cúbicas de 1
+
+$$z^3 = 1$$
+
+$$\omega_0 = 1$$
+$$\omega_1 = e^{2\pi i/3} = -\frac{1}{2} + \frac{\sqrt{3}}{2}i$$
+$$\omega_2 = e^{4\pi i/3} = -\frac{1}{2} - \frac{\sqrt{3}}{2}i$$
+
+Estas raíces forman un triángulo equilátero en el círculo unitario.
+
+Notación común: $\omega = e^{2\pi i/3}$, entonces las raíces son $1, \omega, \omega^2$.
+
+### Raíces Cuartas de 1
+
+$$z^4 = 1$$
+
+Raíces: $1, i, -1, -i$
+
+Forman un cuadrado en el círculo unitario.
+
+### Propiedad General
+
+Las $n$ raíces de la unidad:
+- Están sobre el círculo unitario ($|z| = 1$)
+- Están igualmente espaciadas (ángulo $2\pi/n$ entre consecutivas)
+- Forman un polígono regular de $n$ lados
+
+## Raíz Primitiva
+
+Una **raíz primitiva** $n$-ésima de la unidad es una raíz $\omega$ tal que sus potencias $\omega^0, \omega^1, \ldots, \omega^{n-1}$ generan todas las raíces $n$-ésimas de la unidad.
+
+La raíz $\omega = e^{2\pi i/n}$ siempre es primitiva.
+
+### Propiedad de la Suma
+
+$$\sum_{k=0}^{n-1} \omega^k = 0$$
+
+donde $\omega$ es una raíz primitiva. Esta propiedad es fundamental en la transformada de Fourier.
+
+## Ejemplos Detallados
+
+### Ejemplo 1: Raíces Cúbicas de 8
+
+Encontrar todas las soluciones de $z^3 = 8$.
+
+**Paso 1:** Expresar 8 en forma polar.
+$$8 = 8e^{i \cdot 0} = 8(\cos 0 + i\sin 0)$$
+
+**Paso 2:** Aplicar la fórmula.
+$$z_k = \sqrt[3]{8} \cdot e^{i(0 + 2\pi k)/3} = 2e^{2\pi i k/3}$$
+
+**Paso 3:** Calcular cada raíz.
+
+$k = 0$: $z_0 = 2e^0 = 2$
+
+$k = 1$: $z_1 = 2e^{2\pi i/3} = 2\left(-\frac{1}{2} + \frac{\sqrt{3}}{2}i\right) = -1 + \sqrt{3}i$
+
+$k = 2$: $z_2 = 2e^{4\pi i/3} = 2\left(-\frac{1}{2} - \frac{\sqrt{3}}{2}i\right) = -1 - \sqrt{3}i$
+
+**Verificación:** $2^3 = 8$, $(-1 + \sqrt{3}i)^3 = 8$, $(-1 - \sqrt{3}i)^3 = 8$.
+
+### Ejemplo 2: Raíces Cuartas de -16
+
+Encontrar todas las soluciones de $z^4 = -16$.
+
+**Paso 1:** Expresar -16 en forma polar.
+$$-16 = 16e^{i\pi}$$
+
+**Paso 2:** Aplicar la fórmula.
+$$z_k = \sqrt[4]{16} \cdot e^{i(\pi + 2\pi k)/4} = 2e^{i\pi(1 + 2k)/4}$$
+
+**Paso 3:** Calcular cada raíz.
+
+$k = 0$: $z_0 = 2e^{i\pi/4} = 2\left(\frac{\sqrt{2}}{2} + \frac{\sqrt{2}}{2}i\right) = \sqrt{2} + \sqrt{2}i$
+
+$k = 1$: $z_1 = 2e^{i \cdot 3\pi/4} = 2\left(-\frac{\sqrt{2}}{2} + \frac{\sqrt{2}}{2}i\right) = -\sqrt{2} + \sqrt{2}i$
+
+$k = 2$: $z_2 = 2e^{i \cdot 5\pi/4} = -\sqrt{2} - \sqrt{2}i$
+
+$k = 3$: $z_3 = 2e^{i \cdot 7\pi/4} = \sqrt{2} - \sqrt{2}i$
+
+Las cuatro raíces forman un cuadrado de lado $2\sqrt{2}$.
+
+### Ejemplo 3: Raíces Cuadradas de i
+
+Encontrar $\sqrt{i}$.
+
+**Paso 1:** Expresar $i$ en forma polar.
+$$i = e^{i\pi/2}$$
+
+**Paso 2:** Aplicar la fórmula para $n = 2$.
+$$z_k = e^{i(\pi/2 + 2\pi k)/2} = e^{i\pi(1 + 4k)/4}$$
+
+**Paso 3:** Calcular.
+
+$k = 0$: $z_0 = e^{i\pi/4} = \frac{\sqrt{2}}{2} + \frac{\sqrt{2}}{2}i$
+
+$k = 1$: $z_1 = e^{i \cdot 5\pi/4} = -\frac{\sqrt{2}}{2} - \frac{\sqrt{2}}{2}i$
+
+Por lo tanto:
+$$\sqrt{i} = \pm\left(\frac{\sqrt{2}}{2} + \frac{\sqrt{2}}{2}i\right) = \pm\frac{1+i}{\sqrt{2}}$$
+
+## Relación con Polinomios
+
+El **Teorema Fundamental del Álgebra** establece que todo polinomio de grado $n$ con coeficientes complejos tiene exactamente $n$ raíces complejas (contando multiplicidad).
+
+Para el polinomio $z^n - w$:
+- Tiene grado $n$
+- Sus $n$ raíces son exactamente las raíces $n$-ésimas de $w$
+
+### Factorización
+
+Si $\omega_0, \omega_1, \ldots, \omega_{n-1}$ son las raíces $n$-ésimas de la unidad:
+
+$$z^n - 1 = (z - 1)(z - \omega)(z - \omega^2) \cdots (z - \omega^{n-1})$$
+
+donde $\omega = e^{2\pi i/n}$.
+
+## Aplicaciones
+
+### Resolución de Ecuaciones Polinómicas
+
+Encontrar las raíces de $z^4 + 4 = 0$:
+
+$$z^4 = -4 = 4e^{i\pi}$$
+
+Las raíces son las raíces cuartas de $-4$.
+
+### Polinomios Ciclotómicos
+
+Los polinomios cuyos ceros son las raíces primitivas de la unidad tienen coeficientes enteros y son irreducibles sobre los racionales.
+
+### Transformada de Fourier Discreta
+
+La DFT usa las raíces $n$-ésimas de la unidad para descomponer señales en frecuencias.
+
+## Resumen de Fórmulas
+
+| Concepto | Fórmula |
+|----------|---------|
+| Raíces $n$-ésimas de $w = re^{i\theta}$ | $z_k = \sqrt[n]{r} e^{i(\theta + 2\pi k)/n}$ |
+| Raíces de la unidad | $\omega_k = e^{2\pi i k/n}$ |
+| Raíz primitiva | $\omega = e^{2\pi i/n}$ |
+| Suma de raíces | $\sum_{k=0}^{n-1} \omega^k = 0$ |
+
+---
+
+Con esto concluye el capítulo de Números Complejos. En el siguiente capítulo estudiaremos los Sistemas de Ecuaciones Lineales.

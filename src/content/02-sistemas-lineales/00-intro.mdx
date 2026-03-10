@@ -1,0 +1,137 @@
+---
+title: "Introducción a los Sistemas Lineales"
+chapter: 2
+section: 0
+---
+
+# Introducción a los Sistemas de Ecuaciones Lineales
+
+Los sistemas de ecuaciones lineales aparecen en casi todas las aplicaciones del álgebra lineal. Entender cómo resolverlos de manera sistemática es fundamental para el resto del curso.
+
+## Ecuación Lineal
+
+Una **ecuación lineal** en las variables $x_1, x_2, \ldots, x_n$ es una ecuación de la forma:
+
+$$a_1 x_1 + a_2 x_2 + \cdots + a_n x_n = b$$
+
+donde $a_1, a_2, \ldots, a_n$ y $b$ son constantes (números reales o complejos).
+
+### Ejemplos
+
+**Ecuaciones lineales:**
+- $3x + 2y - z = 5$
+- $x_1 - 4x_2 + x_3 + x_4 = 0$
+- $\sqrt{2}x + \pi y = 1$
+
+**NO son ecuaciones lineales:**
+- $x^2 + y = 1$ (término cuadrático)
+- $xy = 3$ (producto de variables)
+- $\sin(x) + y = 0$ (función no lineal)
+- $\frac{1}{x} + y = 2$ (variable en denominador)
+
+## Sistema de Ecuaciones Lineales
+
+Un **sistema de ecuaciones lineales** es un conjunto de $m$ ecuaciones lineales en $n$ variables:
+
+$$\begin{cases} a_{11}x_1 + a_{12}x_2 + \cdots + a_{1n}x_n = b_1 \\ a_{21}x_1 + a_{22}x_2 + \cdots + a_{2n}x_n = b_2 \\ \vdots \\ a_{m1}x_1 + a_{m2}x_2 + \cdots + a_{mn}x_n = b_m \end{cases}$$
+
+### Notación Matricial
+
+El sistema se puede escribir como:
+
+$$Ax = b$$
+
+donde:
+
+$$A = \begin{pmatrix} a_{11} & a_{12} & \cdots & a_{1n} \\ a_{21} & a_{22} & \cdots & a_{2n} \\ \vdots & \vdots & \ddots & \vdots \\ a_{m1} & a_{m2} & \cdots & a_{mn} \end{pmatrix}, \quad x = \begin{pmatrix} x_1 \\ x_2 \\ \vdots \\ x_n \end{pmatrix}, \quad b = \begin{pmatrix} b_1 \\ b_2 \\ \vdots \\ b_m \end{pmatrix}$$
+
+- $A$ es la **matriz de coeficientes** ($m \times n$)
+- $x$ es el **vector de incógnitas** ($n \times 1$)
+- $b$ es el **vector de términos independientes** ($m \times 1$)
+
+## Solución de un Sistema
+
+Una **solución** del sistema es una $n$-tupla $(s_1, s_2, \ldots, s_n)$ que satisface todas las ecuaciones simultáneamente.
+
+### Clasificación de Sistemas
+
+Un sistema de ecuaciones lineales puede ser:
+
+**Compatible determinado:** Tiene exactamente una solución.
+$$\begin{cases} x + y = 3 \\ x - y = 1 \end{cases}$$
+Solución única: $(2, 1)$
+
+**Compatible indeterminado:** Tiene infinitas soluciones.
+$$\begin{cases} x + y = 3 \\ 2x + 2y = 6 \end{cases}$$
+Soluciones: $(t, 3-t)$ para cualquier $t \in \mathbb{R}$
+
+**Incompatible:** No tiene solución.
+$$\begin{cases} x + y = 3 \\ x + y = 5 \end{cases}$$
+No hay valores que satisfagan ambas ecuaciones.
+
+## Sistemas Homogéneos
+
+Un sistema es **homogéneo** si todos los términos independientes son cero:
+
+$$Ax = 0$$
+
+### Propiedad Fundamental
+
+Todo sistema homogéneo tiene al menos una solución: la **solución trivial** $x = 0$.
+
+Si además tiene otras soluciones, el sistema es compatible indeterminado.
+
+## Interpretación Geométrica
+
+### Sistema 2x2
+
+Cada ecuación lineal en $\mathbb{R}^2$ representa una recta.
+
+- **Sistema compatible determinado:** Las rectas se cortan en un punto
+- **Sistema compatible indeterminado:** Las rectas coinciden
+- **Sistema incompatible:** Las rectas son paralelas (no coincidentes)
+
+### Sistema 3x3
+
+Cada ecuación lineal en $\mathbb{R}^3$ representa un plano.
+
+- **Compatible determinado:** Los tres planos se cortan en un único punto
+- **Compatible indeterminado:** Los planos se cortan en una recta o coinciden
+- **Incompatible:** No hay punto común a los tres planos
+
+## Matriz Aumentada
+
+La **matriz aumentada** combina la matriz de coeficientes con el vector de términos independientes:
+
+$$[A|b] = \begin{pmatrix} a_{11} & a_{12} & \cdots & a_{1n} & | & b_1 \\ a_{21} & a_{22} & \cdots & a_{2n} & | & b_2 \\ \vdots & \vdots & \ddots & \vdots & | & \vdots \\ a_{m1} & a_{m2} & \cdots & a_{mn} & | & b_m \end{pmatrix}$$
+
+Esta matriz contiene toda la información del sistema y es la base del método de eliminación gaussiana.
+
+## Operaciones Elementales
+
+Las siguientes operaciones sobre las ecuaciones no cambian el conjunto de soluciones:
+
+1. **Intercambio:** Intercambiar dos ecuaciones
+2. **Escalamiento:** Multiplicar una ecuación por una constante no nula
+3. **Combinación:** Sumar a una ecuación un múltiplo de otra
+
+Estas operaciones corresponden a operaciones sobre las filas de la matriz aumentada.
+
+## Sistemas Equivalentes
+
+Dos sistemas son **equivalentes** si tienen exactamente el mismo conjunto de soluciones.
+
+Las operaciones elementales transforman un sistema en otro equivalente.
+
+## Objetivo
+
+El objetivo de los métodos de resolución es transformar el sistema original en uno equivalente más simple, cuya solución sea evidente.
+
+**Forma escalonada:**
+$$\begin{cases} x + 2y + z = 5 \\ y - z = 2 \\ z = 1 \end{cases}$$
+
+Este sistema se resuelve fácilmente por **sustitución hacia atrás**: $z = 1$, luego $y = 3$, luego $x = 0$.
+
+---
+
+En la siguiente sección estudiaremos el método de eliminación gaussiana para reducir sistemas a forma escalonada.

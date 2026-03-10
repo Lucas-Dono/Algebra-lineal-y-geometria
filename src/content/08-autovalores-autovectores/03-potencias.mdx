@@ -1,0 +1,151 @@
+---
+title: "Potencias de Matrices"
+chapter: 8
+section: 3
+---
+
+# Potencias de Matrices
+
+La diagonalizacion simplifica dramaticamente el calculo de potencias de matrices.
+
+## Formula para Potencias
+
+Si $A = PDP^{-1}$, entonces:
+
+$$A^n = PD^nP^{-1}$$
+
+Y como $D$ es diagonal:
+
+$$D = \begin{pmatrix} \lambda_1 & & \\ & \ddots & \\ & & \lambda_n \end{pmatrix} \Rightarrow D^n = \begin{pmatrix} \lambda_1^n & & \\ & \ddots & \\ & & \lambda_n^n \end{pmatrix}$$
+
+## Demostracion
+
+$$A^2 = (PDP^{-1})(PDP^{-1}) = PD(P^{-1}P)DP^{-1} = PD^2P^{-1}$$
+
+Por induccion: $A^n = PD^nP^{-1}$.
+
+## Ejemplo: Fibonacci
+
+La sucesion de Fibonacci: $F_0 = 0$, $F_1 = 1$, $F_{n+2} = F_{n+1} + F_n$.
+
+Se puede expresar matricialmente:
+
+$$\begin{pmatrix} F_{n+1} \\ F_n \end{pmatrix} = \begin{pmatrix} 1 & 1 \\ 1 & 0 \end{pmatrix} \begin{pmatrix} F_n \\ F_{n-1} \end{pmatrix}$$
+
+Sea $A = \begin{pmatrix} 1 & 1 \\ 1 & 0 \end{pmatrix}$. Entonces:
+
+$$\begin{pmatrix} F_{n+1} \\ F_n \end{pmatrix} = A^n \begin{pmatrix} 1 \\ 0 \end{pmatrix}$$
+
+**Autovalores de $A$:**
+$$\det(A - \lambda I) = \lambda^2 - \lambda - 1 = 0$$
+
+$$\lambda = \frac{1 \pm \sqrt{5}}{2}$$
+
+$\phi = \frac{1 + \sqrt{5}}{2} \approx 1.618$ (razon aurea)
+
+$\psi = \frac{1 - \sqrt{5}}{2} \approx -0.618$
+
+**Formula de Binet:**
+$$F_n = \frac{\phi^n - \psi^n}{\sqrt{5}}$$
+
+## Ejemplo Numerico
+
+Calcular $A^{10}$ donde $A = \begin{pmatrix} 2 & 1 \\ 1 & 2 \end{pmatrix}$.
+
+Ya sabemos: $\lambda_1 = 3$, $\lambda_2 = 1$ con autovectores $(1, 1)^T$ y $(1, -1)^T$.
+
+$$P = \begin{pmatrix} 1 & 1 \\ 1 & -1 \end{pmatrix}, \quad P^{-1} = \frac{1}{2}\begin{pmatrix} 1 & 1 \\ 1 & -1 \end{pmatrix}$$
+
+$$D^{10} = \begin{pmatrix} 3^{10} & 0 \\ 0 & 1 \end{pmatrix} = \begin{pmatrix} 59049 & 0 \\ 0 & 1 \end{pmatrix}$$
+
+$$A^{10} = PD^{10}P^{-1} = \begin{pmatrix} 1 & 1 \\ 1 & -1 \end{pmatrix}\begin{pmatrix} 59049 & 0 \\ 0 & 1 \end{pmatrix}\frac{1}{2}\begin{pmatrix} 1 & 1 \\ 1 & -1 \end{pmatrix}$$
+
+$$= \frac{1}{2}\begin{pmatrix} 59049 & 1 \\ 59049 & -1 \end{pmatrix}\begin{pmatrix} 1 & 1 \\ 1 & -1 \end{pmatrix}$$
+
+$$= \frac{1}{2}\begin{pmatrix} 59050 & 59048 \\ 59048 & 59050 \end{pmatrix} = \begin{pmatrix} 29525 & 29524 \\ 29524 & 29525 \end{pmatrix}$$
+
+## Comportamiento a Largo Plazo
+
+El comportamiento de $A^n$ cuando $n \to \infty$ depende de los autovalores:
+
+### Caso $|\lambda_i| < 1$ para todos
+
+$$A^n \to O$$
+
+La matriz converge a cero.
+
+### Caso $|\lambda_{\max}| > 1$
+
+$$\|A^n\| \to \infty$$
+
+Crece sin cota.
+
+### Caso $|\lambda_{\max}| = 1$ con autovalor dominante
+
+El comportamiento depende de la multiplicidad y si es exactamente 1 o -1.
+
+## Cadenas de Markov
+
+Una **matriz estocastica** $P$ tiene:
+- Entradas no negativas
+- Cada columna suma 1
+
+Si $\mathbf{x}^{(n)}$ es el vector de probabilidades en el paso $n$:
+
+$$\mathbf{x}^{(n+1)} = P\mathbf{x}^{(n)}$$
+$$\mathbf{x}^{(n)} = P^n\mathbf{x}^{(0)}$$
+
+### Ejemplo: Clima
+
+Estados: Soleado (S), Nublado (N).
+
+$$P = \begin{pmatrix} 0.8 & 0.4 \\ 0.2 & 0.6 \end{pmatrix}$$
+
+Columna 1: Si hoy es S, 80% manana S, 20% manana N.
+
+Autovalores: $\lambda_1 = 1$, $\lambda_2 = 0.4$.
+
+El autovector de $\lambda = 1$ da la distribucion estacionaria:
+
+$$\mathbf{\pi} = \begin{pmatrix} 2/3 \\ 1/3 \end{pmatrix}$$
+
+A largo plazo, 2/3 del tiempo estara soleado.
+
+## Exponencial de Matrices
+
+La exponencial de una matriz se define:
+
+$$e^A = I + A + \frac{A^2}{2!} + \frac{A^3}{3!} + \cdots$$
+
+Si $A = PDP^{-1}$:
+
+$$e^A = Pe^DP^{-1}$$
+
+donde $e^D = \text{diag}(e^{\lambda_1}, \ldots, e^{\lambda_n})$.
+
+**Aplicacion:** Solucion de $\mathbf{x}'(t) = A\mathbf{x}(t)$ es $\mathbf{x}(t) = e^{At}\mathbf{x}(0)$.
+
+## Metodo sin Diagonalizacion: Cayley-Hamilton
+
+Si $p(\lambda) = \lambda^2 - 5\lambda + 6$ es el polinomio caracteristico:
+
+$$A^2 = 5A - 6I$$
+
+Entonces:
+$$A^3 = A \cdot A^2 = A(5A - 6I) = 5A^2 - 6A = 5(5A - 6I) - 6A = 19A - 30I$$
+
+Cualquier potencia de $A$ se reduce a combinacion lineal de $I$ y $A$.
+
+## Resumen de Formulas
+
+| Operacion | Formula |
+|-----------|---------|
+| $A^n$ | $PD^nP^{-1}$ |
+| $e^A$ | $Pe^DP^{-1}$ |
+| $\sqrt{A}$ (si existe) | $P\sqrt{D}P^{-1}$ |
+| $\ln A$ (si definido) | $P\ln DP^{-1}$ |
+| $f(A)$ | $Pf(D)P^{-1}$ |
+
+---
+
+En la siguiente seccion veremos aplicaciones de autovalores y autovectores.

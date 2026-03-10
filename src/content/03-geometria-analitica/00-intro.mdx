@@ -1,0 +1,124 @@
+---
+title: "Introduccion a la Geometria Analitica"
+chapter: 3
+section: 0
+---
+
+# Introduccion a la Geometria Analitica
+
+La geometria analitica conecta el algebra con la geometria, permitiendo describir figuras geometricas mediante ecuaciones y resolver problemas geometricos con metodos algebraicos.
+
+## Historia y Motivacion
+
+Rene Descartes (1596-1650) revoluciono las matematicas al introducir el **sistema de coordenadas cartesianas**, que lleva su nombre. Esta idea simple pero poderosa permite:
+
+- Representar puntos como pares o ternas de numeros
+- Describir curvas y superficies mediante ecuaciones
+- Aplicar metodos algebraicos a problemas geometricos
+
+## El Plano Cartesiano
+
+El **plano cartesiano** $\mathbb{R}^2$ consiste en dos rectas perpendiculares (ejes) que se cortan en el **origen** $O = (0, 0)$.
+
+Cada punto $P$ del plano se identifica con un par ordenado $(x, y)$:
+- $x$ es la **coordenada horizontal** (abscisa)
+- $y$ es la **coordenada vertical** (ordenada)
+
+### Los Cuadrantes
+
+El plano se divide en cuatro cuadrantes:
+
+| Cuadrante | Signos | Ejemplo |
+|-----------|--------|---------|
+| I | $x > 0$, $y > 0$ | $(3, 2)$ |
+| II | $x < 0$, $y > 0$ | $(-1, 4)$ |
+| III | $x < 0$, $y < 0$ | $(-2, -3)$ |
+| IV | $x > 0$, $y < 0$ | $(5, -1)$ |
+
+## Visualizacion 3D Interactiva
+
+import ThreeScene from '../../components/visualizations/ThreeScene';
+
+<ThreeScene
+  client:load
+  title="Vectores en el Espacio 3D"
+  vectors={[
+    { coords: [2, 1, 0], color: "#3b82f6", label: "u" },
+    { coords: [0, 2, 1], color: "#22c55e", label: "v" },
+    { coords: [1, 0, 2], color: "#f59e0b", label: "w" }
+  ]}
+/>
+
+## El Espacio Tridimensional
+
+El **espacio cartesiano** $\mathbb{R}^3$ agrega un tercer eje perpendicular a los otros dos.
+
+Cada punto se identifica con una terna $(x, y, z)$.
+
+Los tres ejes definen tres planos coordenados:
+- Plano $xy$: puntos con $z = 0$
+- Plano $xz$: puntos con $y = 0$
+- Plano $yz$: puntos con $x = 0$
+
+## Vectores: Idea Intuitiva
+
+Un **vector** es un objeto matematico que tiene:
+- **Magnitud** (longitud)
+- **Direccion** (hacia donde apunta)
+- **Sentido** (cual extremo es el inicio)
+
+Geometricamente, un vector es una "flecha" que va de un punto a otro.
+
+### Notacion
+
+- Vectores en negrita: $\mathbf{v}$, $\mathbf{u}$, $\mathbf{w}$
+- O con flecha: $\vec{v}$, $\vec{u}$, $\vec{w}$
+- Vector de $A$ a $B$: $\overrightarrow{AB}$
+
+### Vector Posicion
+
+El **vector posicion** de un punto $P = (x, y)$ es el vector desde el origen hasta $P$:
+
+$$\vec{OP} = (x, y)$$
+
+## Lo Que Aprenderemos
+
+En este capitulo estudiaremos:
+
+### Vectores en $\mathbb{R}^2$
+- Operaciones: suma, resta, producto por escalar
+- Magnitud y direccion
+- Producto punto
+- Angulo entre vectores
+
+### Vectores en $\mathbb{R}^3$
+- Extension de operaciones a 3D
+- Producto cruz (exclusivo de 3D)
+- Aplicaciones geometricas
+
+### Rectas y Planos
+- Ecuaciones parametricas y cartesianas
+- Posiciones relativas
+- Distancias
+
+## Conexion con Algebra Lineal
+
+Los vectores son los objetos fundamentales del algebra lineal:
+
+- Un **espacio vectorial** es un conjunto de vectores con operaciones de suma y producto por escalar
+- Las **matrices** representan transformaciones de vectores
+- Los **sistemas de ecuaciones** describen intersecciones de rectas y planos
+
+## Aplicaciones
+
+La geometria analitica y los vectores aparecen en:
+
+- **Fisica:** Fuerzas, velocidades, aceleraciones
+- **Ingenieria:** Mecanica, estructuras, fluidos
+- **Graficos por computadora:** Modelado 3D, animacion
+- **Robotica:** Posicionamiento, navegacion
+- **Economia:** Vectores de precios, cantidades
+
+---
+
+En la siguiente seccion formalizaremos los vectores en $\mathbb{R}^2$ y sus operaciones.

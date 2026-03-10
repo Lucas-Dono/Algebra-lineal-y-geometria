@@ -1,0 +1,203 @@
+{
+  "chapter": "02-sistemas-lineales",
+  "exercises": [
+    {
+      "id": "sistemas-02-test-01",
+      "type": "test",
+      "category": "multiple-choice",
+      "question": {
+        "text": "Un sistema de 2 ecuaciones con 3 incognitas que es compatible, es siempre:",
+        "latex": null
+      },
+      "options": [
+        { "id": "a", "text": "Indeterminado (infinitas soluciones)", "correct": true },
+        { "id": "b", "text": "Determinado (solucion unica)", "correct": false },
+        { "id": "c", "text": "Puede ser determinado o indeterminado", "correct": false },
+        { "id": "d", "text": "Incompatible", "correct": false }
+      ],
+      "hints": [
+        "El rango maximo de la matriz de coeficientes es 2 (numero de filas)",
+        "Si hay 3 incognitas y rango <= 2, siempre hay variables libres"
+      ],
+      "feedback": {
+        "correct": "Correcto. Con mas incognitas que ecuaciones, si el sistema es compatible, siempre hay variables libres.",
+        "incorrect": "Incorrecto. Piensa en cuantos pivotes puede haber como maximo."
+      },
+      "tags": ["sistemas-lineales", "clasificacion"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "sistemas-02-test-02",
+      "type": "test",
+      "category": "multiple-choice",
+      "question": {
+        "text": "Cual operacion NO es una operacion elemental por filas?",
+        "latex": null
+      },
+      "options": [
+        { "id": "a", "text": "Multiplicar dos filas entre si", "correct": true },
+        { "id": "b", "text": "Intercambiar dos filas", "correct": false },
+        { "id": "c", "text": "Multiplicar una fila por un escalar no nulo", "correct": false },
+        { "id": "d", "text": "Sumar a una fila un multiplo de otra", "correct": false }
+      ],
+      "hints": [
+        "Las operaciones elementales deben ser reversibles",
+        "Piensa cuales operaciones preservan el conjunto de soluciones"
+      ],
+      "feedback": {
+        "correct": "Correcto. Multiplicar filas entre si no es una operacion elemental y no preserva las soluciones.",
+        "incorrect": "Revisa las tres operaciones elementales: intercambio, escalamiento y reemplazo."
+      },
+      "tags": ["sistemas-lineales", "operaciones-elementales"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "sistemas-02-test-03",
+      "type": "test",
+      "category": "multiple-choice",
+      "question": {
+        "text": "Si la matriz aumentada [A|b] reducida tiene una fila (0 0 0 | 5), el sistema es:",
+        "latex": "(0 \\; 0 \\; 0 \\; | \\; 5)"
+      },
+      "options": [
+        { "id": "a", "text": "Incompatible", "correct": true },
+        { "id": "b", "text": "Compatible determinado", "correct": false },
+        { "id": "c", "text": "Compatible indeterminado", "correct": false },
+        { "id": "d", "text": "No se puede determinar", "correct": false }
+      ],
+      "hints": [
+        "Esa fila representa la ecuacion 0x + 0y + 0z = 5",
+        "Es 0 = 5 una igualdad verdadera?"
+      ],
+      "feedback": {
+        "correct": "Correcto. La fila representa 0 = 5, que es imposible. El sistema no tiene solucion.",
+        "incorrect": "Piensa que ecuacion representa esa fila. Si los coeficientes son 0, que queda?"
+      },
+      "tags": ["sistemas-lineales", "clasificacion", "incompatible"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "sistemas-02-test-04",
+      "type": "test",
+      "category": "multiple-choice",
+      "question": {
+        "text": "Un sistema homogeneo Ax = 0 siempre tiene:",
+        "latex": "Ax = 0"
+      },
+      "options": [
+        { "id": "a", "text": "Al menos la solucion trivial x = 0", "correct": true },
+        { "id": "b", "text": "Exactamente una solucion", "correct": false },
+        { "id": "c", "text": "Infinitas soluciones", "correct": false },
+        { "id": "d", "text": "Ninguna solucion si det(A) = 0", "correct": false }
+      ],
+      "hints": [
+        "Sustituye x = 0 en la ecuacion Ax = 0",
+        "A veces 0 es lo unico, que ocurre cuando?"
+      ],
+      "feedback": {
+        "correct": "Correcto. x = 0 siempre satisface Ax = 0. Puede haber otras soluciones si rango(A) < n.",
+        "incorrect": "x = 0 siempre es solucion de un sistema homogeneo. Verifica sustituyendo."
+      },
+      "tags": ["sistemas-lineales", "homogeneo"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "sistemas-02-test-05",
+      "type": "test",
+      "category": "multiple-choice",
+      "question": {
+        "text": "Segun el teorema de Rouche-Frobenius, un sistema es compatible si:",
+        "latex": null
+      },
+      "options": [
+        { "id": "a", "text": "rango(A) = rango([A|b])", "correct": true },
+        { "id": "b", "text": "rango(A) < rango([A|b])", "correct": false },
+        { "id": "c", "text": "rango(A) > rango([A|b])", "correct": false },
+        { "id": "d", "text": "det(A) distinto de 0", "correct": false }
+      ],
+      "hints": [
+        "La compatibilidad depende de si b esta en la imagen de A",
+        "Agregar b como columna no debe aumentar el rango"
+      ],
+      "feedback": {
+        "correct": "Correcto. Si los rangos son iguales, b es combinacion lineal de las columnas de A.",
+        "incorrect": "El sistema es compatible cuando agregar b no aumenta el rango de la matriz."
+      },
+      "tags": ["sistemas-lineales", "rouche-frobenius"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "sistemas-02-test-06",
+      "type": "test",
+      "category": "true-false",
+      "question": {
+        "text": "La forma escalonada reducida (RREF) de una matriz es unica",
+        "latex": null
+      },
+      "options": [
+        { "id": "true", "text": "Verdadero", "correct": true },
+        { "id": "false", "text": "Falso", "correct": false }
+      ],
+      "hints": [
+        "A diferencia de la forma escalonada (no reducida)",
+        "Piensa si diferentes secuencias de operaciones dan el mismo resultado"
+      ],
+      "feedback": {
+        "correct": "Correcto. Cada matriz tiene una unica RREF, independientemente del orden de operaciones.",
+        "incorrect": "La RREF si es unica. La forma escalonada (no reducida) puede variar."
+      },
+      "tags": ["sistemas-lineales", "gauss-jordan", "rref"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "sistemas-02-test-07",
+      "type": "test",
+      "category": "multiple-choice",
+      "question": {
+        "text": "Si un sistema 3x3 tiene det(A) = 0, entonces:",
+        "latex": "\\det(A) = 0"
+      },
+      "options": [
+        { "id": "a", "text": "No tiene solucion unica", "correct": true },
+        { "id": "b", "text": "No tiene solucion", "correct": false },
+        { "id": "c", "text": "Tiene exactamente una solucion", "correct": false },
+        { "id": "d", "text": "Siempre tiene infinitas soluciones", "correct": false }
+      ],
+      "hints": [
+        "det(A) = 0 significa que A no es invertible",
+        "Puede ser incompatible o indeterminado, depende de b"
+      ],
+      "feedback": {
+        "correct": "Correcto. Si det(A) = 0, el sistema puede ser incompatible o indeterminado, pero nunca determinado.",
+        "incorrect": "det(A) = 0 descarta la solucion unica, pero el sistema puede ser compatible o no segun b."
+      },
+      "tags": ["sistemas-lineales", "determinante", "clasificacion"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "sistemas-02-test-08",
+      "type": "test",
+      "category": "multiple-choice",
+      "question": {
+        "text": "El numero de variables libres en un sistema compatible es:",
+        "latex": null
+      },
+      "options": [
+        { "id": "a", "text": "n - rango(A), donde n es el numero de incognitas", "correct": true },
+        { "id": "b", "text": "m - rango(A), donde m es el numero de ecuaciones", "correct": false },
+        { "id": "c", "text": "rango(A)", "correct": false },
+        { "id": "d", "text": "n - m", "correct": false }
+      ],
+      "hints": [
+        "Las variables pivote estan determinadas por el rango",
+        "Las demas variables son libres"
+      ],
+      "feedback": {
+        "correct": "Correcto. Hay un pivote por cada dimension del rango, el resto de variables son libres.",
+        "incorrect": "Las variables libres = total de incognitas - variables pivote = n - rango(A)."
+      },
+      "tags": ["sistemas-lineales", "variables-libres", "rango"],
+      "difficulty": "medium"
+    }
+  ]
+}

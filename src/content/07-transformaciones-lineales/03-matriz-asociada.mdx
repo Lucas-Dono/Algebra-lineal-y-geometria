@@ -1,0 +1,144 @@
+---
+title: "Matriz Asociada a una Transformacion Lineal"
+chapter: 7
+section: 3
+---
+
+# Matriz Asociada a una Transformacion Lineal
+
+Toda transformacion lineal entre espacios de dimension finita puede representarse mediante una matriz.
+
+## Construccion de la Matriz
+
+Sea $T: V \to W$ lineal, con:
+- $\mathcal{B} = \{\mathbf{v}_1, \ldots, \mathbf{v}_n\}$ base de $V$
+- $\mathcal{C} = \{\mathbf{w}_1, \ldots, \mathbf{w}_m\}$ base de $W$
+
+La **matriz de $T$ respecto a las bases $\mathcal{B}$ y $\mathcal{C}$**, denotada $[T]_\mathcal{B}^\mathcal{C}$ o $[T]_{\mathcal{C} \leftarrow \mathcal{B}}$, se construye:
+
+**Columna $j$:** Expresar $T(\mathbf{v}_j)$ en la base $\mathcal{C}$.
+
+$$T(\mathbf{v}_j) = a_{1j}\mathbf{w}_1 + a_{2j}\mathbf{w}_2 + \cdots + a_{mj}\mathbf{w}_m$$
+
+La columna $j$ es $(a_{1j}, a_{2j}, \ldots, a_{mj})^T$.
+
+## Formula Fundamental
+
+$$[T(\mathbf{v})]_\mathcal{C} = [T]_\mathcal{B}^\mathcal{C} \cdot [\mathbf{v}]_\mathcal{B}$$
+
+La matriz transforma coordenadas en $\mathcal{B}$ a coordenadas en $\mathcal{C}$.
+
+## Caso Estandar
+
+Cuando $V = \mathbb{R}^n$, $W = \mathbb{R}^m$, y usamos las bases estandar:
+
+$$[T]_E^E = \begin{pmatrix} | & | & & | \\ T(\mathbf{e}_1) & T(\mathbf{e}_2) & \cdots & T(\mathbf{e}_n) \\ | & | & & | \end{pmatrix}$$
+
+Las columnas son las imagenes de los vectores de la base estandar.
+
+## Ejemplos
+
+### Ejemplo 1: Rotacion
+
+$R_{\pi/2}: \mathbb{R}^2 \to \mathbb{R}^2$ (rotacion 90 grados).
+
+$$R_{\pi/2}(\mathbf{e}_1) = R_{\pi/2}(1, 0) = (0, 1)$$
+$$R_{\pi/2}(\mathbf{e}_2) = R_{\pi/2}(0, 1) = (-1, 0)$$
+
+$$[R_{\pi/2}]_E^E = \begin{pmatrix} 0 & -1 \\ 1 & 0 \end{pmatrix}$$
+
+### Ejemplo 2: Proyeccion
+
+$P: \mathbb{R}^3 \to \mathbb{R}^2$ dada por $P(x, y, z) = (x, y)$.
+
+$$P(\mathbf{e}_1) = (1, 0), \quad P(\mathbf{e}_2) = (0, 1), \quad P(\mathbf{e}_3) = (0, 0)$$
+
+$$[P]_E^E = \begin{pmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \end{pmatrix}$$
+
+### Ejemplo 3: Con Bases No Estandar
+
+Sea $T: \mathbb{R}^2 \to \mathbb{R}^2$ con $T(x, y) = (x + y, x - y)$.
+
+Base $\mathcal{B} = \{(1, 1), (1, -1)\}$.
+
+$$T(1, 1) = (2, 0) = 1(1, 1) + 1(1, -1)$$
+$$T(1, -1) = (0, 2) = 1(1, 1) + (-1)(1, -1)$$
+
+$$[T]_\mathcal{B}^\mathcal{B} = \begin{pmatrix} 1 & 1 \\ 1 & -1 \end{pmatrix}$$
+
+Comparemos con la base estandar:
+$$T(\mathbf{e}_1) = T(1, 0) = (1, 1)$$
+$$T(\mathbf{e}_2) = T(0, 1) = (1, -1)$$
+
+$$[T]_E^E = \begin{pmatrix} 1 & 1 \\ 1 & -1 \end{pmatrix}$$
+
+## Composicion de Transformaciones
+
+Si $T: U \to V$ y $S: V \to W$, entonces:
+
+$$[S \circ T]_\mathcal{B}^\mathcal{D} = [S]_\mathcal{C}^\mathcal{D} \cdot [T]_\mathcal{B}^\mathcal{C}$$
+
+La matriz de la composicion es el **producto** de las matrices (en orden inverso).
+
+### Ejemplo
+
+$R_{\pi/4}$ seguida de $R_{\pi/4}$ debe dar $R_{\pi/2}$:
+
+$$R_{\pi/4} = \begin{pmatrix} \frac{\sqrt{2}}{2} & -\frac{\sqrt{2}}{2} \\ \frac{\sqrt{2}}{2} & \frac{\sqrt{2}}{2} \end{pmatrix}$$
+
+$$R_{\pi/4}^2 = \begin{pmatrix} 0 & -1 \\ 1 & 0 \end{pmatrix} = R_{\pi/2}$$
+
+## Transformacion Inversa
+
+Si $T$ es invertible:
+
+$$[T^{-1}]_\mathcal{C}^\mathcal{B} = ([T]_\mathcal{B}^\mathcal{C})^{-1}$$
+
+La matriz de la inversa es la inversa de la matriz.
+
+## Matriz de la Derivada
+
+Sea $D: \mathcal{P}_2 \to \mathcal{P}_1$ la derivada, con base $\{1, x, x^2\}$ para $\mathcal{P}_2$ y $\{1, x\}$ para $\mathcal{P}_1$.
+
+$$D(1) = 0 = 0 \cdot 1 + 0 \cdot x$$
+$$D(x) = 1 = 1 \cdot 1 + 0 \cdot x$$
+$$D(x^2) = 2x = 0 \cdot 1 + 2 \cdot x$$
+
+$$[D] = \begin{pmatrix} 0 & 1 & 0 \\ 0 & 0 & 2 \end{pmatrix}$$
+
+**Verificacion:** Para $p(x) = 3 + 2x + 5x^2$, coordenadas $(3, 2, 5)^T$:
+
+$$[D] \begin{pmatrix} 3 \\ 2 \\ 5 \end{pmatrix} = \begin{pmatrix} 0 & 1 & 0 \\ 0 & 0 & 2 \end{pmatrix} \begin{pmatrix} 3 \\ 2 \\ 5 \end{pmatrix} = \begin{pmatrix} 2 \\ 10 \end{pmatrix}$$
+
+Esto representa $2 + 10x$, que es efectivamente $(3 + 2x + 5x^2)' = 2 + 10x$.
+
+## Propiedades de la Correspondencia
+
+La correspondencia $T \mapsto [T]_\mathcal{B}^\mathcal{C}$ es:
+
+1. **Lineal:** $[S + T] = [S] + [T]$ y $[cT] = c[T]$
+
+2. **Preserva composicion:** $[S \circ T] = [S][T]$
+
+3. **Preserva identidad:** $[I] = I$
+
+4. **Preserva inversas:** $[T^{-1}] = [T]^{-1}$
+
+## Rango y Nucleo via la Matriz
+
+- $\text{rango}(T) = \text{rango}([T])$
+- $\text{nul}(T) = \text{nul}([T])$
+- $\text{Ker}(T)$ corresponde a $\text{Nul}([T])$
+- $\text{Im}(T)$ corresponde a $\text{Col}([T])$
+
+## Inyectividad, Sobreyectividad via la Matriz
+
+$T: V \to W$ con $\dim(V) = n$, $\dim(W) = m$:
+
+- $T$ inyectiva $\iff \text{rango}([T]) = n$
+- $T$ sobreyectiva $\iff \text{rango}([T]) = m$
+- $T$ isomorfismo $\iff [T]$ invertible
+
+---
+
+En la siguiente seccion estudiaremos como cambia la matriz con cambio de base.

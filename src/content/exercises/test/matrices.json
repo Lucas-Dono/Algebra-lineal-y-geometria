@@ -1,0 +1,203 @@
+{
+  "chapter": "05-matrices",
+  "exercises": [
+    {
+      "id": "mat-05-test-01",
+      "type": "test",
+      "category": "multiple-choice",
+      "question": {
+        "text": "Si A es 3x4 y B es 4x2, entonces AB es:",
+        "latex": null
+      },
+      "options": [
+        { "id": "a", "text": "3x2", "correct": true },
+        { "id": "b", "text": "4x4", "correct": false },
+        { "id": "c", "text": "3x4", "correct": false },
+        { "id": "d", "text": "No se puede multiplicar", "correct": false }
+      ],
+      "hints": [
+        "Para multiplicar, columnas de A = filas de B",
+        "El resultado tiene filas de A y columnas de B"
+      ],
+      "feedback": {
+        "correct": "Correcto. (mxn)(nxp) = (mxp). Aqui (3x4)(4x2) = (3x2).",
+        "incorrect": "La multiplicacion es posible porque columnas de A (4) = filas de B (4). Resultado: filas de A x columnas de B."
+      },
+      "tags": ["matrices", "multiplicacion", "dimensiones"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "mat-05-test-02",
+      "type": "test",
+      "category": "true-false",
+      "question": {
+        "text": "La multiplicacion de matrices es conmutativa: AB = BA",
+        "latex": "AB = BA"
+      },
+      "options": [
+        { "id": "true", "text": "Verdadero", "correct": false },
+        { "id": "false", "text": "Falso", "correct": true }
+      ],
+      "hints": [
+        "Piensa en matrices de diferentes dimensiones",
+        "Incluso para matrices cuadradas, generalmente no conmutan"
+      ],
+      "feedback": {
+        "correct": "Correcto. En general AB distinto de BA. Solo conmutan en casos especiales.",
+        "incorrect": "La multiplicacion de matrices NO es conmutativa. AB y BA suelen ser diferentes."
+      },
+      "tags": ["matrices", "multiplicacion", "conmutatividad"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "mat-05-test-03",
+      "type": "test",
+      "category": "multiple-choice",
+      "question": {
+        "text": "La transpuesta de AB es:",
+        "latex": "(AB)^T"
+      },
+      "options": [
+        { "id": "a", "text": "B^T A^T", "correct": true },
+        { "id": "b", "text": "A^T B^T", "correct": false },
+        { "id": "c", "text": "AB", "correct": false },
+        { "id": "d", "text": "(A^T)(B^T)", "correct": false }
+      ],
+      "hints": [
+        "La transpuesta del producto invierte el orden",
+        "Similar a la inversa del producto"
+      ],
+      "feedback": {
+        "correct": "Correcto. (AB)^T = B^T A^T. El orden se invierte.",
+        "incorrect": "Al transponer un producto, el orden se invierte: (AB)^T = B^T A^T."
+      },
+      "tags": ["matrices", "transpuesta"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "mat-05-test-04",
+      "type": "test",
+      "category": "multiple-choice",
+      "question": {
+        "text": "Si A es invertible, entonces (A^(-1))^(-1) es:",
+        "latex": "(A^{-1})^{-1}"
+      },
+      "options": [
+        { "id": "a", "text": "A", "correct": true },
+        { "id": "b", "text": "I", "correct": false },
+        { "id": "c", "text": "A^(-2)", "correct": false },
+        { "id": "d", "text": "A^2", "correct": false }
+      ],
+      "hints": [
+        "Cual es la inversa de la inversa de un numero?",
+        "(a^(-1))^(-1) = a"
+      ],
+      "feedback": {
+        "correct": "Correcto. La inversa de la inversa es la matriz original.",
+        "incorrect": "La operacion de invertir es su propia inversa: invertir dos veces devuelve la original."
+      },
+      "tags": ["matrices", "inversa"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "mat-05-test-05",
+      "type": "test",
+      "category": "multiple-choice",
+      "question": {
+        "text": "Una matriz A de nxn es invertible si y solo si:",
+        "latex": null
+      },
+      "options": [
+        { "id": "a", "text": "rango(A) = n", "correct": true },
+        { "id": "b", "text": "rango(A) < n", "correct": false },
+        { "id": "c", "text": "A tiene al menos un cero", "correct": false },
+        { "id": "d", "text": "A es simetrica", "correct": false }
+      ],
+      "hints": [
+        "Invertibilidad requiere rango completo",
+        "El rango maximo de una matriz nxn es n"
+      ],
+      "feedback": {
+        "correct": "Correcto. Rango completo significa que las columnas son LI, lo que equivale a invertibilidad.",
+        "incorrect": "Una matriz cuadrada es invertible si y solo si tiene rango igual a su dimension."
+      },
+      "tags": ["matrices", "inversa", "rango"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "mat-05-test-06",
+      "type": "test",
+      "category": "multiple-choice",
+      "question": {
+        "text": "La traza de una matriz 3x3 es:",
+        "latex": "\\text{tr}(A)"
+      },
+      "options": [
+        { "id": "a", "text": "La suma de los elementos de la diagonal", "correct": true },
+        { "id": "b", "text": "El determinante", "correct": false },
+        { "id": "c", "text": "El producto de los elementos de la diagonal", "correct": false },
+        { "id": "d", "text": "La suma de todos los elementos", "correct": false }
+      ],
+      "hints": [
+        "Solo importan ciertos elementos de la matriz",
+        "tr viene de 'trace' en ingles"
+      ],
+      "feedback": {
+        "correct": "Correcto. tr(A) = a11 + a22 + a33.",
+        "incorrect": "La traza es la suma de los elementos diagonales: a11 + a22 + ... + ann."
+      },
+      "tags": ["matrices", "traza"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "mat-05-test-07",
+      "type": "test",
+      "category": "multiple-choice",
+      "question": {
+        "text": "Si A es 3x5, el maximo rango posible de A es:",
+        "latex": null
+      },
+      "options": [
+        { "id": "a", "text": "3", "correct": true },
+        { "id": "b", "text": "5", "correct": false },
+        { "id": "c", "text": "8", "correct": false },
+        { "id": "d", "text": "15", "correct": false }
+      ],
+      "hints": [
+        "El rango no puede superar el numero de filas",
+        "Tampoco puede superar el numero de columnas"
+      ],
+      "feedback": {
+        "correct": "Correcto. rango(A) <= min(m, n) = min(3, 5) = 3.",
+        "incorrect": "El rango esta acotado por el minimo entre filas y columnas: min(3, 5) = 3."
+      },
+      "tags": ["matrices", "rango"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "mat-05-test-08",
+      "type": "test",
+      "category": "multiple-choice",
+      "question": {
+        "text": "El teorema del rango-nulidad establece que para A de mxn:",
+        "latex": null
+      },
+      "options": [
+        { "id": "a", "text": "rango(A) + nulidad(A) = n", "correct": true },
+        { "id": "b", "text": "rango(A) + nulidad(A) = m", "correct": false },
+        { "id": "c", "text": "rango(A) * nulidad(A) = mn", "correct": false },
+        { "id": "d", "text": "rango(A) = nulidad(A)", "correct": false }
+      ],
+      "hints": [
+        "La nulidad es la dimension del espacio nulo",
+        "El total debe ser el numero de columnas"
+      ],
+      "feedback": {
+        "correct": "Correcto. Variables pivote (rango) + variables libres (nulidad) = total de variables (n).",
+        "incorrect": "El rango mas la nulidad siempre igual al numero de columnas n."
+      },
+      "tags": ["matrices", "rango", "nulidad"],
+      "difficulty": "medium"
+    }
+  ]
+}

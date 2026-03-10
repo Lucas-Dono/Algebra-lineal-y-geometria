@@ -1,0 +1,165 @@
+---
+title: "Definicion y Axiomas"
+chapter: 4
+section: 1
+---
+
+# Definicion y Axiomas de Espacio Vectorial
+
+La definicion de espacio vectorial captura las propiedades esenciales de $\mathbb{R}^n$ de manera abstracta.
+
+## Definicion Formal
+
+Un **espacio vectorial** sobre $\mathbb{R}$ es un conjunto no vacio $V$ junto con dos operaciones:
+
+1. **Suma vectorial:** $+: V \times V \to V$
+2. **Producto por escalar:** $\cdot: \mathbb{R} \times V \to V$
+
+que satisfacen los siguientes 10 axiomas:
+
+### Axiomas de la Suma (A1-A4)
+
+Para todos $\mathbf{u}, \mathbf{v}, \mathbf{w} \in V$:
+
+| Axioma | Nombre | Enunciado |
+|--------|--------|-----------|
+| A1 | Clausura | $\mathbf{u} + \mathbf{v} \in V$ |
+| A2 | Conmutatividad | $\mathbf{u} + \mathbf{v} = \mathbf{v} + \mathbf{u}$ |
+| A3 | Asociatividad | $(\mathbf{u} + \mathbf{v}) + \mathbf{w} = \mathbf{u} + (\mathbf{v} + \mathbf{w})$ |
+| A4 | Elemento neutro | Existe $\mathbf{0} \in V$ tal que $\mathbf{v} + \mathbf{0} = \mathbf{v}$ |
+| A5 | Inverso aditivo | Para cada $\mathbf{v}$, existe $-\mathbf{v}$ tal que $\mathbf{v} + (-\mathbf{v}) = \mathbf{0}$ |
+
+### Axiomas del Producto por Escalar (M1-M5)
+
+Para todos $\mathbf{u}, \mathbf{v} \in V$ y $a, b \in \mathbb{R}$:
+
+| Axioma | Nombre | Enunciado |
+|--------|--------|-----------|
+| M1 | Clausura | $a\mathbf{v} \in V$ |
+| M2 | Asociatividad | $a(b\mathbf{v}) = (ab)\mathbf{v}$ |
+| M3 | Identidad | $1\mathbf{v} = \mathbf{v}$ |
+| M4 | Distributividad | $a(\mathbf{u} + \mathbf{v}) = a\mathbf{u} + a\mathbf{v}$ |
+| M5 | Distributividad | $(a + b)\mathbf{v} = a\mathbf{v} + b\mathbf{v}$ |
+
+## Propiedades que se Deducen
+
+A partir de los axiomas se pueden demostrar:
+
+1. El vector cero $\mathbf{0}$ es unico
+2. El inverso aditivo $-\mathbf{v}$ es unico para cada $\mathbf{v}$
+3. $0\mathbf{v} = \mathbf{0}$ para todo $\mathbf{v} \in V$
+4. $a\mathbf{0} = \mathbf{0}$ para todo $a \in \mathbb{R}$
+5. $(-1)\mathbf{v} = -\mathbf{v}$
+6. Si $a\mathbf{v} = \mathbf{0}$, entonces $a = 0$ o $\mathbf{v} = \mathbf{0}$
+
+### Demostracion de $0\mathbf{v} = \mathbf{0}$
+
+$$0\mathbf{v} = (0 + 0)\mathbf{v} = 0\mathbf{v} + 0\mathbf{v}$$
+
+Sumando $-(0\mathbf{v})$ a ambos lados:
+
+$$\mathbf{0} = 0\mathbf{v}$$
+
+## Visualizacion Interactiva
+
+import VectorVisualization from '../../components/visualizations/VectorVisualization';
+
+<VectorVisualization
+  client:load
+  title="Operaciones con Vectores en R²"
+  showSum={true}
+  showScalar={true}
+/>
+
+## Ejemplos de Espacios Vectoriales
+
+### Ejemplo 1: $\mathbb{R}^n$
+
+El espacio de n-tuplas de numeros reales:
+
+$$\mathbb{R}^n = \{(x_1, x_2, \ldots, x_n) : x_i \in \mathbb{R}\}$$
+
+Con operaciones:
+- $(x_1, \ldots, x_n) + (y_1, \ldots, y_n) = (x_1 + y_1, \ldots, x_n + y_n)$
+- $c(x_1, \ldots, x_n) = (cx_1, \ldots, cx_n)$
+
+Vector cero: $(0, 0, \ldots, 0)$
+
+### Ejemplo 2: Matrices $M_{m \times n}(\mathbb{R})$
+
+El espacio de matrices $m \times n$ con entradas reales.
+
+- Suma: componente a componente
+- Producto por escalar: componente a componente
+
+Vector cero: la matriz de ceros.
+
+**Dimension como espacio vectorial:** $mn$ (tiene $mn$ entradas libres)
+
+### Ejemplo 3: Polinomios $P_n$
+
+El espacio de polinomios de grado a lo sumo $n$:
+
+$$P_n = \{a_0 + a_1 x + a_2 x^2 + \cdots + a_n x^n : a_i \in \mathbb{R}\}$$
+
+Vector cero: el polinomio $0$.
+
+### Ejemplo 4: Polinomios $P$
+
+El espacio de **todos** los polinomios (sin restriccion de grado).
+
+Este es un espacio de dimension infinita.
+
+### Ejemplo 5: Funciones Continuas $C[a,b]$
+
+Funciones continuas en el intervalo $[a,b]$.
+
+Vector cero: la funcion $f(x) = 0$.
+
+### Ejemplo 6: El Espacio Trivial
+
+$V = \{\mathbf{0}\}$ es un espacio vectorial (el mas pequeno posible).
+
+## No-Ejemplos
+
+### No-Ejemplo 1: Primer Cuadrante
+
+$S = \{(x, y) : x \geq 0, y \geq 0\}$ **no** es espacio vectorial.
+
+Falla: $(-1)(1, 1) = (-1, -1) \notin S$ (no clausura del producto por escalar)
+
+### No-Ejemplo 2: Recta que no pasa por el origen
+
+$L = \{(x, y) : x + y = 1\}$ **no** es espacio vectorial.
+
+Falla: $(1, 0) \in L$ y $(0, 1) \in L$, pero $(1, 0) + (0, 1) = (1, 1) \notin L$
+
+### No-Ejemplo 3: Operaciones no estandar
+
+$V = \mathbb{R}^2$ con "suma" definida como $(x_1, y_1) \oplus (x_2, y_2) = (x_1 x_2, y_1 y_2)$
+
+Falla: No hay elemento neutro (no existe $(a, b)$ tal que $(x, y) \oplus (a, b) = (x, y)$ para todo $(x, y)$)
+
+## Verificacion de Axiomas
+
+Para verificar que un conjunto es espacio vectorial:
+
+1. Definir claramente el conjunto $V$
+2. Definir las operaciones de suma y producto por escalar
+3. Verificar cada uno de los 10 axiomas
+
+**Tip:** Los axiomas A2, A3, M2, M4, M5 usualmente se heredan de $\mathbb{R}$. Los mas problematicos suelen ser A4, A5 (existencia de neutro e inverso) y M1, A1 (clausura).
+
+## Espacio Vectorial Sobre Otros Campos
+
+La definicion se extiende reemplazando $\mathbb{R}$ por cualquier campo $F$:
+
+- **Espacio vectorial sobre $\mathbb{C}$:** Escalares son numeros complejos
+- **Espacio vectorial sobre $\mathbb{Q}$:** Escalares son numeros racionales
+- **Espacio vectorial sobre $\mathbb{Z}_p$:** Escalares son enteros modulo $p$
+
+La mayoria de resultados del curso aplican a cualquier campo.
+
+---
+
+En la siguiente seccion estudiaremos los subespacios vectoriales.

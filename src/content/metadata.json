@@ -1,0 +1,411 @@
+{
+  "title": "Álgebra Lineal Interactivo",
+  "description": "Libro interactivo completo de Álgebra Lineal para estudiantes universitarios",
+  "version": "0.1.0",
+  "author": "Proyecto Educativo",
+  "language": "es",
+  "chapters": [
+    {
+      "id": "00-fundamentos",
+      "number": 0,
+      "title": "Fundamentos Matemáticos",
+      "description": "Repaso de conceptos básicos necesarios para el estudio del álgebra lineal",
+      "icon": "📚",
+      "sections": [
+        {
+          "id": "00-intro",
+          "title": "Introducción",
+          "file": "00-intro.mdx"
+        },
+        {
+          "id": "01-conjuntos",
+          "title": "Teoría de Conjuntos",
+          "file": "01-conjuntos.mdx"
+        },
+        {
+          "id": "02-funciones",
+          "title": "Funciones",
+          "file": "02-funciones.mdx"
+        },
+        {
+          "id": "03-induccion",
+          "title": "Inducción Matemática",
+          "file": "03-induccion.md"
+        }
+      ]
+    },
+    {
+      "id": "01-numeros-complejos",
+      "number": 1,
+      "title": "Números Complejos",
+      "description": "Definición, operaciones y aplicaciones de los números complejos",
+      "icon": "🔢",
+      "sections": [
+        {
+          "id": "00-intro",
+          "title": "Introducción a los Números Complejos",
+          "file": "00-intro.mdx"
+        },
+        {
+          "id": "01-definicion",
+          "title": "Definición y Operaciones Básicas",
+          "file": "01-definicion.mdx"
+        },
+        {
+          "id": "02-forma-polar",
+          "title": "Forma Polar y Exponencial",
+          "file": "02-forma-polar.mdx"
+        },
+        {
+          "id": "03-raices",
+          "title": "Raíces de Números Complejos",
+          "file": "03-raices.mdx"
+        }
+      ]
+    },
+    {
+      "id": "02-sistemas-lineales",
+      "number": 2,
+      "title": "Sistemas de Ecuaciones Lineales",
+      "description": "Métodos de resolución de sistemas de ecuaciones lineales",
+      "icon": "⚖️",
+      "sections": [
+        {
+          "id": "00-intro",
+          "title": "Introducción a los Sistemas Lineales",
+          "file": "00-intro.mdx"
+        },
+        {
+          "id": "01-eliminacion-gauss",
+          "title": "Eliminación Gaussiana",
+          "file": "01-eliminacion-gauss.md"
+        },
+        {
+          "id": "02-gauss-jordan",
+          "title": "Método de Gauss-Jordan",
+          "file": "02-gauss-jordan.md"
+        },
+        {
+          "id": "03-clasificacion",
+          "title": "Clasificación de Sistemas",
+          "file": "03-clasificacion.md"
+        }
+      ]
+    },
+    {
+      "id": "03-geometria-analitica",
+      "number": 3,
+      "title": "Geometría Analítica",
+      "description": "Vectores, rectas y planos en el espacio",
+      "icon": "📐",
+      "sections": [
+        {
+          "id": "00-intro",
+          "title": "Introducción a la Geometría Analítica",
+          "file": "00-intro.mdx"
+        },
+        {
+          "id": "01-vectores-r2",
+          "title": "Vectores en R²",
+          "file": "01-vectores-r2.mdx"
+        },
+        {
+          "id": "02-vectores-r3",
+          "title": "Vectores en R³",
+          "file": "02-vectores-r3.md"
+        },
+        {
+          "id": "03-rectas-planos",
+          "title": "Rectas y Planos",
+          "file": "03-rectas-planos.mdx"
+        }
+      ]
+    },
+    {
+      "id": "04-espacios-vectoriales",
+      "number": 4,
+      "title": "Espacios Vectoriales",
+      "description": "Definición axiomática y propiedades de los espacios vectoriales",
+      "icon": "🎯",
+      "sections": [
+        {
+          "id": "00-intro",
+          "title": "Introducción a los Espacios Vectoriales",
+          "file": "00-intro.mdx"
+        },
+        {
+          "id": "01-definicion",
+          "title": "Definición y Axiomas",
+          "file": "01-definicion.mdx"
+        },
+        {
+          "id": "02-subespacios",
+          "title": "Subespacios Vectoriales",
+          "file": "02-subespacios.mdx"
+        },
+        {
+          "id": "03-base-dimension",
+          "title": "Base y Dimensión",
+          "file": "03-base-dimension.mdx"
+        },
+        {
+          "id": "04-coordenadas",
+          "title": "Coordenadas y Cambio de Base",
+          "file": "04-coordenadas.mdx"
+        }
+      ]
+    },
+    {
+      "id": "05-matrices",
+      "number": 5,
+      "title": "Matrices",
+      "description": "Operaciones con matrices y sus aplicaciones",
+      "icon": "🔲",
+      "sections": [
+        {
+          "id": "00-intro",
+          "title": "Introducción a las Matrices",
+          "file": "00-intro.mdx"
+        },
+        {
+          "id": "01-operaciones",
+          "title": "Operaciones con Matrices",
+          "file": "01-operaciones.mdx"
+        },
+        {
+          "id": "02-tipos-especiales",
+          "title": "Tipos Especiales de Matrices",
+          "file": "02-tipos-especiales.mdx"
+        },
+        {
+          "id": "03-inversa",
+          "title": "Matriz Inversa",
+          "file": "03-inversa.mdx"
+        },
+        {
+          "id": "04-rango",
+          "title": "Rango de una Matriz",
+          "file": "04-rango.md"
+        }
+      ]
+    },
+    {
+      "id": "06-determinantes",
+      "number": 6,
+      "title": "Determinantes",
+      "description": "Cálculo de determinantes y sus aplicaciones",
+      "icon": "🧮",
+      "sections": [
+        {
+          "id": "00-intro",
+          "title": "Introducción a los Determinantes",
+          "file": "00-intro.mdx"
+        },
+        {
+          "id": "01-calculo",
+          "title": "Cálculo de Determinantes",
+          "file": "01-calculo.mdx"
+        },
+        {
+          "id": "02-propiedades",
+          "title": "Propiedades de los Determinantes",
+          "file": "02-propiedades.mdx"
+        },
+        {
+          "id": "03-cramer",
+          "title": "Regla de Cramer",
+          "file": "03-cramer.mdx"
+        },
+        {
+          "id": "04-aplicaciones",
+          "title": "Aplicaciones Geométricas",
+          "file": "04-aplicaciones.md"
+        }
+      ]
+    },
+    {
+      "id": "07-transformaciones-lineales",
+      "number": 7,
+      "title": "Transformaciones Lineales",
+      "description": "Definición y propiedades de las transformaciones lineales",
+      "icon": "🔄",
+      "sections": [
+        {
+          "id": "00-intro",
+          "title": "Introducción a las Transformaciones Lineales",
+          "file": "00-intro.mdx"
+        },
+        {
+          "id": "01-definicion",
+          "title": "Definición y Ejemplos",
+          "file": "01-definicion.mdx"
+        },
+        {
+          "id": "02-nucleo-imagen",
+          "title": "Núcleo e Imagen",
+          "file": "02-nucleo-imagen.mdx"
+        },
+        {
+          "id": "03-matriz-asociada",
+          "title": "Matriz Asociada",
+          "file": "03-matriz-asociada.mdx"
+        },
+        {
+          "id": "04-cambio-base",
+          "title": "Cambio de Base",
+          "file": "04-cambio-base.mdx"
+        }
+      ]
+    },
+    {
+      "id": "08-autovalores-autovectores",
+      "number": 8,
+      "title": "Autovalores y Autovectores",
+      "description": "Cálculo y aplicaciones de autovalores y autovectores",
+      "icon": "🌀",
+      "sections": [
+        {
+          "id": "00-intro",
+          "title": "Introducción",
+          "file": "00-intro.mdx"
+        },
+        {
+          "id": "01-definicion",
+          "title": "Definición y Cálculo",
+          "file": "01-definicion.mdx"
+        },
+        {
+          "id": "02-diagonalizacion",
+          "title": "Diagonalización",
+          "file": "02-diagonalizacion.mdx"
+        },
+        {
+          "id": "03-potencias",
+          "title": "Potencias de Matrices",
+          "file": "03-potencias.mdx"
+        },
+        {
+          "id": "04-aplicaciones",
+          "title": "Aplicaciones",
+          "file": "04-aplicaciones.mdx"
+        }
+      ]
+    },
+    {
+      "id": "09-producto-interno",
+      "number": 9,
+      "title": "Espacios con Producto Interno",
+      "description": "Producto interno, ortogonalidad y proyecciones",
+      "icon": "📏",
+      "sections": [
+        {
+          "id": "00-intro",
+          "title": "Introducción",
+          "file": "00-intro.mdx"
+        },
+        {
+          "id": "01-definicion",
+          "title": "Producto Interno",
+          "file": "01-definicion.mdx"
+        },
+        {
+          "id": "02-ortogonalidad",
+          "title": "Ortogonalidad",
+          "file": "02-ortogonalidad.mdx"
+        },
+        {
+          "id": "03-gram-schmidt",
+          "title": "Proceso de Gram-Schmidt",
+          "file": "03-gram-schmidt.mdx"
+        },
+        {
+          "id": "04-proyecciones",
+          "title": "Proyecciones Ortogonales",
+          "file": "04-proyecciones.mdx"
+        }
+      ]
+    },
+    {
+      "id": "10-formas-cuadraticas",
+      "number": 10,
+      "title": "Formas Cuadráticas",
+      "description": "Clasificación y diagonalización de formas cuadráticas",
+      "icon": "📈",
+      "sections": [
+        {
+          "id": "00-intro",
+          "title": "Introducción",
+          "file": "00-intro.mdx"
+        },
+        {
+          "id": "01-definicion",
+          "title": "Definición y Matriz Asociada",
+          "file": "01-definicion.mdx"
+        },
+        {
+          "id": "02-clasificacion",
+          "title": "Clasificación",
+          "file": "02-clasificacion.mdx"
+        },
+        {
+          "id": "03-conicas",
+          "title": "Cónicas",
+          "file": "03-conicas.mdx"
+        },
+        {
+          "id": "04-cuadricas",
+          "title": "Cuádricas",
+          "file": "04-cuadricas.mdx"
+        }
+      ]
+    },
+    {
+      "id": "11-aplicaciones",
+      "number": 11,
+      "title": "Aplicaciones",
+      "description": "Aplicaciones del álgebra lineal en diferentes campos",
+      "icon": "🚀",
+      "sections": [
+        {
+          "id": "00-intro",
+          "title": "Introducción",
+          "file": "00-intro.mdx"
+        },
+        {
+          "id": "01-machine-learning",
+          "title": "Machine Learning",
+          "file": "01-machine-learning.mdx"
+        },
+        {
+          "id": "02-grafos",
+          "title": "Teoría de Grafos",
+          "file": "02-grafos.mdx"
+        },
+        {
+          "id": "03-criptografia",
+          "title": "Criptografía",
+          "file": "03-criptografia.mdx"
+        },
+        {
+          "id": "04-imagenes",
+          "title": "Procesamiento de Imágenes",
+          "file": "04-imagenes.mdx"
+        }
+      ]
+    }
+  ],
+  "exerciseTypes": {
+    "view": {
+      "name": "Ejercicios Resueltos",
+      "description": "Ejemplos paso a paso con explicación detallada"
+    },
+    "practice": {
+      "name": "Ejercicios de Práctica",
+      "description": "Ejercicios con solución disponible para verificar"
+    },
+    "test": {
+      "name": "Ejercicios Interactivos",
+      "description": "Ejercicios con validación automática y retroalimentación"
+    }
+  }
+}

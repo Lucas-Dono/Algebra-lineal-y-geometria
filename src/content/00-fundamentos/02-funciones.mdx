@@ -1,0 +1,176 @@
+---
+title: "Funciones"
+chapter: 0
+section: 2
+---
+
+# Funciones
+
+Las funciones son el concepto central para describir relaciones entre conjuntos. En álgebra lineal, las transformaciones lineales son un tipo especial de función.
+
+## Definición
+
+Una **función** $f$ de un conjunto $A$ en un conjunto $B$ es una regla que asigna a cada elemento de $A$ exactamente un elemento de $B$.
+
+Notación:
+$$f: A \to B$$
+$$x \mapsto f(x)$$
+
+- $A$ es el **dominio** de $f$
+- $B$ es el **codominio** de $f$
+- $f(x)$ es la **imagen** de $x$ bajo $f$
+- El conjunto $\{f(x) : x \in A\}$ es el **rango** o **imagen** de $f$
+
+## Ejemplos Básicos
+
+**Ejemplo 1:** $f: \mathbb{R} \to \mathbb{R}$ definida por $f(x) = x^2$
+
+- Dominio: $\mathbb{R}$
+- Codominio: $\mathbb{R}$
+- Rango: $[0, +\infty)$ (solo valores no negativos)
+
+**Ejemplo 2:** $g: \mathbb{R}^2 \to \mathbb{R}$ definida por $g(x, y) = x + y$
+
+Esta función toma un par ordenado y devuelve un número real.
+
+**Ejemplo 3:** $h: \mathbb{R} \to \mathbb{R}^2$ definida por $h(t) = (\cos t, \sin t)$
+
+Esta función toma un número y devuelve un par (un punto en el círculo unitario).
+
+## Igualdad de Funciones
+
+Dos funciones $f$ y $g$ son iguales si:
+1. Tienen el mismo dominio
+2. Tienen el mismo codominio
+3. $f(x) = g(x)$ para todo $x$ en el dominio
+
+## Tipos de Funciones
+
+### Función Inyectiva (uno a uno)
+
+Una función $f: A \to B$ es **inyectiva** si elementos distintos tienen imágenes distintas:
+
+$$f(x_1) = f(x_2) \Rightarrow x_1 = x_2$$
+
+Equivalentemente: $x_1 \neq x_2 \Rightarrow f(x_1) \neq f(x_2)$
+
+**Ejemplo inyectivo:** $f(x) = 2x + 3$
+
+Si $f(x_1) = f(x_2)$, entonces $2x_1 + 3 = 2x_2 + 3$, lo que implica $x_1 = x_2$.
+
+**Ejemplo NO inyectivo:** $f(x) = x^2$
+
+Porque $f(2) = f(-2) = 4$, pero $2 \neq -2$.
+
+### Función Sobreyectiva (sobre)
+
+Una función $f: A \to B$ es **sobreyectiva** si todo elemento de $B$ es imagen de algún elemento de $A$:
+
+$$(\forall y \in B)(\exists x \in A)(f(x) = y)$$
+
+Es decir, el rango de $f$ es igual al codominio $B$.
+
+**Ejemplo sobreyectivo:** $f: \mathbb{R} \to \mathbb{R}$ con $f(x) = x^3$
+
+Para cualquier $y \in \mathbb{R}$, existe $x = \sqrt[3]{y}$ tal que $f(x) = y$.
+
+**Ejemplo NO sobreyectivo:** $f: \mathbb{R} \to \mathbb{R}$ con $f(x) = x^2$
+
+El número $-1$ no es imagen de ningún real (no existe $x$ tal que $x^2 = -1$ en $\mathbb{R}$).
+
+### Función Biyectiva
+
+Una función es **biyectiva** si es inyectiva y sobreyectiva.
+
+Las funciones biyectivas establecen una correspondencia perfecta entre los elementos del dominio y el codominio.
+
+**Ejemplo:** $f: \mathbb{R} \to \mathbb{R}$ con $f(x) = 2x + 1$
+
+- Es inyectiva (demostrado arriba)
+- Es sobreyectiva: para cualquier $y$, existe $x = \frac{y-1}{2}$ tal que $f(x) = y$
+
+## Composición de Funciones
+
+Dadas $f: A \to B$ y $g: B \to C$, la **composición** $g \circ f: A \to C$ se define como:
+
+$$(g \circ f)(x) = g(f(x))$$
+
+Se lee "$g$ compuesta con $f$" y se aplica de derecha a izquierda: primero $f$, luego $g$.
+
+**Ejemplo:** Si $f(x) = x^2$ y $g(x) = x + 1$:
+
+$$(g \circ f)(x) = g(f(x)) = g(x^2) = x^2 + 1$$
+
+$$(f \circ g)(x) = f(g(x)) = f(x + 1) = (x + 1)^2$$
+
+Note que $g \circ f \neq f \circ g$ en general. La composición no es conmutativa.
+
+### Propiedades de la Composición
+
+1. **Asociatividad:** $(h \circ g) \circ f = h \circ (g \circ f)$
+2. **Identidad:** $f \circ \text{id}_A = f$ y $\text{id}_B \circ f = f$
+3. Si $f$ y $g$ son inyectivas, entonces $g \circ f$ es inyectiva
+4. Si $f$ y $g$ son sobreyectivas, entonces $g \circ f$ es sobreyectiva
+5. Si $f$ y $g$ son biyectivas, entonces $g \circ f$ es biyectiva
+
+## Función Identidad
+
+La **función identidad** en $A$, denotada $\text{id}_A: A \to A$, se define como:
+
+$$\text{id}_A(x) = x$$
+
+Es la función que no modifica nada. Es biyectiva.
+
+## Función Inversa
+
+Si $f: A \to B$ es biyectiva, existe una única función $f^{-1}: B \to A$ tal que:
+
+$$f^{-1}(f(x)) = x \quad \text{para todo } x \in A$$
+$$f(f^{-1}(y)) = y \quad \text{para todo } y \in B$$
+
+Es decir: $f^{-1} \circ f = \text{id}_A$ y $f \circ f^{-1} = \text{id}_B$.
+
+**Ejemplo:** Si $f(x) = 2x + 1$, entonces:
+
+Para encontrar $f^{-1}$:
+1. Sea $y = 2x + 1$
+2. Despejamos $x$: $x = \frac{y - 1}{2}$
+3. Por lo tanto: $f^{-1}(y) = \frac{y - 1}{2}$
+
+Verificación: $f(f^{-1}(y)) = f\left(\frac{y-1}{2}\right) = 2 \cdot \frac{y-1}{2} + 1 = y$
+
+## Imagen e Imagen Inversa
+
+### Imagen de un Conjunto
+
+Si $f: A \to B$ y $S \subseteq A$, la **imagen** de $S$ bajo $f$ es:
+
+$$f(S) = \{f(x) : x \in S\}$$
+
+### Imagen Inversa (Preimagen)
+
+Si $T \subseteq B$, la **preimagen** de $T$ bajo $f$ es:
+
+$$f^{-1}(T) = \{x \in A : f(x) \in T\}$$
+
+**Importante:** La notación $f^{-1}(T)$ no requiere que $f$ sea biyectiva. Es diferente de la función inversa.
+
+## Aplicación en Álgebra Lineal
+
+Las **transformaciones lineales** son funciones entre espacios vectoriales que preservan la estructura lineal:
+
+$$T: V \to W$$
+
+donde $V$ y $W$ son espacios vectoriales.
+
+Estudiaremos:
+- **Núcleo** de $T$: $\ker(T) = T^{-1}(\{0\})$ (preimagen del cero)
+- **Imagen** de $T$: $\text{Im}(T) = T(V)$
+- Cuándo $T$ es inyectiva, sobreyectiva, biyectiva
+- Matriz asociada a $T$
+
+Una transformación lineal biyectiva se llama **isomorfismo**.
+
+---
+
+En la siguiente sección estudiaremos la inducción matemática, una técnica de demostración fundamental.

@@ -1,0 +1,205 @@
+{
+  "chapter": "10-formas-cuadraticas",
+  "exercises": [
+    {
+      "id": "fc-10-test-01",
+      "type": "test",
+      "category": "multiple-choice",
+      "question": {
+        "text": "Una forma cuadratica Q(x) = x^T A x usa una matriz A que es:",
+        "latex": "Q(\\mathbf{x}) = \\mathbf{x}^T A \\mathbf{x}"
+      },
+      "options": [
+        { "id": "a", "text": "Simetrica", "correct": true },
+        { "id": "b", "text": "Diagonal", "correct": false },
+        { "id": "c", "text": "Ortogonal", "correct": false },
+        { "id": "d", "text": "Triangular", "correct": false }
+      ],
+      "hints": [
+        "Sin perdida de generalidad, A puede ser simetrica",
+        "Los terminos mixtos se reparten entre aij y aji"
+      ],
+      "feedback": {
+        "correct": "Correcto. La matriz de una forma cuadratica siempre se toma simetrica.",
+        "incorrect": "La matriz asociada a una forma cuadratica es simetrica por convencion."
+      },
+      "tags": ["formas-cuadraticas", "matriz-asociada"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "fc-10-test-02",
+      "type": "test",
+      "category": "multiple-choice",
+      "question": {
+        "text": "La matriz de Q(x,y) = 3x^2 + 4xy + 5y^2 es:",
+        "latex": "Q(x,y) = 3x^2 + 4xy + 5y^2"
+      },
+      "options": [
+        { "id": "a", "text": "[[3, 2], [2, 5]]", "correct": true },
+        { "id": "b", "text": "[[3, 4], [4, 5]]", "correct": false },
+        { "id": "c", "text": "[[3, 0], [0, 5]]", "correct": false },
+        { "id": "d", "text": "[[3, 4], [0, 5]]", "correct": false }
+      ],
+      "hints": [
+        "El coeficiente de xy se divide entre 2 para las entradas (1,2) y (2,1)",
+        "La matriz debe ser simetrica"
+      ],
+      "feedback": {
+        "correct": "Correcto. El coeficiente 4 de xy se divide: a12 = a21 = 2.",
+        "incorrect": "Para que A sea simetrica, el coeficiente de xy (4) se divide: a12 = a21 = 2."
+      },
+      "tags": ["formas-cuadraticas", "matriz-asociada"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "fc-10-test-03",
+      "type": "test",
+      "category": "multiple-choice",
+      "question": {
+        "text": "Una forma cuadratica es definida positiva si:",
+        "latex": null
+      },
+      "options": [
+        { "id": "a", "text": "Q(x) > 0 para todo x distinto de cero", "correct": true },
+        { "id": "b", "text": "Q(x) >= 0 para todo x", "correct": false },
+        { "id": "c", "text": "Q(x) = 0 solo si x = 0", "correct": false },
+        { "id": "d", "text": "Todos los autovalores son no negativos", "correct": false }
+      ],
+      "hints": [
+        "Definida positiva es mas fuerte que semidefinida positiva",
+        "La desigualdad es estricta"
+      ],
+      "feedback": {
+        "correct": "Correcto. Definida positiva: Q(x) > 0 para x distinto de 0. Semidefinida: Q(x) >= 0.",
+        "incorrect": "Definida positiva requiere Q(x) > 0 (estricto) para todo x no nulo."
+      },
+      "tags": ["formas-cuadraticas", "clasificacion"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "fc-10-test-04",
+      "type": "test",
+      "category": "multiple-choice",
+      "question": {
+        "text": "Una forma cuadratica es definida positiva si y solo si:",
+        "latex": null
+      },
+      "options": [
+        { "id": "a", "text": "Todos los autovalores de A son positivos", "correct": true },
+        { "id": "b", "text": "det(A) > 0", "correct": false },
+        { "id": "c", "text": "tr(A) > 0", "correct": false },
+        { "id": "d", "text": "A es invertible", "correct": false }
+      ],
+      "hints": [
+        "Usa la diagonalizacion: Q = suma de lambda_i y_i^2",
+        "Los autovalores determinan el signo"
+      ],
+      "feedback": {
+        "correct": "Correcto. En forma diagonal, Q = lambda1 y1^2 + ... Todos positivos garantiza Q > 0.",
+        "incorrect": "Definida positiva equivale a todos los autovalores positivos."
+      },
+      "tags": ["formas-cuadraticas", "clasificacion", "autovalores"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "fc-10-test-05",
+      "type": "test",
+      "category": "multiple-choice",
+      "question": {
+        "text": "El criterio de Sylvester usa:",
+        "latex": null
+      },
+      "options": [
+        { "id": "a", "text": "Los menores principales de A", "correct": true },
+        { "id": "b", "text": "Los autovalores de A", "correct": false },
+        { "id": "c", "text": "La traza de A", "correct": false },
+        { "id": "d", "text": "La norma de A", "correct": false }
+      ],
+      "hints": [
+        "Los menores principales son determinantes de submatrices",
+        "Es una alternativa a calcular autovalores"
+      ],
+      "feedback": {
+        "correct": "Correcto. Sylvester: definida positiva si todos los menores principales son positivos.",
+        "incorrect": "El criterio de Sylvester verifica los menores principales (determinantes de esquinas)."
+      },
+      "tags": ["formas-cuadraticas", "sylvester"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "fc-10-test-06",
+      "type": "test",
+      "category": "multiple-choice",
+      "question": {
+        "text": "Si la forma cuadratica tiene autovalores de diferente signo, es:",
+        "latex": null
+      },
+      "options": [
+        { "id": "a", "text": "Indefinida", "correct": true },
+        { "id": "b", "text": "Definida positiva", "correct": false },
+        { "id": "c", "text": "Semidefinida positiva", "correct": false },
+        { "id": "d", "text": "Definida negativa", "correct": false }
+      ],
+      "hints": [
+        "Con autovalores +/-, Q toma valores positivos y negativos",
+        "En direcciones propias correspondientes"
+      ],
+      "feedback": {
+        "correct": "Correcto. Autovalores de signos opuestos implica forma indefinida.",
+        "incorrect": "Cuando hay autovalores positivos y negativos, Q toma ambos signos: indefinida."
+      },
+      "tags": ["formas-cuadraticas", "clasificacion"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "fc-10-test-07",
+      "type": "test",
+      "category": "multiple-choice",
+      "question": {
+        "text": "La conica x^2 - y^2 = 1 es:",
+        "latex": "x^2 - y^2 = 1"
+      },
+      "options": [
+        { "id": "a", "text": "Una hiperbola", "correct": true },
+        { "id": "b", "text": "Una elipse", "correct": false },
+        { "id": "c", "text": "Una parabola", "correct": false },
+        { "id": "d", "text": "Una circunferencia", "correct": false }
+      ],
+      "hints": [
+        "Los coeficientes de x^2 y y^2 tienen signos opuestos",
+        "Eso indica una hiperbola"
+      ],
+      "feedback": {
+        "correct": "Correcto. Signos opuestos en x^2 y y^2 indican hiperbola.",
+        "incorrect": "Cuando los coeficientes de x^2 y y^2 tienen signos opuestos, es una hiperbola."
+      },
+      "tags": ["formas-cuadraticas", "conicas"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "fc-10-test-08",
+      "type": "test",
+      "category": "multiple-choice",
+      "question": {
+        "text": "Para eliminar el termino xy en una conica, se hace:",
+        "latex": null
+      },
+      "options": [
+        { "id": "a", "text": "Una rotacion de ejes", "correct": true },
+        { "id": "b", "text": "Una traslacion", "correct": false },
+        { "id": "c", "text": "Completar cuadrados", "correct": false },
+        { "id": "d", "text": "Dividir por el determinante", "correct": false }
+      ],
+      "hints": [
+        "Los nuevos ejes son los autovectores",
+        "La rotacion diagonaliza la forma cuadratica"
+      ],
+      "feedback": {
+        "correct": "Correcto. Rotar a los ejes principales (autovectores) elimina el termino mixto.",
+        "incorrect": "El termino xy se elimina rotando a los ejes principales de la forma cuadratica."
+      },
+      "tags": ["formas-cuadraticas", "conicas", "rotacion"],
+      "difficulty": "medium"
+    }
+  ]
+}

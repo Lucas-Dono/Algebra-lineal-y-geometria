@@ -1,0 +1,154 @@
+---
+title: "Proceso de Gram-Schmidt"
+chapter: 9
+section: 3
+---
+
+# Proceso de Gram-Schmidt
+
+El proceso de Gram-Schmidt transforma cualquier base en una base ortonormal.
+
+## Visualizacion Interactiva
+
+import GramSchmidtVisualization from '../../components/visualizations/GramSchmidtVisualization';
+
+<GramSchmidtVisualization
+  client:load
+  title="Proceso de Gram-Schmidt Paso a Paso"
+/>
+
+## Idea
+
+Dado un conjunto LI $\{\mathbf{v}_1, \ldots, \mathbf{v}_k\}$, construir un conjunto ortonormal $\{\mathbf{u}_1, \ldots, \mathbf{u}_k\}$ con el mismo generado.
+
+La idea es:
+1. Tomar el primer vector y normalizarlo
+2. Para cada vector siguiente, restarle sus proyecciones sobre los anteriores y normalizar
+
+## Algoritmo
+
+**Entrada:** $\{\mathbf{v}_1, \ldots, \mathbf{v}_k\}$ linealmente independientes
+
+**Proceso:**
+
+**Paso 1:**
+$$\mathbf{w}_1 = \mathbf{v}_1, \quad \mathbf{u}_1 = \frac{\mathbf{w}_1}{\|\mathbf{w}_1\|}$$
+
+**Paso 2:**
+$$\mathbf{w}_2 = \mathbf{v}_2 - \langle\mathbf{v}_2, \mathbf{u}_1\rangle\mathbf{u}_1, \quad \mathbf{u}_2 = \frac{\mathbf{w}_2}{\|\mathbf{w}_2\|}$$
+
+**Paso 3:**
+$$\mathbf{w}_3 = \mathbf{v}_3 - \langle\mathbf{v}_3, \mathbf{u}_1\rangle\mathbf{u}_1 - \langle\mathbf{v}_3, \mathbf{u}_2\rangle\mathbf{u}_2, \quad \mathbf{u}_3 = \frac{\mathbf{w}_3}{\|\mathbf{w}_3\|}$$
+
+**Paso k (general):**
+$$\mathbf{w}_k = \mathbf{v}_k - \sum_{j=1}^{k-1} \langle\mathbf{v}_k, \mathbf{u}_j\rangle\mathbf{u}_j, \quad \mathbf{u}_k = \frac{\mathbf{w}_k}{\|\mathbf{w}_k\|}$$
+
+**Salida:** $\{\mathbf{u}_1, \ldots, \mathbf{u}_k\}$ ortonormal
+
+## Ejemplo en R3
+
+Ortonormalizar $\{\mathbf{v}_1, \mathbf{v}_2, \mathbf{v}_3\}$ donde:
+- $\mathbf{v}_1 = (1, 1, 1)$
+- $\mathbf{v}_2 = (1, 1, 0)$
+- $\mathbf{v}_3 = (1, 0, 0)$
+
+**Paso 1:**
+$$\|\mathbf{v}_1\| = \sqrt{3}$$
+$$\mathbf{u}_1 = \frac{1}{\sqrt{3}}(1, 1, 1)$$
+
+**Paso 2:**
+$$\langle\mathbf{v}_2, \mathbf{u}_1\rangle = \frac{1}{\sqrt{3}}(1 + 1 + 0) = \frac{2}{\sqrt{3}}$$
+
+$$\mathbf{w}_2 = \mathbf{v}_2 - \frac{2}{\sqrt{3}} \cdot \frac{1}{\sqrt{3}}(1, 1, 1) = (1, 1, 0) - \frac{2}{3}(1, 1, 1)$$
+$$= \left(\frac{1}{3}, \frac{1}{3}, -\frac{2}{3}\right)$$
+
+$$\|\mathbf{w}_2\| = \sqrt{\frac{1}{9} + \frac{1}{9} + \frac{4}{9}} = \sqrt{\frac{6}{9}} = \frac{\sqrt{6}}{3}$$
+
+$$\mathbf{u}_2 = \frac{3}{\sqrt{6}}\left(\frac{1}{3}, \frac{1}{3}, -\frac{2}{3}\right) = \frac{1}{\sqrt{6}}(1, 1, -2)$$
+
+**Paso 3:**
+$$\langle\mathbf{v}_3, \mathbf{u}_1\rangle = \frac{1}{\sqrt{3}}(1) = \frac{1}{\sqrt{3}}$$
+
+$$\langle\mathbf{v}_3, \mathbf{u}_2\rangle = \frac{1}{\sqrt{6}}(1) = \frac{1}{\sqrt{6}}$$
+
+$$\mathbf{w}_3 = (1, 0, 0) - \frac{1}{\sqrt{3}} \cdot \frac{1}{\sqrt{3}}(1, 1, 1) - \frac{1}{\sqrt{6}} \cdot \frac{1}{\sqrt{6}}(1, 1, -2)$$
+
+$$= (1, 0, 0) - \frac{1}{3}(1, 1, 1) - \frac{1}{6}(1, 1, -2)$$
+
+$$= \left(1 - \frac{1}{3} - \frac{1}{6}, -\frac{1}{3} - \frac{1}{6}, -\frac{1}{3} + \frac{2}{6}\right)$$
+
+$$= \left(\frac{1}{2}, -\frac{1}{2}, 0\right)$$
+
+$$\|\mathbf{w}_3\| = \sqrt{\frac{1}{4} + \frac{1}{4}} = \frac{1}{\sqrt{2}}$$
+
+$$\mathbf{u}_3 = \sqrt{2}\left(\frac{1}{2}, -\frac{1}{2}, 0\right) = \frac{1}{\sqrt{2}}(1, -1, 0)$$
+
+**Resultado:**
+- $\mathbf{u}_1 = \frac{1}{\sqrt{3}}(1, 1, 1)$
+- $\mathbf{u}_2 = \frac{1}{\sqrt{6}}(1, 1, -2)$
+- $\mathbf{u}_3 = \frac{1}{\sqrt{2}}(1, -1, 0)$
+
+## Verificacion
+
+$$\langle\mathbf{u}_1, \mathbf{u}_2\rangle = \frac{1}{\sqrt{18}}(1 + 1 - 2) = 0$$
+$$\langle\mathbf{u}_1, \mathbf{u}_3\rangle = \frac{1}{\sqrt{6}}(1 - 1 + 0) = 0$$
+$$\langle\mathbf{u}_2, \mathbf{u}_3\rangle = \frac{1}{\sqrt{12}}(1 - 1 + 0) = 0$$
+
+Todos ortogonales y de norma 1.
+
+## Descomposicion QR
+
+El proceso de Gram-Schmidt produce la **descomposicion QR** de una matriz.
+
+Si $A$ tiene columnas LI $\mathbf{a}_1, \ldots, \mathbf{a}_n$:
+
+$$A = QR$$
+
+donde:
+- $Q$ es ortogonal (columnas son los $\mathbf{u}_i$)
+- $R$ es triangular superior con entradas positivas en la diagonal
+
+### Construccion
+
+$$Q = \begin{pmatrix} | & | & & | \\ \mathbf{u}_1 & \mathbf{u}_2 & \cdots & \mathbf{u}_n \\ | & | & & | \end{pmatrix}$$
+
+$$r_{ij} = \langle\mathbf{a}_j, \mathbf{u}_i\rangle \text{ para } i < j$$
+$$r_{ii} = \|\mathbf{w}_i\|$$
+
+### Aplicaciones de QR
+
+1. Resolver sistemas $Ax = b$ de forma numericamente estable
+2. Calcular autovalores (algoritmo QR)
+3. Minimos cuadrados
+
+## Gram-Schmidt en Espacios de Funciones
+
+Ortonormalizar $\{1, x, x^2\}$ en $\mathcal{P}_2$ con $\langle f, g \rangle = \int_{-1}^{1} f(x)g(x)\,dx$.
+
+**Paso 1:**
+$$\|1\|^2 = \int_{-1}^{1} 1\,dx = 2$$
+$$p_0(x) = \frac{1}{\sqrt{2}}$$
+
+**Paso 2:**
+$$\langle x, p_0 \rangle = \frac{1}{\sqrt{2}}\int_{-1}^{1} x\,dx = 0$$ (funcion impar)
+
+$$\|x\|^2 = \int_{-1}^{1} x^2\,dx = \frac{2}{3}$$
+
+$$p_1(x) = \sqrt{\frac{3}{2}}x$$
+
+**Paso 3:**
+$$\langle x^2, p_0 \rangle = \frac{1}{\sqrt{2}}\int_{-1}^{1} x^2\,dx = \frac{1}{\sqrt{2}} \cdot \frac{2}{3} = \frac{\sqrt{2}}{3}$$
+
+$$\langle x^2, p_1 \rangle = \sqrt{\frac{3}{2}}\int_{-1}^{1} x^3\,dx = 0$$
+
+$$w_2(x) = x^2 - \frac{\sqrt{2}}{3} \cdot \frac{1}{\sqrt{2}} = x^2 - \frac{1}{3}$$
+
+$$\|w_2\|^2 = \int_{-1}^{1} \left(x^2 - \frac{1}{3}\right)^2\,dx = \frac{8}{45}$$
+
+$$p_2(x) = \sqrt{\frac{45}{8}}\left(x^2 - \frac{1}{3}\right)$$
+
+Estos son (multiplos de) los **polinomios de Legendre**.
+
+---
+
+En la siguiente seccion estudiaremos las proyecciones ortogonales.

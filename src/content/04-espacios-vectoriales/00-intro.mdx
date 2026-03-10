@@ -1,0 +1,123 @@
+---
+title: "Introduccion a los Espacios Vectoriales"
+chapter: 4
+section: 0
+---
+
+# Introduccion a los Espacios Vectoriales
+
+Los espacios vectoriales son la estructura algebraica central del algebra lineal. Generalizan las propiedades de los vectores geometricos a contextos mucho mas amplios.
+
+## Motivacion
+
+En los capitulos anteriores trabajamos con vectores en $\mathbb{R}^2$ y $\mathbb{R}^3$. Observamos que:
+
+- Los vectores se pueden sumar
+- Los vectores se pueden multiplicar por escalares
+- Estas operaciones satisfacen propiedades como conmutatividad, asociatividad, distributividad
+
+La pregunta natural es: que otros conjuntos tienen esta misma estructura?
+
+## Ejemplos Sorprendentes
+
+Ademas de $\mathbb{R}^n$, los siguientes conjuntos tambien tienen estructura de espacio vectorial:
+
+### Polinomios
+
+El conjunto de todos los polinomios con coeficientes reales:
+$$P(x) = a_n x^n + a_{n-1}x^{n-1} + \cdots + a_1 x + a_0$$
+
+- Suma: $(P + Q)(x) = P(x) + Q(x)$
+- Producto por escalar: $(cP)(x) = c \cdot P(x)$
+
+### Funciones Continuas
+
+El conjunto $C[a,b]$ de funciones continuas en el intervalo $[a,b]$:
+
+- $(f + g)(x) = f(x) + g(x)$
+- $(cf)(x) = c \cdot f(x)$
+
+### Matrices
+
+El conjunto $M_{m \times n}(\mathbb{R})$ de matrices de tamano $m \times n$:
+
+- Suma componente a componente
+- Producto por escalar componente a componente
+
+### Sucesiones
+
+El conjunto de sucesiones de numeros reales $(a_1, a_2, a_3, \ldots)$
+
+## La Definicion Abstracta
+
+Un **espacio vectorial** sobre $\mathbb{R}$ es un conjunto $V$ con dos operaciones:
+1. **Suma:** $V \times V \to V$
+2. **Producto por escalar:** $\mathbb{R} \times V \to V$
+
+que satisfacen ciertos axiomas (los veremos en la siguiente seccion).
+
+Los elementos de $V$ se llaman **vectores**, aunque no necesariamente son "flechas".
+
+## Por Que Importa?
+
+La abstraccion nos permite:
+
+1. **Demostrar teoremas una sola vez** que aplican a todos los ejemplos
+2. **Transferir intuicion** de $\mathbb{R}^n$ a espacios mas complejos
+3. **Unificar** areas aparentemente diferentes de las matematicas
+4. **Resolver problemas** en contextos diversos usando las mismas tecnicas
+
+## Conceptos Clave del Capitulo
+
+Estudiaremos:
+
+### Definicion Axiomatica
+Los 10 axiomas que definen un espacio vectorial y ejemplos de cada tipo.
+
+### Subespacios
+Subconjuntos que heredan la estructura de espacio vectorial.
+
+### Combinaciones Lineales
+Expresiones de la forma $c_1\mathbf{v}_1 + c_2\mathbf{v}_2 + \cdots + c_n\mathbf{v}_n$
+
+### Dependencia e Independencia Lineal
+Cuando un vector puede expresarse como combinacion de otros.
+
+### Generadores y Bases
+Conjuntos de vectores que "construyen" todo el espacio.
+
+### Dimension
+El numero minimo de vectores necesarios para generar el espacio.
+
+### Coordenadas
+Como representar vectores respecto a una base elegida.
+
+## Conexion con lo Anterior
+
+- Los sistemas de ecuaciones lineales determinan subespacios
+- Las matrices representan transformaciones entre espacios
+- Los determinantes miden "volumenes" en espacios de cualquier dimension
+
+## Nota Sobre Escalares
+
+En este curso trabajamos principalmente con escalares reales ($\mathbb{R}$). Todo lo que veremos se extiende a escalares complejos ($\mathbb{C}$) y a otros campos.
+
+---
+
+## Videos Recomendados
+
+import VideoEmbed from '../../components/content/VideoEmbed.astro';
+
+<VideoEmbed
+  youtubeId="wiuEEkP_XuM"
+  title="Vectores, ¿qué son? - 3Blue1Brown Español"
+/>
+
+<VideoEmbed
+  youtubeId="k7RM-ot2NWY"
+  title="Combinaciones lineales, span y vectores base - 3Blue1Brown"
+/>
+
+---
+
+En la siguiente seccion presentaremos la definicion formal con todos los axiomas.

@@ -1,0 +1,115 @@
+{
+  "chapter": "08-autovalores-autovectores",
+  "exercises": [
+    {
+      "id": "av-08-prac-01",
+      "type": "practice",
+      "question": {
+        "text": "Encontrar los autovalores y autovectores de A = [[4,1],[2,3]]",
+        "latex": "A = \\begin{pmatrix} 4 & 1 \\\\ 2 & 3 \\end{pmatrix}"
+      },
+      "solution": {
+        "text": "Autovalores: 5 y 2. Autovectores: (1,1) y (1,-2)",
+        "latex": "\\lambda_1 = 5, \\mathbf{v}_1 = (1,1); \\quad \\lambda_2 = 2, \\mathbf{v}_2 = (1,-2)",
+        "steps": [
+          "Polinomio caracteristico: det(A - lambda I) = (4-lambda)(3-lambda) - 2",
+          "= lambda^2 - 7lambda + 12 - 2 = lambda^2 - 7lambda + 10",
+          "= (lambda - 5)(lambda - 2) = 0",
+          "Autovalores: lambda1 = 5, lambda2 = 2",
+          "Para lambda = 5: (A - 5I)v = 0 da [[-1,1],[2,-2]]v = 0",
+          "De -x + y = 0: y = x. Autovector: (1, 1)",
+          "Para lambda = 2: (A - 2I)v = 0 da [[2,1],[2,1]]v = 0",
+          "De 2x + y = 0: y = -2x. Autovector: (1, -2)"
+        ]
+      },
+      "hints": [
+        "Resuelve det(A - lambda I) = 0 para los autovalores",
+        "Para cada autovalor, resuelve (A - lambda I)v = 0"
+      ],
+      "tags": ["autovalores", "autovectores", "calculo"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "av-08-prac-02",
+      "type": "practice",
+      "question": {
+        "text": "Diagonalizar A = [[3,1],[0,2]] si es posible",
+        "latex": "A = \\begin{pmatrix} 3 & 1 \\\\ 0 & 2 \\end{pmatrix}"
+      },
+      "solution": {
+        "text": "A = PDP^(-1) con D = diag(3,2) y P = [[1,1],[0,-1]]",
+        "latex": "A = PDP^{-1}, \\quad D = \\begin{pmatrix} 3 & 0 \\\\ 0 & 2 \\end{pmatrix}, \\quad P = \\begin{pmatrix} 1 & 1 \\\\ 0 & -1 \\end{pmatrix}",
+        "steps": [
+          "A es triangular, autovalores en la diagonal: lambda1 = 3, lambda2 = 2",
+          "Para lambda = 3: (A - 3I)v = [[0,1],[0,-1]]v = 0",
+          "y = 0, x libre. Autovector: (1, 0)",
+          "Para lambda = 2: (A - 2I)v = [[1,1],[0,0]]v = 0",
+          "x + y = 0. Autovector: (1, -1)",
+          "P = [[1,1],[0,-1]] (autovectores como columnas)",
+          "D = [[3,0],[0,2]] (autovalores en la diagonal)",
+          "P^(-1) = [[1,1],[0,-1]] (calcular la inversa)"
+        ]
+      },
+      "hints": [
+        "Los autovalores de una triangular estan en la diagonal",
+        "Encuentra los autovectores para cada autovalor"
+      ],
+      "tags": ["autovalores", "diagonalizacion"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "av-08-prac-03",
+      "type": "practice",
+      "question": {
+        "text": "Calcular A^5 donde A = [[1,1],[0,2]] usando diagonalizacion",
+        "latex": "A^5"
+      },
+      "solution": {
+        "text": "A^5 = [[1,31],[0,32]]",
+        "latex": "A^5 = \\begin{pmatrix} 1 & 31 \\\\ 0 & 32 \\end{pmatrix}",
+        "steps": [
+          "Autovalores: lambda1 = 1, lambda2 = 2 (diagonal de triangular)",
+          "Para lambda = 1: autovector (1, 0)",
+          "Para lambda = 2: x + y = 0, autovector (1, -1)",
+          "P = [[1,1],[0,-1]], P^(-1) = [[1,1],[0,-1]]",
+          "D^5 = [[1,0],[0,32]]",
+          "A^5 = P D^5 P^(-1) = [[1,1],[0,-1]] [[1,0],[0,32]] [[1,1],[0,-1]]",
+          "= [[1,32],[0,-32]] [[1,1],[0,-1]]",
+          "= [[1,1-32],[0,32]] = [[1,31],[0,32]]"
+        ]
+      },
+      "hints": [
+        "Usa A^n = P D^n P^(-1)",
+        "D^n es facil: eleva cada elemento diagonal a la n"
+      ],
+      "tags": ["autovalores", "potencias", "diagonalizacion"],
+      "difficulty": "hard"
+    },
+    {
+      "id": "av-08-prac-04",
+      "type": "practice",
+      "question": {
+        "text": "Determinar si A = [[1,1],[0,1]] es diagonalizable",
+        "latex": "A = \\begin{pmatrix} 1 & 1 \\\\ 0 & 1 \\end{pmatrix}"
+      },
+      "solution": {
+        "text": "No es diagonalizable",
+        "latex": "\\text{No es diagonalizable}",
+        "steps": [
+          "Autovalores: lambda = 1 con multiplicidad algebraica 2",
+          "Para lambda = 1: (A - I)v = [[0,1],[0,0]]v = 0",
+          "y = 0, x libre. Unico autovector base: (1, 0)",
+          "Multiplicidad geometrica = 1 < 2 = multiplicidad algebraica",
+          "Por lo tanto, A no es diagonalizable",
+          "Esta es una matriz de Jordan con bloque 2x2 para lambda = 1"
+        ]
+      },
+      "hints": [
+        "Calcula autovalores y sus multiplicidades",
+        "Compara multiplicidad geometrica vs algebraica"
+      ],
+      "tags": ["autovalores", "diagonalizacion", "jordan"],
+      "difficulty": "medium"
+    }
+  ]
+}

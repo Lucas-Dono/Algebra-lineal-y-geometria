@@ -1,0 +1,211 @@
+---
+title: "Vectores en R2"
+chapter: 3
+section: 1
+---
+
+# Vectores en el Plano
+
+Los vectores en $\mathbb{R}^2$ son la base para entender espacios vectoriales de cualquier dimension.
+
+## Definicion Formal
+
+Un **vector** en $\mathbb{R}^2$ es un par ordenado de numeros reales:
+
+$$\mathbf{v} = (v_1, v_2) \quad \text{o} \quad \mathbf{v} = \begin{pmatrix} v_1 \\ v_2 \end{pmatrix}$$
+
+Los numeros $v_1$ y $v_2$ se llaman **componentes** del vector.
+
+### Interpretaciones
+
+1. **Geometrica:** Una flecha desde el origen hasta el punto $(v_1, v_2)$
+2. **Algebraica:** Un elemento del conjunto $\mathbb{R}^2$
+3. **Fisica:** Una cantidad con magnitud y direccion
+
+## Operaciones Basicas
+
+### Suma de Vectores
+
+La suma se define componente a componente:
+
+$$\mathbf{u} + \mathbf{v} = (u_1 + v_1, u_2 + v_2)$$
+
+**Ejemplo:**
+$(3, 2) + (1, 4) = (4, 6)$
+
+**Interpretacion geometrica:** Regla del paralelogramo. El vector suma es la diagonal del paralelogramo formado por $\mathbf{u}$ y $\mathbf{v}$.
+
+### Resta de Vectores
+
+$$\mathbf{u} - \mathbf{v} = (u_1 - v_1, u_2 - v_2)$$
+
+**Ejemplo:**
+$(5, 3) - (2, 1) = (3, 2)$
+
+### Producto por Escalar
+
+Dado un escalar $c \in \mathbb{R}$:
+
+$$c\mathbf{v} = (cv_1, cv_2)$$
+
+**Ejemplos:**
+- $3(2, -1) = (6, -3)$
+- $-1(2, -1) = (-2, 1)$
+- $\frac{1}{2}(4, 6) = (2, 3)$
+
+**Interpretacion:**
+- $|c| > 1$: estira el vector
+- $|c| < 1$: contrae el vector
+- $c < 0$: invierte la direccion
+
+## Vectores Especiales
+
+### Vector Cero
+
+$$\mathbf{0} = (0, 0)$$
+
+Propiedades:
+- $\mathbf{v} + \mathbf{0} = \mathbf{v}$ para todo $\mathbf{v}$
+- $0 \cdot \mathbf{v} = \mathbf{0}$ para todo $\mathbf{v}$
+
+### Vector Opuesto
+
+El opuesto de $\mathbf{v}$ es:
+
+$$-\mathbf{v} = (-v_1, -v_2)$$
+
+Propiedad: $\mathbf{v} + (-\mathbf{v}) = \mathbf{0}$
+
+### Vectores Canonicos
+
+$$\mathbf{e}_1 = (1, 0), \quad \mathbf{e}_2 = (0, 1)$$
+
+Todo vector se puede escribir como:
+$$\mathbf{v} = (v_1, v_2) = v_1\mathbf{e}_1 + v_2\mathbf{e}_2$$
+
+## Propiedades Algebraicas
+
+Para vectores $\mathbf{u}, \mathbf{v}, \mathbf{w}$ y escalares $a, b$:
+
+| Propiedad | Formula |
+|-----------|---------|
+| Conmutatividad | $\mathbf{u} + \mathbf{v} = \mathbf{v} + \mathbf{u}$ |
+| Asociatividad | $(\mathbf{u} + \mathbf{v}) + \mathbf{w} = \mathbf{u} + (\mathbf{v} + \mathbf{w})$ |
+| Elemento neutro | $\mathbf{v} + \mathbf{0} = \mathbf{v}$ |
+| Inverso aditivo | $\mathbf{v} + (-\mathbf{v}) = \mathbf{0}$ |
+| Distributividad | $a(\mathbf{u} + \mathbf{v}) = a\mathbf{u} + a\mathbf{v}$ |
+| Distributividad | $(a + b)\mathbf{v} = a\mathbf{v} + b\mathbf{v}$ |
+| Asociatividad | $a(b\mathbf{v}) = (ab)\mathbf{v}$ |
+| Identidad | $1 \cdot \mathbf{v} = \mathbf{v}$ |
+
+Estas propiedades definen lo que es un **espacio vectorial**.
+
+## Magnitud (Norma)
+
+La **magnitud** o **norma** de $\mathbf{v} = (v_1, v_2)$ es:
+
+$$\|\mathbf{v}\| = \sqrt{v_1^2 + v_2^2}$$
+
+Es la longitud del vector (distancia desde el origen).
+
+**Ejemplos:**
+- $\|(3, 4)\| = \sqrt{9 + 16} = 5$
+- $\|(1, 1)\| = \sqrt{2}$
+- $\|(-2, 0)\| = 2$
+
+### Propiedades de la Norma
+
+1. $\|\mathbf{v}\| \geq 0$, y $\|\mathbf{v}\| = 0 \iff \mathbf{v} = \mathbf{0}$
+2. $\|c\mathbf{v}\| = |c| \cdot \|\mathbf{v}\|$
+3. $\|\mathbf{u} + \mathbf{v}\| \leq \|\mathbf{u}\| + \|\mathbf{v}\|$ (desigualdad triangular)
+
+## Vector Unitario
+
+Un vector es **unitario** si su norma es 1.
+
+Para obtener el vector unitario en la direccion de $\mathbf{v} \neq \mathbf{0}$:
+
+$$\hat{\mathbf{v}} = \frac{\mathbf{v}}{\|\mathbf{v}\|}$$
+
+**Ejemplo:** Normalizar $\mathbf{v} = (3, 4)$
+
+$$\hat{\mathbf{v}} = \frac{(3, 4)}{5} = \left(\frac{3}{5}, \frac{4}{5}\right)$$
+
+Verificacion: $\|\hat{\mathbf{v}}\| = \sqrt{9/25 + 16/25} = \sqrt{25/25} = 1$
+
+## Producto Punto (Producto Escalar)
+
+El **producto punto** de $\mathbf{u} = (u_1, u_2)$ y $\mathbf{v} = (v_1, v_2)$ es:
+
+$$\mathbf{u} \cdot \mathbf{v} = u_1v_1 + u_2v_2$$
+
+El resultado es un **escalar** (numero), no un vector.
+
+**Ejemplos:**
+- $(2, 3) \cdot (4, 1) = 8 + 3 = 11$
+- $(1, 0) \cdot (0, 1) = 0$
+- $(3, 4) \cdot (3, 4) = 9 + 16 = 25 = \|(3,4)\|^2$
+
+### Propiedades del Producto Punto
+
+1. $\mathbf{u} \cdot \mathbf{v} = \mathbf{v} \cdot \mathbf{u}$ (conmutativo)
+2. $\mathbf{u} \cdot (\mathbf{v} + \mathbf{w}) = \mathbf{u} \cdot \mathbf{v} + \mathbf{u} \cdot \mathbf{w}$ (distributivo)
+3. $(c\mathbf{u}) \cdot \mathbf{v} = c(\mathbf{u} \cdot \mathbf{v})$
+4. $\mathbf{v} \cdot \mathbf{v} = \|\mathbf{v}\|^2 \geq 0$
+
+## Angulo Entre Vectores
+
+La formula geometrica del producto punto es:
+
+$$\mathbf{u} \cdot \mathbf{v} = \|\mathbf{u}\| \|\mathbf{v}\| \cos\theta$$
+
+donde $\theta$ es el angulo entre los vectores.
+
+Despejando:
+
+$$\cos\theta = \frac{\mathbf{u} \cdot \mathbf{v}}{\|\mathbf{u}\| \|\mathbf{v}\|}$$
+
+**Ejemplo:** Angulo entre $\mathbf{u} = (1, 0)$ y $\mathbf{v} = (1, 1)$
+
+$$\cos\theta = \frac{(1)(1) + (0)(1)}{1 \cdot \sqrt{2}} = \frac{1}{\sqrt{2}}$$
+
+$$\theta = \arccos\left(\frac{1}{\sqrt{2}}\right) = 45° = \frac{\pi}{4}$$
+
+## Ortogonalidad
+
+Dos vectores son **ortogonales** (perpendiculares) si:
+
+$$\mathbf{u} \cdot \mathbf{v} = 0$$
+
+**Ejemplos de vectores ortogonales:**
+- $(1, 0)$ y $(0, 1)$
+- $(3, 2)$ y $(-2, 3)$: verificacion $3(-2) + 2(3) = -6 + 6 = 0$
+- $(a, b)$ y $(-b, a)$ para cualquier $a, b$
+
+## Proyeccion
+
+La **proyeccion** de $\mathbf{u}$ sobre $\mathbf{v}$ es:
+
+$$\text{proy}_\mathbf{v}\mathbf{u} = \frac{\mathbf{u} \cdot \mathbf{v}}{\|\mathbf{v}\|^2}\mathbf{v}$$
+
+O equivalentemente:
+
+$$\text{proy}_\mathbf{v}\mathbf{u} = \frac{\mathbf{u} \cdot \mathbf{v}}{\mathbf{v} \cdot \mathbf{v}}\mathbf{v}$$
+
+La **componente escalar** de la proyeccion es:
+
+$$\text{comp}_\mathbf{v}\mathbf{u} = \frac{\mathbf{u} \cdot \mathbf{v}}{\|\mathbf{v}\|}$$
+
+## Distancia Entre Puntos
+
+La distancia entre $A = (a_1, a_2)$ y $B = (b_1, b_2)$ es:
+
+$$d(A, B) = \|\overrightarrow{AB}\| = \sqrt{(b_1 - a_1)^2 + (b_2 - a_2)^2}$$
+
+**Ejemplo:** Distancia de $(1, 2)$ a $(4, 6)$
+
+$$d = \sqrt{(4-1)^2 + (6-2)^2} = \sqrt{9 + 16} = 5$$
+
+---
+
+En la siguiente seccion extenderemos estos conceptos al espacio tridimensional.
